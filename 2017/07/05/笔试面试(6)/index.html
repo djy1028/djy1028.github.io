@@ -1,0 +1,1373 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="笔试面试题," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="伪类和伪元素w3c中的定义：CSS中伪类用于向某些选择器添加特殊的效果。CSS中伪元素用于将特殊的效果添加到某些选择器。 伪类种类有：:active : 将样式添加到被激活的元素:focus :将样式添加到被选中的元素:hover：将样式添加到鼠标浮动的元素上:link：将样式添加到未被访问过的链接:visited,:first-child,:lang; 伪元素种类：：before : 在某元素之">
+<meta name="keywords" content="笔试面试题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="笔试面试题（6）">
+<meta property="og:url" content="http://yoursite.com/2017/07/05/笔试面试(6)/index.html">
+<meta property="og:site_name" content="С�����ľ���">
+<meta property="og:description" content="伪类和伪元素w3c中的定义：CSS中伪类用于向某些选择器添加特殊的效果。CSS中伪元素用于将特殊的效果添加到某些选择器。 伪类种类有：:active : 将样式添加到被激活的元素:focus :将样式添加到被选中的元素:hover：将样式添加到鼠标浮动的元素上:link：将样式添加到未被访问过的链接:visited,:first-child,:lang; 伪元素种类：：before : 在某元素之">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-08-03T08:03:50.182Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="笔试面试题（6）">
+<meta name="twitter:description" content="伪类和伪元素w3c中的定义：CSS中伪类用于向某些选择器添加特殊的效果。CSS中伪元素用于将特殊的效果添加到某些选择器。 伪类种类有：:active : 将样式添加到被激活的元素:focus :将样式添加到被选中的元素:hover：将样式添加到鼠标浮动的元素上:link：将样式添加到未被访问过的链接:visited,:first-child,:lang; 伪元素种类：：before : 在某元素之">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/07/05/笔试面试(6)/"/>
+
+
+
+
+
+  <title>笔试面试题（6） | С�����ľ���</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?41fc030db57d5570dd22f78997dc4a7e";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">С�����ľ���</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">С�����ľ���</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/05/笔试面试(6)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="superDjy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://img.mp.itc.cn/upload/20170429/a2379efc26214d7fa790af6105312132">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="С�����ľ���">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">笔试面试题（6）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-05T00:00:00+08:00">
+                2017-07-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/基本知识/" itemprop="url" rel="index">
+                    <span itemprop="name">基本知识</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/07/05/笔试面试(6)/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/07/05/笔试面试(6)/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/07/05/笔试面试(6)/" class="leancloud_visitors" data-flag-title="笔试面试题（6）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="伪类和伪元素"><a href="#伪类和伪元素" class="headerlink" title="伪类和伪元素"></a>伪类和伪元素</h2><p><strong>w3c中的定义：</strong><br>CSS中伪类用于向某些选择器添加特殊的效果。<br>CSS中伪元素用于将特殊的效果添加到某些选择器。</p>
+<p>伪类种类有：<br>:active : 将样式添加到被激活的元素<br>:focus :将样式添加到被选中的元素<br>:hover：将样式添加到鼠标浮动的元素上<br>:link：将样式添加到未被访问过的链接<br>:visited,<br>:first-child,<br>:lang;</p>
+<p>伪元素种类：<br>：before : 在某元素之前插入某些内容<br>：after  : 在某元素之后插入某些内容</p>
+<h2 id="优先级"><a href="#优先级" class="headerlink" title="优先级"></a>优先级</h2><p>样式的优先级：内联样式(在元素中间的style)&gt;内部样式<code>(&lt;style&gt;&lt;/style&gt;)</code>&gt;外部样式（link标签引入）</p>
+<p><strong>选择器的优先级：</strong></p>
+<p>内联样式的优先级&gt;ID选择器&gt;伪类选择器(:visited,:acitive)&gt;属性选择器&gt;类选择器&gt;类型选择器&gt;通用选择器（*）</p>
+<p><strong>注意：当 !important 规则被应用在一个样式声明中时,该样式声明会覆盖CSS中任何其他的声明, 无论它处在声明列表中的哪里</strong></p>
+<h2 id="盒子模型和box-sizing"><a href="#盒子模型和box-sizing" class="headerlink" title="盒子模型和box-sizing"></a>盒子模型和box-sizing</h2><p>盒子模型：<code>content+padding+border+margin</code></p>
+<p>box-sizing属性有两个值：content-box和border-box;当属性值为content-box时，维持其原有盒子模型的结构。</p>
+<p>当属性值为border-box时，其设置的宽度为content-width+padding+border。可以通过告诉浏览器该元素中的padding和border来确定content的宽，高。</p>
+<p>具体示例为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">.element&#123;</div><div class="line">	box-sizing:border-box;</div><div class="line">	width:200px;</div><div class="line">	padding:10px</div><div class="line">	border:5px</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>则此时content-width为170px,而不是盒子模型的230px。</p>
+<p>响应式布局：理论上，响应式界面能够适应不同的设备。简而言之，就是一个网站能够兼容多个终端——而不是为每个终端做一个特定的版本。 这个概念是为解决移动互联网浏览而诞生的。</p>
+<p>描述响应式界面最著名的一句话就是“Content is like water”，翻译成中文便是“如果将屏幕看作容器，那么内容就像水一样”。</p>
+<h2 id="性能优化的方法"><a href="#性能优化的方法" class="headerlink" title="性能优化的方法"></a>性能优化的方法</h2><p>（1） 减少http请求次数</p>
+<p>（2） 图片预加载，将样式表放在顶部，将脚本放在底部 加上时间戳</p>
+<p>（3） 少用全局变量、缓存DOM节点查找的结果。减少IO读取操作</p>
+<p>（4） 当需要设置的样式很多时设置className而不是直接操作style</p>
+<h2 id="常见会造成内存泄漏的操作"><a href="#常见会造成内存泄漏的操作" class="headerlink" title="常见会造成内存泄漏的操作"></a>常见会造成内存泄漏的操作</h2><p>内存泄漏指任何对象在不再拥有或需要它之后仍然存在。垃圾回收器定期扫描对象，并计算引用了每个对象的其他对象的数量。如果一个对象的引用数量为 0（没有其他对象引用过该对象），或对该对象的惟一引用是循环的，那么该对象的内存即可回收。</p>
+<p>（1）setTimeout 的第一个参数使用字符串而非函数的话，会引发内存泄漏。</p>
+<p>（2）闭包、控制台日志、循环（在两个对象彼此引用且彼此保留时，就会产生一个循环）</p>
+<h2 id="不用框架实现三级菜单"><a href="#不用框架实现三级菜单" class="headerlink" title="不用框架实现三级菜单"></a>不用框架实现三级菜单</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">  &lt;style type=&quot;text/css&quot;&gt;</div><div class="line">   *&#123;</div><div class="line">      margin:0;</div><div class="line">      padding:0;</div><div class="line">    &#125;</div><div class="line">    li&#123;</div><div class="line">      width:100px;</div><div class="line">      height:30px;</div><div class="line">      border:1px solid red;</div><div class="line">      list-style:none;</div><div class="line">     &#125;</div><div class="line"></div><div class="line"> //利用相对定位和绝对定位解决位置之间的影响</div><div class="line">  li&#123;</div><div class="line">    position:relative;</div><div class="line">  &#125;</div><div class="line">  li a&#123;</div><div class="line">    display: block;</div><div class="line">    text-decoration: none;</div><div class="line">    height:30px;</div><div class="line">    line-height: 30px;</div><div class="line">    width:100px;</div><div class="line">    text-align:center;</div><div class="line">  &#125;</div><div class="line">  .level1&#123;</div><div class="line">    position:absolute;</div><div class="line">    top:0;</div><div class="line">    left:100px;</div><div class="line">  &#125;</div><div class="line">  .level2&#123;</div><div class="line">    position: absolute;</div><div class="line">    top:0;</div><div class="line">    left:100px;</div><div class="line">  &#125;</div><div class="line"></div><div class="line"></div><div class="line">  .level1&#123;</div><div class="line">    display: none;</div><div class="line">  &#125;</div><div class="line">  .leveel2&#123;</div><div class="line">    display: none;</div><div class="line">  &#125;</div><div class="line">  #nav&gt;li:hover&gt;ul&#123;</div><div class="line">    display: block;</div><div class="line">  &#125;</div><div class="line">  //1.父子元素之间的嵌套</div><div class="line">  //利用伪类元素实现隐藏和显示</div><div class="line">  #nav&gt;li:hover&gt;ul&gt;li&gt;ul&#123;</div><div class="line">    display: none;</div><div class="line">  &#125;</div><div class="line">  #nav&gt;li&gt;ul&gt;li:hover&gt;ul&#123;</div><div class="line">    display: block;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  &lt;/style&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">  &lt;body&gt;</div><div class="line">    &lt;ul id=&quot;nav&quot;&gt;</div><div class="line">      &lt;li&gt;&lt;a href=&quot;#&quot;&gt;首页面&lt;/a&gt;&lt;/li&gt;</div><div class="line">      &lt;li&gt;</div><div class="line">        &lt;a href=&quot;#&quot;&gt;关于我们&lt;/a&gt;</div><div class="line">          &lt;ul class=&quot;level1&quot;&gt;</div><div class="line">            &lt;li&gt;&lt;a href=&quot;#&quot;&gt;我们的故事&lt;/a&gt;</div><div class="line">                &lt;ul class=&quot;level2&quot;&gt;</div><div class="line">                  &lt;li&gt;&lt;a href=&quot;#&quot;&gt;故事1&lt;/a&gt;&lt;/li&gt;</div><div class="line">                  &lt;li&gt;&lt;a href=&quot;#&quot;&gt;故事2&lt;/a&gt;&lt;/li&gt;</div><div class="line">                  &lt;li&gt;&lt;a href=&quot;#&quot;&gt;故事3&lt;/a&gt;&lt;/li&gt;</div><div class="line">                &lt;/ul&gt;</div><div class="line">            &lt;/li&gt;</div><div class="line">            &lt;li&gt;&lt;a href=&quot;#&quot;&gt;我们的团队&lt;/a&gt;&lt;/li&gt;</div><div class="line">          &lt;/ul&gt;</div><div class="line">      &lt;/li&gt;</div><div class="line">      &lt;li&gt;&lt;a href=&quot;#&quot;&gt;服务&lt;/a&gt;&lt;/li&gt;</div><div class="line">    &lt;/ul&gt;  </div><div class="line">  &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<h2 id="一个table，点击按钮，实现某一列的刷新"><a href="#一个table，点击按钮，实现某一列的刷新" class="headerlink" title="一个table，点击按钮，实现某一列的刷新"></a>一个table，点击按钮，实现某一列的刷新</h2><p>1、获取表格的dom节点</p>
+<p>2、通过rows和cells定位td单元格</p>
+<p>3、通过修改innerHTML<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;body&gt;</div><div class="line">&lt;table id=&apos;test&apos;&gt;  //定义一个table</div><div class="line">&lt;tr&gt;</div><div class="line">  &lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;</div><div class="line">&lt;/tr&gt;</div><div class="line">&lt;/table&gt;</div><div class="line">&lt;script&gt;</div><div class="line"> var tb = document.getElementById(&apos;test&apos;);//获取表格的dom节点</div><div class="line"> var td = tb.rows[0].cells[0];//获取0行0列的td单元格</div><div class="line"> td.innerHTML = &apos;222&apos;;//动态修改表格的内容为222</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;/body&gt;</div></pre></td></tr></table></figure></p>
+<p>循环遍历tr以及td，找到你要修改的td，然后修改它的内容<br>给个例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">for(var i=0;i&lt;table.rows.length;i++)</div><div class="line">for(var j=0;j&lt;rows.cells.length;i++)</div><div class="line">table.rows[i].cells[j].innerHTML=&quot;新的内容&quot;;</div></pre></td></tr></table></figure></p>
+<h2 id="事件的绑定和移除"><a href="#事件的绑定和移除" class="headerlink" title="事件的绑定和移除"></a>事件的绑定和移除</h2><p>对于事件的绑定的方法有多种多样，但是在解除绑定事件的时候，就要注意使用的是那种绑定事件的方法，因为不同的绑定方法所对应的解除事件是不同的。</p>
+<h3 id="方式1："><a href="#方式1：" class="headerlink" title="方式1："></a>方式1：</h3><p><strong>绑定事件：对象.事件=事件处理函数。解除事件： 对象.事件=null (此方法就是函数的覆盖)</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">	var btn1= document.getElementById(&quot;btn1&quot;);</div><div class="line">	var btn2 = document.getElementById(&quot;btn2&quot;);</div><div class="line">	btn1.onclick = function()&#123;</div><div class="line">	alert(&quot;btn1事件绑定成功！&quot;);</div><div class="line">	&#125;</div><div class="line">	btn2.onclick = function()&#123;</div><div class="line">	btn1.onclick = null;</div><div class="line">	alert(&quot;btn1所绑定的事件已经被移除！&quot;);</div><div class="line">	&#125;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="方式2："><a href="#方式2：" class="headerlink" title="方式2："></a>方式2：</h3><p><strong>使用 attachEvent 、detachEvent、addEventListener 与 removeEventListener</strong></p>
+<p><strong>事件绑定——attachEvent ，addEventListener </strong></p>
+<p>使用 attachEvent 和 addEventListenter 的好处就是，<em>可以多次的进行事件的绑定，不向原始的方法那样，前面绑定的事件将会被后面的绑定的事件所覆盖，最后只能执行后面所绑定的函数。</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var btn1= document.getElementById(&quot;btn1&quot;);</div><div class="line">	var btn2= document.getElementById(&quot;btn2&quot;);</div><div class="line">	btn1.addEventListener(&quot;click&quot;,function()&#123;</div><div class="line">		console.log(1);</div><div class="line">	&#125;)</div><div class="line">	btn1.addEventListener(&quot;click&quot;,function()&#123;</div><div class="line">		console.log(2);</div><div class="line">	&#125;)</div><div class="line">结果为：1,2</div></pre></td></tr></table></figure>
+<p>说明：<br>1) addEventListener 是先绑定先执行，它将按顺序执行我绑定的事件。</p>
+<p>2) addEventListener 的第三个参数：<em>布尔值参数是true，表示在捕获阶段调用事件处理程序；如果是false，表示在冒泡阶段调用事件处理程序</em></p>
+<p>3）attachEvent 只能兼容 IE7，IE8；绑定的事件前面要加“on”</p>
+<p><strong>事件移除用removeEventListener</strong></p>
+<p>(1)在removeEventListener 传入的参数与 addEventListener 传入的参数要一致，看似使用了相同的参数，但实际上，第二个参数与传入addEventListener()中的与第一个是完全不同的函数。</p>
+<p>(2)因为移除时传入的参数与添加处理程序时使用的参数相同。这也意味着通过addEventListener()添加的匿名函数无法移除。</p>
+<p>(3)在公用函数体存在参数的情况下，<strong>不能将带参数的函数体</strong>传给 addEventListener 和 romoveEventListener。</p>
+<p>正确示例为:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">    var fun = function(e)&#123;</div><div class="line">        e.preventDefault();//阻止事件目标的默认动作</div><div class="line">        alert(1);</div><div class="line">    &#125;</div><div class="line">    var btn1= document.getElementById(&quot;btn1&quot;);</div><div class="line">    btn1.addEventListener(&apos;click&apos;,fun,false);//事件冒泡阶段</div><div class="line">    btn1.removeEventListener(&apos;click&apos;,fun,false);</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="事件冒泡和事件捕获"><a href="#事件冒泡和事件捕获" class="headerlink" title="事件冒泡和事件捕获"></a>事件冒泡和事件捕获</h2><h3 id="冒泡捕获过程"><a href="#冒泡捕获过程" class="headerlink" title="冒泡捕获过程"></a>冒泡捕获过程</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">	</div><div class="line">&lt;/head&gt;</div><div class="line">	&lt;body&gt;</div><div class="line">		&lt;div id=&quot;outA&quot; style=&quot;width:400px; height:400px; background:#ff0000;position:relative;&quot;&gt;</div><div class="line">		 &lt;div id=&quot;outB&quot; style=&quot;height:200; background:#0000ff;top:100px;position:relative;&quot;&gt;</div><div class="line">		  &lt;div id=&quot;outC&quot; style=&quot;height:100px; background:#00ff00;top:50px;position:relative;&quot;&gt;</div><div class="line">		  &lt;/div&gt; </div><div class="line">		 &lt;/div&gt;</div><div class="line">		&lt;/div&gt;</div><div class="line">		&lt;script&gt;</div><div class="line">			 var outA = document.getElementById(&quot;outA&quot;); </div><div class="line">			 var outB = document.getElementById(&quot;outB&quot;); </div><div class="line">			 var outC = document.getElementById(&quot;outC&quot;); </div><div class="line">			 // 使用事件冒泡</div><div class="line">			 outA.addEventListener(&apos;click&apos;,function()&#123;console.log(1);&#125;,true);</div><div class="line">			 outB.addEventListener(&apos;click&apos;,function()&#123;console.log(2);&#125;,true);</div><div class="line">			 outC.addEventListener(&apos;click&apos;,function()&#123;console.log(3);&#125;,true);</div><div class="line">		&lt;/script&gt;</div><div class="line">	&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<p>addEventListener第三个参数为true侦听事件为捕获阶段，当点击outc时输出为123，为false时，侦听事件以冒泡进行。点击outc输出为321。</p>
+<h3 id="Dom事件流"><a href="#Dom事件流" class="headerlink" title="Dom事件流"></a>Dom事件流</h3><p>DOM事件流：将事件分为三个阶段：捕获阶段、目标阶段、冒泡阶段。先调用捕获阶段的处理函数，其次调用目标阶段的处理函数，最后调用冒泡阶段的处理函数。</p>
+<p>在outC（目标事件上）上注册的事件处理函数，属于DOM事件流中的目标阶段。目标阶段函数的执行顺序：先注册的先执行，后注册的后执行。这就是上面我们说的，在目标对象上绑定的函数是采用捕获，还是采用冒泡，都没有什么关系，因为冒泡和捕获只是对父元素上的函数执行顺序有影响，对自己没有什么影响。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">outC.addEventListener(&apos;click&apos;,function()&#123;alert(&quot;target1&quot;);&#125;,false);</div><div class="line">outC.addEventListener(&apos;click&apos;,function()&#123;alert(&quot;target2&quot;);&#125;,true);</div><div class="line">outC.addEventListener(&apos;click&apos;,function()&#123;alert(&quot;target3&quot;);&#125;,true);</div><div class="line">outC.addEventListener(&apos;click&apos;,function()&#123;alert(&quot;target4&quot;);&#125;,false);</div></pre></td></tr></table></figure>
+<p>所以上述代码按顺序进行执行。</p>
+<h3 id="阻止事件冒泡和捕获"><a href="#阻止事件冒泡和捕获" class="headerlink" title="阻止事件冒泡和捕获"></a>阻止事件冒泡和捕获</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">outC.addEventListener(&apos;click&apos;,function(event)&#123;alert(&quot;target2&quot;);event.stopPropagation()&#125;,true);</div><div class="line">	 outC.addEventListener(&apos;click&apos;,function()&#123;alert(&quot;target1&quot;);&#125;,true);</div><div class="line">	  </div><div class="line">	 // 事件冒泡</div><div class="line">	 outA.addEventListener(&apos;click&apos;,function()&#123;alert(&quot;bubble1&quot;);&#125;,false);</div><div class="line">	 outB.addEventListener(&apos;click&apos;,function()&#123;alert(&quot;bubble2&quot;);&#125;,false);</div><div class="line">	  </div><div class="line">	 // 事件捕获</div><div class="line">	 outA.addEventListener(&apos;click&apos;,function()&#123;alert(&quot;capture1&quot;);&#125;,true);</div><div class="line">	 outB.addEventListener(&apos;click&apos;,function()&#123;alert(&quot;capture2&quot;)&#125;,true);</div></pre></td></tr></table></figure>
+<p>阻值事件冒泡方法：<code>function(event){event.stopPropagation()}</code></p>
+<h2 id="js事件处理程序有哪几种"><a href="#js事件处理程序有哪几种" class="headerlink" title="js事件处理程序有哪几种"></a>js事件处理程序有哪几种</h2><p>1、HTML事件处理程序<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;input id=&quot;btn1&quot; value=&quot;按钮&quot; type=&quot;button&quot; onclick=&quot;showmsg();&quot;&gt;</div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">　function showmsg()&#123;</div><div class="line">　　   alert(&quot;HTML添加事件处理&quot;);</div><div class="line">　&#125;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<p>即我们直接在HTML代码中添加事件处理程序，事件处理是直接嵌套在元素里头的，这样有一个毛病：就是html代码和js的耦合性太强，如果哪一天我想要改变js中showmsg，那么我不但要再js中修改，我还需要到html中修改。</p>
+<p>2、DOM0级事件处理程序</p>
+<p>即为指定对象添加事件处理，看下面的一段代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;input id=&quot;btn2&quot; value=&quot;按钮&quot; type=&quot;button&quot;&gt;</div><div class="line">&lt;script&gt;</div><div class="line">　　var btn2= document.getElementById(&quot;btn2&quot;);</div><div class="line">　　btn2.onclick=function()&#123;</div><div class="line">　　　alert(&quot;DOM0级添加事件处理&quot;);</div><div class="line">　　&#125; </div><div class="line">　 btn.onclick=null;//如果想要删除btn2的点击事件，将其置为null即可</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<p>3、DOM2级事件处理程序</p>
+<p>但是主要涉及到两个方法，用于处理指定和删除事件处理程序的操作：addEventListener()和 removeEventListener()。<br>它们都接收三个参数：要处理的事件名、作为事件处理程序的函数和一个布尔值（是否在捕获阶段处理事件），看下面的一段代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">input id=&quot;btn3&quot; value=&quot;按钮&quot; type=&quot;button&quot;&gt;</div><div class="line">&lt;script&gt;</div><div class="line">　var btn3=document.getElementById(&quot;btn3&quot;);</div><div class="line">　btn3.addEventListener(&quot;click&quot;,showmsg,false);//这里我们把最后一个值置为false，即不在捕获阶段处理，一般来说冒泡处理在各浏览器中兼容性较好</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<p><strong>DOM0和DOM2之间的区别</strong></p>
+<p>区别：如果定义了两个dom0级事件，dom0级事件会覆盖</p>
+<p>dom2不会覆盖，会依次执行</p>
+<p>dom0和dom2可以共存，不互相覆盖，但是dom0之间依然会覆盖</p>
+<h2 id="DOM-api的API的扩展"><a href="#DOM-api的API的扩展" class="headerlink" title="DOM api的API的扩展"></a>DOM api的API的扩展</h2><p>querySelector方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var body = document.querySelector(&quot;body&quot;);</div><div class="line">//取得ID 为&quot;myDiv&quot;的元素</div><div class="line">var myDiv = document.querySelector(&quot;#myDiv&quot;);</div><div class="line">//取得类为&quot;selected&quot;的第一个元素</div><div class="line">var selected = document.querySelector(&quot;.selected&quot;);</div><div class="line">//取得类为&quot;button&quot;的第一个图像元素</div><div class="line">var img = document.body.querySelector(&quot;img.button&quot;)</div></pre></td></tr></table></figure></p>
+<p>querySelectorAll()方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">//取得某&lt;div&gt;中的所有&lt;em&gt;元素（类似于getElementsByTagName(&quot;em&quot;)）</div><div class="line">var ems = document.getElementById(&quot;myDiv&quot;).querySelectorAll(&quot;em&quot;);</div><div class="line">//取得类为&quot;selected&quot;的所有元素</div><div class="line">var selecteds = document.querySelectorAll(&quot;.selected&quot;);</div><div class="line">//取得所有&lt;p&gt;元素中的所有&lt;strong&gt;元素</div><div class="line">var strongs = document.querySelectorAll(&quot;p strong&quot;);</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/笔试面试题/" rel="tag"># 笔试面试题</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/03/笔试面试(4)/" rel="next" title="笔试面试题（4）">
+                <i class="fa fa-chevron-left"></i> 笔试面试题（4）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/07/笔试面试(5)/" rel="prev" title="笔试面试题（5）">
+                笔试面试题（5） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://img.mp.itc.cn/upload/20170429/a2379efc26214d7fa790af6105312132"
+               alt="superDjy" />
+          <p class="site-author-name" itemprop="name">superDjy</p>
+           
+              <p class="site-description motion-element" itemprop="description">Stay foolish Stay hungray</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">38</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/3262132644/home?wvr=5&sudaref=www.google.com.hk&retcode=6102" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                    
+                      Weibo
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/djy1028" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#伪类和伪元素"><span class="nav-number">1.</span> <span class="nav-text">伪类和伪元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优先级"><span class="nav-number">2.</span> <span class="nav-text">优先级</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#盒子模型和box-sizing"><span class="nav-number">3.</span> <span class="nav-text">盒子模型和box-sizing</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#性能优化的方法"><span class="nav-number">4.</span> <span class="nav-text">性能优化的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见会造成内存泄漏的操作"><span class="nav-number">5.</span> <span class="nav-text">常见会造成内存泄漏的操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不用框架实现三级菜单"><span class="nav-number">6.</span> <span class="nav-text">不用框架实现三级菜单</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一个table，点击按钮，实现某一列的刷新"><span class="nav-number">7.</span> <span class="nav-text">一个table，点击按钮，实现某一列的刷新</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件的绑定和移除"><span class="nav-number">8.</span> <span class="nav-text">事件的绑定和移除</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#方式1："><span class="nav-number">8.1.</span> <span class="nav-text">方式1：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方式2："><span class="nav-number">8.2.</span> <span class="nav-text">方式2：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件冒泡和事件捕获"><span class="nav-number">9.</span> <span class="nav-text">事件冒泡和事件捕获</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#冒泡捕获过程"><span class="nav-number">9.1.</span> <span class="nav-text">冒泡捕获过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dom事件流"><span class="nav-number">9.2.</span> <span class="nav-text">Dom事件流</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#阻止事件冒泡和捕获"><span class="nav-number">9.3.</span> <span class="nav-text">阻止事件冒泡和捕获</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#js事件处理程序有哪几种"><span class="nav-number">10.</span> <span class="nav-text">js事件处理程序有哪几种</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM-api的API的扩展"><span class="nav-number">11.</span> <span class="nav-text">DOM api的API的扩展</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">superDjy</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2017/07/05/笔试面试(6)/';
+          this.page.identifier = '2017/07/05/笔试面试(6)/';
+          this.page.title = '笔试面试题（6）';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("47T3BxRMXIqlatB3fOpMnh1P-gzGzoHsz", "vUwh4kLezhjJyIlME1vvs4kU");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -230,7 +230,7 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/��ҳ" rel="section">
+          <a href="/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
@@ -335,7 +335,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/25/js设计模式/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/29/js设计模式(10)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="superDjy">
@@ -354,7 +354,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/06/25/js设计模式/" itemprop="url">js设计模式基础(1)</a></h1>
+                <a class="post-title-link" href="/2017/06/29/js设计模式(10)/" itemprop="url">js设计模式(10)</a></h1>
         
 
         <div class="post-meta">
@@ -366,8 +366,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-25T00:00:00+08:00">
-                2017-06-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-29T00:00:00+08:00">
+                2017-06-29
               </time>
             
 
@@ -407,9 +407,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/06/25/js设计模式/#comments" itemprop="discussionUrl">
+                <a href="/2017/06/29/js设计模式(10)/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/06/25/js设计模式/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/06/29/js设计模式(10)/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -417,7 +417,7 @@
 
           
           
-             <span id="/2017/06/25/js设计模式/" class="leancloud_visitors" data-flag-title="js设计模式基础(1)">
+             <span id="/2017/06/29/js设计模式(10)/" class="leancloud_visitors" data-flag-title="js设计模式(10)">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -450,42 +450,1551 @@
       
         
           
-            <p><strong>一. 封装</strong></p>
-<p>1.封装数据：Js中并没有提供private,public,protected等关键字来提供访问权限，只能后依赖变量的作用域特性，<strong>而且只能模拟出public和private两种数据封装特性</strong>。除了ES6中的let属性，一般可以通过函数来创建作用域。</p>
-<p>2.封装实现：封装使得对象内部的变化对外是透明的，其他对象不关心对象内部的实现。封装使得对象之间的耦合变松散，对象之间只通过api接口通信。</p>
-<p>3.封装的作用：把系统中稳定不变的部分和容易变化的部分分离开，在系统演变过程中，只需替换那些容易变化的部分。</p>
-<p><strong>二. 原型模式和基于原型继承的js对象系统</strong></p>
-<p>js中不存在类的概念，对象也并非从类中创建出来，所有的js对象都是从某个对象上克隆出来的。如果对象A是由对象B克隆出来的，则成B为A的原型。</p>
-<p>原型编程的规则:</p>
-<p><strong>1.所有数据都是对象。</strong></p>
-<p>事实上，js中的根对象是Object.prototype对象，所有的对象都是从他克隆出来的。Object.prototype的原型是null。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var obj=&#123;&#125;;</div><div class="line">console.log(Object.getPrototypeOf(obj)===Object.prototype);</div><div class="line">VM217:2 true</div></pre></td></tr></table></figure></p>
-<p><strong>2.要得到一个对象，不是通过实例化类，而是找到一个对象作为他的原型</strong></p>
-<p>js中的函数既可以作为普通函数被调用，可以作为构造器函数被调用，当用new运算符来调用函数时，此时函数是一个构造器。用运算符来创建对象的过程中，实际上也是先克隆Object.prototype对象，再进行一些额外的其他操作。</p>
-<p><strong>3.对象会记住它的原型</strong></p>
-<p>对象会记住它的构造器原型<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var a= new Object();</div><div class="line">console.log(a.__proto__===Object.prototype);</div><div class="line">VM353:2 true</div><div class="line"></div><div class="line">function haha()&#123;</div><div class="line">return &apos;hahha&apos;</div><div class="line">&#125;;</div><div class="line">var a = new haha();</div><div class="line">console.log(a.__proto__===haha.prototype);</div><div class="line">VM507:5 true</div></pre></td></tr></table></figure></p>
-<p><strong>4.如果对象无法响应某个请求，它会把这个请求委托给它自己的原型</strong></p>
-<p><em>这规则是原型继承的精髓所在，当一个对象无法响应某个请求的时候，会把这个请求顺的原型链传递下去。</em></p>
-<p>虽然js中的对象最初都是由Object.prototype对象克隆出来的，但是对象构造器的原型并不局限于Object.prototype，也可以有选择性的把对象a的构造器原型指向对象b,从而达到继承的效果。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">var a=function()&#123;&#125;</div><div class="line">var A=new a();</div><div class="line">var obj=&#123;name:&apos;haha&apos;&#125;;</div><div class="line">a.prototype=obj;</div><div class="line">console.log(A.name);</div><div class="line">VM658:5 </div><div class="line"></div><div class="line">var a=function()&#123;&#125;</div><div class="line">var obj=&#123;name:&apos;haha&apos;&#125;;</div><div class="line">a.prototype=obj;</div><div class="line">var A=new a();</div><div class="line">console.log(A.name);</div><div class="line">VM659:6 haha</div></pre></td></tr></table></figure></p>
-<p>三. this、call、apply的作用</p>
-<h2 id="this"><a href="#this" class="headerlink" title="this"></a>this</h2><p><strong>js中的this总是指向一个对象，具体指向哪个对象，是在运行时基于函数的执行环境而动态绑定的，而非函数声明时的环境。</strong></p>
-<h3 id="this的指向"><a href="#this的指向" class="headerlink" title="this的指向"></a>this的指向</h3><p><strong>1.作为对象的方法调用</strong></p>
-<p>当函数作为对象的方法被调用时，this指向该对象。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var obj =&#123;a:1,getA:function()&#123;console.log(this==obj)&#125;&#125;;</div><div class="line">obj.getA();</div><div class="line">VM200:1 true</div></pre></td></tr></table></figure></p>
-<p><strong>2.作为普通函数调用</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var obj =&#123;a:1,getA:function()&#123;console.log(this==obj)&#125;&#125;;</div><div class="line">var getB=obj.getA;</div><div class="line">getB();</div><div class="line">VM229:1 false</div><div class="line"></div><div class="line">var obj =&#123;a:1,getA:function()&#123;console.log(this)&#125;&#125;;</div><div class="line">var getB=obj.getA;</div><div class="line">getB();</div><div class="line">VM236:1 Window &#123;stop: function, open: function, alert: function, confirm: function, prompt: function…&#125;</div></pre></td></tr></table></figure></p>
-<p>当函数不作为对象的属性被调用时，也就是常说的普通函数方式，此时的this总是指向全局对象</p>
-<p><strong>3.构造器调用</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var a =function()&#123;</div><div class="line">this.name = &apos;haha&apos;&#125;;</div><div class="line">var b = new a;</div><div class="line">console.log(b.name);</div><div class="line">VM209:4 haha</div></pre></td></tr></table></figure></p>
-<p><em>当用<code>new</code>调用函数时，该函数会返回一个对象，通常情况下，构造器里面的<code>this</code>指向返回的这个对象</em></p>
-<p><strong>但是</strong>，如果构造器显示的返回一个object类型的对象，则此次运算结果返回这个显示对象<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var a =function()&#123;</div><div class="line">this.name = &apos;haha&apos;;</div><div class="line">return &#123;name:&apos;hehe&apos;&#125;</div><div class="line">&#125;</div><div class="line">var b = new a();</div><div class="line">console.log(b.name);</div><div class="line">VM308:6 hehe</div></pre></td></tr></table></figure></p>
-<p><strong>4.<code>Funcition..prototype.call</code>和<code>Function.prototype.apply</code>调用。</strong></p>
-<p>与普通函数相比，call()和apply()方法可以动态的改变传入函数的this。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var obj1=&#123;name:&apos;haha&apos;,getName:function()&#123;return this.name&#125;&#125;;</div><div class="line">var obj2=&#123;name:&apos;heihei&apos;&#125;;</div><div class="line">console.log(obj1.getName.apply(obj2));</div><div class="line">console.log(obj1.getName.apply(obj2));</div><div class="line">VM500:3 heihei</div></pre></td></tr></table></figure></p>
-<h2 id="apply-amp-amp-call"><a href="#apply-amp-amp-call" class="headerlink" title="apply &amp;&amp; call"></a>apply &amp;&amp; call</h2><p>apply()与call()方法唯一不同处在于<strong>传入参数的形式不同</strong>。</p>
-<p><code>apply()</code>接受两个参数，第一个参数是传递给这个函数用来绑定函数内部<code>this</code>的值，第二个参数可以数组或者类数组（传递给这个函数的所有参数），<code>apply()</code>方法把这个数组中的元素作为参数传递给被调用的函数。</p>
-<p><code>call()</code>方法接受的参数数量不固定，与<code>apply()</code>相同的是，第一个参数也是参数代表函数体内的<code>this</code>的指向，之后的每一个参数依次被传入函数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">var fun = function(a,b,c)&#123;console.log(a+b+c)&#125;;</div><div class="line">fun.apply(null, [1,2,3]);</div><div class="line">6</div><div class="line"></div><div class="line">var fun = function(a,b,c)&#123;console.log(a+b+c)&#125;;</div><div class="line">fun.call(null, [1,2,3]);</div><div class="line">1,2,3undefinedundefined</div><div class="line"></div><div class="line">var fun = function(a,b,c)&#123;console.log(a+b+c)&#125;;</div><div class="line">fun.call(null, 1,2,3);</div><div class="line">6</div><div class="line"></div><div class="line">var fun = function(a,b,c)&#123;console.log(a+b+c)&#125;;</div><div class="line">fun.call(null, 1,2,4,9);</div><div class="line">7</div></pre></td></tr></table></figure></p>
-<p>如果函数第一个参数指向null,则默认函数体内的this指向默认的宿主对象，在浏览器中是window:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var fun = function(a,b,c)&#123;console.log(this)&#125;;</div><div class="line">fun.call(null, 1,2,4,9);</div><div class="line">Window &#123;stop: function, open: function, alert: function, confirm: function, prompt: function…&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="apply-与call-用途"><a href="#apply-与call-用途" class="headerlink" title="apply()与call()用途"></a>apply()与call()用途</h3><p><strong>1.改变this的指向</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var getName=function()&#123;return this.name;&#125;</div><div class="line">var obj1=&#123;name:&apos;hahh&apos;&#125;;</div><div class="line">getName.call(obj1);</div><div class="line">&quot;hahh&quot;</div></pre></td></tr></table></figure></p>
-<p>将函数getName的this指向对象obj1;</p>
-<p><strong>2.使用其他对象的方法</strong></p>
-<p>1.借用构造函数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var A=function(name)&#123;this.name=name&#125;;</div><div class="line">var B=function()&#123;A.apply(this,arguments);&#125;</div><div class="line">B.prototype.getName=function()&#123;return this.name;&#125;;</div><div class="line">var b=new B(&apos;heihei&apos;);</div><div class="line">console.log(b.getName());</div><div class="line">heihei</div></pre></td></tr></table></figure></p>
-<p>2.对于函数的参数列表arguments(一个类数组对象)，并非一个真正的数组。可以通过apply()或者call()方法来增加所需用到的方法。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">(function()&#123;</div><div class="line">Array.prototype.push.apply(arguments,[3]);</div><div class="line">console.log(arguments);</div><div class="line">&#125;)(1,2);</div><div class="line">[1, 2, 3, callee: function, Symbol(Symbol.iterator): function]</div><div class="line"></div><div class="line"></div><div class="line">(function()&#123;</div><div class="line">Array.prototype.push.call(arguments,3);</div><div class="line">console.log(arguments);</div><div class="line">&#125;)(1,2);</div><div class="line">[1, 2, 3, callee: function, Symbol(Symbol.iterator): function]</div><div class="line"></div><div class="line">var a=&#123;&#125;;</div><div class="line">Array.prototype.push.call(a,&apos;haha&apos;);</div><div class="line">console.log(a);</div><div class="line">Object &#123;0: &quot;haha&quot;, length: 1&#125;</div></pre></td></tr></table></figure></p>
+            <h1 id="状态模式"><a href="#状态模式" class="headerlink" title="状态模式"></a>状态模式</h1><p><strong>状态模式额关键在于区分事物内部的状态，事物内部状态的改变往往会带来行为的改变。</strong></p>
+<p>通常我们谈到的封装，一般会优先封装状态的行为，但是在状态模式中正好相反，状态模式的关键是将事物的每种状态都封装成单独的类，与此种状态有关的行为也会被封装在这个类的内部。</p>
+<p><em>状态模式的定义：允许一个对象在其内部状态改变时改变它的行为，对象看起来似乎修改了它的类</em>。</p>
+<p>将这句话拆分开来解释的话就是：将状态封装成独立的类，并将请求委托给当前的状态对象，当对象内部状态发生改变时，会通过改变行为带来不同的变化。我们使用的对象，在不同状态下具有截然不同的行为，这个对象看起来是从不同的类中实例化而来。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line">//定义一个Light类（context），随后在Light类的构造函数中创建每个状态类的实例对象，context将持有这些状态对象的引用，以便把请求委托给状态对象。</div><div class="line">var Light=function()&#123;</div><div class="line">	this.offLightState= new OffLightState(this);</div><div class="line">	this.weakLightState=new WeakLightState(this);</div><div class="line">	this.strongLightState=new StrongLightState(this);</div><div class="line">	this.button=null;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Light.prototype.init=function()&#123;</div><div class="line">	var button =document.createElement(&apos;button&apos;);</div><div class="line">	self=this;</div><div class="line">	this.button=document.body.appendChild(button);</div><div class="line">	this.button.innerHTML=&apos;开关&apos;;</div><div class="line">	this.currState=this.offLightState;</div><div class="line">	this.button.onclick=function()&#123;</div><div class="line">	self.currState.buttonWasPressed();</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">//建立每个状态类</div><div class="line"></div><div class="line">var OffLightState=function(light)&#123;</div><div class="line">	this.light=light;</div><div class="line">&#125;</div><div class="line">OffLightState.prototype.buttonWasPressed=function()&#123;</div><div class="line">	console.log(&apos;weaklight&apos;);</div><div class="line">	this.light.setState(this.light.weakLightState);</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">var WeakLightState=function(light)&#123;</div><div class="line">	this.light=light;</div><div class="line">&#125;</div><div class="line">WeakLightState.prototype.buttonWasPressed=function()&#123;</div><div class="line">	console.log(&apos;stronglight&apos;);</div><div class="line">	this.light.setState(this.light.strongLightState);</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">var StrongLightState=function(light)&#123;</div><div class="line">	this.light=light;</div><div class="line">&#125;</div><div class="line">StrongLightState.prototype.buttonWasPressed=function()&#123;</div><div class="line">	console.log(&apos;offlight&apos;);</div><div class="line">	this.light.setState(this.light.offLightState);</div><div class="line">&#125;</div><div class="line"></div><div class="line">//设置状态</div><div class="line"></div><div class="line">Light.prototype.setState=function(newState)&#123;</div><div class="line">	this.currState.newState;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var light=new Light();</div><div class="line">light.init();</div></pre></td></tr></table></figure></p>
+<p>状态模式的优点</p>
+<p>1.定义了状态和行为之间的关系，并将其封装在一个类中。通过增加新的状态类，很容易增加新的状态和转换。</p>
+<p>2.<code>Context</code>中的请求动作和状态类中的封装的行为可以非常容易的独立变化而不相互影响。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">var Light=function()&#123;</div><div class="line">	this.currState=FSM.off;</div><div class="line">	this.button=null;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Light.prototype.init=function()&#123;</div><div class="line">	var button=document.createElement(&apos;button&apos;);</div><div class="line">	self=this;</div><div class="line">	this.button.onclick=function()&#123;</div><div class="line"></div><div class="line">	//把请求委托给FSM状态机</div><div class="line">	self.currState.buttonWasPressed.call(self);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var FSM=&#123;</div><div class="line">	off:&#123;</div><div class="line">		buttonWasPressed:function()&#123;</div><div class="line">			console.log(&apos;关灯&apos;);</div><div class="line">			this.currState=FSM.on;</div><div class="line">		&#125;</div><div class="line">	&#125;,</div><div class="line">	on:&#123;</div><div class="line">		buttonWasPressed:function()&#123;</div><div class="line">			console.log(&apos;开灯&apos;);</div><div class="line">			this.currState=FSM.off;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var light=new Light();</div><div class="line">light.init();</div></pre></td></tr></table></figure>
+<p>利用call()方法直接把请求委托给某个字面量对象来执行。</p>
+<h1 id="设计原则"><a href="#设计原则" class="headerlink" title="设计原则"></a>设计原则</h1><p>1.单一职责原则：一个对象(方法)只做一件事情，即将对象划分为较小的粒度使用。</p>
+<p>2.最少知识原则：提供中介、只暴露必须的API接口，降低对象之间的耦合。</p>
+<p><strong>3.开放-封闭原则：软件实体（模块，类，函数等）应该是可以扩展的但是不可以修改(AOP扩展)</strong></p>
+<p>常用的方法来保证开放-封闭原则：</p>
+<p>1.用对象的多态性(同一消息对不同对象产生不同效果)来消除条件分支语句。</p>
+<p>2.放置挂钩。利用挂钩的结果来决定程序的下一步走向。</p>
+<p>3.使用回调函数。回调函数是一种特殊的挂钩，可以把一部分易于变化的部分封装在回调函数里，然后回调函数当做参数传入一个稳定的封闭函数中。当回调函数被执行时，程序就会因为回调函数内部的逻辑不同而产生不同的效果。</p>
+<p><em>写代码需要注意：提炼函数、合并重复条件片段、合理使用循环、传递对象参数代替过长的参数列表、尽量减少参数数量、使用<code>return</code>退出多重循环</em></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/29/Vue基础(1)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="superDjy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://img.mp.itc.cn/upload/20170429/a2379efc26214d7fa790af6105312132">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="С�����ľ���">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/06/29/Vue基础(1)/" itemprop="url">Vue.js基础</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-29T00:00:00+08:00">
+                2017-06-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue-js/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue.js</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/06/29/Vue基础(1)/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/06/29/Vue基础(1)/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/06/29/Vue基础(1)/" class="leancloud_visitors" data-flag-title="Vue.js基础">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Vue中组件之间的通信"><a href="#Vue中组件之间的通信" class="headerlink" title="Vue中组件之间的通信"></a>Vue中组件之间的通信</h1><p>父组件可以通过调用子组件的形式来在父组件的模板中渲染出子组件的内容，当然，父组件也可以通过组件属性，向子组件传递信息。</p>
+<p>##　示例1</p>
+<p><strong>父组件想子组件中传递信息</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line">&lt;template&gt;</div><div class="line">  &lt;div id=&quot;app&quot;&gt;</div><div class="line">    &lt;img src=&quot;./assets/logo.png&quot;&gt;</div><div class="line">    &lt;hello&gt;&lt;/hello&gt;</div><div class="line">	**//定义message属性，并将属性值传回子组件</div><div class="line">    &lt;testComponent message=&quot;welcome to the App&quot; &gt;&lt;/testComponent&gt;**</div><div class="line">  &lt;/div&gt;</div><div class="line">&lt;/template&gt;</div><div class="line"></div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">import Hello from &apos;./components/Hello&apos;</div><div class="line">import TestComponent from &apos;./components/TestComponent&apos;</div><div class="line">import Store from &apos;./store&apos;</div><div class="line">export default &#123;</div><div class="line">  name: &apos;app&apos;,</div><div class="line">  data()&#123;</div><div class="line">    return&#123;</div><div class="line">      msg: &apos;Welcome to Your Vue.js App&apos;,</div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  components: &#123;</div><div class="line">    Hello,</div><div class="line">    TestComponent</div><div class="line">  &#125;,</div><div class="line">&#125;</div><div class="line">&lt;/script&gt;</div><div class="line"></div><div class="line">&lt;style&gt;</div><div class="line">#app &#123;</div><div class="line">  font-family: &apos;Avenir&apos;, Helvetica, Arial, sans-serif;</div><div class="line">  -webkit-font-smoothing: antialiased;</div><div class="line">  -moz-osx-font-smoothing: grayscale;</div><div class="line">  text-align: center;</div><div class="line">  color: #2c3e50;</div><div class="line">  margin-top: 60px;</div><div class="line">&#125;</div><div class="line">.finished&#123;</div><div class="line">  text-decoration:underline;</div><div class="line">&#125;</div><div class="line">&lt;/style&gt;</div></pre></td></tr></table></figure>
+<p>子组件中通过props:[]接受属性，此时在子组件即可对接受到的值进行渲染<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">&lt;template&gt;</div><div class="line">  &lt;div class=&quot;hello&quot;&gt;</div><div class="line">    &lt;h1&gt;&#123;&#123; msg &#125;&#125;&lt;/h1&gt;</div><div class="line">    &lt;button @click=&quot;acceptMessage&quot;&gt; acceptMessage&lt;/button&gt;</div><div class="line">  &lt;/div&gt;</div><div class="line">&lt;/template&gt;</div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">export default &#123;</div><div class="line">  name: &apos;testComponent&apos;,</div><div class="line">  data () &#123;</div><div class="line">    return &#123;   </div><div class="line">          msg:&apos;Here is testComponent&apos;     </div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line"> ** props:[&quot;message&quot;],**</div><div class="line">  methods:&#123;</div><div class="line">    acceptMessage:function()&#123;</div><div class="line">		//直接调用父组件的信息进行渲染</div><div class="line">      **this.msg=this.message;**</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;style scoped&gt;</div><div class="line">h1, h2 &#123;</div><div class="line">  font-weight: normal;</div><div class="line">&#125;</div><div class="line"></div><div class="line">ul &#123;</div><div class="line">  list-style-type: none;</div><div class="line">  padding: 0;</div><div class="line">&#125;</div><div class="line"></div><div class="line">li &#123;</div><div class="line">  display: inline-block;</div><div class="line">  margin: 0 10px;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h2><p><strong>子组件向父组件中传递信息</strong><br>通过以上可知，父组件是使用 props 传递数据给子组件，但如果子组件要把数据传递回去，应该怎样做？那就是<strong>自定义事件！</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">&lt;template&gt;</div><div class="line">  &lt;div id=&quot;app&quot;&gt;</div><div class="line">    &lt;img src=&quot;./assets/logo.png&quot;&gt;</div><div class="line">    &lt;h1&gt;&#123;&#123;msg&#125;&#125;&lt;/h1&gt;</div><div class="line">    &lt;hello&gt;&lt;/hello&gt;</div><div class="line">    &lt;testComponent message=&quot;welcome to the App&quot;  </div><div class="line">	**v-on:messageFromChild=&quot;messageFromChildren&quot;&gt;&lt;/testComponent&gt;</div><div class="line">	//自定义事件messageFromChild,即接受到子组件发出事件messageFromcChild后，执行messageFromChildren方法**</div><div class="line">  &lt;/div&gt;</div><div class="line">&lt;/template&gt;</div><div class="line"></div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">import Hello from &apos;./components/Hello&apos;</div><div class="line">import TestComponent from &apos;./components/TestComponent&apos;</div><div class="line">import Store from &apos;./store&apos;</div><div class="line">export default &#123;</div><div class="line">  name: &apos;app&apos;,</div><div class="line">  data()&#123;</div><div class="line">    return&#123;</div><div class="line">      msg: &apos;Welcome to Your Vue.js App&apos;,</div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  components: &#123;</div><div class="line">    Hello,</div><div class="line">    TestComponent</div><div class="line">  &#125;,</div><div class="line">  methods:&#123;</div><div class="line">    messageFromChildren:function()&#123;</div><div class="line">      this.msg= &quot;I&apos;m child&quot;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<p>子组件中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&lt;template&gt;</div><div class="line">  &lt;div class=&quot;hello&quot;&gt;</div><div class="line">    &lt;h1&gt;&#123;&#123; msg &#125;&#125;&lt;/h1&gt;</div><div class="line">    &lt;button @click=&quot;acceptMessage&quot;&gt; acceptMessage&lt;/button&gt;</div><div class="line"></div><div class="line">    &lt;button @click=&apos;sendMessage&apos;&gt;sendMessage&lt;/button&gt;</div><div class="line">  &lt;/div&gt;</div><div class="line">&lt;/template&gt;</div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">export default &#123;</div><div class="line">  name: &apos;testComponent&apos;,</div><div class="line">  data () &#123;</div><div class="line">    return &#123;   </div><div class="line">          msg:&apos;Here is testComponent&apos;     </div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  props:[&quot;message&quot;],</div><div class="line">  methods:&#123;</div><div class="line">    acceptMessage:function()&#123;</div><div class="line">      this.msg=this.message;</div><div class="line">    &#125;,</div><div class="line">    sendMessage:function()&#123;</div><div class="line">	//通过点击按钮，触发自定义事件messageFromChild</div><div class="line">	//$emit(a,b)也可以将所需传递的参数b发送到父组件</div><div class="line">     ** this.$emit(&apos;messageFromChild&apos;);**</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<p>以前的方法中还可以使用$dispatch和$broadcast来向上、向下传递信息，但是它们连同events使用在Vue.2.x中已经被弃用！</p>
+<p>此外，Vue作为一个框架，还有作为数据层面以Ajax(Vue-resource)和服务端交互，还有就是作为单页面应用时路由功能(Vue-router库)。</p>
+<p>对于开发中的其他问题，可以查看Vue的官方开发文档，以及Vue的论坛forum.vuejs.org的中文板块</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/28/Vue基础/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="superDjy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://img.mp.itc.cn/upload/20170429/a2379efc26214d7fa790af6105312132">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="С�����ľ���">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/06/28/Vue基础/" itemprop="url">Vue.js基础</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-28T00:00:00+08:00">
+                2017-06-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue-js/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue.js</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/06/28/Vue基础/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/06/28/Vue基础/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/06/28/Vue基础/" class="leancloud_visitors" data-flag-title="Vue.js基础">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="脚手架搭建"><a href="#脚手架搭建" class="headerlink" title="脚手架搭建"></a>脚手架搭建</h1><p>1.windows上安装git、node</p>
+<p>2.利用命令行安装Vue,这里注意可以借助淘宝的npm国内镜像，使用cnpm替代npm加速下载，安装速度。</p>
+<p>3.具体命令行为：</p>
+<p>//全局安装 vue-cli<br>$ cnpm install –、global vue-cli<br>// 创建一个基于 webpack 模板的新项目<br>$ vue init webpack my-project<br>// 安装依赖，走你<br>$ cd my-project<br>$ cnpm install<br>$ cnpm run dev</p>
+<p>安装过程中可能出现问题包括:node或者npm版本不够，或者端口8080被占用等情况，可自行网搜解决。</p>
+<h1 id="todoList示例"><a href="#todoList示例" class="headerlink" title="todoList示例"></a>todoList示例</h1><p>通过todoList的示例，了解基本Vue的api使用。这里只展示了父组件APP.Vue(项目的入口)和子组件Hello.Vue的代码结构。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div></pre></td><td class="code"><pre><div class="line">//template为展示界面</div><div class="line">&lt;template&gt;</div><div class="line">  &lt;div id=&quot;app&quot;&gt;</div><div class="line">    &lt;img src=&quot;./assets/logo.png&quot;&gt;</div><div class="line">	//引入组件 Hello</div><div class="line">    &lt;hello&gt;&lt;/hello&gt;</div><div class="line"></div><div class="line">	&lt;!-- v-on用于绑定事件--&gt;</div><div class="line">    &lt;button v-on:click=&quot;doSomething&quot;&gt;Click me!&lt;/button&gt;</div><div class="line"></div><div class="line"></div><div class="line">    &lt;!-- v-bind用于绑定属性,常用于绑定class,以下展示的为&#123;类名：布尔值的形式&#125;</div><div class="line">	当:class=&quot;[classA,classB]&quot;时，为绑定两个类名，且此时，被绑定的类名需要在数据中给予声明。--&gt; </div><div class="line">	</div><div class="line">	&lt;--v-for用于循环输出数据--&gt;</div><div class="line">	**这里注意：Vue1.0和2.0中对于V-for的索引使用方式是不同的，2.0中，若要出现索引，则v-for=&quot;(item,index) in items&quot;然后在接下来的使用中直接写index即可。**</div><div class="line"></div><div class="line">    &lt;ul &gt;</div><div class="line">      &lt;li v-for=&quot;item in items&quot; v-bind:class=&quot;&#123;finished: item.isFinish&#125;&quot; @click=&quot;changed(item)&quot;&gt;&#123;&#123;item.label&#125;&#125; &lt;/li&gt;</div><div class="line">    &lt;/ul&gt;</div><div class="line"></div><div class="line">    &lt;!-- 用 v-model 指令在表单控件元素上创建双向数据绑定,获取表单中的数据值 --&gt;</div><div class="line">	&lt;!--  事件的侦听有多种，以下为侦听输入enter所执行的操作 --&gt;</div><div class="line"></div><div class="line">    &lt;input v-model=&quot;newItem&quot; v-on:keyup.enter=&quot;addNewItem&quot;&gt;</div><div class="line"></div><div class="line">  &lt;/div&gt;</div><div class="line">&lt;/template&gt;</div><div class="line"></div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">//引入组件</div><div class="line">import Hello from &apos;./components/Hello&apos;</div><div class="line">import Store from &apos;./store&apos;</div><div class="line"></div><div class="line">//export default&#123;&#125;方法相当于 new Vue(&#123;&#125;)的方式。</div><div class="line"></div><div class="line">export default &#123;</div><div class="line">//组件对外显示的名称</div><div class="line">  name: &apos;app&apos;,</div><div class="line">//ES6中的表达方式，等效于 data:function()&#123;&#125;</div><div class="line">  data()&#123;</div><div class="line">    return&#123;</div><div class="line">      msg: &apos;Welcome to Your Vue.js App&apos;,</div><div class="line">      haha:&apos;&lt;spna&gt;really!&lt;/span&gt;haha tomorrow&apos;,</div><div class="line">      a:1,</div><div class="line">      show:false,</div><div class="line">      isShow:true,</div><div class="line">      items:Store.fetch(),</div><div class="line">      newItem:[]</div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">//组件必须注册，才能使用</div><div class="line">  components: &#123;</div><div class="line">    Hello</div><div class="line">  &#125;,</div><div class="line">//事件方法</div><div class="line">  methods:&#123;</div><div class="line">    doSomething:function()&#123;</div><div class="line">       this.a++;</div><div class="line">    &#125;,</div><div class="line">    changed:function(item)&#123;</div><div class="line">      item.isFinish=! item.isFinish;</div><div class="line">    &#125;,</div><div class="line">    addNewItem:function()&#123;</div><div class="line">      this.items.push(&#123;label:this.newItem,isFinish:false&#125;)</div><div class="line">      this.newItem=&apos;&apos;;</div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">//侦听事件变化，事件变化时驱动方法</div><div class="line">  watch:&#123;</div><div class="line">	//简写模式</div><div class="line">    a :function(val,oldVal)&#123;</div><div class="line">        console.log(val,oldVal);</div><div class="line">    &#125;,</div><div class="line">    items:&#123;</div><div class="line">      handler: function()&#123;</div><div class="line">        Store.save(this.items)</div><div class="line">      &#125;,</div><div class="line">	//深度侦听键值的变化</div><div class="line">      deep:true</div><div class="line">    &#125;</div><div class="line"></div><div class="line">  &#125;</div><div class="line"></div><div class="line"></div><div class="line">&#125;</div><div class="line">&lt;/script&gt;</div><div class="line"></div><div class="line"></div><div class="line">//所有的样式全部包括在&lt;style&gt;标签下</div><div class="line">&lt;style&gt;</div><div class="line">#app &#123;</div><div class="line">  font-family: &apos;Avenir&apos;, Helvetica, Arial, sans-serif;</div><div class="line">  -webkit-font-smoothing: antialiased;</div><div class="line">  -moz-osx-font-smoothing: grayscale;</div><div class="line">  text-align: center;</div><div class="line">  color: #2c3e50;</div><div class="line">  margin-top: 60px;</div><div class="line">&#125;</div><div class="line">.finished&#123;</div><div class="line">  text-decoration:underline;</div><div class="line">&#125;</div><div class="line">&lt;/style&gt;</div></pre></td></tr></table></figure>
+<h2 id="子组件示例"><a href="#子组件示例" class="headerlink" title="子组件示例"></a>子组件示例</h2><p>子组件Hello</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&lt;template&gt;</div><div class="line">  &lt;div class=&quot;hello&quot;&gt;</div><div class="line">    &lt;h1&gt;&#123;&#123; msg &#125;&#125;&lt;/h1&gt;</div><div class="line"></div><div class="line">    &lt;!-- 模板指令是html和vue之间的粘合剂 --&gt;</div><div class="line"></div><div class="line">    &lt;!-- v-on用于时间绑定 v-on:click==@click --&gt;</div><div class="line">    </div><div class="line">    &lt;!-- 模板命令v-if v-show是通过布尔值用来控制模块的隐藏 --&gt;</div><div class="line"></div><div class="line">    &lt;!-- 区别在于v-if是不渲染，而v-show是通过css属性的display:none;来隐藏属性 --&gt;</div><div class="line">   &lt;!--  &lt;p v-if=&quot;isShow&quot;&gt;hello p element&lt;/p&gt;</div><div class="line">    &lt;p v-show=&quot;show&quot;&gt; hi p element &lt;/p&gt;</div><div class="line"> --&gt;</div><div class="line">    </div><div class="line">  &lt;/div&gt;</div><div class="line">&lt;/template&gt;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">&lt;!-- vue.js中我们只是去关心抽象出来的数据，并不去关心这些数据实现的过程(这个过程交给vue来做) --&gt;</div><div class="line">&lt;script&gt;</div><div class="line"></div><div class="line">// export&#123;&#125;对象出来的东西会在 new Vue(&#123;&#125;)中自动生成一个属于自己的属性</div><div class="line"></div><div class="line">export default &#123;</div><div class="line">//对外暴露组件名，这里需要注意</div><div class="line">  name: &apos;hello&apos;,</div><div class="line">  data () &#123;</div><div class="line">    return &#123;   </div><div class="line">          msg:&apos;hello everyone&apos;     </div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">&#125;</div><div class="line">&lt;/script&gt;</div><div class="line"></div><div class="line">&lt;!-- Add &quot;scoped&quot; attribute to limit CSS to this component only --&gt;</div><div class="line">&lt;style scoped&gt;</div><div class="line">h1, h2 &#123;</div><div class="line">  font-weight: normal;</div><div class="line">&#125;</div><div class="line"></div><div class="line">ul &#123;</div><div class="line">  list-style-type: none;</div><div class="line">  padding: 0;</div><div class="line">&#125;</div><div class="line"></div><div class="line">li &#123;</div><div class="line">  display: inline-block;</div><div class="line">  margin: 0 10px;</div><div class="line">&#125;</div><div class="line"></div><div class="line">a &#123;</div><div class="line">  color: #42b983;</div><div class="line">&#125;</div><div class="line">&lt;/style&gt;</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/28/ReactJs/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="superDjy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://img.mp.itc.cn/upload/20170429/a2379efc26214d7fa790af6105312132">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="С�����ľ���">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/06/28/ReactJs/" itemprop="url">Vue.js基础</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-28T00:00:00+08:00">
+                2017-06-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/React-js/" itemprop="url" rel="index">
+                    <span itemprop="name">React.js</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/06/28/ReactJs/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/06/28/ReactJs/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/06/28/ReactJs/" class="leancloud_visitors" data-flag-title="Vue.js基础">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><h3 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">  &lt;head&gt;</div><div class="line">    &lt;meta charset=&quot;UTF-8&quot; /&gt;</div><div class="line">    &lt;title&gt;Hello World&lt;/title&gt;</div><div class="line">    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.js&quot;&gt;&lt;/script&gt;</div><div class="line">    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js&quot;&gt;&lt;/script&gt;</div><div class="line">    &lt;style&gt;</div><div class="line">    .test&#123;</div><div class="line">      color:red;</div><div class="line">    &#125;</div><div class="line">    &lt;/style&gt;</div><div class="line">  &lt;/head&gt;</div><div class="line">  &lt;body&gt;</div><div class="line">    &lt;div id=&quot;root&quot;&gt;&lt;/div&gt;</div><div class="line">    &lt;script type=&quot;text/jsx&quot;&gt;</div><div class="line">      var Hello=React.createClass(&#123;</div><div class="line">        render:function()&#123;</div><div class="line">          var styleObject=&#123;color:&apos;blue&apos;,fontSize:&apos;50px&apos;&#125;</div><div class="line">        return &lt;div className=&quot;test&quot;&gt;&#123;this.props.title&#125; hello &#123;this.props.name&#125;&lt;/div&gt;</div><div class="line">        &#125;</div><div class="line">      &#125;)</div><div class="line">      React.render(&lt;Hello name=&quot;world&quot; title=&quot;first one&quot; /&gt;, document.getElementById(&quot;root&quot;))</div><div class="line">    &lt;/script&gt;</div><div class="line">  &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<h3 id="组件的声明周期"><a href="#组件的声明周期" class="headerlink" title="组件的声明周期"></a>组件的声明周期</h3><p>三个状态（每个状态封装了自己的hook函数）：</p>
+<p>1.Mounted:指的是React Components被render解析生成对应的DOM节点，并被插入浏览器的DOM结构的一个过程</p>
+<p>2.Updating:指的是一个mounted的React Components被重新render的过程。方法是比较相邻两次render()时的state,当state发送改变且影响DOM结构时，重建渲染DOM树</p>
+<p>3.Unmounted:指的是mounted的组件被移除，从DOM树中移除DOM节点</p>
+<p><strong>Mounted状态的hook函数顺序</strong>：getDefaultProps()=&gt;getInitialState()=&gt;componentWillMount=&gt;render=&gt;componentDidMount</p>
+<p><strong>Updating的过程</strong>：componentWillReceiveProps（接受新的props，在函数体内比较老旧props,从而执行一些类似于修改state的操作）=&gt;shouldComponentUpdate（接收到新的props和state之后判断是否有必要去更新dom结构，返回true需要更新，反之亦然）=&gt;componentWillUpdate=&gt;render=&gt;componentDidUpdate</p>
+<p><strong>Unmounting过程</strong>：<br>componentWillUnmount</p>
+<h3 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">  &lt;head&gt;</div><div class="line">    &lt;meta charset=&quot;UTF-8&quot; /&gt;</div><div class="line">    &lt;title&gt;Hello World&lt;/title&gt;</div><div class="line">    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.js&quot;&gt;&lt;/script&gt;</div><div class="line">    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js&quot;&gt;&lt;/script&gt;</div><div class="line">  &lt;/head&gt;</div><div class="line">  &lt;body&gt;</div><div class="line">    &lt;div id=&quot;root&quot;&gt;&lt;/div&gt;</div><div class="line">    &lt;script type=&quot;text/jsx&quot;&gt;</div><div class="line">      var Hello=React.createClass(&#123;</div><div class="line"></div><div class="line"></div><div class="line">        render:function()&#123;</div><div class="line">          alert(&quot;ing&quot;);</div><div class="line">          return &lt;div style=&#123;this.state&#125;&gt; this is a test&lt;/div&gt;</div><div class="line">        &#125;,</div><div class="line"></div><div class="line">        getInitialState:function()&#123;</div><div class="line">          return&#123;</div><div class="line">              opacity:0.5,</div><div class="line">              color:&apos;blue&apos;,</div><div class="line">              fontSize:&apos;44px&apos;</div><div class="line">          &#125;</div><div class="line">        &#125;,</div><div class="line"></div><div class="line">        componentWillMount:function()&#123;</div><div class="line">          alert(&quot;will&quot;)</div><div class="line">        &#125;,</div><div class="line"></div><div class="line">        componentDidMount:function()&#123;</div><div class="line">          window.setTimeout(function()&#123;</div><div class="line">            this.setState(&#123;opacity:1,color:&apos;red&apos;,fontSize:&apos;54px&apos;&#125;);</div><div class="line">          &#125;.bind(this),1000)</div><div class="line">        &#125;</div><div class="line">      &#125;)</div><div class="line">      React.render(&lt;Hello /&gt;, document.getElementById(&quot;root&quot;))</div><div class="line">    &lt;/script&gt;</div><div class="line">  &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<p>结果是以此出现：”will”, “ing”,一秒过后 出现”ing”并且样式改变。</p>
+<p>以上例子是通过给一个初始state并且设置更改state的方法改变样式。这里还涉及了this的对外绑定，否则应在setTimeout()的函数内将this传递给一个的新的变量。这里需要知道props和state的区别，props是属于调用方，结构上为parent所有，state为当前组件所拥有，是可变的。</p>
+<h3 id="示例3（事件侦听）"><a href="#示例3（事件侦听）" class="headerlink" title="示例3（事件侦听）"></a>示例3（事件侦听）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">  &lt;head&gt;</div><div class="line">    &lt;meta charset=&quot;UTF-8&quot; /&gt;</div><div class="line">    &lt;title&gt;Hello World&lt;/title&gt;</div><div class="line">&lt;!--     &lt;script src=&quot;https://unpkg.com/react@latest/dist/react.js&quot;&gt;&lt;/script&gt;</div><div class="line">    &lt;script src=&quot;https://unpkg.com/react-dom@latest/dist/react-dom.js&quot;&gt;&lt;/script&gt;</div><div class="line">    &lt;script src=&quot;https://unpkg.com/babel-standalone@6.15.0/babel.min.js&quot;&gt;&lt;/script&gt; --&gt;</div><div class="line">    &lt;!-- 因为通过this.refs.test拿到的并非是真实的DOM节点而是react component，对于真实DOM节点操作需要调用React.findDOMNode()方法--&gt;</div><div class="line">    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.js&quot;&gt;&lt;/script&gt;</div><div class="line">    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js&quot;&gt;&lt;/script&gt;</div><div class="line">  &lt;/head&gt;</div><div class="line">  &lt;body&gt;</div><div class="line">    &lt;div id=&quot;root&quot;&gt;&lt;/div&gt;</div><div class="line">    &lt;script type=&quot;text/jsx&quot;&gt;</div><div class="line">      var Click=React.createClass(&#123;</div><div class="line"></div><div class="line">        handlerClick:function(event)&#123;</div><div class="line">        </div><div class="line">          var real = React.findDOMNode(this.refs.test)</div><div class="line">          if(real.style.display==&apos;none&apos;)&#123;</div><div class="line">            real.style.display=&apos;inline&apos;;</div><div class="line">          &#125;</div><div class="line">          else&#123;</div><div class="line">          real.style.display=&apos;none&apos;;</div><div class="line">          &#125;</div><div class="line">		  //event事件</div><div class="line">          event.preventDefault();</div><div class="line">          event.stopPropagation();</div><div class="line">        &#125;,</div><div class="line"></div><div class="line">        render:function()&#123;</div><div class="line">          return &lt;div&gt; &lt;button onClick=&#123;this.handlerClick&#125;&gt;显示|隐藏&lt;/button&gt;&lt;span ref=&quot;test&quot;&gt;测试&lt;/span&gt;&lt;/div&gt;</div><div class="line">        &#125;</div><div class="line">      &#125;)</div><div class="line"></div><div class="line"></div><div class="line">      var Input=React.createClass(&#123;</div><div class="line">        getInitialState:function()&#123;</div><div class="line">          return &#123;</div><div class="line">            inputText:&apos;&apos;</div><div class="line">          &#125;</div><div class="line">        &#125;,</div><div class="line">        handlerChange:function(event)&#123;</div><div class="line">          this.setState(&#123;inputText:event.target.value&#125;);</div><div class="line">          event.preventDefault();</div><div class="line">          event.stopPropagation();</div><div class="line">        &#125;,</div><div class="line"></div><div class="line">        render:function()&#123;</div><div class="line">		 //设置初始state，并在元素中绑定state状态进行重新渲染</div><div class="line">          return &lt;div&gt;&lt;input type=&quot;text&quot; onChange=&#123;this.handlerChange&#125; /&gt;&lt;span&gt;&#123;this.state&#125;&lt;/span&gt;&lt;/div&gt;</div><div class="line">        &#125;</div><div class="line">      &#125;)</div><div class="line">      React.render(&lt;div&gt;&lt;Click /&gt;&lt;Input /&gt;&lt;/div&gt;, document.getElementById(&quot;root&quot;))</div><div class="line">    &lt;/script&gt;</div><div class="line">  &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<p>注意：render()函数渲染时必须是有一个最外层的包裹元素，React.render()方法中渲染组件也是如此。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/28/js设计模式(8)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="superDjy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://img.mp.itc.cn/upload/20170429/a2379efc26214d7fa790af6105312132">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="С�����ľ���">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/06/28/js设计模式(8)/" itemprop="url">js设计模式(8)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-28T00:00:00+08:00">
+                2017-06-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/06/28/js设计模式(8)/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/06/28/js设计模式(8)/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/06/28/js设计模式(8)/" class="leancloud_visitors" data-flag-title="js设计模式(8)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="职责链模式"><a href="#职责链模式" class="headerlink" title="职责链模式"></a>职责链模式</h1><p>定义：使多个对象都有机会处理请求，从而避免请求的发送者和接受者之间的耦合关系，再将这些对象练成一条链，并沿着这条链传递该请求，知道有一个对象处理它为止。</p>
+<p>异步的职责链<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line">var Chain=function(fn)&#123;</div><div class="line">	this.fn=fn;</div><div class="line">	this.successor=null;</div><div class="line">&#125;</div><div class="line"></div><div class="line">//指定在链中的下一个节点</div><div class="line">Chain.prototype.setNextSuccessor=function(successor)&#123;</div><div class="line">	return this.successor=successor;</div><div class="line">&#125;</div><div class="line"></div><div class="line">//传递请求给某节点</div><div class="line">Chain.prototype.passRequest=function()&#123;</div><div class="line">	var ret = this.fn.apply(this,arguments);</div><div class="line">	if(ret==&apos;nextSuccessor&apos;)&#123;</div><div class="line">		return this.successor&amp;&amp;this.successor.passRequest.apply(this.successor,arguments);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Chain.prototype.next=function()&#123;</div><div class="line">	return this.successor.passRequest.apply(this.successor,arguments);</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">var fn1=new Chain(function()&#123;</div><div class="line">	console.log(1);</div><div class="line">	return &apos;nextSuccessor&apos;;</div><div class="line">&#125;)</div><div class="line"></div><div class="line">var fn2=new Chain(function()&#123;</div><div class="line">	console.log(2);</div><div class="line">	var self=this;</div><div class="line">	setTimeout(function()&#123;self.next()&#125;,1000);</div><div class="line">	return &apos;nextSuccessor&apos;</div><div class="line">&#125;)</div><div class="line"></div><div class="line">var fn3=new Chain(function()&#123;</div><div class="line">	console.log(3);</div><div class="line">	return &apos;nextSuccessor&apos;;</div><div class="line">&#125;)</div><div class="line"></div><div class="line">var fn4=new Chain(function()&#123;</div><div class="line">	console.log(4);</div><div class="line">&#125;)</div><div class="line"></div><div class="line">fn1.setNextSuccessor(fn2);</div><div class="line">fn2.setNextSuccessor(fn3);</div><div class="line">fn3.setNextSuccessor(fn4);</div><div class="line">fn1.passRequest();</div><div class="line">VM835:24 1</div><div class="line">VM835:29 2</div><div class="line">VM835:36 3</div><div class="line">VM835:41 4</div><div class="line">一秒过后</div><div class="line">VM835:36 3</div><div class="line">VM835:41 4</div></pre></td></tr></table></figure></p>
+<p><strong>除此之外，也可以用AOP实现职责链。</strong></p>
+<h1 id="中介者模式"><a href="#中介者模式" class="headerlink" title="中介者模式"></a>中介者模式</h1><p>其作用是解除对象与对象之间的紧耦合关系。</p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">	&lt;body&gt;</div><div class="line">		选择颜色:&lt;select id=&quot;colorSelect&quot;&gt;</div><div class="line">					&lt;option value=&quot;&quot;&gt;请选择&lt;/option&gt;</div><div class="line">					&lt;option value=&quot;red&quot;&gt;红色&lt;option&gt;</div><div class="line">					&lt;option value=&quot;blue&quot;&gt; 蓝色&lt;/option&gt;</div><div class="line">				&lt;/select&gt;</div><div class="line">		输入购买量:&lt;input type=&quot;text&quot; id=&quot;numberInput&quot;&gt;</div><div class="line">		你选择的颜色:&lt;div id=&quot;colorInfo&quot;&gt;&lt;/div&gt;</div><div class="line">		你输入的数量:&lt;div id=&quot;numberInfo&quot;&gt;&lt;/div&gt;</div><div class="line">		&lt;button id=&quot;nextBtn&quot; disabled=&quot;true&quot;&gt;请选择手机颜色和数量&lt;/button&gt;</div><div class="line">	&lt;/body&gt;</div><div class="line">	&lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">		var colorSelect=document.getElementById(&quot;colorSelect&quot;),</div><div class="line">		numberInput=document.getElementById(&quot;numberInput&quot;),</div><div class="line">		colorInfo=document.getElementById(&quot;colorInfo&quot;),</div><div class="line">		numberInfo=document.getElementById(&quot;numberInfo&quot;),</div><div class="line">		nextBtn=document.getElementById(&apos;nextBtn&apos;);</div><div class="line"></div><div class="line">		var goods=&#123;&apos;red&apos;:3,&apos;blue&apos;:6&#125;;</div><div class="line">		colorSelect.onchange=function()&#123;</div><div class="line">			var color=this.value,</div><div class="line">			number=numberInput.value,</div><div class="line">			stock=goods[color];</div><div class="line">			colorInfo.innerHTML=color;</div><div class="line">			if(!color)&#123;</div><div class="line">				nextBtn.disabled=true;</div><div class="line">				nextBtn.innerHTML=&quot;请选择手机颜色&quot;;</div><div class="line">				return;</div><div class="line">			&#125;</div><div class="line">			if(number&gt;stock)&#123;</div><div class="line">				nextBtn.disabled=true;</div><div class="line">				nextBtn.innerHTML=&quot;库存不足&quot;;</div><div class="line">				return;</div><div class="line">			&#125;</div><div class="line">			nextBtn.disalbed=false;</div><div class="line">			nextBtn.innerHTML=&quot;放入购物车&quot;;</div><div class="line">			</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		numberInput.oninput=function()&#123;</div><div class="line">			var color=this.value,</div><div class="line">			number=numberInput.value,</div><div class="line">			stock=goods[color];</div><div class="line">			numberInfo.innerHTML=number;</div><div class="line"></div><div class="line">			if(color==&quot;&quot;)&#123;</div><div class="line">				nextBtn.disabled=true;</div><div class="line">				nextBtn.innerHTML=&quot;请选择手机颜色&quot;</div><div class="line">			&#125;</div><div class="line">			if(number&gt;stock)&#123;</div><div class="line">				nextBtn.disabled=true;</div><div class="line">				nextBtn.innerHTML=&quot;库存不足&quot;;</div><div class="line">			&#125;else&#123;</div><div class="line">				nextBtn.disalbed=false;</div><div class="line">				nextBtn.innerHTML=&quot;放入购物车&quot;;</div><div class="line">			&#125;</div><div class="line"></div><div class="line">		&#125;</div><div class="line"></div><div class="line"></div><div class="line">	&lt;/script&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<p>使用中介者模式改变之后，所有的节点只和中介者进行通信，当下拉框colorSelect和文本输入框numberInput发生了事件变化时，它们仅仅通知中介者它们发生了改变，同时把自身以参数的形式传入中介者，以便中介者辨别是谁发生了改变。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">var mediator=(function()&#123;</div><div class="line">			var colorSelect=document.getElementById(&quot;colorSelect&quot;),</div><div class="line">			numberInput=document.getElementById(&quot;numberInput&quot;),</div><div class="line">			colorInfo=document.getElementById(&quot;colorInfo&quot;),</div><div class="line">			numberInfo=document.getElementById(&quot;numberInfo&quot;),</div><div class="line">			nextBtn=document.getElementById(&apos;nextBtn&apos;);</div><div class="line">			var goods=&#123;&apos;red&apos;:3,&apos;blue&apos;:4&#125;;</div><div class="line">			return&#123;</div><div class="line">				changed:function(obj)&#123;</div><div class="line">					var color=colorSelect.value,</div><div class="line">					number=numberInput.value,</div><div class="line">					stock=goods[color];</div><div class="line">					colorInfo.innerHTML=color;</div><div class="line">					if(obj===colorSelect)&#123;</div><div class="line">						colorInfo.innerHTML=color;</div><div class="line">					&#125;else if(obj==numberInput)&#123;</div><div class="line">						numberInfo.innerHTML=number;</div><div class="line">					&#125;</div><div class="line">					if(!color)&#123;</div><div class="line">						nextBtn.disabled=true;</div><div class="line">						nextBtn.innerHTML=&quot;请选择手机颜色&quot;;</div><div class="line">						return;</div><div class="line">					&#125;</div><div class="line"></div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">		&#125;)()</div><div class="line">colorSelect.onchange=function()&#123;</div><div class="line">			console.log(this);</div><div class="line">			mediator.changed(this);</div><div class="line">		&#125;</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/28/H5画布2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="superDjy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://img.mp.itc.cn/upload/20170429/a2379efc26214d7fa790af6105312132">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="С�����ľ���">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/06/28/H5画布2/" itemprop="url">H5基础知识(2)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-28T00:00:00+08:00">
+                2017-06-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/H5/" itemprop="url" rel="index">
+                    <span itemprop="name">H5</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/06/28/H5画布2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/06/28/H5画布2/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/06/28/H5画布2/" class="leancloud_visitors" data-flag-title="H5基础知识(2)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Canvas的一些高级功能"><a href="#Canvas的一些高级功能" class="headerlink" title="Canvas的一些高级功能"></a>Canvas的一些高级功能</h1><p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">	&lt;head&gt;</div><div class="line">&lt;!-- 		&lt;script type=&quot;text/javascript&quot; src=&quot;http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js&quot;&gt;&lt;/script&gt;</div><div class="line">		&lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">			$(document).ready(function()&#123;</div><div class="line">				var canvas=$(&quot;#mycanvas&quot;);</div><div class="line">				var context=canvas.get(0).getContext(&quot;2d&quot;);</div><div class="line">				context.fillRect(40,40,100,100);</div><div class="line">			&#125;)</div><div class="line">		&lt;/script&gt; --&gt;</div><div class="line"></div><div class="line">	&lt;/head&gt;</div><div class="line"></div><div class="line">	&lt;body&gt;</div><div class="line">		&lt;canvas id=&quot;myCanvas&quot; width=&quot;500&quot; height=&quot;500&quot;&gt;</div><div class="line">		&lt;/canvas&gt;</div><div class="line">	&lt;/body&gt;</div><div class="line">	&lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">		var c=document.getElementById(&quot;myCanvas&quot;);</div><div class="line">		var cxt=c.getContext(&quot;2d&quot;);</div><div class="line">		cxt.fillStyle=&quot;rgb(255,0,0)&quot;;</div><div class="line">		//红色压栈</div><div class="line">		cxt.save();</div><div class="line">		cxt.fillRect(50,50,100,100);</div><div class="line"></div><div class="line">		cxt.fillStyle=&quot;rgb(0,255,0)&quot;;</div><div class="line">		//绿色压栈</div><div class="line">		cxt.save();</div><div class="line">		cxt.fillRect(200,50,100,100);</div><div class="line">		//自动取出栈中的最后状态,绿色</div><div class="line">		cxt.restore();</div><div class="line">		cxt.fillRect(350,50,100,100);</div><div class="line">		//红色</div><div class="line">		cxt.restore();</div><div class="line">		cxt.fillRect(50,200,100,100);</div><div class="line"></div><div class="line"></div><div class="line">		//平移</div><div class="line">		cxt.fillRect(0,0,20,20);</div><div class="line">		cxt.translate(150,150);</div><div class="line">		//平移后的显示，之后所有操作均带有平移属性</div><div class="line">		cxt.fillRect(0,0,20,20);</div><div class="line">		</div><div class="line"></div><div class="line">		//之后的所有操作均带有旋转属性</div><div class="line">		cxt.rotate(0.7854);//旋转45度(Math.PI/4);</div><div class="line">		cxt.fillRect(150,150,40,40);</div><div class="line"></div><div class="line">		//合成</div><div class="line">		cxt.fillStyle=&quot;rgb(63,169,245)&quot;;</div><div class="line">		cxt.fillRect(200,50,100,100);</div><div class="line">		cxt.globalAlpha=0.5;</div><div class="line">		cxt.fillStyle=&quot;rgb(255,123,172)&quot;;</div><div class="line">		cxt.fillRect(250,100,100,100);</div><div class="line"></div><div class="line">		//阴影</div><div class="line">		cxt.shadowBlur=20;</div><div class="line">		cxt.shadowColor=&quot;rgb(0,0,0)&quot;;</div><div class="line">		cxt.fillRect(10,10,50,50);s</div><div class="line"></div><div class="line">	&lt;/script&gt;</div><div class="line"></div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/28/H5画布/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="superDjy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://img.mp.itc.cn/upload/20170429/a2379efc26214d7fa790af6105312132">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="С�����ľ���">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/06/28/H5画布/" itemprop="url">H5基础知识</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-28T00:00:00+08:00">
+                2017-06-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/H5/" itemprop="url" rel="index">
+                    <span itemprop="name">H5</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/06/28/H5画布/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/06/28/H5画布/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/06/28/H5画布/" class="leancloud_visitors" data-flag-title="H5基础知识">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Canvas基础知识"><a href="#Canvas基础知识" class="headerlink" title="Canvas基础知识"></a>Canvas基础知识</h1><p>示例：canvas基本方法使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">	&lt;head&gt;</div><div class="line">&lt;!-- 		&lt;script type=&quot;text/javascript&quot; src=&quot;http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js&quot;&gt;&lt;/script&gt;</div><div class="line">		&lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">			$(document).ready(function()&#123;</div><div class="line">				var canvas=$(&quot;#mycanvas&quot;);</div><div class="line">				var context=canvas.get(0).getContext(&quot;2d&quot;);</div><div class="line">				context.fillRect(40,40,100,100);</div><div class="line">			&#125;)</div><div class="line">		&lt;/script&gt; --&gt;</div><div class="line"></div><div class="line">	&lt;/head&gt;</div><div class="line"></div><div class="line">	&lt;body&gt;</div><div class="line">		&lt;canvas id=&quot;myCanvas&quot; width=&quot;500&quot; height=&quot;500&quot;&gt;</div><div class="line">		&lt;/canvas&gt;</div><div class="line">	&lt;/body&gt;</div><div class="line">	&lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">		var c=document.getElementById(&quot;myCanvas&quot;);</div><div class="line">		var cxt=c.getContext(&quot;2d&quot;);</div><div class="line">		//画长方形，参数分别为坐标x,y,width,height</div><div class="line">			cxt.fillStyle=&quot;#00FF00&quot;;//设置填充颜色</div><div class="line"></div><div class="line">			cxt.lineWidth=5;// 设置线条宽度</div><div class="line">			cxt.fillRect(100,100,50,100);</div><div class="line">		//画边框</div><div class="line"></div><div class="line">			cxt.strokeStyle=&quot;#FF0000&quot;;//设置线条颜色  &quot;#FF0000&quot;==&quot;rgb(255,0,0)&quot;</div><div class="line">			cxt.strokeRect(0,0,150,75);</div><div class="line"></div><div class="line">		//画线&amp;&amp;也可用于画复杂图形，例如三角</div><div class="line">			cxt.beginPath();</div><div class="line">			cxt.moveTo(50,50);</div><div class="line">			cxt.lineTo(50,60);</div><div class="line">			cxt.closePath();</div><div class="line">			cxt.stroke();</div><div class="line"></div><div class="line">		//画圆</div><div class="line">			cxt.beginPath();</div><div class="line">		//6个参数分别为：圆心坐标想x,y，圆的半径，开始角度，结束角度，逆顺时针（逆时针用true,顺时针用false）;</div><div class="line">		//注意：这里的角度以弧度为单位</div><div class="line">			cxt.arc(230,90,50,0,Math.PI*2,false);</div><div class="line">			cxt.closePath();</div><div class="line"></div><div class="line">		//填充圆</div><div class="line">			cxt.fill();</div><div class="line">		//清除填充，参数分别为起点坐标x,y,宽度width和高度height</div><div class="line">			cxt.clearRect(230,90,50,50);</div><div class="line">			//画轮廓</div><div class="line">			cxt.stroke();</div><div class="line">	&lt;/script&gt;</div><div class="line"></div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-tags" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/27/js设计模式(5)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="superDjy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://img.mp.itc.cn/upload/20170429/a2379efc26214d7fa790af6105312132">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="С�����ľ���">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/06/27/js设计模式(5)/" itemprop="url">js设计模式(5)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-27T00:00:00+08:00">
+                2017-06-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/06/27/js设计模式(5)/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/06/27/js设计模式(5)/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/06/27/js设计模式(5)/" class="leancloud_visitors" data-flag-title="js设计模式(5)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="观察者模式-发布-订阅模式"><a href="#观察者模式-发布-订阅模式" class="headerlink" title="观察者模式(发布-订阅模式)"></a>观察者模式(发布-订阅模式)</h1><p>它定义了对象间的一种一对多的依赖关系，当一个对象的状态发生改变时，所有依赖它的对象都将得到通知。</p>
+<p>js中一般使用<strong>注册回调函数</strong>的形式来代替传统的观察者模式，并且arguments可以很方便地表示参数列表，因而一般用推模型使用Function.prototype.apply方法将所有参数都推送给订阅者。</p>
+<p>观察者模式优点：时间上解耦，对象之间的解耦。</p>
+<h1 id="命令模式"><a href="#命令模式" class="headerlink" title="命令模式"></a>命令模式</h1><p>应用场景：有时候需要向某些对象发送请求，但是不知道请求的接受者是谁，也不知道被请求的操作是什么，此时希望用一种松耦合的方式来设计程序，使得请求发送者和请求接受者消除彼此之间的耦合关系。</p>
+<p>js中的利用闭包实现命令模式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">var setCommand=function(button,command)&#123;</div><div class="line">	button.onclick=function()&#123;</div><div class="line">		command.execute;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">var MenuBar=&#123;</div><div class="line">	refresh:function()&#123;</div><div class="line">		console.log(&apos;刷新菜单界面&apos;)</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">var RefreshMenuBarCommand=function(receiver)&#123;</div><div class="line">	return &#123;</div><div class="line">		execute:function()&#123;</div><div class="line">			receiver.refresh;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var RefreshMenuBarCommand=RefreshMenuBarCommand(MenuBar);</div><div class="line"></div><div class="line">setCommand(button1,RefreshMenuBarCommand);</div></pre></td></tr></table></figure></p>
+<h2 id="宏命令"><a href="#宏命令" class="headerlink" title="宏命令"></a>宏命令</h2><p>通过宏命令，一次可以执行一批命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">var closeDoorCommand=&#123;</div><div class="line">	execute:function()&#123;</div><div class="line">		console.log(&apos;1&apos;);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">var openDoorCommand=&#123;</div><div class="line">	execute:function()&#123;</div><div class="line">		console.log(&apos;2&apos;);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">var openWindow=&#123;</div><div class="line">	execute:function()&#123;</div><div class="line">	console.log(&apos;3&apos;);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">var MacroCommand=funciton()&#123;</div><div class="line">	return&#123;</div><div class="line">		 	commandList:[],</div><div class="line">			add:funciton(command)&#123;</div><div class="line">				this.commandList.push(command)</div><div class="line">			&#125;,</div><div class="line">			execute:function()&#123;</div><div class="line">				for(var i=-0,command;command=this.commandList[i++];)&#123;</div><div class="line">					command.execute;</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">&#125;</div><div class="line">var macroCommand=MacroCommand();</div><div class="line">macroCommand.add(closeDoorCommand);</div><div class="line">macroCommand.add(openDoorCommand);</div><div class="line">macorCommand.add(openWindow);</div><div class="line">macroCommand.execute;</div></pre></td></tr></table></figure></p>
+<h1 id="组合模式"><a href="#组合模式" class="headerlink" title="组合模式"></a>组合模式</h1><p>组合模式就是用小的对象来构建更大的对象，而这些小的子对象本身也许来自更小的对象。上一节中的宏命令即为一个组合模式的例子。</p>
+<p><strong>注意</strong><br>1.组合模式不是父子关系，组合模式把对象的请求委托给它包含的所有叶对象。</p>
+<p>2.组合模式除了要求组合对象和叶对象拥有相同的接口，还要求对一组叶对象的操作必须具有一致性。</p>
+<p>3.可以用职责连模式来提高组合模式的性能</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/27/js设计模式(4)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="superDjy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://img.mp.itc.cn/upload/20170429/a2379efc26214d7fa790af6105312132">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="С�����ľ���">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/06/27/js设计模式(4)/" itemprop="url">js设计模式(4)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-27T00:00:00+08:00">
+                2017-06-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/06/27/js设计模式(4)/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/06/27/js设计模式(4)/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/06/27/js设计模式(4)/" class="leancloud_visitors" data-flag-title="js设计模式(4)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h1><p><strong>定义：为一个对象或提供一个代用品或占位符，以便控制对它的访问。</strong></p>
+<p>代理模式分为保护代理和虚拟代理。保护代理是用于控制不同权限对象对目标对象的访问。虚拟代理会把一些开销很大的对象，延迟到真正需要它的再去创建。</p>
+<h2 id="代理的意义"><a href="#代理的意义" class="headerlink" title="代理的意义"></a>代理的意义</h2><p>实现<strong>单一职责</strong>原则。即，就一个类（通常也包括对象和函数），应该仅有一个引起它变化的原因。<br>如果一个对象承担了多项职责，意味着将这些职责耦合到了一起，这种耦合会导致脆弱和迪内聚的设计。</p>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><p>加载一张图片：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var myImage=(funciton()&#123;</div><div class="line">	var imgNode=document.creatElement(&apos;img&apos;);</div><div class="line">	document.body.appendChild(imgNode);</div><div class="line">	return&#123;</div><div class="line">		setSrc:function(src)&#123;</div><div class="line">		imgNode.src=src</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;)()</div><div class="line">myImage.setSrc(&quot;..........&quot;)</div></pre></td></tr></table></figure></p>
+<p>增加代理之后，将预加载与图片加载分离：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">var proxyImage=(function()&#123;</div><div class="line">	var img=new Image;</div><div class="line">	img.onload=function()&#123;</div><div class="line">		myImage.setSrc(this.src);</div><div class="line">	&#125;</div><div class="line">	return&#123;</div><div class="line">	setSrc:function(src)&#123;</div><div class="line">		myImage.setSrc(&apos;本地的loading图片&apos;);</div><div class="line">		img.src=src;</div><div class="line">	&#125;</div><div class="line">	&#125;</div><div class="line">&#125;)()</div><div class="line">proxyImage.setSrc(&apos;真正图片&apos;)</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/27/js设计模式(7)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="superDjy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://img.mp.itc.cn/upload/20170429/a2379efc26214d7fa790af6105312132">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="С�����ľ���">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/06/27/js设计模式(7)/" itemprop="url">js设计模式(7)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-27T00:00:00+08:00">
+                2017-06-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/06/27/js设计模式(7)/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/06/27/js设计模式(7)/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/06/27/js设计模式(7)/" class="leancloud_visitors" data-flag-title="js设计模式(7)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="享元模式"><a href="#享元模式" class="headerlink" title="享元模式"></a>享元模式</h1><p>享元模式的核心是运用共享技术来有效支持大量细粒度的对象。</p>
+<p>享元模式要求将对象的属性划分为内部状态与外部状态(这里的状态通常指属性)。其目标是尽量减少共享对象的数量。具体的内部对象是指独立于具体的场景，通常不会改变，外部对象是指取决于具体场景，并且根据外部场景的变化，外部状态不能被共享。</p>
+<h2 id="对象池"><a href="#对象池" class="headerlink" title="对象池"></a>对象池</h2><p>维护一个装载空闲对象的池子，如果需要对象的时候，不是直接new，而是转从对象池里面获取。如果对象池是没有空闲对象，则新建一个新的对象，当获取出的对象完成了它的职责之后，再次进入池子等待被获取。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">var toolFactory=(function()&#123;</div><div class="line">	var toolPool=[];</div><div class="line">	return&#123;</div><div class="line">		create:function()&#123;</div><div class="line">			if(toolPool.length==0)&#123;</div><div class="line">				var div=document.creat(&apos;div&apos;);</div><div class="line">				document.body.appendChild)(div);</div><div class="line">				return div;</div><div class="line">			&#125;else&#123;</div><div class="line">				return toolPool.shift();</div><div class="line">			&#125;</div><div class="line">		&#125;,</div><div class="line">		recover:function(toolDom)&#123;</div><div class="line">			return toolPool.push(toolDom);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;))()</div><div class="line"></div><div class="line">var arr=[];</div><div class="line"></div><div class="line">//创建两个节点</div><div class="line">for(var i=0,str;str=[&apos;a&apos;,&apos;b&apos;][i++];)&#123;</div><div class="line">	var toolTip=toolFactore.create();</div><div class="line">	toopTip.innerHTML=str;</div><div class="line">	arr.push(toopTip);</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">//回收进对象池</div><div class="line">for(var j=0,tooptip;tooptip=arr[i++];)&#123;</div><div class="line">	toolFactory.recover(tooptip);</div><div class="line">&#125;</div><div class="line"></div><div class="line">//再次创建节点时可以直接从对象池里面获取</div><div class="line">for(var k=0,str;str=[&apos;a&apos;,&apos;b&apos;,&apos;c&apos;,&apos;d&apos;,&apos;e&apos;][i++];)&#123;</div><div class="line">	var toopTip=toolFactory.create();</div><div class="line">	toopTip.innerHTML=str;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>通用的对象池<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">var toolFactory=function(fn)&#123;</div><div class="line">	var toolPool=[];</div><div class="line">	return&#123;</div><div class="line">		create:function()&#123;</div><div class="line">			if(toolPool.length==0)&#123;</div><div class="line">				return fn.apply(this.arguments);</div><div class="line">			&#125;else&#123;</div><div class="line">				return toolPool.shift();</div><div class="line">			&#125;</div><div class="line">		&#125;,</div><div class="line">		recover:function(obj)&#123;</div><div class="line">			return toolPool.push(obj);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var finalFactory=toolFactory(function()&#123;</div><div class="line">	var div = document.create(&apos;div&apos;);</div><div class="line">	document.body.appendChild(div);</div><div class="line">	return div;</div><div class="line">&#125;)</div><div class="line"></div><div class="line">var tooltip=finalFactory.create();</div><div class="line"></div><div class="line">tooltip.innerHTML=&apos;a&apos;;</div></pre></td></tr></table></figure></p>
 
           
         
@@ -525,7 +2034,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -571,7 +2080,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">38</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -582,7 +2091,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -593,7 +2102,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
