@@ -96,7 +96,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="设计模式," />
 
 
 
@@ -112,17 +112,18 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="description" content="单例模式定义：保证一个类仅有一个实例，并提供一个访问它的全局节点。 js中的单例模式是为了避免全局变量的使用，降低全局变量带来的污染。具体方法有： 1.使用命名空间 2.使用闭包封装私有变量 惰性单例定义：仅仅在需要时候才创建对象实例。 通用的惰性单例模式：123456var getSingle = function(fn)&amp;#123;    var result;    return funct">
+<meta name="keywords" content="设计模式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2017/08/04/hello-world/index.html">
+<meta property="og:title" content="js设计模式(3)">
+<meta property="og:url" content="http://yoursite.com/2017/06/26/js设计模式(3)/index.html">
 <meta property="og:site_name" content="С�����ľ���">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="单例模式定义：保证一个类仅有一个实例，并提供一个访问它的全局节点。 js中的单例模式是为了避免全局变量的使用，降低全局变量带来的污染。具体方法有： 1.使用命名空间 2.使用闭包封装私有变量 惰性单例定义：仅仅在需要时候才创建对象实例。 通用的惰性单例模式：123456var getSingle = function(fn)&amp;#123;    var result;    return funct">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-04T07:58:05.271Z">
+<meta property="og:updated_time" content="2017-07-10T09:43:14.354Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="js设计模式(3)">
+<meta name="twitter:description" content="单例模式定义：保证一个类仅有一个实例，并提供一个访问它的全局节点。 js中的单例模式是为了避免全局变量的使用，降低全局变量带来的污染。具体方法有： 1.使用命名空间 2.使用闭包封装私有变量 惰性单例定义：仅仅在需要时候才创建对象实例。 通用的惰性单例模式：123456var getSingle = function(fn)&amp;#123;    var result;    return funct">
 
 
 
@@ -151,13 +152,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/08/04/hello-world/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/06/26/js设计模式(3)/"/>
 
 
 
 
 
-  <title>Hello World | С�����ľ���</title>
+  <title>js设计模式(3) | С�����ľ���</title>
   
 
 
@@ -334,7 +335,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/04/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/26/js设计模式(3)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="superDjy">
@@ -351,7 +352,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World</h1>
+          <h1 class="post-title" itemprop="name headline">js设计模式(3)</h1>
         
 
         <div class="post-meta">
@@ -363,8 +364,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-04T15:58:05+08:00">
-                2017-08-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-26T00:00:00+08:00">
+                2017-06-26
               </time>
             
 
@@ -374,6 +375,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -382,9 +405,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/08/04/hello-world/#comments" itemprop="discussionUrl">
+                <a href="/2017/06/26/js设计模式(3)/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/08/04/hello-world/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/06/26/js设计模式(3)/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -392,7 +415,7 @@
 
           
           
-             <span id="/2017/08/04/hello-world/" class="leancloud_visitors" data-flag-title="Hello World">
+             <span id="/2017/06/26/js设计模式(3)/" class="leancloud_visitors" data-flag-title="js设计模式(3)">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -423,15 +446,15 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <h1 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h1><p><strong>定义：保证一个类仅有一个实例，并提供一个访问它的全局节点。</strong></p>
+<p>js中的单例模式是为了避免全局变量的使用，降低全局变量带来的污染。具体方法有：</p>
+<p><em>1.使用命名空间</em></p>
+<p><em>2.使用闭包封装私有变量</em></p>
+<h2 id="惰性单例"><a href="#惰性单例" class="headerlink" title="惰性单例"></a>惰性单例</h2><p>定义：仅仅在需要时候才创建对象实例。</p>
+<p>通用的惰性单例模式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var getSingle = function(fn)&#123;</div><div class="line">    var result;</div><div class="line">    return function()&#123;</div><div class="line">        return result||(fn.apply(this,arguments));</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h1><p><strong>定义：定义一系列算法，把它们一个个封装起来。将算法的使用和算法的实现分离开来。</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var stratgies=&#123;</div><div class="line">	&quot;s&quot;:function(salary)&#123;return salary*4&#125;,</div><div class="line">	&quot;A&quot;:function(salary)&#123;return salary*5&#125;,</div><div class="line">	&quot;B&quot;:function(salary)&#123;return salary*6&#125;</div><div class="line">&#125;;</div><div class="line">var calculate=function(level,salary)&#123;</div><div class="line">	return stratgies[level](salary);</div><div class="line">&#125;</div><div class="line">calculate(&quot;A&quot;,4000);</div><div class="line">20000</div></pre></td></tr></table></figure></p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>利用策略模式将表单提交重构<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">	&lt;body&gt;</div><div class="line">		&lt;form action=&quot;#&quot; id=&quot;registerForm&quot; method=&quot;post&quot;&gt;</div><div class="line">			用户名:&lt;input name=&quot;userName&quot;  type=&quot;text&quot;&gt;</div><div class="line">			密码:&lt;input name=&quot;password&quot;  type=&quot;password&quot;&gt;</div><div class="line">			手机号:&lt;input type=&quot;text&quot; name=&quot;phoneNumber&quot;&gt;</div><div class="line">			&lt;button&gt;提交&lt;/button&gt;</div><div class="line">		&lt;/form&gt;</div><div class="line">	&lt;/body&gt;</div><div class="line">	&lt;script&gt;</div><div class="line">		var registerForm = document.getElementById(&apos;registerForm&apos;);</div><div class="line">		registerForm.onsubmit=function()&#123;</div><div class="line">			if(registerForm.userName.value===&quot;&quot;)&#123;</div><div class="line">				alert(&apos;用户名不能为空&apos;)</div><div class="line">				return false;</div><div class="line">			&#125;</div><div class="line">			if(registerForm.password.value==&quot;&quot;)&#123;</div><div class="line">				alert(&apos;密码不能为空&apos;);</div><div class="line">				return false;</div><div class="line">			&#125;</div><div class="line">			if(!/^1[3|5|8][0-9]&#123;9&#125;$/.test(registerForm.phoneNumber.value))&#123;</div><div class="line">				alert(&apos;手机号码不对&apos;);</div><div class="line">				return false;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&lt;/script&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+<p>重构后：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt; </div><div class="line">	&lt;body&gt;</div><div class="line">		&lt;form id=&quot;registerForm&quot; action=&quot;#&quot; method=&quot;post&quot;&gt;</div><div class="line">			用户名:&lt;input type=&quot;text&quot; name=&quot;userName&quot;&gt;</div><div class="line">			密码:&lt;input type=&quot;password&quot; name=&quot;password&quot;&gt;</div><div class="line">			手机号:&lt;input type=&quot;text&quot; name=&quot;phoneNumber&quot;&gt;</div><div class="line">			&lt;button&gt;提交&lt;/button&gt;</div><div class="line">		&lt;/form&gt;</div><div class="line">		&lt;script&gt;</div><div class="line">		//***********************************策略对象***************************************************</div><div class="line">			var strategies=&#123;</div><div class="line">				isEmpty:function(value,errorMsg)&#123;</div><div class="line">					if(value==&quot;&quot;)&#123;</div><div class="line">						return errorMsg;</div><div class="line">					&#125;</div><div class="line">				&#125;,</div><div class="line">				isMobile:function(value,errorMsg)&#123;</div><div class="line">					if(!/1[3|5|8][0-9]&#123;9&#125;/.test(value))&#123;</div><div class="line">						return errorMsg;</div><div class="line">					&#125;</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">		//**********************************Validator类，作为context,负责接收用户的请求并委托给strategy对象**************</div><div class="line">			var validator=function()&#123;</div><div class="line">				this.cache=[];</div><div class="line">			&#125;</div><div class="line">			validator.prototype.add=function(dom,rule,errorMsg)&#123;</div><div class="line">				var self=this;</div><div class="line">				var arr=[];</div><div class="line">				this.cache.push(function()&#123;</div><div class="line">					arr.unshift(dom.value);</div><div class="line">					arr.push(errorMsg);</div><div class="line">					return strategies[rule].apply(dom,arr);</div><div class="line">				&#125;)</div><div class="line"></div><div class="line">			&#125;;</div><div class="line"></div><div class="line">			validator.prototype.start=function()&#123;</div><div class="line">				for(var i=0,validatorFunc;validatorFunc=this.cache[i++];)&#123;</div><div class="line">					var msg=validatorFunc();</div><div class="line">					if(msg)&#123;</div><div class="line">						return msg;</div><div class="line">					&#125;</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line"></div><div class="line"></div><div class="line">        //**************************客户调用代码********************************************</div><div class="line">			var registerForm = document.getElementById(&apos;registerForm&apos;);</div><div class="line">			var validataFunc=function()</div><div class="line">			&#123;</div><div class="line">				var validator=new validator();</div><div class="line">				validator.add(registerForm.userName,&apos;isEmpty&apos;,&apos;用户名不能为空&apos;);</div><div class="line">				validator.add(registerForm.phoneNumber,&apos;isMobile&apos;,&apos;手机号码格式不正确&apos;);</div><div class="line">				var errorMsg=validator.start();</div><div class="line">				return errorMsg;</div><div class="line">			&#125;</div><div class="line">			registerForm.onsubmit=function()&#123;</div><div class="line">				var errorMsg=validataFunc();</div><div class="line">				if(errorMsg)&#123;</div><div class="line">					alert(errorMsg);</div><div class="line">					return false;</div><div class="line">				&#125;</div><div class="line"></div><div class="line">			&#125;</div><div class="line">		&lt;/script&gt;</div><div class="line">	&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -447,6 +470,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/设计模式/" rel="tag"># 设计模式</a>
+          
+        </div>
+      
 
       
       
@@ -456,8 +485,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/06/29/js设计模式(9)/" rel="next" title="js设计模式(9)">
-                <i class="fa fa-chevron-left"></i> js设计模式(9)
+              <a href="/2017/06/25/js设计模式/" rel="next" title="js设计模式基础(1)">
+                <i class="fa fa-chevron-left"></i> js设计模式基础(1)
               </a>
             
           </div>
@@ -465,6 +494,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/26/js设计模式(2)/" rel="prev" title="js设计模式基础(2)">
+                js设计模式基础(2) <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -652,7 +685,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#单例模式"><span class="nav-number">1.</span> <span class="nav-text">单例模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#惰性单例"><span class="nav-number">1.1.</span> <span class="nav-text">惰性单例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#策略模式"><span class="nav-number">2.</span> <span class="nav-text">策略模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#示例"><span class="nav-number">2.1.</span> <span class="nav-text">示例</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -807,9 +840,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2017/08/04/hello-world/';
-          this.page.identifier = '2017/08/04/hello-world/';
-          this.page.title = 'Hello World';
+          this.page.url = 'http://yoursite.com/2017/06/26/js设计模式(3)/';
+          this.page.identifier = '2017/06/26/js设计模式(3)/';
+          this.page.title = 'js设计模式(3)';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://.disqus.com/embed.js';

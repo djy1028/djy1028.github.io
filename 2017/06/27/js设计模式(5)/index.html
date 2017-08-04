@@ -96,7 +96,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="设计模式," />
 
 
 
@@ -112,17 +112,18 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="description" content="观察者模式(发布-订阅模式)它定义了对象间的一种一对多的依赖关系，当一个对象的状态发生改变时，所有依赖它的对象都将得到通知。 js中一般使用注册回调函数的形式来代替传统的观察者模式，并且arguments可以很方便地表示参数列表，因而一般用推模型使用Function.prototype.apply方法将所有参数都推送给订阅者。 观察者模式优点：时间上解耦，对象之间的解耦。 命令模式应用场景：有时候">
+<meta name="keywords" content="设计模式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2017/08/04/hello-world/index.html">
+<meta property="og:title" content="js设计模式(5)">
+<meta property="og:url" content="http://yoursite.com/2017/06/27/js设计模式(5)/index.html">
 <meta property="og:site_name" content="С�����ľ���">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="观察者模式(发布-订阅模式)它定义了对象间的一种一对多的依赖关系，当一个对象的状态发生改变时，所有依赖它的对象都将得到通知。 js中一般使用注册回调函数的形式来代替传统的观察者模式，并且arguments可以很方便地表示参数列表，因而一般用推模型使用Function.prototype.apply方法将所有参数都推送给订阅者。 观察者模式优点：时间上解耦，对象之间的解耦。 命令模式应用场景：有时候">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-04T07:58:05.271Z">
+<meta property="og:updated_time" content="2017-07-10T09:39:29.582Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="js设计模式(5)">
+<meta name="twitter:description" content="观察者模式(发布-订阅模式)它定义了对象间的一种一对多的依赖关系，当一个对象的状态发生改变时，所有依赖它的对象都将得到通知。 js中一般使用注册回调函数的形式来代替传统的观察者模式，并且arguments可以很方便地表示参数列表，因而一般用推模型使用Function.prototype.apply方法将所有参数都推送给订阅者。 观察者模式优点：时间上解耦，对象之间的解耦。 命令模式应用场景：有时候">
 
 
 
@@ -151,13 +152,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/08/04/hello-world/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/06/27/js设计模式(5)/"/>
 
 
 
 
 
-  <title>Hello World | С�����ľ���</title>
+  <title>js设计模式(5) | С�����ľ���</title>
   
 
 
@@ -329,12 +330,12 @@
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-tags" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/04/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/27/js设计模式(5)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="superDjy">
@@ -351,7 +352,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World</h1>
+          <h1 class="post-title" itemprop="name headline">js设计模式(5)</h1>
         
 
         <div class="post-meta">
@@ -363,8 +364,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-04T15:58:05+08:00">
-                2017-08-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-27T00:00:00+08:00">
+                2017-06-27
               </time>
             
 
@@ -374,6 +375,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -382,9 +405,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/08/04/hello-world/#comments" itemprop="discussionUrl">
+                <a href="/2017/06/27/js设计模式(5)/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/08/04/hello-world/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/06/27/js设计模式(5)/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -392,7 +415,7 @@
 
           
           
-             <span id="/2017/08/04/hello-world/" class="leancloud_visitors" data-flag-title="Hello World">
+             <span id="/2017/06/27/js设计模式(5)/" class="leancloud_visitors" data-flag-title="js设计模式(5)">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -423,15 +446,16 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <h1 id="观察者模式-发布-订阅模式"><a href="#观察者模式-发布-订阅模式" class="headerlink" title="观察者模式(发布-订阅模式)"></a>观察者模式(发布-订阅模式)</h1><p>它定义了对象间的一种一对多的依赖关系，当一个对象的状态发生改变时，所有依赖它的对象都将得到通知。</p>
+<p>js中一般使用<strong>注册回调函数</strong>的形式来代替传统的观察者模式，并且arguments可以很方便地表示参数列表，因而一般用推模型使用Function.prototype.apply方法将所有参数都推送给订阅者。</p>
+<p>观察者模式优点：时间上解耦，对象之间的解耦。</p>
+<h1 id="命令模式"><a href="#命令模式" class="headerlink" title="命令模式"></a>命令模式</h1><p>应用场景：有时候需要向某些对象发送请求，但是不知道请求的接受者是谁，也不知道被请求的操作是什么，此时希望用一种松耦合的方式来设计程序，使得请求发送者和请求接受者消除彼此之间的耦合关系。</p>
+<p>js中的利用闭包实现命令模式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">var setCommand=function(button,command)&#123;</div><div class="line">	button.onclick=function()&#123;</div><div class="line">		command.execute;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">var MenuBar=&#123;</div><div class="line">	refresh:function()&#123;</div><div class="line">		console.log(&apos;刷新菜单界面&apos;)</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">var RefreshMenuBarCommand=function(receiver)&#123;</div><div class="line">	return &#123;</div><div class="line">		execute:function()&#123;</div><div class="line">			receiver.refresh;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var RefreshMenuBarCommand=RefreshMenuBarCommand(MenuBar);</div><div class="line"></div><div class="line">setCommand(button1,RefreshMenuBarCommand);</div></pre></td></tr></table></figure></p>
+<h2 id="宏命令"><a href="#宏命令" class="headerlink" title="宏命令"></a>宏命令</h2><p>通过宏命令，一次可以执行一批命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">var closeDoorCommand=&#123;</div><div class="line">	execute:function()&#123;</div><div class="line">		console.log(&apos;1&apos;);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">var openDoorCommand=&#123;</div><div class="line">	execute:function()&#123;</div><div class="line">		console.log(&apos;2&apos;);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">var openWindow=&#123;</div><div class="line">	execute:function()&#123;</div><div class="line">	console.log(&apos;3&apos;);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">var MacroCommand=funciton()&#123;</div><div class="line">	return&#123;</div><div class="line">		 	commandList:[],</div><div class="line">			add:funciton(command)&#123;</div><div class="line">				this.commandList.push(command)</div><div class="line">			&#125;,</div><div class="line">			execute:function()&#123;</div><div class="line">				for(var i=-0,command;command=this.commandList[i++];)&#123;</div><div class="line">					command.execute;</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">&#125;</div><div class="line">var macroCommand=MacroCommand();</div><div class="line">macroCommand.add(closeDoorCommand);</div><div class="line">macroCommand.add(openDoorCommand);</div><div class="line">macorCommand.add(openWindow);</div><div class="line">macroCommand.execute;</div></pre></td></tr></table></figure></p>
+<h1 id="组合模式"><a href="#组合模式" class="headerlink" title="组合模式"></a>组合模式</h1><p>组合模式就是用小的对象来构建更大的对象，而这些小的子对象本身也许来自更小的对象。上一节中的宏命令即为一个组合模式的例子。</p>
+<p><strong>注意</strong><br>1.组合模式不是父子关系，组合模式把对象的请求委托给它包含的所有叶对象。</p>
+<p>2.组合模式除了要求组合对象和叶对象拥有相同的接口，还要求对一组叶对象的操作必须具有一致性。</p>
+<p>3.可以用职责连模式来提高组合模式的性能</p>
 
       
     </div>
@@ -447,6 +471,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/设计模式/" rel="tag"># 设计模式</a>
+          
+        </div>
+      
 
       
       
@@ -456,8 +486,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/06/29/js设计模式(9)/" rel="next" title="js设计模式(9)">
-                <i class="fa fa-chevron-left"></i> js设计模式(9)
+              <a href="/2017/06/27/js设计模式(4)/" rel="next" title="js设计模式(4)">
+                <i class="fa fa-chevron-left"></i> js设计模式(4)
               </a>
             
           </div>
@@ -465,6 +495,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/28/js设计模式(8)/" rel="prev" title="js设计模式(8)">
+                js设计模式(8) <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -652,7 +686,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#观察者模式-发布-订阅模式"><span class="nav-number">1.</span> <span class="nav-text">观察者模式(发布-订阅模式)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#命令模式"><span class="nav-number">2.</span> <span class="nav-text">命令模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#宏命令"><span class="nav-number">2.1.</span> <span class="nav-text">宏命令</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#组合模式"><span class="nav-number">3.</span> <span class="nav-text">组合模式</span></a></li></ol></div>
             
 
           </div>
@@ -807,9 +841,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2017/08/04/hello-world/';
-          this.page.identifier = '2017/08/04/hello-world/';
-          this.page.title = 'Hello World';
+          this.page.url = 'http://yoursite.com/2017/06/27/js设计模式(5)/';
+          this.page.identifier = '2017/06/27/js设计模式(5)/';
+          this.page.title = 'js设计模式(5)';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://.disqus.com/embed.js';
