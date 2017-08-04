@@ -335,7 +335,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/27/js设计模式(7)/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/27/js设计模式(4)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="superDjy">
@@ -354,7 +354,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/06/27/js设计模式(7)/" itemprop="url">js设计模式(7)</a></h1>
+                <a class="post-title-link" href="/2017/06/27/js设计模式(4)/" itemprop="url">js设计模式(4)</a></h1>
         
 
         <div class="post-meta">
@@ -407,9 +407,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/06/27/js设计模式(7)/#comments" itemprop="discussionUrl">
+                <a href="/2017/06/27/js设计模式(4)/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/06/27/js设计模式(7)/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/06/27/js设计模式(4)/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -417,7 +417,7 @@
 
           
           
-             <span id="/2017/06/27/js设计模式(7)/" class="leancloud_visitors" data-flag-title="js设计模式(7)">
+             <span id="/2017/06/27/js设计模式(4)/" class="leancloud_visitors" data-flag-title="js设计模式(4)">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -450,10 +450,11 @@
       
         
           
-            <h1 id="享元模式"><a href="#享元模式" class="headerlink" title="享元模式"></a>享元模式</h1><p>享元模式的核心是运用共享技术来有效支持大量细粒度的对象。</p>
-<p>享元模式要求将对象的属性划分为内部状态与外部状态(这里的状态通常指属性)。其目标是尽量减少共享对象的数量。具体的内部对象是指独立于具体的场景，通常不会改变，外部对象是指取决于具体场景，并且根据外部场景的变化，外部状态不能被共享。</p>
-<h2 id="对象池"><a href="#对象池" class="headerlink" title="对象池"></a>对象池</h2><p>维护一个装载空闲对象的池子，如果需要对象的时候，不是直接new，而是转从对象池里面获取。如果对象池是没有空闲对象，则新建一个新的对象，当获取出的对象完成了它的职责之后，再次进入池子等待被获取。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">var toolFactory=(function()&#123;</div><div class="line">	var toolPool=[];</div><div class="line">	return&#123;</div><div class="line">		create:function()&#123;</div><div class="line">			if(toolPool.length==0)&#123;</div><div class="line">				var div=document.creat(&apos;div&apos;);</div><div class="line">				document.body.appendChild)(div);</div><div class="line">				return div;</div><div class="line">			&#125;else&#123;</div><div class="line">				return toolPool.shift();</div><div class="line">			&#125;</div><div class="line">		&#125;,</div><div class="line">		recover:function(toolDom)&#123;</div><div class="line">			return toolPool.push(toolDom);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;))()</div><div class="line"></div><div class="line">var arr=[];</div><div class="line"></div><div class="line">//创建两个节点</div><div class="line">for(var i=0,str;str=[&apos;a&apos;,&apos;b&apos;][i++];)&#123;</div><div class="line">	var toolTip=toolFactore.create();</div><div class="line">	toopTip.innerHTML=str;</div><div class="line">	arr.push(toopTip);</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">//回收进对象池</div><div class="line">for(var j=0,tooptip;tooptip=arr[i++];)&#123;</div><div class="line">	toolFactory.recover(tooptip);</div><div class="line">&#125;</div><div class="line"></div><div class="line">//再次创建节点时可以直接从对象池里面获取</div><div class="line">for(var k=0,str;str=[&apos;a&apos;,&apos;b&apos;,&apos;c&apos;,&apos;d&apos;,&apos;e&apos;][i++];)&#123;</div><div class="line">	var toopTip=toolFactory.create();</div><div class="line">	toopTip.innerHTML=str;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>通用的对象池<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">var toolFactory=function(fn)&#123;</div><div class="line">	var toolPool=[];</div><div class="line">	return&#123;</div><div class="line">		create:function()&#123;</div><div class="line">			if(toolPool.length==0)&#123;</div><div class="line">				return fn.apply(this.arguments);</div><div class="line">			&#125;else&#123;</div><div class="line">				return toolPool.shift();</div><div class="line">			&#125;</div><div class="line">		&#125;,</div><div class="line">		recover:function(obj)&#123;</div><div class="line">			return toolPool.push(obj);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var finalFactory=toolFactory(function()&#123;</div><div class="line">	var div = document.create(&apos;div&apos;);</div><div class="line">	document.body.appendChild(div);</div><div class="line">	return div;</div><div class="line">&#125;)</div><div class="line"></div><div class="line">var tooltip=finalFactory.create();</div><div class="line"></div><div class="line">tooltip.innerHTML=&apos;a&apos;;</div></pre></td></tr></table></figure></p>
+            <h1 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h1><p><strong>定义：为一个对象或提供一个代用品或占位符，以便控制对它的访问。</strong></p>
+<p>代理模式分为保护代理和虚拟代理。保护代理是用于控制不同权限对象对目标对象的访问。虚拟代理会把一些开销很大的对象，延迟到真正需要它的再去创建。</p>
+<h2 id="代理的意义"><a href="#代理的意义" class="headerlink" title="代理的意义"></a>代理的意义</h2><p>实现<strong>单一职责</strong>原则。即，就一个类（通常也包括对象和函数），应该仅有一个引起它变化的原因。<br>如果一个对象承担了多项职责，意味着将这些职责耦合到了一起，这种耦合会导致脆弱和迪内聚的设计。</p>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><p>加载一张图片：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var myImage=(funciton()&#123;</div><div class="line">	var imgNode=document.creatElement(&apos;img&apos;);</div><div class="line">	document.body.appendChild(imgNode);</div><div class="line">	return&#123;</div><div class="line">		setSrc:function(src)&#123;</div><div class="line">		imgNode.src=src</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;)()</div><div class="line">myImage.setSrc(&quot;..........&quot;)</div></pre></td></tr></table></figure></p>
+<p>增加代理之后，将预加载与图片加载分离：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">var proxyImage=(function()&#123;</div><div class="line">	var img=new Image;</div><div class="line">	img.onload=function()&#123;</div><div class="line">		myImage.setSrc(this.src);</div><div class="line">	&#125;</div><div class="line">	return&#123;</div><div class="line">	setSrc:function(src)&#123;</div><div class="line">		myImage.setSrc(&apos;本地的loading图片&apos;);</div><div class="line">		img.src=src;</div><div class="line">	&#125;</div><div class="line">	&#125;</div><div class="line">&#125;)()</div><div class="line">proxyImage.setSrc(&apos;真正图片&apos;)</div></pre></td></tr></table></figure></p>
 
           
         
@@ -1256,181 +1257,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/17/js中设计模式基础/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="superDjy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://img.mp.itc.cn/upload/20170429/a2379efc26214d7fa790af6105312132">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="С�����ľ���">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/06/17/js中设计模式基础/" itemprop="url">JS中的设计模式</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-17T00:00:00+08:00">
-                2017-06-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/设计模式/" itemprop="url" rel="index">
-                    <span itemprop="name">设计模式</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/06/17/js中设计模式基础/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/06/17/js中设计模式基础/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/06/17/js中设计模式基础/" class="leancloud_visitors" data-flag-title="JS中的设计模式">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="函数声明-amp-amp-函数表达式"><a href="#函数声明-amp-amp-函数表达式" class="headerlink" title="函数声明&amp;&amp;函数表达式"></a>函数声明&amp;&amp;函数表达式</h1><h2 id="函数声明"><a href="#函数声明" class="headerlink" title="函数声明"></a>函数声明</h2><p><code>Function Declaration</code> 可以定义命名的函数变量，而无需给变量赋值。<code>Function Declaration</code> 是一种独立的结构，不能嵌套在非功能模块中。可以将它类比为 <code>Variable Declaration</code>（变量声明）。就像 <code>Variable Declaration</code> 必须以<code>var</code>开头一样，<code>Function Declaration</code> 必须以<code>function</code>开头。</p>
-<h3 id="eg"><a href="#eg" class="headerlink" title="eg"></a>eg</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">function test()&#123;</div><div class="line">	return 3</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>函数声明时，函数名在自身作用域和父作用域内是可获取的（否则就取不到函数了）。</p>
-<h2 id="函数表达式"><a href="#函数表达式" class="headerlink" title="函数表达式"></a>函数表达式</h2><p><code>Function Expression</code> 将函数定义为表达式语句（通常是变量赋值）的一部分。通过 <code>Function Expression</code> 定义的函数可以是命名的，也可以是匿名的。<code>Function Expression</code> 不能以<code>function</code>开头</p>
-<h3 id="eg-1"><a href="#eg-1" class="headerlink" title="eg"></a>eg</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var a = function()&#123;</div><div class="line">	return 3;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var a = function test()&#123;</div><div class="line">	return 3</div><div class="line">&#125;</div><div class="line"></div><div class="line">(function test()&#123;</div><div class="line">	return 3;</div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
-<h2 id="两者的区别"><a href="#两者的区别" class="headerlink" title="两者的区别"></a>两者的区别</h2><p><code>JavaScript</code> 解释器中存在一种变量声明被提升<code>hoisting</code>的机制，也就是说<strong>变量（函数）的声明</strong>会被提升到作用域的最前面，即使写代码的时候是写在最后面，也还是会被提升至最前面。</p>
-<h3 id="eg-Q1"><a href="#eg-Q1" class="headerlink" title="eg:Q1"></a>eg:Q1</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">function bling()&#123;</div><div class="line">	function test()&#123;</div><div class="line">		return 3</div><div class="line">	&#125;;</div><div class="line">	return test();</div><div class="line">	function test()&#123;</div><div class="line">		return 8;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">&#125;</div><div class="line">console.log(bling());</div><div class="line">结果为:8</div></pre></td></tr></table></figure>
-<p>由于函数声明的变量提升，该程序经过解释器解释后为</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"> function bling()&#123;</div><div class="line">	function test()&#123;</div><div class="line">		return 3</div><div class="line">	&#125;;</div><div class="line">	</div><div class="line">	function test()&#123;</div><div class="line">		return 8;</div><div class="line">	&#125;</div><div class="line">	return test();</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="eg-Q2"><a href="#eg-Q2" class="headerlink" title="eg:Q2"></a>eg:Q2</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">function foo()&#123;</div><div class="line">    var bar = function() &#123;</div><div class="line">        return 3;</div><div class="line">    &#125;;</div><div class="line">    return bar();</div><div class="line">    var bar = function() &#123;</div><div class="line">        return 8;</div><div class="line">    &#125;;</div><div class="line">&#125;</div><div class="line">console.log(foo());</div><div class="line">结果为:3</div></pre></td></tr></table></figure>
-<p>该程序经过解释器解释后为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function foo()&#123;</div><div class="line">//变量声明提升</div><div class="line">var bar = undefined;</div><div class="line">var bar = undefined;</div><div class="line">bar = function()&#123;return 3&#125;;</div><div class="line">return bar();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="eg-Q3"><a href="#eg-Q3" class="headerlink" title="eg:Q3"></a>eg:Q3</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">console.log(foo());</div><div class="line">function foo()&#123;</div><div class="line">    var bar = function() &#123;</div><div class="line">        return 3;</div><div class="line">    &#125;;</div><div class="line">    return bar();</div><div class="line">    var bar = function() &#123;</div><div class="line">        return 8;</div><div class="line">    &#125;;</div><div class="line">&#125;</div><div class="line">结果为:3</div><div class="line">这次是函数foo()的声明提升了</div></pre></td></tr></table></figure>
-<h3 id="eg-Q4"><a href="#eg-Q4" class="headerlink" title="eg:Q4"></a>eg:Q4</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">function foo()&#123;</div><div class="line">    return bar();</div><div class="line">    var bar = function() &#123;</div><div class="line">        return 3;</div><div class="line">    &#125;;</div><div class="line">    var bar = function() &#123;</div><div class="line">        return 8;</div><div class="line">    &#125;;</div><div class="line">&#125;</div><div class="line">console.log(foo());</div><div class="line">结果为：Uncaught TypeError: bar is not a function</div><div class="line">因为这里没有函数提升</div></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/17/js数据结构与算法(5 end)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1606,7 +1432,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/16/js数据结构与算法(2)/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/17/js中设计模式基础/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="superDjy">
@@ -1625,7 +1451,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/06/16/js数据结构与算法(2)/" itemprop="url">JS中的数据结构与算法(2)</a></h1>
+                <a class="post-title-link" href="/2017/06/17/js中设计模式基础/" itemprop="url">JS中的设计模式</a></h1>
         
 
         <div class="post-meta">
@@ -1637,8 +1463,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-16T00:00:00+08:00">
-                2017-06-16
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-17T00:00:00+08:00">
+                2017-06-17
               </time>
             
 
@@ -1660,8 +1486,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/js数据结构与算法/" itemprop="url" rel="index">
-                    <span itemprop="name">js数据结构与算法</span>
+                  <a href="/categories/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
                   </a>
                 </span>
 
@@ -1678,9 +1504,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/06/16/js数据结构与算法(2)/#comments" itemprop="discussionUrl">
+                <a href="/2017/06/17/js中设计模式基础/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/06/16/js数据结构与算法(2)/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/06/17/js中设计模式基础/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1688,7 +1514,7 @@
 
           
           
-             <span id="/2017/06/16/js数据结构与算法(2)/" class="leancloud_visitors" data-flag-title="JS中的数据结构与算法(2)">
+             <span id="/2017/06/17/js中设计模式基础/" class="leancloud_visitors" data-flag-title="JS中的设计模式">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1721,16 +1547,19 @@
       
         
           
-            <h1 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h1><p>js中实现一个栈的低层数据结构是数组。</p>
-<h2 id="利用栈的几种情况"><a href="#利用栈的几种情况" class="headerlink" title="利用栈的几种情况"></a>利用栈的几种情况</h2><h3 id="示例1-数制之间的相互转换"><a href="#示例1-数制之间的相互转换" class="headerlink" title="示例1:数制之间的相互转换"></a>示例1:数制之间的相互转换</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">function chang(num,base)&#123;</div><div class="line">	var arr=[];</div><div class="line">	var result = &quot;&quot;;</div><div class="line">	do&#123;</div><div class="line">		arr.push(num%base);</div><div class="line">		num = num/base;</div><div class="line">	&#125;while(num&gt;=1);</div><div class="line">	arr.reverse();</div><div class="line">	for(var i=0;i&lt;arr.length;i++)&#123;</div><div class="line">		result = result + arr[i];</div><div class="line">	&#125;</div><div class="line">	return result;</div><div class="line">&#125;</div><div class="line">var haha = chang(256,8);</div><div class="line">console.log(haha);</div><div class="line">结果:400</div></pre></td></tr></table></figure>
-<h3 id="示例2-判断回文"><a href="#示例2-判断回文" class="headerlink" title="示例2:判断回文"></a>示例2:判断回文</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">function back(s)&#123;</div><div class="line">	var regexp=/[a-z]/gi;//全局匹配不区分大小写</div><div class="line">	var arr=s.match(regexp);</div><div class="line">	var arrRevs=arr.reverse();</div><div class="line">	if(arr.join(&apos;&apos;)==arrRevs.join(&apos;&apos;))&#123;</div><div class="line">		return true;</div><div class="line">	&#125;</div><div class="line">	return false;</div><div class="line">&#125;</div><div class="line">var str = &apos;A man, a plan, a canal: Panama&apos;; </div><div class="line">console.log(back(str));</div><div class="line">结果：true</div></pre></td></tr></table></figure>
-<h1 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h1><p>队列先进先出，可以利用js中的<code>push()</code>和<code>shift()</code>方法从尾部增加，从头部删除。</p>
-<h2 id="利用队列的示例"><a href="#利用队列的示例" class="headerlink" title="利用队列的示例"></a>利用队列的示例</h2><h3 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h3><p>基数排序的基本原理：从个位，十位，百位的数字依次进行排序。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">//sort函数功能将数组根据个位或者十位的大小进行分组</div><div class="line">function sort(nums,digital,queue)&#123;</div><div class="line">	for(var i=0;i&lt;nums.length;i++)</div><div class="line">    &#123;</div><div class="line">        if(digital==1)&#123;</div><div class="line">            queue[nums[i]%10].push(nums[i]);</div><div class="line">        &#125;</div><div class="line">        else&#123;</div><div class="line">			queue[Math.floor(nums[i]/10)].push(nums[i]);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">	</div><div class="line">&#125;</div><div class="line">//将前面的排序结果选出，准备下次排序</div><div class="line">function out(queue)&#123;</div><div class="line">	var arr=[];</div><div class="line">	for(var i=0;i&lt;10;i++)&#123;</div><div class="line">		if(queue[i].length!=0)&#123;</div><div class="line">			var h=queue[i].length;</div><div class="line">			for(var j=0;j&lt;h;j++)&#123;</div><div class="line">				arr.push(queue[i].shift());</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">			</div><div class="line">		</div><div class="line">	&#125;</div><div class="line">	return arr;</div><div class="line">&#125;</div><div class="line">var nums=[45,72,93,51,21,16,70,41,27,31];</div><div class="line">var queues=[];</div><div class="line">for(var i =0;i&lt;10;i++)&#123;</div><div class="line">	queues[i]=[];</div><div class="line">&#125;</div><div class="line">sort(nums,1,queues);</div><div class="line">console.log(queues[1]);</div><div class="line">var temp = out(queues);</div><div class="line">console.log(temp);</div><div class="line">sort(temp,10,queues);</div><div class="line">var result = out(queues);</div><div class="line">console.log(result);</div><div class="line">结果: [51, 21, 41, 31]</div><div class="line">      [70, 51, 21, 41, 31, 72, 93, 45, 16, 27]</div><div class="line">      [16, 21, 27, 31, 41, 45, 51, 70, 72, 93]</div></pre></td></tr></table></figure></p>
-<h1 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h1><p>一种不同于数组的一种底层存储的数据结构<br>基于对象的列表包含两个类，分别为Node类和LinkedLise类；Node类的构造函数有两个属性<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">function Node(element)&#123;</div><div class="line">	this.element = element;</div><div class="line">	this.next = null;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>LinkedList类的构造函数只有一个属性，此外还包含链表中的一些方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function()&#123;</div><div class="line">	this.head=new Node(&apos;head&apos;);</div><div class="line">	this.find=find;</div><div class="line">	this.insert=insert;</div><div class="line">	this.remove=remove;</div><div class="line">	this.display=display; </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h1 id="散列"><a href="#散列" class="headerlink" title="散列"></a>散列</h1><p>使用散列存储数据时，通过一个高效的散列函数将键映射到一个数字，这个数字的长度是0到散列表的长度。<br>当散列对于多个输入同时产生同样的输出时，就会产生碰撞。解决散列表的碰撞问题的方法有1.开链法2.线性探测法。<br><code>开链法</code>：实现散列表的底层数组中，每个数组元素有都是一个新的数据结构，比如数组，这样就能存储多个键。<br><code>线性探测法</code>：检查散列表的下一个位置是否为空，如果为空，就将数据存入该位置；如果不为空，则继续检查下一个位置，直到找到一个空位置为止。</p>
-<h2 id="两种方法比较"><a href="#两种方法比较" class="headerlink" title="两种方法比较"></a>两种方法比较</h2><p>当数据量比较大的时候，存储数据使用数组比较大时，使用线性探测法比较好(数组大小是待存数据的两倍或两倍以上时)，其他使用开链法比较好。</p>
-
+            <h1 id="函数声明-amp-amp-函数表达式"><a href="#函数声明-amp-amp-函数表达式" class="headerlink" title="函数声明&amp;&amp;函数表达式"></a>函数声明&amp;&amp;函数表达式</h1><h2 id="函数声明"><a href="#函数声明" class="headerlink" title="函数声明"></a>函数声明</h2><p><code>Function Declaration</code> 可以定义命名的函数变量，而无需给变量赋值。<code>Function Declaration</code> 是一种独立的结构，不能嵌套在非功能模块中。可以将它类比为 <code>Variable Declaration</code>（变量声明）。就像 <code>Variable Declaration</code> 必须以<code>var</code>开头一样，<code>Function Declaration</code> 必须以<code>function</code>开头。</p>
+<h3 id="eg"><a href="#eg" class="headerlink" title="eg"></a>eg</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">function test()&#123;</div><div class="line">	return 3</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>函数声明时，函数名在自身作用域和父作用域内是可获取的（否则就取不到函数了）。</p>
+<h2 id="函数表达式"><a href="#函数表达式" class="headerlink" title="函数表达式"></a>函数表达式</h2><p><code>Function Expression</code> 将函数定义为表达式语句（通常是变量赋值）的一部分。通过 <code>Function Expression</code> 定义的函数可以是命名的，也可以是匿名的。<code>Function Expression</code> 不能以<code>function</code>开头</p>
+<h3 id="eg-1"><a href="#eg-1" class="headerlink" title="eg"></a>eg</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var a = function()&#123;</div><div class="line">	return 3;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var a = function test()&#123;</div><div class="line">	return 3</div><div class="line">&#125;</div><div class="line"></div><div class="line">(function test()&#123;</div><div class="line">	return 3;</div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
+<h2 id="两者的区别"><a href="#两者的区别" class="headerlink" title="两者的区别"></a>两者的区别</h2><p><code>JavaScript</code> 解释器中存在一种变量声明被提升<code>hoisting</code>的机制，也就是说<strong>变量（函数）的声明</strong>会被提升到作用域的最前面，即使写代码的时候是写在最后面，也还是会被提升至最前面。</p>
+<h3 id="eg-Q1"><a href="#eg-Q1" class="headerlink" title="eg:Q1"></a>eg:Q1</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">function bling()&#123;</div><div class="line">	function test()&#123;</div><div class="line">		return 3</div><div class="line">	&#125;;</div><div class="line">	return test();</div><div class="line">	function test()&#123;</div><div class="line">		return 8;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">&#125;</div><div class="line">console.log(bling());</div><div class="line">结果为:8</div></pre></td></tr></table></figure>
+<p>由于函数声明的变量提升，该程序经过解释器解释后为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"> function bling()&#123;</div><div class="line">	function test()&#123;</div><div class="line">		return 3</div><div class="line">	&#125;;</div><div class="line">	</div><div class="line">	function test()&#123;</div><div class="line">		return 8;</div><div class="line">	&#125;</div><div class="line">	return test();</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="eg-Q2"><a href="#eg-Q2" class="headerlink" title="eg:Q2"></a>eg:Q2</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">function foo()&#123;</div><div class="line">    var bar = function() &#123;</div><div class="line">        return 3;</div><div class="line">    &#125;;</div><div class="line">    return bar();</div><div class="line">    var bar = function() &#123;</div><div class="line">        return 8;</div><div class="line">    &#125;;</div><div class="line">&#125;</div><div class="line">console.log(foo());</div><div class="line">结果为:3</div></pre></td></tr></table></figure>
+<p>该程序经过解释器解释后为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function foo()&#123;</div><div class="line">//变量声明提升</div><div class="line">var bar = undefined;</div><div class="line">var bar = undefined;</div><div class="line">bar = function()&#123;return 3&#125;;</div><div class="line">return bar();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="eg-Q3"><a href="#eg-Q3" class="headerlink" title="eg:Q3"></a>eg:Q3</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">console.log(foo());</div><div class="line">function foo()&#123;</div><div class="line">    var bar = function() &#123;</div><div class="line">        return 3;</div><div class="line">    &#125;;</div><div class="line">    return bar();</div><div class="line">    var bar = function() &#123;</div><div class="line">        return 8;</div><div class="line">    &#125;;</div><div class="line">&#125;</div><div class="line">结果为:3</div><div class="line">这次是函数foo()的声明提升了</div></pre></td></tr></table></figure>
+<h3 id="eg-Q4"><a href="#eg-Q4" class="headerlink" title="eg:Q4"></a>eg:Q4</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">function foo()&#123;</div><div class="line">    return bar();</div><div class="line">    var bar = function() &#123;</div><div class="line">        return 3;</div><div class="line">    &#125;;</div><div class="line">    var bar = function() &#123;</div><div class="line">        return 8;</div><div class="line">    &#125;;</div><div class="line">&#125;</div><div class="line">console.log(foo());</div><div class="line">结果为：Uncaught TypeError: bar is not a function</div><div class="line">因为这里没有函数提升</div></pre></td></tr></table></figure>
           
         
       
@@ -2067,6 +1896,178 @@
 <p>(2)如何已有根节点，将根节点设为当前节点，比较待插数据与根节点的大小，如果小于当前节点，设新的当前节点为原节点的做节点，否则设为右节点。</p>
 <p>(3)知道当前节点的做节点或右节点为空时，插入数据，完成算法。<br>具体实现：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">function insert(data)&#123;</div><div class="line">	var n = new Node(data,null,null);</div><div class="line">	if(this.root==null)&#123;</div><div class="line">		this.root = n;</div><div class="line">	&#125;</div><div class="line">	else&#123;</div><div class="line">		var current = this.root;</div><div class="line">		var parent;</div><div class="line">		while(true)&#123;</div><div class="line">				parent = current; </div><div class="line">				if(current.data&gt;data)&#123;</div><div class="line">					current = current.left;</div><div class="line">					if(current==null)&#123;</div><div class="line">						parent.left = n;</div><div class="line">						break;</div><div class="line">					&#125;</div><div class="line">				&#125;</div><div class="line">				else&#123;</div><div class="line">					current = current.right;</div><div class="line">					if(current==null)&#123;</div><div class="line">						parent.right = n;</div><div class="line">						break;</div><div class="line">					&#125;</div><div class="line">				&#125;</div><div class="line">		&#125;</div><div class="line">	</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <h2 id="常用的遍历二叉查找树的方法有三种：中序、先序，后序。"><a href="#常用的遍历二叉查找树的方法有三种：中序、先序，后序。" class="headerlink" title="常用的遍历二叉查找树的方法有三种：中序、先序，后序。"></a>常用的遍历二叉查找树的方法有三种：中序、先序，后序。</h2><p>中序：即为升序排列。左，中，右<br>先序：从最左边开始：中，左，右。<br>后序：从最左边开始：左，右，中。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/16/js数据结构与算法(2)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="superDjy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://img.mp.itc.cn/upload/20170429/a2379efc26214d7fa790af6105312132">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="С�����ľ���">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/06/16/js数据结构与算法(2)/" itemprop="url">JS中的数据结构与算法(2)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-16T00:00:00+08:00">
+                2017-06-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/js数据结构与算法/" itemprop="url" rel="index">
+                    <span itemprop="name">js数据结构与算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/06/16/js数据结构与算法(2)/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/06/16/js数据结构与算法(2)/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/06/16/js数据结构与算法(2)/" class="leancloud_visitors" data-flag-title="JS中的数据结构与算法(2)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h1><p>js中实现一个栈的低层数据结构是数组。</p>
+<h2 id="利用栈的几种情况"><a href="#利用栈的几种情况" class="headerlink" title="利用栈的几种情况"></a>利用栈的几种情况</h2><h3 id="示例1-数制之间的相互转换"><a href="#示例1-数制之间的相互转换" class="headerlink" title="示例1:数制之间的相互转换"></a>示例1:数制之间的相互转换</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">function chang(num,base)&#123;</div><div class="line">	var arr=[];</div><div class="line">	var result = &quot;&quot;;</div><div class="line">	do&#123;</div><div class="line">		arr.push(num%base);</div><div class="line">		num = num/base;</div><div class="line">	&#125;while(num&gt;=1);</div><div class="line">	arr.reverse();</div><div class="line">	for(var i=0;i&lt;arr.length;i++)&#123;</div><div class="line">		result = result + arr[i];</div><div class="line">	&#125;</div><div class="line">	return result;</div><div class="line">&#125;</div><div class="line">var haha = chang(256,8);</div><div class="line">console.log(haha);</div><div class="line">结果:400</div></pre></td></tr></table></figure>
+<h3 id="示例2-判断回文"><a href="#示例2-判断回文" class="headerlink" title="示例2:判断回文"></a>示例2:判断回文</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">function back(s)&#123;</div><div class="line">	var regexp=/[a-z]/gi;//全局匹配不区分大小写</div><div class="line">	var arr=s.match(regexp);</div><div class="line">	var arrRevs=arr.reverse();</div><div class="line">	if(arr.join(&apos;&apos;)==arrRevs.join(&apos;&apos;))&#123;</div><div class="line">		return true;</div><div class="line">	&#125;</div><div class="line">	return false;</div><div class="line">&#125;</div><div class="line">var str = &apos;A man, a plan, a canal: Panama&apos;; </div><div class="line">console.log(back(str));</div><div class="line">结果：true</div></pre></td></tr></table></figure>
+<h1 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h1><p>队列先进先出，可以利用js中的<code>push()</code>和<code>shift()</code>方法从尾部增加，从头部删除。</p>
+<h2 id="利用队列的示例"><a href="#利用队列的示例" class="headerlink" title="利用队列的示例"></a>利用队列的示例</h2><h3 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h3><p>基数排序的基本原理：从个位，十位，百位的数字依次进行排序。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">//sort函数功能将数组根据个位或者十位的大小进行分组</div><div class="line">function sort(nums,digital,queue)&#123;</div><div class="line">	for(var i=0;i&lt;nums.length;i++)</div><div class="line">    &#123;</div><div class="line">        if(digital==1)&#123;</div><div class="line">            queue[nums[i]%10].push(nums[i]);</div><div class="line">        &#125;</div><div class="line">        else&#123;</div><div class="line">			queue[Math.floor(nums[i]/10)].push(nums[i]);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">	</div><div class="line">&#125;</div><div class="line">//将前面的排序结果选出，准备下次排序</div><div class="line">function out(queue)&#123;</div><div class="line">	var arr=[];</div><div class="line">	for(var i=0;i&lt;10;i++)&#123;</div><div class="line">		if(queue[i].length!=0)&#123;</div><div class="line">			var h=queue[i].length;</div><div class="line">			for(var j=0;j&lt;h;j++)&#123;</div><div class="line">				arr.push(queue[i].shift());</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">			</div><div class="line">		</div><div class="line">	&#125;</div><div class="line">	return arr;</div><div class="line">&#125;</div><div class="line">var nums=[45,72,93,51,21,16,70,41,27,31];</div><div class="line">var queues=[];</div><div class="line">for(var i =0;i&lt;10;i++)&#123;</div><div class="line">	queues[i]=[];</div><div class="line">&#125;</div><div class="line">sort(nums,1,queues);</div><div class="line">console.log(queues[1]);</div><div class="line">var temp = out(queues);</div><div class="line">console.log(temp);</div><div class="line">sort(temp,10,queues);</div><div class="line">var result = out(queues);</div><div class="line">console.log(result);</div><div class="line">结果: [51, 21, 41, 31]</div><div class="line">      [70, 51, 21, 41, 31, 72, 93, 45, 16, 27]</div><div class="line">      [16, 21, 27, 31, 41, 45, 51, 70, 72, 93]</div></pre></td></tr></table></figure></p>
+<h1 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h1><p>一种不同于数组的一种底层存储的数据结构<br>基于对象的列表包含两个类，分别为Node类和LinkedLise类；Node类的构造函数有两个属性<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">function Node(element)&#123;</div><div class="line">	this.element = element;</div><div class="line">	this.next = null;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>LinkedList类的构造函数只有一个属性，此外还包含链表中的一些方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function()&#123;</div><div class="line">	this.head=new Node(&apos;head&apos;);</div><div class="line">	this.find=find;</div><div class="line">	this.insert=insert;</div><div class="line">	this.remove=remove;</div><div class="line">	this.display=display; </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="散列"><a href="#散列" class="headerlink" title="散列"></a>散列</h1><p>使用散列存储数据时，通过一个高效的散列函数将键映射到一个数字，这个数字的长度是0到散列表的长度。<br>当散列对于多个输入同时产生同样的输出时，就会产生碰撞。解决散列表的碰撞问题的方法有1.开链法2.线性探测法。<br><code>开链法</code>：实现散列表的底层数组中，每个数组元素有都是一个新的数据结构，比如数组，这样就能存储多个键。<br><code>线性探测法</code>：检查散列表的下一个位置是否为空，如果为空，就将数据存入该位置；如果不为空，则继续检查下一个位置，直到找到一个空位置为止。</p>
+<h2 id="两种方法比较"><a href="#两种方法比较" class="headerlink" title="两种方法比较"></a>两种方法比较</h2><p>当数据量比较大的时候，存储数据使用数组比较大时，使用线性探测法比较好(数组大小是待存数据的两倍或两倍以上时)，其他使用开链法比较好。</p>
 
           
         

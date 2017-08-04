@@ -1029,6 +1029,171 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/28/H5画布2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="superDjy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://img.mp.itc.cn/upload/20170429/a2379efc26214d7fa790af6105312132">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="С�����ľ���">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/06/28/H5画布2/" itemprop="url">H5基础知识(2)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-28T00:00:00+08:00">
+                2017-06-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/H5/" itemprop="url" rel="index">
+                    <span itemprop="name">H5</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/06/28/H5画布2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/06/28/H5画布2/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/06/28/H5画布2/" class="leancloud_visitors" data-flag-title="H5基础知识(2)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Canvas的一些高级功能"><a href="#Canvas的一些高级功能" class="headerlink" title="Canvas的一些高级功能"></a>Canvas的一些高级功能</h1><p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">	&lt;head&gt;</div><div class="line">&lt;!-- 		&lt;script type=&quot;text/javascript&quot; src=&quot;http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js&quot;&gt;&lt;/script&gt;</div><div class="line">		&lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">			$(document).ready(function()&#123;</div><div class="line">				var canvas=$(&quot;#mycanvas&quot;);</div><div class="line">				var context=canvas.get(0).getContext(&quot;2d&quot;);</div><div class="line">				context.fillRect(40,40,100,100);</div><div class="line">			&#125;)</div><div class="line">		&lt;/script&gt; --&gt;</div><div class="line"></div><div class="line">	&lt;/head&gt;</div><div class="line"></div><div class="line">	&lt;body&gt;</div><div class="line">		&lt;canvas id=&quot;myCanvas&quot; width=&quot;500&quot; height=&quot;500&quot;&gt;</div><div class="line">		&lt;/canvas&gt;</div><div class="line">	&lt;/body&gt;</div><div class="line">	&lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">		var c=document.getElementById(&quot;myCanvas&quot;);</div><div class="line">		var cxt=c.getContext(&quot;2d&quot;);</div><div class="line">		cxt.fillStyle=&quot;rgb(255,0,0)&quot;;</div><div class="line">		//红色压栈</div><div class="line">		cxt.save();</div><div class="line">		cxt.fillRect(50,50,100,100);</div><div class="line"></div><div class="line">		cxt.fillStyle=&quot;rgb(0,255,0)&quot;;</div><div class="line">		//绿色压栈</div><div class="line">		cxt.save();</div><div class="line">		cxt.fillRect(200,50,100,100);</div><div class="line">		//自动取出栈中的最后状态,绿色</div><div class="line">		cxt.restore();</div><div class="line">		cxt.fillRect(350,50,100,100);</div><div class="line">		//红色</div><div class="line">		cxt.restore();</div><div class="line">		cxt.fillRect(50,200,100,100);</div><div class="line"></div><div class="line"></div><div class="line">		//平移</div><div class="line">		cxt.fillRect(0,0,20,20);</div><div class="line">		cxt.translate(150,150);</div><div class="line">		//平移后的显示，之后所有操作均带有平移属性</div><div class="line">		cxt.fillRect(0,0,20,20);</div><div class="line">		</div><div class="line"></div><div class="line">		//之后的所有操作均带有旋转属性</div><div class="line">		cxt.rotate(0.7854);//旋转45度(Math.PI/4);</div><div class="line">		cxt.fillRect(150,150,40,40);</div><div class="line"></div><div class="line">		//合成</div><div class="line">		cxt.fillStyle=&quot;rgb(63,169,245)&quot;;</div><div class="line">		cxt.fillRect(200,50,100,100);</div><div class="line">		cxt.globalAlpha=0.5;</div><div class="line">		cxt.fillStyle=&quot;rgb(255,123,172)&quot;;</div><div class="line">		cxt.fillRect(250,100,100,100);</div><div class="line"></div><div class="line">		//阴影</div><div class="line">		cxt.shadowBlur=20;</div><div class="line">		cxt.shadowColor=&quot;rgb(0,0,0)&quot;;</div><div class="line">		cxt.fillRect(10,10,50,50);s</div><div class="line"></div><div class="line">	&lt;/script&gt;</div><div class="line"></div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/28/Vue基础/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1316,171 +1481,6 @@
         
           
             <h1 id="Canvas基础知识"><a href="#Canvas基础知识" class="headerlink" title="Canvas基础知识"></a>Canvas基础知识</h1><p>示例：canvas基本方法使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">	&lt;head&gt;</div><div class="line">&lt;!-- 		&lt;script type=&quot;text/javascript&quot; src=&quot;http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js&quot;&gt;&lt;/script&gt;</div><div class="line">		&lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">			$(document).ready(function()&#123;</div><div class="line">				var canvas=$(&quot;#mycanvas&quot;);</div><div class="line">				var context=canvas.get(0).getContext(&quot;2d&quot;);</div><div class="line">				context.fillRect(40,40,100,100);</div><div class="line">			&#125;)</div><div class="line">		&lt;/script&gt; --&gt;</div><div class="line"></div><div class="line">	&lt;/head&gt;</div><div class="line"></div><div class="line">	&lt;body&gt;</div><div class="line">		&lt;canvas id=&quot;myCanvas&quot; width=&quot;500&quot; height=&quot;500&quot;&gt;</div><div class="line">		&lt;/canvas&gt;</div><div class="line">	&lt;/body&gt;</div><div class="line">	&lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">		var c=document.getElementById(&quot;myCanvas&quot;);</div><div class="line">		var cxt=c.getContext(&quot;2d&quot;);</div><div class="line">		//画长方形，参数分别为坐标x,y,width,height</div><div class="line">			cxt.fillStyle=&quot;#00FF00&quot;;//设置填充颜色</div><div class="line"></div><div class="line">			cxt.lineWidth=5;// 设置线条宽度</div><div class="line">			cxt.fillRect(100,100,50,100);</div><div class="line">		//画边框</div><div class="line"></div><div class="line">			cxt.strokeStyle=&quot;#FF0000&quot;;//设置线条颜色  &quot;#FF0000&quot;==&quot;rgb(255,0,0)&quot;</div><div class="line">			cxt.strokeRect(0,0,150,75);</div><div class="line"></div><div class="line">		//画线&amp;&amp;也可用于画复杂图形，例如三角</div><div class="line">			cxt.beginPath();</div><div class="line">			cxt.moveTo(50,50);</div><div class="line">			cxt.lineTo(50,60);</div><div class="line">			cxt.closePath();</div><div class="line">			cxt.stroke();</div><div class="line"></div><div class="line">		//画圆</div><div class="line">			cxt.beginPath();</div><div class="line">		//6个参数分别为：圆心坐标想x,y，圆的半径，开始角度，结束角度，逆顺时针（逆时针用true,顺时针用false）;</div><div class="line">		//注意：这里的角度以弧度为单位</div><div class="line">			cxt.arc(230,90,50,0,Math.PI*2,false);</div><div class="line">			cxt.closePath();</div><div class="line"></div><div class="line">		//填充圆</div><div class="line">			cxt.fill();</div><div class="line">		//清除填充，参数分别为起点坐标x,y,宽度width和高度height</div><div class="line">			cxt.clearRect(230,90,50,50);</div><div class="line">			//画轮廓</div><div class="line">			cxt.stroke();</div><div class="line">	&lt;/script&gt;</div><div class="line"></div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/28/H5画布2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="superDjy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://img.mp.itc.cn/upload/20170429/a2379efc26214d7fa790af6105312132">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="С�����ľ���">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/06/28/H5画布2/" itemprop="url">H5基础知识(2)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-28T00:00:00+08:00">
-                2017-06-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/H5/" itemprop="url" rel="index">
-                    <span itemprop="name">H5</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/06/28/H5画布2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/06/28/H5画布2/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/06/28/H5画布2/" class="leancloud_visitors" data-flag-title="H5基础知识(2)">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Canvas的一些高级功能"><a href="#Canvas的一些高级功能" class="headerlink" title="Canvas的一些高级功能"></a>Canvas的一些高级功能</h1><p>示例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">	&lt;head&gt;</div><div class="line">&lt;!-- 		&lt;script type=&quot;text/javascript&quot; src=&quot;http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js&quot;&gt;&lt;/script&gt;</div><div class="line">		&lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">			$(document).ready(function()&#123;</div><div class="line">				var canvas=$(&quot;#mycanvas&quot;);</div><div class="line">				var context=canvas.get(0).getContext(&quot;2d&quot;);</div><div class="line">				context.fillRect(40,40,100,100);</div><div class="line">			&#125;)</div><div class="line">		&lt;/script&gt; --&gt;</div><div class="line"></div><div class="line">	&lt;/head&gt;</div><div class="line"></div><div class="line">	&lt;body&gt;</div><div class="line">		&lt;canvas id=&quot;myCanvas&quot; width=&quot;500&quot; height=&quot;500&quot;&gt;</div><div class="line">		&lt;/canvas&gt;</div><div class="line">	&lt;/body&gt;</div><div class="line">	&lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">		var c=document.getElementById(&quot;myCanvas&quot;);</div><div class="line">		var cxt=c.getContext(&quot;2d&quot;);</div><div class="line">		cxt.fillStyle=&quot;rgb(255,0,0)&quot;;</div><div class="line">		//红色压栈</div><div class="line">		cxt.save();</div><div class="line">		cxt.fillRect(50,50,100,100);</div><div class="line"></div><div class="line">		cxt.fillStyle=&quot;rgb(0,255,0)&quot;;</div><div class="line">		//绿色压栈</div><div class="line">		cxt.save();</div><div class="line">		cxt.fillRect(200,50,100,100);</div><div class="line">		//自动取出栈中的最后状态,绿色</div><div class="line">		cxt.restore();</div><div class="line">		cxt.fillRect(350,50,100,100);</div><div class="line">		//红色</div><div class="line">		cxt.restore();</div><div class="line">		cxt.fillRect(50,200,100,100);</div><div class="line"></div><div class="line"></div><div class="line">		//平移</div><div class="line">		cxt.fillRect(0,0,20,20);</div><div class="line">		cxt.translate(150,150);</div><div class="line">		//平移后的显示，之后所有操作均带有平移属性</div><div class="line">		cxt.fillRect(0,0,20,20);</div><div class="line">		</div><div class="line"></div><div class="line">		//之后的所有操作均带有旋转属性</div><div class="line">		cxt.rotate(0.7854);//旋转45度(Math.PI/4);</div><div class="line">		cxt.fillRect(150,150,40,40);</div><div class="line"></div><div class="line">		//合成</div><div class="line">		cxt.fillStyle=&quot;rgb(63,169,245)&quot;;</div><div class="line">		cxt.fillRect(200,50,100,100);</div><div class="line">		cxt.globalAlpha=0.5;</div><div class="line">		cxt.fillStyle=&quot;rgb(255,123,172)&quot;;</div><div class="line">		cxt.fillRect(250,100,100,100);</div><div class="line"></div><div class="line">		//阴影</div><div class="line">		cxt.shadowBlur=20;</div><div class="line">		cxt.shadowColor=&quot;rgb(0,0,0)&quot;;</div><div class="line">		cxt.fillRect(10,10,50,50);s</div><div class="line"></div><div class="line">	&lt;/script&gt;</div><div class="line"></div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
 
           
         
@@ -1886,7 +1886,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/27/js设计模式(4)/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/27/js设计模式(7)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="superDjy">
@@ -1905,7 +1905,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/06/27/js设计模式(4)/" itemprop="url">js设计模式(4)</a></h1>
+                <a class="post-title-link" href="/2017/06/27/js设计模式(7)/" itemprop="url">js设计模式(7)</a></h1>
         
 
         <div class="post-meta">
@@ -1958,9 +1958,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/06/27/js设计模式(4)/#comments" itemprop="discussionUrl">
+                <a href="/2017/06/27/js设计模式(7)/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/06/27/js设计模式(4)/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/06/27/js设计模式(7)/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1968,7 +1968,7 @@
 
           
           
-             <span id="/2017/06/27/js设计模式(4)/" class="leancloud_visitors" data-flag-title="js设计模式(4)">
+             <span id="/2017/06/27/js设计模式(7)/" class="leancloud_visitors" data-flag-title="js设计模式(7)">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -2001,11 +2001,10 @@
       
         
           
-            <h1 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h1><p><strong>定义：为一个对象或提供一个代用品或占位符，以便控制对它的访问。</strong></p>
-<p>代理模式分为保护代理和虚拟代理。保护代理是用于控制不同权限对象对目标对象的访问。虚拟代理会把一些开销很大的对象，延迟到真正需要它的再去创建。</p>
-<h2 id="代理的意义"><a href="#代理的意义" class="headerlink" title="代理的意义"></a>代理的意义</h2><p>实现<strong>单一职责</strong>原则。即，就一个类（通常也包括对象和函数），应该仅有一个引起它变化的原因。<br>如果一个对象承担了多项职责，意味着将这些职责耦合到了一起，这种耦合会导致脆弱和迪内聚的设计。</p>
-<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><p>加载一张图片：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var myImage=(funciton()&#123;</div><div class="line">	var imgNode=document.creatElement(&apos;img&apos;);</div><div class="line">	document.body.appendChild(imgNode);</div><div class="line">	return&#123;</div><div class="line">		setSrc:function(src)&#123;</div><div class="line">		imgNode.src=src</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;)()</div><div class="line">myImage.setSrc(&quot;..........&quot;)</div></pre></td></tr></table></figure></p>
-<p>增加代理之后，将预加载与图片加载分离：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">var proxyImage=(function()&#123;</div><div class="line">	var img=new Image;</div><div class="line">	img.onload=function()&#123;</div><div class="line">		myImage.setSrc(this.src);</div><div class="line">	&#125;</div><div class="line">	return&#123;</div><div class="line">	setSrc:function(src)&#123;</div><div class="line">		myImage.setSrc(&apos;本地的loading图片&apos;);</div><div class="line">		img.src=src;</div><div class="line">	&#125;</div><div class="line">	&#125;</div><div class="line">&#125;)()</div><div class="line">proxyImage.setSrc(&apos;真正图片&apos;)</div></pre></td></tr></table></figure></p>
+            <h1 id="享元模式"><a href="#享元模式" class="headerlink" title="享元模式"></a>享元模式</h1><p>享元模式的核心是运用共享技术来有效支持大量细粒度的对象。</p>
+<p>享元模式要求将对象的属性划分为内部状态与外部状态(这里的状态通常指属性)。其目标是尽量减少共享对象的数量。具体的内部对象是指独立于具体的场景，通常不会改变，外部对象是指取决于具体场景，并且根据外部场景的变化，外部状态不能被共享。</p>
+<h2 id="对象池"><a href="#对象池" class="headerlink" title="对象池"></a>对象池</h2><p>维护一个装载空闲对象的池子，如果需要对象的时候，不是直接new，而是转从对象池里面获取。如果对象池是没有空闲对象，则新建一个新的对象，当获取出的对象完成了它的职责之后，再次进入池子等待被获取。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">var toolFactory=(function()&#123;</div><div class="line">	var toolPool=[];</div><div class="line">	return&#123;</div><div class="line">		create:function()&#123;</div><div class="line">			if(toolPool.length==0)&#123;</div><div class="line">				var div=document.creat(&apos;div&apos;);</div><div class="line">				document.body.appendChild)(div);</div><div class="line">				return div;</div><div class="line">			&#125;else&#123;</div><div class="line">				return toolPool.shift();</div><div class="line">			&#125;</div><div class="line">		&#125;,</div><div class="line">		recover:function(toolDom)&#123;</div><div class="line">			return toolPool.push(toolDom);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;))()</div><div class="line"></div><div class="line">var arr=[];</div><div class="line"></div><div class="line">//创建两个节点</div><div class="line">for(var i=0,str;str=[&apos;a&apos;,&apos;b&apos;][i++];)&#123;</div><div class="line">	var toolTip=toolFactore.create();</div><div class="line">	toopTip.innerHTML=str;</div><div class="line">	arr.push(toopTip);</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">//回收进对象池</div><div class="line">for(var j=0,tooptip;tooptip=arr[i++];)&#123;</div><div class="line">	toolFactory.recover(tooptip);</div><div class="line">&#125;</div><div class="line"></div><div class="line">//再次创建节点时可以直接从对象池里面获取</div><div class="line">for(var k=0,str;str=[&apos;a&apos;,&apos;b&apos;,&apos;c&apos;,&apos;d&apos;,&apos;e&apos;][i++];)&#123;</div><div class="line">	var toopTip=toolFactory.create();</div><div class="line">	toopTip.innerHTML=str;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>通用的对象池<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">var toolFactory=function(fn)&#123;</div><div class="line">	var toolPool=[];</div><div class="line">	return&#123;</div><div class="line">		create:function()&#123;</div><div class="line">			if(toolPool.length==0)&#123;</div><div class="line">				return fn.apply(this.arguments);</div><div class="line">			&#125;else&#123;</div><div class="line">				return toolPool.shift();</div><div class="line">			&#125;</div><div class="line">		&#125;,</div><div class="line">		recover:function(obj)&#123;</div><div class="line">			return toolPool.push(obj);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var finalFactory=toolFactory(function()&#123;</div><div class="line">	var div = document.create(&apos;div&apos;);</div><div class="line">	document.body.appendChild(div);</div><div class="line">	return div;</div><div class="line">&#125;)</div><div class="line"></div><div class="line">var tooltip=finalFactory.create();</div><div class="line"></div><div class="line">tooltip.innerHTML=&apos;a&apos;;</div></pre></td></tr></table></figure></p>
 
           
         
