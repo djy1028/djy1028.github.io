@@ -112,18 +112,18 @@
 
 
 
-<meta name="description" content="##　含义：Promise是一个对象，从它可以获取异步操作的消息。它有两个特点： 1.对象的状态不受外界影响：Promise对象代表一个异步曹组，有三种状态：pending（进行中），Resolved（已完成），Rejected(已失败)。只有异步操作的结果才能决定当前是哪一种状态，其他操作都无法改变这个状态。 2.一旦状改变就不会再变。一旦状态幼pending转变为Resolved或者Rejec">
+<meta name="description" content="含义：Promise是一个对象，从它可以获取异步操作的消息。它有两个特点： 1.对象的状态不受外界影响：Promise对象代表一个异步曹组，有三种状态：pending（进行中），Resolved（已完成），Rejected(已失败)。只有异步操作的结果才能决定当前是哪一种状态，其他操作都无法改变这个状态。 2.一旦状改变就不会再变。一旦状态幼pending转变为Resolved或者Rejected">
 <meta name="keywords" content="基本知识">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ES6-promise">
 <meta property="og:url" content="http://yoursite.com/2017/01/13/ES6-promise/index.html">
 <meta property="og:site_name" content="С�����ľ���">
-<meta property="og:description" content="##　含义：Promise是一个对象，从它可以获取异步操作的消息。它有两个特点： 1.对象的状态不受外界影响：Promise对象代表一个异步曹组，有三种状态：pending（进行中），Resolved（已完成），Rejected(已失败)。只有异步操作的结果才能决定当前是哪一种状态，其他操作都无法改变这个状态。 2.一旦状改变就不会再变。一旦状态幼pending转变为Resolved或者Rejec">
+<meta property="og:description" content="含义：Promise是一个对象，从它可以获取异步操作的消息。它有两个特点： 1.对象的状态不受外界影响：Promise对象代表一个异步曹组，有三种状态：pending（进行中），Resolved（已完成），Rejected(已失败)。只有异步操作的结果才能决定当前是哪一种状态，其他操作都无法改变这个状态。 2.一旦状改变就不会再变。一旦状态幼pending转变为Resolved或者Rejected">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-03T07:56:54.122Z">
+<meta property="og:updated_time" content="2017-08-07T03:39:25.273Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ES6-promise">
-<meta name="twitter:description" content="##　含义：Promise是一个对象，从它可以获取异步操作的消息。它有两个特点： 1.对象的状态不受外界影响：Promise对象代表一个异步曹组，有三种状态：pending（进行中），Resolved（已完成），Rejected(已失败)。只有异步操作的结果才能决定当前是哪一种状态，其他操作都无法改变这个状态。 2.一旦状改变就不会再变。一旦状态幼pending转变为Resolved或者Rejec">
+<meta name="twitter:description" content="含义：Promise是一个对象，从它可以获取异步操作的消息。它有两个特点： 1.对象的状态不受外界影响：Promise对象代表一个异步曹组，有三种状态：pending（进行中），Resolved（已完成），Rejected(已失败)。只有异步操作的结果才能决定当前是哪一种状态，其他操作都无法改变这个状态。 2.一旦状改变就不会再变。一旦状态幼pending转变为Resolved或者Rejected">
 
 
 
@@ -424,7 +424,7 @@
       
 
       
-        <p>##　含义：<br>Promise是一个对象，从它可以获取异步操作的消息。它有两个特点：</p>
+        <h2 id="含义："><a href="#含义：" class="headerlink" title="含义："></a>含义：</h2><p>Promise是一个对象，从它可以获取异步操作的消息。它有两个特点：</p>
 <p>1.对象的状态不受外界影响：Promise对象代表一个异步曹组，有三种状态：pending（进行中），Resolved（已完成），Rejected(已失败)。只有异步操作的结果才能决定当前是哪一种状态，其他操作都无法改变这个状态。</p>
 <p>2.一旦状改变就不会再变。一旦状态幼pending转变为Resolved或者Rejected之后，就不会再变，会一直保持这个结果。</p>
 <p><strong>优点：有了Promise对象，就可以将异步操作以同步操作的流程表达出来，避免了层层嵌套的回调函数。此外，Promise对象提供统一的接口，使得控制异步操作更加容易</strong>。</p>
@@ -438,7 +438,7 @@
 <p>上面代码中，timeout方法返回一个Promise实例，表示一段时间以后才会发生的结果。过了指定的时间（ms参数）以后，Promise实例的状态变为Resolved，就会触发then方法绑定的回调函数。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">new Promise((resolve, reject) =&gt; &#123;</div><div class="line">  resolve(1);</div><div class="line">  console.log(2);</div><div class="line">&#125;).then(r =&gt; &#123;</div><div class="line">  console.log(r);</div><div class="line">&#125;);</div><div class="line">结果：2</div><div class="line">     1</div></pre></td></tr></table></figure>
 <p><strong>如果调用resolve函数和reject函数时带有参数，那么它们的参数会被传递给then方法的回调函数。</strong></p>
-<p>##Promise.prototype.catch()<br>Promise.prototype.catch方法是.then(null, rejection)的别名，用于指定发生错误时的回调函数。</p>
+<h2 id="Promise-prototype-catch"><a href="#Promise-prototype-catch" class="headerlink" title="Promise.prototype.catch()"></a>Promise.prototype.catch()</h2><p>Promise.prototype.catch方法是.then(null, rejection)的别名，用于指定发生错误时的回调函数。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">var promise = new Promise(function(resolve, reject) &#123;</div><div class="line">//   console.log(&quot;haha&quot;);</div><div class="line">//   resolve(4);</div><div class="line">  throw new Error(&apos;test&apos;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">promise.then((value)=&gt;&#123;console.log(value)&#125;).catch(function(error) &#123;</div><div class="line">  console.log(error);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">结果：Error: test</div><div class="line">    at &lt;anonymous&gt;:4:9</div><div class="line">    at Promise (&lt;anonymous&gt;)</div><div class="line">    at &lt;anonymous&gt;:1:15</div></pre></td></tr></table></figure>
 <p>若在此之前调用resolv()方法，则不会catch到错误，因为得到Resolved状态后，状态不会再改变。</p>
 <h2 id="Promise-all"><a href="#Promise-all" class="headerlink" title="Promise.all()"></a>Promise.all()</h2><p>Promise.all方法接受一个数组作为参数Promise.all([p1,p2,p3])，p1、p2、p3<strong>都是 Promise 实例</strong>。</p>
@@ -595,7 +595,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">38</span>
+                <span class="site-state-item-count">47</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -606,7 +606,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -617,7 +617,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -676,7 +676,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Promise的基本实现"><span class="nav-number">1.</span> <span class="nav-text">Promise的基本实现:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#示例1"><span class="nav-number">1.1.</span> <span class="nav-text">示例1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#示例2"><span class="nav-number">1.2.</span> <span class="nav-text">示例2</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Promise-all"><span class="nav-number">2.</span> <span class="nav-text">Promise.all()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Demo：同时并发现象（一次性计算10个数）"><span class="nav-number">3.</span> <span class="nav-text">Demo：同时并发现象（一次性计算10个数）</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#含义："><span class="nav-number">1.</span> <span class="nav-text">含义：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Promise的基本实现"><span class="nav-number">2.</span> <span class="nav-text">Promise的基本实现:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#示例1"><span class="nav-number">2.1.</span> <span class="nav-text">示例1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#示例2"><span class="nav-number">2.2.</span> <span class="nav-text">示例2</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Promise-prototype-catch"><span class="nav-number">3.</span> <span class="nav-text">Promise.prototype.catch()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Promise-all"><span class="nav-number">4.</span> <span class="nav-text">Promise.all()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Demo：同时并发现象（一次性计算10个数）"><span class="nav-number">5.</span> <span class="nav-text">Demo：同时并发现象（一次性计算10个数）</span></a></li></ol></div>
             
 
           </div>

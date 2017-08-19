@@ -120,7 +120,7 @@
 <meta property="og:site_name" content="С�����ľ���">
 <meta property="og:description" content="Vue基础知识虚拟dom的概念在一个HTML中，DOM节点通常表示如下：1234&amp;lt;ul id=&amp;apos;myId&amp;apos;&amp;gt;  &amp;lt;li&amp;gt;Item 1&amp;lt;/li&amp;gt;  &amp;lt;li&amp;gt;Item 2&amp;lt;/li&amp;gt;&amp;lt;ul&amp;gt; DOM 节点也可以表示 JavaScript 中的对象，像这样：1234567Let domNode = &amp;#123;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-07-23T02:28:55.042Z">
+<meta property="og:updated_time" content="2017-08-09T03:09:16.334Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue.js基础">
 <meta name="twitter:description" content="Vue基础知识虚拟dom的概念在一个HTML中，DOM节点通常表示如下：1234&amp;lt;ul id=&amp;apos;myId&amp;apos;&amp;gt;  &amp;lt;li&amp;gt;Item 1&amp;lt;/li&amp;gt;  &amp;lt;li&amp;gt;Item 2&amp;lt;/li&amp;gt;&amp;lt;ul&amp;gt; DOM 节点也可以表示 JavaScript 中的对象，像这样：1234567Let domNode = &amp;#123;">
@@ -449,13 +449,26 @@
         <h1 id="Vue基础知识"><a href="#Vue基础知识" class="headerlink" title="Vue基础知识"></a>Vue基础知识</h1><h2 id="虚拟dom的概念"><a href="#虚拟dom的概念" class="headerlink" title="虚拟dom的概念"></a>虚拟dom的概念</h2><p>在一个HTML中，DOM节点通常表示如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;ul id=&apos;myId&apos;&gt;</div><div class="line">  &lt;li&gt;Item 1&lt;/li&gt;</div><div class="line">  &lt;li&gt;Item 2&lt;/li&gt;</div><div class="line">&lt;ul&gt;</div></pre></td></tr></table></figure></p>
 <p>DOM 节点也可以表示 JavaScript 中的对象，像这样：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Let domNode = &#123;</div><div class="line">  tag: &apos;ul&apos;</div><div class="line">  attributes: &#123; id: &apos;myId&apos; &#125;</div><div class="line">  children: [</div><div class="line">    // where the LI&apos;s would go</div><div class="line">  ]</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
 <p>这就是我们的“虚拟”DOM，更新虚拟节点的开销不大，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">domNode.children.push(&apos;&lt;ul&gt;Item 3&lt;/ul&gt;&apos;);</div></pre></td></tr></table></figure></p>
-<p>当使用虚拟DOM，而不是直接在代码中调用类似 .getElementById的DOM API方法，操作就会像改变JS对象一样非常的简单省时。所有的操作均在虚拟dom中实现，最后一次性完成dom渲染。</p>
+<p>当使用虚拟DOM，而不是直接在代码中调用类似.getElementById的DOM API方法，操作就会像改变JS对象一样非常的简单省时。所有的操作均在虚拟dom中实现，最后一次性完成dom渲染。</p>
 <p><strong>Vue2.0的版本对于之前的版本进行了很大的瘦身，如果原生js能够实现的，就舍弃vue，直接用原生js实现。</strong></p>
 <h2 id="过滤器-filter-的介绍"><a href="#过滤器-filter-的介绍" class="headerlink" title="过滤器(filter)的介绍"></a>过滤器(filter)的介绍</h2><p>Vue中过滤器是对于接口返回的字段进行业务(形式)上的转换。</p>
 <h2 id="vue实例"><a href="#vue实例" class="headerlink" title="vue实例"></a>vue实例</h2><p>在一些多页应用中，可以直接建立vue实例，然后通过<script>标签引入。</p>
 <p>下面举一个过滤器在<template>中使用的小例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;p&gt;&#123;&#123;data | formateMoney&#125;&#125;&lt;/p&gt;</div><div class="line"></div><div class="line">&lt;div v-for=&quot;(item,index) in formateSlice &quot;&gt;</div><div class="line">//以函数的形式，当有参数是则为formateMoney(value)</div></pre></td></tr></table></figure></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line">new Vue(&#123;</div><div class="line">	el:&quot;#app&quot;,	//所对应需要渲染的部分块</div><div class="line"></div><div class="line">	data:&#123;</div><div class="line">		getData:[]</div><div class="line">	&#125;,</div><div class="line">	filters:&#123;</div><div class="line">		formateMoney:function(value)&#123;//这里传入进来的参数即为过滤器前的数值</div><div class="line">			return value+&quot;处理过程&quot;</div><div class="line">		&#125;</div><div class="line">	&#125;,</div><div class="line">	computed:&#123;</div><div class="line">		formateSplice:function()&#123;</div><div class="line">			return this.getData.slice(0,n)</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	mounted:function()&#123;		</div><div class="line">	//页面加载完成后所需进行的操作,只使用mounted钩子并不能保证实例已经插入文档，还需要在实例中包含vue.$nextTick</div><div class="line"></div><div class="line">	this.$nextTick(function()&#123;</div><div class="line">		this.cart();</div><div class="line">	&#125;)</div><div class="line">	</div><div class="line">		</div><div class="line">	&#125;,</div><div class="line">	</div><div class="line">	methods:&#123;</div><div class="line">		cart:function()&#123;</div><div class="line">			this.$http.get().then(function()&#123;	//调用vue-resource方法取数据，利用promise.then(</div><div class="line">				res=&gt;&#123;</div><div class="line">					this.getData=res.data;</div><div class="line">					//这里使用箭头函数的好处在于，箭头函数无this指向，函数内的this指向外部，即函数内层的this和外层的this为同一指向</div><div class="line">				&#125;</div><div class="line">			)方法完成回调</div><div class="line">			</div><div class="line">			&#125;)</div><div class="line">		&#125;</div><div class="line">	&#125;,</div><div class="line"></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
 <p>vue实例包括一些，实例属性，实例方法，和实例事件使用方法详见官网API教程。</p>
+<h2 id="文档碎片"><a href="#文档碎片" class="headerlink" title="文档碎片"></a>文档碎片</h2><p>在页面中有一个ul，我们随着页面的某一个事件的触发，需要向#box中插入大量的li，正常的写法为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var oUl = document.querySelectorAll(&apos;#box&apos;)[0];</div><div class="line">        for(var i=0;i&lt;1000;i++)&#123;</div><div class="line">            var oLi = document.createElement(&apos;li&apos;);</div><div class="line">            var t = document.createTextNode(i+&apos;&apos;);</div><div class="line">            oLi.appendChild(t);</div><div class="line">            oUl.appendChild(oLi);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这样是可以实现的，但是这样性能就无从提起了，因为每次oUl都重新绘制了一次，因为每次oUl都调用了appendChild方法，所以，就要借助一个叫文档碎片frag的东西，创建一个文档碎片：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var frag = document.createDocumentFragment(),</div><div class="line">            oLi = null,</div><div class="line">            t = &apos;&apos;,</div><div class="line">            oUl = document.querySelectorAll(&apos;#box&apos;)[0];</div><div class="line">        for(var i = 0;i &lt; 10;i++)&#123;</div><div class="line">            oLi = document.createElement(&apos;li&apos;);</div><div class="line">            t = document.createTextNode(i + &apos;&apos;);</div><div class="line">            oLi.appendChild(t);</div><div class="line">            frag.appendChild(oLi);</div><div class="line">        &#125;</div><div class="line">        console.log(frag);</div></pre></td></tr></table></figure>
+<p>这样也就触发了一次oUl的重新绘制,性能上会大大提高。<strong>在为DOM树添加新节点时文档碎片是非常有用的</strong></p>
+<h2 id="vue的mvvm源码实现"><a href="#vue的mvvm源码实现" class="headerlink" title="vue的mvvm源码实现"></a>vue的mvvm源码实现</h2><p>数据劫持：:vue.js 则是采用数据劫持结合发布者-订阅者模式的方式，通过Object.defineProperty()来劫持各个属性的setter，getter，在数据变动时发布消息给订阅者，触发相应的监听回调。</p>
+<p>实现思路：</p>
+<p>1.实现数据监听器observer,重新定义data，为data上每个属性增加setter,getter以监听数据的变化</p>
+<p>2.实现指令解析器compile,扫描模版template，提取每个dom节点中的指令信息，对每个元素节点的指令进行扫描和解析，根据指令模板替换数据，以及绑定相应的节点更新函数。因为遍历解析的过程有多次操作dom节点，为提高性能和效率，会先将跟节点el转换成文档碎片fragment进行解析编译操作，解析完成，再将fragment添加回原来的真实dom节点中</p>
+<p>3.实现directive,通过指令信息实例化对应的directive实例,不同类型的directive拥有不同的刷新函数update</p>
+<p>4.实现watcher,作为连接Observer和Compile的桥梁，能够订阅并收到每个属性变动的通知，执行指令绑定的相应回调函数，让observer的属性监听函数与directive的update函数做一一对应,以实现数据变化后更新视图。</p>
+<p>主要做的事情是: 1、在自身实例化时往属性订阅器(dep)里面添加自己 2、自身必须有一个update()方法 3、待属性变动dep.notice()通知时，能调用自身的update()方法，并触发Compile中绑定的回调，则功成身退</p>
+<p>5.mvvm入口函数，整合以上三者</p>
 </script></p>
       
     </div>
@@ -486,8 +499,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/06/29/Vue基础(1)/" rel="next" title="Vue.js基础">
-                <i class="fa fa-chevron-left"></i> Vue.js基础
+              <a href="/2017/06/29/js设计模式(10)/" rel="next" title="js设计模式(10)">
+                <i class="fa fa-chevron-left"></i> js设计模式(10)
               </a>
             
           </div>
@@ -605,7 +618,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">38</span>
+                <span class="site-state-item-count">47</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -616,7 +629,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -627,7 +640,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

@@ -1,0 +1,1375 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="笔试面试题," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="单页应用之前端路由前端路由主要有两种方案，一种是以angular1.x为代表的hash的解决方案，可以兼容低版本的浏览器，一种是HTML5提出的新的api。 History API主要就是window.history.pushState 和window.history.replaceState。这两种API都需要传入三个参数, 状态对象（state object）:一个JavaScript对象，与">
+<meta name="keywords" content="笔试面试题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="笔试面试题（8）">
+<meta property="og:url" content="http://yoursite.com/2017/08/15/笔试面试(8)/index.html">
+<meta property="og:site_name" content="С�����ľ���">
+<meta property="og:description" content="单页应用之前端路由前端路由主要有两种方案，一种是以angular1.x为代表的hash的解决方案，可以兼容低版本的浏览器，一种是HTML5提出的新的api。 History API主要就是window.history.pushState 和window.history.replaceState。这两种API都需要传入三个参数, 状态对象（state object）:一个JavaScript对象，与">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-08-19T07:31:43.639Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="笔试面试题（8）">
+<meta name="twitter:description" content="单页应用之前端路由前端路由主要有两种方案，一种是以angular1.x为代表的hash的解决方案，可以兼容低版本的浏览器，一种是HTML5提出的新的api。 History API主要就是window.history.pushState 和window.history.replaceState。这两种API都需要传入三个参数, 状态对象（state object）:一个JavaScript对象，与">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/08/15/笔试面试(8)/"/>
+
+
+
+
+
+  <title>笔试面试题（8） | С�����ľ���</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?41fc030db57d5570dd22f78997dc4a7e";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">С�����ľ���</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">С�����ľ���</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/15/笔试面试(8)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="superDjy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://img.mp.itc.cn/upload/20170429/a2379efc26214d7fa790af6105312132">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="С�����ľ���">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">笔试面试题（8）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-15T00:00:00+08:00">
+                2017-08-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/基本知识/" itemprop="url" rel="index">
+                    <span itemprop="name">基本知识</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/08/15/笔试面试(8)/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/08/15/笔试面试(8)/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/08/15/笔试面试(8)/" class="leancloud_visitors" data-flag-title="笔试面试题（8）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="单页应用之前端路由"><a href="#单页应用之前端路由" class="headerlink" title="单页应用之前端路由"></a>单页应用之前端路由</h2><p>前端路由主要有两种方案，一种是以angular1.x为代表的hash的解决方案，可以兼容低版本的浏览器，一种是HTML5提出的新的api。</p>
+<h3 id="History-API"><a href="#History-API" class="headerlink" title="History API"></a>History API</h3><p>主要就是<code>window.history.pushState</code> 和<code>window.history.replaceState</code>。这两种API都需要传入三个参数,</p>
+<p>状态对象（state object）:一个JavaScript对象，与用pushState()方法创建的新历史记录条目关联。无论何时用户导航到新创建的状态，popstate事件都会被触发，并且事件对象的state属性都包含历史记录条目的状态对象的拷贝。</p>
+<p>标题（title）:FireFox浏览器目前会忽略该参数，虽然以后可能会用上。考虑到未来可能会对该方法进行修改，传一个空字符串会比较安全。或者，你也可以传入一个简短的标题，标明将要进入的状态。</p>
+<p>地址（URL）：新的历史记录条目的地址。浏览器不会在调用pushState()方法后加载该地址，但之后，可能会试图加载，例如用户重启浏览器。新的URL不一定是绝对路径；如果是相对路径，它将以当前URL为基准；传入的URL与当前URL应该是同源的，否则，pushState()会抛出异常。该参数是可选的；不指定的话则为文档当前URL。</p>
+<p>例如：<code>window.history.pushState(null, null, &quot;https://www.baidu.com/?name=orange&quot;);</code>百网址就会无刷新的变为上述地址。</p>
+<h3 id="hash"><a href="#hash" class="headerlink" title="hash"></a>hash</h3><p>我们经常在 url 中看到 #，这个 # 有两种情况，一个是我们所谓的锚点，比如典型的回到顶部按钮原理、Github 上各个标题之间的跳转等，路由里的 # 不叫锚点，我们称之为<code>hash</code>，大型框架的路由系统大多都是哈希实现的。同样我们需要一个根据监听哈希变化触发的事件<code>hashchange</code>事件。</p>
+<p>大型框架的路由当然不会这么简单，angular 1.x 的路由对哈希、模版、处理器进行关联</p>
+<p>详见！[]<a href="https://segmentfault.com/a/1190000007238999#articleHeader1" target="_blank" rel="external">https://segmentfault.com/a/1190000007238999#articleHeader1</a></p>
+<h2 id="es6的简单了解"><a href="#es6的简单了解" class="headerlink" title="es6的简单了解"></a>es6的简单了解</h2><h3 id="let"><a href="#let" class="headerlink" title="let"></a>let</h3><p>用来声明变量，但是所声明的变量只在let命令所在的代码块内有效。let不像var那样会发生变量提升，所以一定要先声明后使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">console.log(foo); //undefined</div><div class="line">console.log(bar); //报错ReferenceError</div><div class="line">var foo = 2;</div><div class="line">let bar = 3;</div></pre></td></tr></table></figure>
+<h3 id="块级作用域"><a href="#块级作用域" class="headerlink" title="块级作用域"></a>块级作用域</h3><p>(1) let实际上为javascript新增了块级作用域</p>
+<p>(2) 外层作用域无法读取内层作用域的变量</p>
+<p>(3) 内层作用域可以定义外层作用域的同名变量</p>
+<p>(4) 块级作用域实际上使得广泛运用的立即执行函数变得不再必要了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">let n=8;</div><div class="line">if(true)&#123;</div><div class="line">	let n=56;</div><div class="line">&#125;</div><div class="line">console.log(n)</div><div class="line">结果： 8</div></pre></td></tr></table></figure>
+<p>变量n只在当前作用域有用，javascript没有块级作用域，但是<strong>用let声明的变量可以绑定到所在的任意作用域中，换句话说let为其声明的变量隐式的劫持了所在的块作用域{…}</strong></p>
+<p><em>注意：let不允许在相同作用域内重复声明同一个变量，不能在函数内部重新声明参数。const也是这样</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">function haha(n)&#123;</div><div class="line">	let n</div><div class="line">&#125;</div><div class="line">haha()</div><div class="line">VM271:2 Uncaught SyntaxError: Identifier &apos;n&apos; has already been declared</div><div class="line">    at &lt;anonymous&gt;:4:1</div></pre></td></tr></table></figure>
+<h3 id="const"><a href="#const" class="headerlink" title="const"></a>const</h3><p>const同样可以创建块作用域变量，同样只在声明所在的块级作用域中有效。但其值是固定的，不可更改，只读。</p>
+<p>一旦声明变量，就必须立即初始化，不能留到以后赋值。同样的,<strong>const声明的变量也是不提升，同样存在暂时性死区，只能在声明的位置后面使用</strong></p>
+<p>const的定义是不可重新赋值的值，与不可变的值(immutable value)不同；const 定义的 Object，在定义之后仍可以修改其属性。所以其实他的使用场景很广，包括常量、配置项以及引用的组件、定义的 “大部分” 中间变量等，都应该以const做定义</p>
+<h3 id="顶层对象的属性"><a href="#顶层对象的属性" class="headerlink" title="顶层对象的属性"></a>顶层对象的属性</h3><p>浏览器环境指的是window对象 Node中指的是global对象</p>
+<p><strong>ES6中，var命令和function命令声明的全局变量依旧是顶层对象的属性，但是let和const以及class声明的全局变量不属于顶层对象的属性</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var a =1;</div><div class="line">window.a</div><div class="line">结果：1</div><div class="line"></div><div class="line"></div><div class="line">let a =1;</div><div class="line">window.a</div><div class="line">VM344:1 Uncaught SyntaxError: Identifier &apos;a&apos; has already been declared</div><div class="line">    at &lt;anonymous&gt;:1:1</div></pre></td></tr></table></figure>
+<h3 id="Generator函数"><a href="#Generator函数" class="headerlink" title="Generator函数"></a>Generator函数</h3><p>异步<br>最大的特点就是可以交出函数的执行权（即暂停执行），函数名之前加星号。yield表示执行到此处，执行权将交给其他协程。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">function* gen(x) &#123;</div><div class="line">    var y = yield x + 2;</div><div class="line">    return y;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var g = gen(1);</div><div class="line">g.next() //&#123;value:3,done:false&#125;</div><div class="line">//value是yield语句后面表达式的值，表示当前阶段的值，done表示函数是否执行完毕，是否还有下一个阶段。</div><div class="line">g.next() //&#123;value:undefined,done:true&#125;</div></pre></td></tr></table></figure>
+<p><strong>调用generator函数会返回一个内部指针g</strong>，执行它不会返回结果,而是返回的指针对象。调用指针的g的next方法，会移动内部指针，指向第一个遇到的yield语句即x+2处。</p>
+<h3 id="Set数据结构"><a href="#Set数据结构" class="headerlink" title="Set数据结构"></a>Set数据结构</h3><p>类似于数组但是成员的值都是唯一的，没有重复的值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var s = new Set([1,2,3,4,4]);</div><div class="line">[...s] </div><div class="line">结果：[1, 2, 3, 4]</div></pre></td></tr></table></figure>
+<p>（1）操作方法<br>add:添加某个值，放回set结构本身</p>
+<p>delete:删除某个值返回一个布尔值，表示删除是否成功</p>
+<p>has(value):返回一个布尔值，表示该值是否为set的成员</p>
+<p>clear:清除所有成员，没有返回</p>
+<p>（2）<code>Array.from</code>方法可以将set数据结构转为数组</p>
+<p>也可以使用[…s]将s转变为数组。</p>
+<p>数组去重：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function dedupe(array) &#123;</div><div class="line">    return Array.from(new Set(array));</div><div class="line">&#125;</div><div class="line">dedupe([1,1,2,3]) </div><div class="line">结果：[1,2,3]</div></pre></td></tr></table></figure>
+<h3 id="Default-Parameters（默认参数）"><a href="#Default-Parameters（默认参数）" class="headerlink" title="Default Parameters（默认参数）"></a>Default Parameters（默认参数）</h3><p>原来js中一切工作都是正常的，直到参数值是0后，就有问题了，因为在JavaScript中，0表示fasly，它是默认被hard-coded的值，而不能变成参数本身的值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var link = function (height, color, url) &#123;</div><div class="line">    console.log(height || 50, color || &apos;red&apos;, url|| &apos;http://azat.co&apos;)</div><div class="line">&#125;</div><div class="line">link(0,1,1)</div><div class="line">结果为：50 1 1</div></pre></td></tr></table></figure>
+<p>es6中，我们可以直接把默认值放在函数申明里：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var link = function(height = 50, color = &apos;red&apos;, url = &apos;http://azat.co&apos;) &#123;</div><div class="line">  ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="Template-Literals（模板对象）"><a href="#Template-Literals（模板对象）" class="headerlink" title="Template Literals（模板对象）"></a>Template Literals（模板对象）</h3><p>es5之前使用模板和插入值是在字符串里面输出变量的一种方式。在ES6中，我们可以使用新<strong>的语法$ {NAME}，并把它放在反引号里</strong>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var first=&apos;aha&apos;;</div><div class="line">var last = &apos;hehe&apos;</div><div class="line">var name = `Your name is $&#123;first&#125; $&#123;last&#125;.`;</div><div class="line">console.log(name)</div><div class="line">结果： Your name is aha hehe.</div></pre></td></tr></table></figure></p>
+<h3 id="Enhanced-Object-Literals（增强的对象字面量）"><a href="#Enhanced-Object-Literals（增强的对象字面量）" class="headerlink" title="Enhanced Object Literals（增强的对象字面量）"></a>Enhanced Object Literals（增强的对象字面量）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">const _bookNum = 4;</div><div class="line"></div><div class="line">const basicConfig = &#123;</div><div class="line">  level: 5</div><div class="line">&#125;</div><div class="line"></div><div class="line">const config = &#123;</div><div class="line">  // 直接指定原型对象</div><div class="line">  __proto__: basicConfig,</div><div class="line">  </div><div class="line">  // 属性简写</div><div class="line">  _bookNum,</div><div class="line">  </div><div class="line">  // 方法简写</div><div class="line">  getBookNum() &#123;</div><div class="line">    return this.bookNum;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h3><p>在未使用箭头函数前，我们在过程函数中使用父级 this，需要将其显式缓存到另一个中间变量中，因为过程函数有独立的 this 变量，会覆盖父级。</p>
+<p><strong>原因：箭头函数没有独立执行上下文（ this ），所以其内部引用 this 对象会直接访问父级。</strong></p>
+<h3 id="Modules-（模块）"><a href="#Modules-（模块）" class="headerlink" title="Modules （模块）"></a>Modules （模块）</h3><p>众所周知，在ES6以前JavaScript并不支持本地的模块。人们想出了AMD，RequireJS，CommonJS以及其它解决方法。现在<strong>ES6中可以用模块import 和export 操作了</strong>。<br>在ES5中，你可以在 <script>中直接写可以运行的代码（简称IIFE），或者一些库像AMD。然而在ES6中，你可以用export导入你的类。</p>
+<p>Module 是 ES6 的新特性，是语言层面对模块化的支持。与之前模块加载机制不同，<strong>Module 是动态的加载，导入的是变量的 只读引用 ，而不是拷贝</strong></p>
+<ol>
+<li>export default 可以做默认导出</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">// a.js</div><div class="line">export default 5;      // 默认导出</div><div class="line"></div><div class="line">// b.js</div><div class="line">import b, &#123;a&#125; from &apos;./a.js&apos;;    // 默认导入，不需要加花括号</div></pre></td></tr></table></figure>
+<ol>
+<li>动态的加载机制</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">// a.js</div><div class="line">export let a = 10;</div><div class="line">export let b = 10;</div><div class="line">export function add() &#123;</div><div class="line">  a = 15;</div><div class="line">  b = 20;</div><div class="line">  return a+b;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">// b.js</div><div class="line">import &#123;a, b, add&#125; from &apos;./a.js&apos;;</div><div class="line">a+b;    // 20</div><div class="line">add();  // 35</div><div class="line">a+b;    // 35</div></pre></td></tr></table></figure>
+<h3 id="class类"><a href="#class类" class="headerlink" title="class类"></a>class类</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">class baseModel &#123;</div><div class="line">  constructor(options, data) &#123;</div><div class="line">    this.name = &apos;Base&apos;;</div><div class="line">    this.url = &apos;http://azat.co/api&apos;;</div><div class="line">    this.data = data;</div><div class="line">    this.options = options;</div><div class="line">   &#125;</div><div class="line"> </div><div class="line">    getName() &#123; // class method</div><div class="line">        console.log(`Class name: $&#123;this.name&#125;`);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">class AccountModel extends baseModel &#123;</div><div class="line">    constructor(options, data) &#123;</div><div class="line">       super(&#123;private: true&#125;, [&apos;32113123123&apos;, &apos;524214691&apos;]); //call the parent method with super</div><div class="line">       this.name = &apos;Account Model&apos;;</div><div class="line">       this.url +=&apos;/accounts/&apos;;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    get accountsData() &#123; //calculated attribute getter</div><div class="line">        return this.data;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">let accounts = new AccountModel(5);</div><div class="line">accounts.getName();</div><div class="line">console.log(&apos;Data is %s&apos;, accounts.accountsData);</div></pre></td></tr></table></figure>
+<h2 id="手写jsonp的实现"><a href="#手写jsonp的实现" class="headerlink" title="手写jsonp的实现"></a>手写jsonp的实现</h2><p>jsonp是一种跨域通信的手段，它的原理其实很简单：</p>
+<p>（1）首先是<strong>利用script标签的src属性来实现跨域</strong>。</p>
+<p>（2）通过将<strong>前端方法作为参数传递到服务器端，然后由服务器端注入参数之后再返回，实现服务器端向客户端通信</strong>。</p>
+<p>（3）由于<strong>使用script标签的src属性，因此只支持get方法</strong></p>
+<h4 id="jsonp简单实现"><a href="#jsonp简单实现" class="headerlink" title="jsonp简单实现"></a>jsonp简单实现</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;body&gt;</div><div class="line">&lt;script src=&quot;jsonp.js&quot;&gt;</div><div class="line"></div><div class="line">&lt;/script&gt;</div><div class="line">&lt;script&gt;</div><div class="line">        jsonp(&#123;</div><div class="line">        url:&apos;http://api.douban.com/v2/movie/in_theaters&apos;,</div><div class="line">        data:&#123;count:5,start:2&#125;,</div><div class="line">    &#125;,(res)=&gt;&#123;console.log(res);&#125;);</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">// jsonp.js</div><div class="line">let jsonp = (data,cb)=&gt; &#123;</div><div class="line">  // 处理请求参数</div><div class="line">  const &#123;url,qs&#125; = data;</div><div class="line">  // 定义callback名称</div><div class="line">  const cb_name = `cb_$&#123;Math.random().toString().replace(&apos;.&apos;,&apos;&apos;)&#125;`;</div><div class="line">  // // 挂载callback</div><div class="line">  window[cb_name] = cb;</div><div class="line">  // // 处理url</div><div class="line">  let symbol = (url.indexOf(&apos;?&apos;)===-1) ? &apos;?&apos; : &apos;&amp;&apos;;</div><div class="line">  let params_from_qs = &apos;&apos;;</div><div class="line">  for(let key in qs) &#123;</div><div class="line">    params_from_qs += `$&#123;key&#125;=$&#123;qs[key]&#125;&amp;`;</div><div class="line">  &#125;</div><div class="line">  let complete_url = `$&#123;url&#125;$&#123;symbol&#125;$&#123;params_from_qs&#125;callback=$&#123;cb_name&#125;`;</div><div class="line">  // 挂载script</div><div class="line">  let script = document.createElement(&apos;script&apos;);</div><div class="line">  script.src = complete_url;</div><div class="line">  document.body.appendChild(script);</div><div class="line">&#125;</div></pre></td></tr></table></figure></script></p>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/笔试面试题/" rel="tag"># 笔试面试题</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/15/ReactJs(6)/" rel="next" title="React.js基础">
+                <i class="fa fa-chevron-left"></i> React.js基础
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/16/ReactJs(7)/" rel="prev" title="React.js基础">
+                React.js基础 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://img.mp.itc.cn/upload/20170429/a2379efc26214d7fa790af6105312132"
+               alt="superDjy" />
+          <p class="site-author-name" itemprop="name">superDjy</p>
+           
+              <p class="site-description motion-element" itemprop="description">Stay foolish Stay hungray</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">47</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/3262132644/home?wvr=5&sudaref=www.google.com.hk&retcode=6102" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                    
+                      Weibo
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/djy1028" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#单页应用之前端路由"><span class="nav-number">1.</span> <span class="nav-text">单页应用之前端路由</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#History-API"><span class="nav-number">1.1.</span> <span class="nav-text">History API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hash"><span class="nav-number">1.2.</span> <span class="nav-text">hash</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#es6的简单了解"><span class="nav-number">2.</span> <span class="nav-text">es6的简单了解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#let"><span class="nav-number">2.1.</span> <span class="nav-text">let</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#块级作用域"><span class="nav-number">2.2.</span> <span class="nav-text">块级作用域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#const"><span class="nav-number">2.3.</span> <span class="nav-text">const</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#顶层对象的属性"><span class="nav-number">2.4.</span> <span class="nav-text">顶层对象的属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generator函数"><span class="nav-number">2.5.</span> <span class="nav-text">Generator函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Set数据结构"><span class="nav-number">2.6.</span> <span class="nav-text">Set数据结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Default-Parameters（默认参数）"><span class="nav-number">2.7.</span> <span class="nav-text">Default Parameters（默认参数）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Template-Literals（模板对象）"><span class="nav-number">2.8.</span> <span class="nav-text">Template Literals（模板对象）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Enhanced-Object-Literals（增强的对象字面量）"><span class="nav-number">2.9.</span> <span class="nav-text">Enhanced Object Literals（增强的对象字面量）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#箭头函数"><span class="nav-number">2.10.</span> <span class="nav-text">箭头函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Modules-（模块）"><span class="nav-number">2.11.</span> <span class="nav-text">Modules （模块）</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">superDjy</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2017/08/15/笔试面试(8)/';
+          this.page.identifier = '2017/08/15/笔试面试(8)/';
+          this.page.title = '笔试面试题（8）';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("47T3BxRMXIqlatB3fOpMnh1P-gzGzoHsz", "vUwh4kLezhjJyIlME1vvs4kU");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

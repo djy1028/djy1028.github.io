@@ -335,6 +335,1608 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/26/js设计模式(3)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="superDjy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://img.mp.itc.cn/upload/20170429/a2379efc26214d7fa790af6105312132">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="С�����ľ���">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/06/26/js设计模式(3)/" itemprop="url">js设计模式(3)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-26T00:00:00+08:00">
+                2017-06-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/06/26/js设计模式(3)/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/06/26/js设计模式(3)/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/06/26/js设计模式(3)/" class="leancloud_visitors" data-flag-title="js设计模式(3)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h1><p><strong>定义：保证一个类仅有一个实例，并提供一个访问它的全局节点。</strong></p>
+<p>js中的单例模式是为了避免全局变量的使用，降低全局变量带来的污染。具体方法有：</p>
+<p><em>1.使用命名空间</em></p>
+<p><em>2.使用闭包封装私有变量</em></p>
+<h2 id="惰性单例"><a href="#惰性单例" class="headerlink" title="惰性单例"></a>惰性单例</h2><p>定义：仅仅在需要时候才创建对象实例。</p>
+<p>通用的惰性单例模式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var getSingle = function(fn)&#123;</div><div class="line">    var result;</div><div class="line">    return function()&#123;</div><div class="line">        return result||(fn.apply(this,arguments));</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h1><p><strong>定义：定义一系列算法，把它们一个个封装起来。将算法的使用和算法的实现分离开来。</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var stratgies=&#123;</div><div class="line">	&quot;s&quot;:function(salary)&#123;return salary*4&#125;,</div><div class="line">	&quot;A&quot;:function(salary)&#123;return salary*5&#125;,</div><div class="line">	&quot;B&quot;:function(salary)&#123;return salary*6&#125;</div><div class="line">&#125;;</div><div class="line">var calculate=function(level,salary)&#123;</div><div class="line">	return stratgies[level](salary);</div><div class="line">&#125;</div><div class="line">calculate(&quot;A&quot;,4000);</div><div class="line">20000</div></pre></td></tr></table></figure></p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>利用策略模式将表单提交重构<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">	&lt;body&gt;</div><div class="line">		&lt;form action=&quot;#&quot; id=&quot;registerForm&quot; method=&quot;post&quot;&gt;</div><div class="line">			用户名:&lt;input name=&quot;userName&quot;  type=&quot;text&quot;&gt;</div><div class="line">			密码:&lt;input name=&quot;password&quot;  type=&quot;password&quot;&gt;</div><div class="line">			手机号:&lt;input type=&quot;text&quot; name=&quot;phoneNumber&quot;&gt;</div><div class="line">			&lt;button&gt;提交&lt;/button&gt;</div><div class="line">		&lt;/form&gt;</div><div class="line">	&lt;/body&gt;</div><div class="line">	&lt;script&gt;</div><div class="line">		var registerForm = document.getElementById(&apos;registerForm&apos;);</div><div class="line">		registerForm.onsubmit=function()&#123;</div><div class="line">			if(registerForm.userName.value===&quot;&quot;)&#123;</div><div class="line">				alert(&apos;用户名不能为空&apos;)</div><div class="line">				return false;</div><div class="line">			&#125;</div><div class="line">			if(registerForm.password.value==&quot;&quot;)&#123;</div><div class="line">				alert(&apos;密码不能为空&apos;);</div><div class="line">				return false;</div><div class="line">			&#125;</div><div class="line">			if(!/^1[3|5|8][0-9]&#123;9&#125;$/.test(registerForm.phoneNumber.value))&#123;</div><div class="line">				alert(&apos;手机号码不对&apos;);</div><div class="line">				return false;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&lt;/script&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+<p>重构后：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt; </div><div class="line">	&lt;body&gt;</div><div class="line">		&lt;form id=&quot;registerForm&quot; action=&quot;#&quot; method=&quot;post&quot;&gt;</div><div class="line">			用户名:&lt;input type=&quot;text&quot; name=&quot;userName&quot;&gt;</div><div class="line">			密码:&lt;input type=&quot;password&quot; name=&quot;password&quot;&gt;</div><div class="line">			手机号:&lt;input type=&quot;text&quot; name=&quot;phoneNumber&quot;&gt;</div><div class="line">			&lt;button&gt;提交&lt;/button&gt;</div><div class="line">		&lt;/form&gt;</div><div class="line">		&lt;script&gt;</div><div class="line">		//***********************************策略对象***************************************************</div><div class="line">			var strategies=&#123;</div><div class="line">				isEmpty:function(value,errorMsg)&#123;</div><div class="line">					if(value==&quot;&quot;)&#123;</div><div class="line">						return errorMsg;</div><div class="line">					&#125;</div><div class="line">				&#125;,</div><div class="line">				isMobile:function(value,errorMsg)&#123;</div><div class="line">					if(!/1[3|5|8][0-9]&#123;9&#125;/.test(value))&#123;</div><div class="line">						return errorMsg;</div><div class="line">					&#125;</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">		//**********************************Validator类，作为context,负责接收用户的请求并委托给strategy对象**************</div><div class="line">			var validator=function()&#123;</div><div class="line">				this.cache=[];</div><div class="line">			&#125;</div><div class="line">			validator.prototype.add=function(dom,rule,errorMsg)&#123;</div><div class="line">				var self=this;</div><div class="line">				var arr=[];</div><div class="line">				this.cache.push(function()&#123;</div><div class="line">					arr.unshift(dom.value);</div><div class="line">					arr.push(errorMsg);</div><div class="line">					return strategies[rule].apply(dom,arr);</div><div class="line">				&#125;)</div><div class="line"></div><div class="line">			&#125;;</div><div class="line"></div><div class="line">			validator.prototype.start=function()&#123;</div><div class="line">				for(var i=0,validatorFunc;validatorFunc=this.cache[i++];)&#123;</div><div class="line">					var msg=validatorFunc();</div><div class="line">					if(msg)&#123;</div><div class="line">						return msg;</div><div class="line">					&#125;</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line"></div><div class="line"></div><div class="line">        //**************************客户调用代码********************************************</div><div class="line">			var registerForm = document.getElementById(&apos;registerForm&apos;);</div><div class="line">			var validataFunc=function()</div><div class="line">			&#123;</div><div class="line">				var validator=new validator();</div><div class="line">				validator.add(registerForm.userName,&apos;isEmpty&apos;,&apos;用户名不能为空&apos;);</div><div class="line">				validator.add(registerForm.phoneNumber,&apos;isMobile&apos;,&apos;手机号码格式不正确&apos;);</div><div class="line">				var errorMsg=validator.start();</div><div class="line">				return errorMsg;</div><div class="line">			&#125;</div><div class="line">			registerForm.onsubmit=function()&#123;</div><div class="line">				var errorMsg=validataFunc();</div><div class="line">				if(errorMsg)&#123;</div><div class="line">					alert(errorMsg);</div><div class="line">					return false;</div><div class="line">				&#125;</div><div class="line"></div><div class="line">			&#125;</div><div class="line">		&lt;/script&gt;</div><div class="line">	&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/26/http基础/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="superDjy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://img.mp.itc.cn/upload/20170429/a2379efc26214d7fa790af6105312132">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="С�����ľ���">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/06/26/http基础/" itemprop="url">Http基础知识</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-26T00:00:00+08:00">
+                2017-06-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Http/" itemprop="url" rel="index">
+                    <span itemprop="name">Http</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/06/26/http基础/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/06/26/http基础/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/06/26/http基础/" class="leancloud_visitors" data-flag-title="Http基础知识">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Http基础知识介绍"><a href="#Http基础知识介绍" class="headerlink" title="Http基础知识介绍"></a>Http基础知识介绍</h1><p>定义：基于文本的、用来在因特网中传输数据的协议。基于tcp/ip协议。Web的开发者们至少应该关注HTTP请求的两个方面：<strong>1.请求的目的是获取资源2.HTTP是一个无状态的协议。</strong></p>
+<p><strong>1.资源</strong></p>
+<p>访问资源首先需要使用URL。它指明了要使用的协议、服务器地址、要在服务器访问的特定文件。</p>
+<p>HTTP中资源具体而言就是：作为对象请求的响应，服务器总是会往客户端(用户代理)返回一些东西。这些东西可能是直接响应，也可能是间接响应。直接响应会把请求的资源返回，例如一张图片、一个HTML文档。间接响应会返回请求在指定资源上执行的结果，例如是一个告知操作成功失败的界面，或者一个状态码。</p>
+<p><strong>2.无状态</strong></p>
+<p>HTTP是一种无状态协议，因为每个请求/响应周期都是独立的，服务器无法通过HTTP协议来判断多个请求是否来自同一个用户代理。因此，许多web服务器引入了‘会话’(Session)的概念。‘会话概念’的引入使得服务器可以得以在多个请求之间存放状态。通常，不通的会话是通过客户端和服务器之间反复传递一二独一无二的<strong>秘钥</strong>(通常称为<strong>会话ID</strong>)，通常使用cookies来维护会话ID</p>
+<p>会话的实现机制：cookie与session是各种教材，网上文章所介绍到的与HTTP会话相关的两个内容。这两者较常见的解释是：cookie存在在浏览器，session存储在服务器中。但实际上这是一种不严谨的说法。<strong>实际上会话的实现机制是</strong>：<em>首先，用户端向服务端发送一个请求，服务端接收到请求（这里忽悠无须会话控制的情况）后，初始化会话，生成相应的会话信息，核心是会话ID，把会话ID发送给客户端，客户端接收到这个会话ID，把它存储起来，下一次发送请求的时候，附带着这个会话ID一起发送给服务端，服务端只要根据这个会话ID，就知道是谁**了</em>。</p>
+<p>对于如何存储会话ID，服务端与客户端是不同的，服务端存储会话ID有多种方式，常见的有本地存储，如：普通文本，文本名就是会话ID。对于文件系统，同一目录下，同一文件名只允许唯一一个文件，那么使用会话ID作为文件名是可以做到唯一确定会话的。除了本地文件存储，还可以使用memcache、redis、或者Mysql之类的数据库存储，即使用第三方数据库进行存储。只有一个原则：存储的会话ID必须是唯一的。客户端对于会话信息的存储就是使用“域”，不同的域拥有独立的会话。客户端以域相关信息作为文件标识符创建会话文件（客户端存储）对会话信息进行存储，其中域与会话ID结合就能唯一确定服务端，并且确定会话。浏览器是最常见的HTTP客户端，浏览器存储会话信息，是使用cookie文件的，里面保存着cookieE信息，而服务端返回的会话ID也存储在里面。会话ID存储在cookie文件中是一般情况下的，而cookie信息是作为HTTP头发送给服务端的，也就是说这种情况下，会话ID是附带在请求头中。<br><em>粗糙地，可理解为服务端返回给客户端的会话ID是存储在COOKIE文件中的</em></p>
+<h2 id="请求类型"><a href="#请求类型" class="headerlink" title="请求类型"></a>请求类型</h2><h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>实际上，客户端可以往服务器发送的请求有8种。不同的请求类型根据其在请求中指定的发送方法来辨别。HTTP请求方法有包括：GET,HEAD,POST,PUT,DELETE,TRACE,OPTIONS,CONNECT。常用的有get,post,head方法。一般来说，get一般用于获取/查询资源信息，而post一般用于更新资源信息。</p>
+<p><strong>1.根据HTTP规范，GET用于信息获取，而且应该是安全的和幂等的</strong>。</p>
+<p>　　(1)这里所谓安全的意味着该操作用于获取信息而非修改信息。换句话说，GET 请求一般不应产生副作用。就是说，它仅仅是获取资源信息，就像数据库查询一样，不会修改，增加数据，不会影响资源的状态。</p>
+<p>　　<em>* 注意：这里安全的含义仅仅是指是非修改信息。</em></p>
+<p>　　(2)幂等的意味着对同一URL的多个请求应该返回同样的结果</p>
+<p><strong>2.根据HTTP规范，POST表示可能修改变服务器上的资源的请求</strong></p>
+<h3 id="方法的区别"><a href="#方法的区别" class="headerlink" title="方法的区别"></a>方法的区别</h3><p>原理性的问题，我们再从表面现像上面看看GET和POST的区别：</p>
+<p>1.GET请求的数据会附在URL之后（就是把数据放置在HTTP协议头中），以?分割URL和传输数据，参数之间以&amp;相连。POST把提交的数据则放置在是HTTP包的包体中。</p>
+<p>2.POST的安全性要比GET的安全性高，在地址栏看不到。注意：这里所说的安全性和上面GET提到的“安全”不是同个概念。上面“安全”的含义仅仅是不作数据修改，而这里安全的含义是真正的Security的含义，比如：通过GET提交数据，用户名和密码将明文出现在URL上，因为(1)登录页面有可能被浏览器缓存</p>
+<p>3.GET方式提交的数据是有限制的（因为其参数通过URL传递，而浏览器对于URL的长度限制为1024个字节），这里的限制是特定的浏览器和服务器对它的限制。理论上POST没有限制，可传较大量的数据。</p>
+<h2 id="HTTP消息格式"><a href="#HTTP消息格式" class="headerlink" title="HTTP消息格式"></a>HTTP消息格式</h2><p>一个HTTP周期由请求和响应构成，因此HTTP消息格式分为<strong>请求消息格式</strong>和<strong>响应消息格式</strong>，通常情况下，浏览器或者Ajax的XMLHttpRequest对象会为我们格式化这些消息。</p>
+<p><strong>请求消息格式</strong>：</p>
+<p>1.起始行。定义使用的方法，资源和协议。字段之间用一个空格隔开。</p>
+<p>2.首部行(可以没有也可以多个)。每行规定一个首部，包含首部名、冒号、至少一个空白字符，以及首部值。</p>
+<p>3.一个可选的请求消息正文。它的解释方法取决于它的使用方法。</p>
+<p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">********请求头*******</div><div class="line">POST /some/path/folder/haha.html HTTP/1.1&lt;CRLF&gt;</div><div class="line"></div><div class="line">Host: www.haha.com: 80&lt;CRLF&gt;//必须是域名，不能是IP地址</div><div class="line"></div><div class="line">Connection: keep-alive</div><div class="line"></div><div class="line">//告诉服务器客户端可以接受什么类型文件</div><div class="line">Accept: text/html,application/xhtml+xml</div><div class="line"></div><div class="line">//指定了客户端提交给服务器的数据类型，这里multipart/form-data(二进制数据)是其中一种</div><div class="line">Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryqrt*******</div><div class="line">（随机的边界分割符）</div><div class="line"></div><div class="line">User-Agent: somebody&apos;s browser &lt;CRLF&gt;//浏览器类型</div><div class="line"></div><div class="line">********请求主体********************</div><div class="line">-------WebKitFormBoundaryqrt*******</div><div class="line"></div><div class="line">Content-Disposition: 提交数据</div><div class="line"></div><div class="line">-------WebKitFormBoundaryqrt*******</div><div class="line"></div><div class="line">如果是文件上传的话</div></pre></td></tr></table></figure>
+<p><strong>响应消息格式</strong>:<br>1.起始行。定义使用的协议、响应状态码和一个原因字符串(状态码解释)。</p>
+<p>2.首部行(可以没有也可以多个)。每行规定一个首部，包含首部名、冒号、至少一个空白字符，以及首部值。</p>
+<p>3.返回的数据。它的解释取决于所使用的方法。</p>
+<p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">HTTP/1.1 200 OK&lt;CRLF&gt;</div><div class="line"></div><div class="line">Content-type: text/html&lt;CRLF&gt;</div><div class="line"></div><div class="line">Content-length: 55&lt;CRLF&gt;</div><div class="line"></div><div class="line">&lt;html&gt;</div><div class="line">	&lt;body&gt;</div><div class="line">		haha here!</div><div class="line">	&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<p>HTTP中的状态码有很多，常见的有200-OK,403-Forbidden(禁止访问),404-Not Found(文件找不到),500-Internal Server Error</p>
+<h2 id="使用Ajax生成请求"><a href="#使用Ajax生成请求" class="headerlink" title="使用Ajax生成请求"></a>使用Ajax生成请求</h2><p>示例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">new Ajax.Request(&apos;/the/server/side/resource&apos;,&#123;</div><div class="line">	method:&apos;post&apos;,</div><div class="line">	requestHeaders: [</div><div class="line">						&apos;x-headerName1&apos;,&apos;headValue1&apos;,</div><div class="line">						&apos;x-headerName2&apos;,&apos;headValue2&apos;						</div><div class="line">					],</div><div class="line">	poseBody: Form.serialize(document.someForm)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>这段代码中第一个参数定义了资源地址，另外一个参数对象则定义了方法、请求首部和要发送的POST正文。</p>
+<h2 id="通过Ajax获取响应"><a href="#通过Ajax获取响应" class="headerlink" title="通过Ajax获取响应"></a>通过Ajax获取响应</h2><p>利用Ajax的XMLHttpRequest对象获取响应，并允许使用该对象的一些方法和属性对响应进行处理。</p>
+<p>方法属性列表：</p>
+<p>responseText:成功请求后的响应文本。</p>
+<p>responseXML:此属性包含一个XML DOM，仅仅当响应首部中规定的内容类型为text/html时有效。</p>
+<p>status: 响应状态码</p>
+<p>statusText: 状态原因消息</p>
+<p>getAllHeaders():返回所有响应的首部</p>
+<p>getHeader(name):返回指定响应首部</p>
+<p>HTTP协议1.0与HTTP协议1.1的主要区别在于引入connection:keep-alive,使得连接中断后仍然能够保证一段时间的连接。其他的区别还包括：<br>支持持久连接，虚拟主机，代理连接</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/25/js设计模式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="superDjy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://img.mp.itc.cn/upload/20170429/a2379efc26214d7fa790af6105312132">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="С�����ľ���">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/06/25/js设计模式/" itemprop="url">js设计模式基础(1)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-25T00:00:00+08:00">
+                2017-06-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/06/25/js设计模式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/06/25/js设计模式/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/06/25/js设计模式/" class="leancloud_visitors" data-flag-title="js设计模式基础(1)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>一. 封装</strong></p>
+<p>1.封装数据：Js中并没有提供private,public,protected等关键字来提供访问权限，只能后依赖变量的作用域特性，<strong>而且只能模拟出public和private两种数据封装特性</strong>。除了ES6中的let属性，一般可以通过函数来创建作用域。</p>
+<p>2.封装实现：封装使得对象内部的变化对外是透明的，其他对象不关心对象内部的实现。封装使得对象之间的耦合变松散，对象之间只通过api接口通信。</p>
+<p>3.封装的作用：把系统中稳定不变的部分和容易变化的部分分离开，在系统演变过程中，只需替换那些容易变化的部分。</p>
+<p><strong>二. 原型模式和基于原型继承的js对象系统</strong></p>
+<p>js中不存在类的概念，对象也并非从类中创建出来，所有的js对象都是从某个对象上克隆出来的。如果对象A是由对象B克隆出来的，则成B为A的原型。</p>
+<p>原型编程的规则:</p>
+<p><strong>1.所有数据都是对象。</strong></p>
+<p>事实上，js中的根对象是Object.prototype对象，所有的对象都是从他克隆出来的。Object.prototype的原型是null。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var obj=&#123;&#125;;</div><div class="line">console.log(Object.getPrototypeOf(obj)===Object.prototype);</div><div class="line">VM217:2 true</div></pre></td></tr></table></figure></p>
+<p><strong>2.要得到一个对象，不是通过实例化类，而是找到一个对象作为他的原型</strong></p>
+<p>js中的函数既可以作为普通函数被调用，可以作为构造器函数被调用，当用new运算符来调用函数时，此时函数是一个构造器。用运算符来创建对象的过程中，实际上也是先克隆Object.prototype对象，再进行一些额外的其他操作。</p>
+<p><strong>3.对象会记住它的原型</strong></p>
+<p>对象会记住它的构造器原型<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var a= new Object();</div><div class="line">console.log(a.__proto__===Object.prototype);</div><div class="line">VM353:2 true</div><div class="line"></div><div class="line">function haha()&#123;</div><div class="line">return &apos;hahha&apos;</div><div class="line">&#125;;</div><div class="line">var a = new haha();</div><div class="line">console.log(a.__proto__===haha.prototype);</div><div class="line">VM507:5 true</div></pre></td></tr></table></figure></p>
+<p><strong>4.如果对象无法响应某个请求，它会把这个请求委托给它自己的原型</strong></p>
+<p><em>这规则是原型继承的精髓所在，当一个对象无法响应某个请求的时候，会把这个请求顺的原型链传递下去。</em></p>
+<p>虽然js中的对象最初都是由Object.prototype对象克隆出来的，但是对象构造器的原型并不局限于Object.prototype，也可以有选择性的把对象a的构造器原型指向对象b,从而达到继承的效果。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">var a=function()&#123;&#125;</div><div class="line">var A=new a();</div><div class="line">var obj=&#123;name:&apos;haha&apos;&#125;;</div><div class="line">a.prototype=obj;</div><div class="line">console.log(A.name);</div><div class="line">VM658:5 </div><div class="line"></div><div class="line">var a=function()&#123;&#125;</div><div class="line">var obj=&#123;name:&apos;haha&apos;&#125;;</div><div class="line">a.prototype=obj;</div><div class="line">var A=new a();</div><div class="line">console.log(A.name);</div><div class="line">VM659:6 haha</div></pre></td></tr></table></figure></p>
+<p>三. this、call、apply的作用</p>
+<h2 id="this"><a href="#this" class="headerlink" title="this"></a>this</h2><p><strong>js中的this总是指向一个对象，具体指向哪个对象，是在运行时基于函数的执行环境而动态绑定的，而非函数声明时的环境。</strong></p>
+<h3 id="this的指向"><a href="#this的指向" class="headerlink" title="this的指向"></a>this的指向</h3><p><strong>1.作为对象的方法调用</strong></p>
+<p>当函数作为对象的方法被调用时，this指向该对象。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var obj =&#123;a:1,getA:function()&#123;console.log(this==obj)&#125;&#125;;</div><div class="line">obj.getA();</div><div class="line">VM200:1 true</div></pre></td></tr></table></figure></p>
+<p><strong>2.作为普通函数调用</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var obj =&#123;a:1,getA:function()&#123;console.log(this==obj)&#125;&#125;;</div><div class="line">var getB=obj.getA;</div><div class="line">getB();</div><div class="line">VM229:1 false</div><div class="line"></div><div class="line">var obj =&#123;a:1,getA:function()&#123;console.log(this)&#125;&#125;;</div><div class="line">var getB=obj.getA;</div><div class="line">getB();</div><div class="line">VM236:1 Window &#123;stop: function, open: function, alert: function, confirm: function, prompt: function…&#125;</div></pre></td></tr></table></figure></p>
+<p>当函数不作为对象的属性被调用时，也就是常说的普通函数方式，此时的this总是指向全局对象</p>
+<p><strong>3.构造器调用</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var a =function()&#123;</div><div class="line">this.name = &apos;haha&apos;&#125;;</div><div class="line">var b = new a;</div><div class="line">console.log(b.name);</div><div class="line">VM209:4 haha</div></pre></td></tr></table></figure></p>
+<p><em>当用<code>new</code>调用函数时，该函数会返回一个对象，通常情况下，构造器里面的<code>this</code>指向返回的这个对象</em></p>
+<p><strong>但是</strong>，如果构造器显示的返回一个object类型的对象，则此次运算结果返回这个显示对象<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var a =function()&#123;</div><div class="line">this.name = &apos;haha&apos;;</div><div class="line">return &#123;name:&apos;hehe&apos;&#125;</div><div class="line">&#125;</div><div class="line">var b = new a();</div><div class="line">console.log(b.name);</div><div class="line">VM308:6 hehe</div></pre></td></tr></table></figure></p>
+<p><strong>4.<code>Funcition..prototype.call</code>和<code>Function.prototype.apply</code>调用。</strong></p>
+<p>与普通函数相比，call()和apply()方法可以动态的改变传入函数的this。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var obj1=&#123;name:&apos;haha&apos;,getName:function()&#123;return this.name&#125;&#125;;</div><div class="line">var obj2=&#123;name:&apos;heihei&apos;&#125;;</div><div class="line">console.log(obj1.getName.apply(obj2));</div><div class="line">console.log(obj1.getName.apply(obj2));</div><div class="line">VM500:3 heihei</div></pre></td></tr></table></figure></p>
+<h2 id="apply-amp-amp-call"><a href="#apply-amp-amp-call" class="headerlink" title="apply &amp;&amp; call"></a>apply &amp;&amp; call</h2><p>apply()与call()方法唯一不同处在于<strong>传入参数的形式不同</strong>。</p>
+<p><code>apply()</code>接受两个参数，第一个参数是传递给这个函数用来绑定函数内部<code>this</code>的值，第二个参数可以数组或者类数组（传递给这个函数的所有参数），<code>apply()</code>方法把这个数组中的元素作为参数传递给被调用的函数。</p>
+<p><code>call()</code>方法接受的参数数量不固定，与<code>apply()</code>相同的是，第一个参数也是参数代表函数体内的<code>this</code>的指向，之后的每一个参数依次被传入函数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">var fun = function(a,b,c)&#123;console.log(a+b+c)&#125;;</div><div class="line">fun.apply(null, [1,2,3]);</div><div class="line">6</div><div class="line"></div><div class="line">var fun = function(a,b,c)&#123;console.log(a+b+c)&#125;;</div><div class="line">fun.call(null, [1,2,3]);</div><div class="line">1,2,3undefinedundefined</div><div class="line"></div><div class="line">var fun = function(a,b,c)&#123;console.log(a+b+c)&#125;;</div><div class="line">fun.call(null, 1,2,3);</div><div class="line">6</div><div class="line"></div><div class="line">var fun = function(a,b,c)&#123;console.log(a+b+c)&#125;;</div><div class="line">fun.call(null, 1,2,4,9);</div><div class="line">7</div></pre></td></tr></table></figure></p>
+<p>如果函数第一个参数指向null,则默认函数体内的this指向默认的宿主对象，在浏览器中是window:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var fun = function(a,b,c)&#123;console.log(this)&#125;;</div><div class="line">fun.call(null, 1,2,4,9);</div><div class="line">Window &#123;stop: function, open: function, alert: function, confirm: function, prompt: function…&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="apply-与call-用途"><a href="#apply-与call-用途" class="headerlink" title="apply()与call()用途"></a>apply()与call()用途</h3><p><strong>1.改变this的指向</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var getName=function()&#123;return this.name;&#125;</div><div class="line">var obj1=&#123;name:&apos;hahh&apos;&#125;;</div><div class="line">getName.call(obj1);</div><div class="line">&quot;hahh&quot;</div></pre></td></tr></table></figure></p>
+<p>将函数getName的this指向对象obj1;</p>
+<p><strong>2.使用其他对象的方法</strong></p>
+<p>1.借用构造函数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var A=function(name)&#123;this.name=name&#125;;</div><div class="line">var B=function()&#123;A.apply(this,arguments);&#125;</div><div class="line">B.prototype.getName=function()&#123;return this.name;&#125;;</div><div class="line">var b=new B(&apos;heihei&apos;);</div><div class="line">console.log(b.getName());</div><div class="line">heihei</div></pre></td></tr></table></figure></p>
+<p>2.对于函数的参数列表arguments(一个类数组对象)，并非一个真正的数组。可以通过apply()或者call()方法来增加所需用到的方法。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">(function()&#123;</div><div class="line">Array.prototype.push.apply(arguments,[3]);</div><div class="line">console.log(arguments);</div><div class="line">&#125;)(1,2);</div><div class="line">[1, 2, 3, callee: function, Symbol(Symbol.iterator): function]</div><div class="line"></div><div class="line"></div><div class="line">(function()&#123;</div><div class="line">Array.prototype.push.call(arguments,3);</div><div class="line">console.log(arguments);</div><div class="line">&#125;)(1,2);</div><div class="line">[1, 2, 3, callee: function, Symbol(Symbol.iterator): function]</div><div class="line"></div><div class="line">var a=&#123;&#125;;</div><div class="line">Array.prototype.push.call(a,&apos;haha&apos;);</div><div class="line">console.log(a);</div><div class="line">Object &#123;0: &quot;haha&quot;, length: 1&#125;</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/17/js中设计模式基础/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="superDjy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://img.mp.itc.cn/upload/20170429/a2379efc26214d7fa790af6105312132">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="С�����ľ���">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/06/17/js中设计模式基础/" itemprop="url">JS中的设计模式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-17T00:00:00+08:00">
+                2017-06-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/06/17/js中设计模式基础/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/06/17/js中设计模式基础/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/06/17/js中设计模式基础/" class="leancloud_visitors" data-flag-title="JS中的设计模式">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="函数声明-amp-amp-函数表达式"><a href="#函数声明-amp-amp-函数表达式" class="headerlink" title="函数声明&amp;&amp;函数表达式"></a>函数声明&amp;&amp;函数表达式</h1><h2 id="函数声明"><a href="#函数声明" class="headerlink" title="函数声明"></a>函数声明</h2><p><code>Function Declaration</code> 可以定义命名的函数变量，而无需给变量赋值。<code>Function Declaration</code> 是一种独立的结构，不能嵌套在非功能模块中。可以将它类比为 <code>Variable Declaration</code>（变量声明）。就像 <code>Variable Declaration</code> 必须以<code>var</code>开头一样，<code>Function Declaration</code> 必须以<code>function</code>开头。</p>
+<h3 id="eg"><a href="#eg" class="headerlink" title="eg"></a>eg</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">function test()&#123;</div><div class="line">	return 3</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>函数声明时，函数名在自身作用域和父作用域内是可获取的（否则就取不到函数了）。</p>
+<h2 id="函数表达式"><a href="#函数表达式" class="headerlink" title="函数表达式"></a>函数表达式</h2><p><code>Function Expression</code> 将函数定义为表达式语句（通常是变量赋值）的一部分。通过 <code>Function Expression</code> 定义的函数可以是命名的，也可以是匿名的。<code>Function Expression</code> 不能以<code>function</code>开头</p>
+<h3 id="eg-1"><a href="#eg-1" class="headerlink" title="eg"></a>eg</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var a = function()&#123;</div><div class="line">	return 3;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var a = function test()&#123;</div><div class="line">	return 3</div><div class="line">&#125;</div><div class="line"></div><div class="line">(function test()&#123;</div><div class="line">	return 3;</div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
+<h2 id="两者的区别"><a href="#两者的区别" class="headerlink" title="两者的区别"></a>两者的区别</h2><p><code>JavaScript</code> 解释器中存在一种变量声明被提升<code>hoisting</code>的机制，也就是说<strong>变量（函数）的声明</strong>会被提升到作用域的最前面，即使写代码的时候是写在最后面，也还是会被提升至最前面。</p>
+<h3 id="eg-Q1"><a href="#eg-Q1" class="headerlink" title="eg:Q1"></a>eg:Q1</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">function bling()&#123;</div><div class="line">	function test()&#123;</div><div class="line">		return 3</div><div class="line">	&#125;;</div><div class="line">	return test();</div><div class="line">	function test()&#123;</div><div class="line">		return 8;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">&#125;</div><div class="line">console.log(bling());</div><div class="line">结果为:8</div></pre></td></tr></table></figure>
+<p>由于函数声明的变量提升，该程序经过解释器解释后为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"> function bling()&#123;</div><div class="line">	function test()&#123;</div><div class="line">		return 3</div><div class="line">	&#125;;</div><div class="line">	</div><div class="line">	function test()&#123;</div><div class="line">		return 8;</div><div class="line">	&#125;</div><div class="line">	return test();</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="eg-Q2"><a href="#eg-Q2" class="headerlink" title="eg:Q2"></a>eg:Q2</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">function foo()&#123;</div><div class="line">    var bar = function() &#123;</div><div class="line">        return 3;</div><div class="line">    &#125;;</div><div class="line">    return bar();</div><div class="line">    var bar = function() &#123;</div><div class="line">        return 8;</div><div class="line">    &#125;;</div><div class="line">&#125;</div><div class="line">console.log(foo());</div><div class="line">结果为:3</div></pre></td></tr></table></figure>
+<p>该程序经过解释器解释后为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function foo()&#123;</div><div class="line">//变量声明提升</div><div class="line">var bar = undefined;</div><div class="line">var bar = undefined;</div><div class="line">bar = function()&#123;return 3&#125;;</div><div class="line">return bar();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="eg-Q3"><a href="#eg-Q3" class="headerlink" title="eg:Q3"></a>eg:Q3</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">console.log(foo());</div><div class="line">function foo()&#123;</div><div class="line">    var bar = function() &#123;</div><div class="line">        return 3;</div><div class="line">    &#125;;</div><div class="line">    return bar();</div><div class="line">    var bar = function() &#123;</div><div class="line">        return 8;</div><div class="line">    &#125;;</div><div class="line">&#125;</div><div class="line">结果为:3</div><div class="line">这次是函数foo()的声明提升了</div></pre></td></tr></table></figure>
+<h3 id="eg-Q4"><a href="#eg-Q4" class="headerlink" title="eg:Q4"></a>eg:Q4</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">function foo()&#123;</div><div class="line">    return bar();</div><div class="line">    var bar = function() &#123;</div><div class="line">        return 3;</div><div class="line">    &#125;;</div><div class="line">    var bar = function() &#123;</div><div class="line">        return 8;</div><div class="line">    &#125;;</div><div class="line">&#125;</div><div class="line">console.log(foo());</div><div class="line">结果为：Uncaught TypeError: bar is not a function</div><div class="line">因为这里没有函数提升</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/17/js数据结构与算法(5 end)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="superDjy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://img.mp.itc.cn/upload/20170429/a2379efc26214d7fa790af6105312132">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="С�����ľ���">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/06/17/js数据结构与算法(5 end)/" itemprop="url">JS中的数据结构与算法(5)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-17T00:00:00+08:00">
+                2017-06-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/js数据结构与算法/" itemprop="url" rel="index">
+                    <span itemprop="name">js数据结构与算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/06/17/js数据结构与算法(5 end)/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/06/17/js数据结构与算法(5 end)/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/06/17/js数据结构与算法(5 end)/" class="leancloud_visitors" data-flag-title="JS中的数据结构与算法(5)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="高级算法"><a href="#高级算法" class="headerlink" title="高级算法"></a>高级算法</h1><h2 id="1-动态规划"><a href="#1-动态规划" class="headerlink" title="1 动态规划"></a>1 动态规划</h2><p>动态规划的解决方案与递归相反，它是通过从底部开始解决一个个小问题，然后合并成一个大的解决方案,从而解决一个大的问题</p>
+<h3 id="示例-1"><a href="#示例-1" class="headerlink" title="示例 1"></a>示例 1</h3><p><strong>fiboancci 对比</strong></p>
+<h4 id="递归方法"><a href="#递归方法" class="headerlink" title="递归方法"></a>递归方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">function recurFib(n)&#123;</div><div class="line">	if(n&lt;2)&#123;</div><div class="line">		return n;</div><div class="line">	&#125;</div><div class="line">	else &#123;</div><div class="line">		return recurFib(n-1)+ recurFib(n-2);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">recurFib(10);</div><div class="line">55</div></pre></td></tr></table></figure>
+<h4 id="动态规划方法"><a href="#动态规划方法" class="headerlink" title="动态规划方法"></a>动态规划方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">function recurFib(n)&#123;</div><div class="line">	var value=[];</div><div class="line">	for(var i=0;i&lt;=n;i++)&#123;</div><div class="line">		value[i]=0;</div><div class="line">	&#125;</div><div class="line">	if(n==1||n==2)&#123;</div><div class="line">		return 1;</div><div class="line">	&#125;</div><div class="line">	else &#123;</div><div class="line">		value[1]=1;</div><div class="line">		value[2]=1;</div><div class="line">		for(var j=3;j&lt;=n;j++)&#123;</div><div class="line">			value[j]=value[j-1]+value[j-2];</div><div class="line">		&#125;</div><div class="line">		return value[n]</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">recurFib(10);</div><div class="line">55</div></pre></td></tr></table></figure>
+<h3 id="示例-2"><a href="#示例-2" class="headerlink" title="示例 2"></a>示例 2</h3><p><strong>寻找公共子字符串的动态规划实现</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">function lcs(word1,word2)&#123;</div><div class="line">	var max = 0;</div><div class="line">	var index = 0;</div><div class="line">	var lcsarr = new Array(word1.length+1);</div><div class="line">	for(var i=0;i&lt;word1.length+1;i++)&#123;</div><div class="line">		lcsarr[i]=new Array(word2.length+1);</div><div class="line">		for(var j=0;j&lt;word2.length+1;j++)&#123;</div><div class="line">			lcsarr[i][j]=0;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">    for(var i=0; i&lt;=word1.length;i++)&#123;</div><div class="line">        for(var j=0; j&lt;=word2.length;j++)&#123;</div><div class="line">            if(i==0||j==0)&#123;</div><div class="line">                lcsarr[i][j]=0;</div><div class="line">            &#125;else&#123;</div><div class="line">                if(word1[i-1]==word2[j-1])&#123;</div><div class="line">                    lcsarr[i][j]=lcsarr[i-1][j-1]+1;</div><div class="line">                &#125;else&#123;</div><div class="line">                    lcsarr[i][j]=0;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">			if(max&lt;lcsarr[i][j])&#123;</div><div class="line">				max = lcsarr[i][j];</div><div class="line">				index = i;</div><div class="line">			&#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    var str = &apos;&apos;;</div><div class="line">    if(max==0)&#123;</div><div class="line">        return &quot;&quot;;</div><div class="line">    &#125;else&#123;</div><div class="line">        for(var i=index-max;i&lt;=max;i++)&#123;</div><div class="line">            str =str + word2[i]</div><div class="line">        &#125;</div><div class="line">        return str;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">lcs(&apos;abbcc&apos;,&apos;dbbcc&apos;);</div><div class="line">结果:&quot;bbcc&quot;</div></pre></td></tr></table></figure></p>
+<h3 id="示例3"><a href="#示例3" class="headerlink" title="示例3"></a>示例3</h3><p><strong>背包的问题利用贪婪算法解决，贪婪算法核心思想为解决找到局部次优解。</strong></p>
+<p>解决部分背包问题的方案：</p>
+<p>1.设背报容量为W，物品价格为v,物品重量为w。</p>
+<p>2.根据v/w的比例对物品排序。</p>
+<p>3.按比例降序方法来建立对应数组。</p>
+<p>4.尽可能的放过多的物品。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">function ksack(values,weights,capacity)&#123;</div><div class="line">	var load=0;</div><div class="line">	var i=0;</div><div class="line">	var w=0;</div><div class="line">	while(load&lt;capacity&amp;&amp;i&lt;values.length)&#123;</div><div class="line">		if(weights[i]&lt;=(capacity-load))&#123;</div><div class="line">			w = w + values[i];</div><div class="line">			load = load + weights[i];</div><div class="line">		&#125;else&#123;</div><div class="line">			var r=(capacity-load)/weights[i];</div><div class="line">			w = w + r * values[i];</div><div class="line">			load = load +weights[i];</div><div class="line">		&#125;</div><div class="line">	i++;</div><div class="line">	&#125;</div><div class="line">return w;</div><div class="line">&#125;</div><div class="line">ksack([13,10,11,4,5],[9,7,8,3,4],16);</div><div class="line">23</div></pre></td></tr></table></figure></p>
+<p><strong>背包问题的递归方法</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">function ksack(capacity,size,value,n)&#123;</div><div class="line">	if(n==0||capacity==0)&#123;</div><div class="line">		return 0;</div><div class="line">	&#125;</div><div class="line">	if(size[n-1]&gt;capacity)&#123;</div><div class="line">		return ksack(capacity,size,value,n-1);</div><div class="line">	&#125;else&#123;</div><div class="line">		return max(value[n-1]+ksack(capacity-size[n-1],size,value,n-1),ksack(capacity,size,value,n-1))</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">function max(a,c)&#123;</div><div class="line">	return (a&gt;c)?a:c;</div><div class="line">&#125;</div><div class="line">ksack(16,[3,4,7,8,9],[4,5,10,11,13],5)</div><div class="line">23</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/17/数据结构/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="superDjy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://img.mp.itc.cn/upload/20170429/a2379efc26214d7fa790af6105312132">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="С�����ľ���">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/06/17/数据结构/" itemprop="url">数据结构与算法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-17T00:00:00+08:00">
+                2017-06-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据结构与算法/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构与算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/06/17/数据结构/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/06/17/数据结构/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/06/17/数据结构/" class="leancloud_visitors" data-flag-title="数据结构与算法">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="平衡二叉树"><a href="#平衡二叉树" class="headerlink" title="平衡二叉树"></a>平衡二叉树</h2><p>平衡二叉树（Self-balancing binary search tree）又被称为AVL树（有别于AVL算法），且具有以下性质：它是<strong>一棵空树或它的左右两个子树的高度差的绝对值不超过1</strong>，并且左右两个子树都是一棵平衡二叉树。其公式为<code>F(n)=F(n-1)+F(n-2)+1</code>1是根节点，F(n-1)是左子树的节点数量，F(n-2)是右子树的节点数量。平衡二叉树的常用实现的算法有红黑树、AVL、替罪羊树、Treap、伸展树等。</p>
+<p><strong>红黑树的应用比较广泛，主要是用它来存储有序的数据，它的时间复杂度是O(lgn)，效率非常之高</strong></p>
+<h3 id="红黑树的基本操作-一-左旋和右旋"><a href="#红黑树的基本操作-一-左旋和右旋" class="headerlink" title="红黑树的基本操作(一) 左旋和右旋"></a>红黑树的基本操作(一) 左旋和右旋</h3><h3 id="红黑树的基本操作（二）插入和删除"><a href="#红黑树的基本操作（二）插入和删除" class="headerlink" title="红黑树的基本操作（二）插入和删除"></a>红黑树的基本操作（二）插入和删除</h3><p>见文章：！[]<a href="http://www.cnblogs.com/PerkinsZhu/p/5824015.html" target="_blank" rel="external">http://www.cnblogs.com/PerkinsZhu/p/5824015.html</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/16/js数据结构与算法(4)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="superDjy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://img.mp.itc.cn/upload/20170429/a2379efc26214d7fa790af6105312132">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="С�����ľ���">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/06/16/js数据结构与算法(4)/" itemprop="url">JS中的数据结构与算法(4)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-16T00:00:00+08:00">
+                2017-06-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/js数据结构与算法/" itemprop="url" rel="index">
+                    <span itemprop="name">js数据结构与算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/06/16/js数据结构与算法(4)/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/06/16/js数据结构与算法(4)/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/06/16/js数据结构与算法(4)/" class="leancloud_visitors" data-flag-title="JS中的数据结构与算法(4)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h1><h2 id="简单排序算法"><a href="#简单排序算法" class="headerlink" title="简单排序算法"></a>简单排序算法</h2><h3 id="1-冒泡排序"><a href="#1-冒泡排序" class="headerlink" title="1 冒泡排序"></a>1 冒泡排序</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">function bubble(arr)&#123;</div><div class="line">	var length = arr.length;</div><div class="line">	var temp;</div><div class="line">	for(var i =0; i&lt;length;i++)&#123;</div><div class="line">		for(var j=length-1;j&gt;i;j--)&#123;</div><div class="line">			if(arr[i]&lt;=arr[j])&#123;</div><div class="line">				temp = arr[i];</div><div class="line">				arr[i] = arr[j];</div><div class="line">				arr[j] = temp;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	return arr;</div><div class="line">&#125;</div><div class="line">var a = [3,2,4,1];</div><div class="line">bubble(a);</div><div class="line">结果为:[4, 3, 2, 1]</div></pre></td></tr></table></figure>
+<h3 id="2-选择排序"><a href="#2-选择排序" class="headerlink" title="2 选择排序"></a>2 选择排序</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">function select(arr)&#123;</div><div class="line">	var length = arr.length;</div><div class="line">	var temp;</div><div class="line">	var min</div><div class="line">	for(var i =0; i&lt;length-2;++i)&#123;</div><div class="line">		min = i;</div><div class="line">		for(var j=i+1;j&lt;length-1;++j)&#123;</div><div class="line">			if(arr[j]&lt;=arr[min])&#123;</div><div class="line">				min = j;</div><div class="line">			&#125;</div><div class="line">			temp = arr[i];</div><div class="line">			arr[i] = arr[min];</div><div class="line">			arr[min] = temp;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	return arr;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="高级排序算法"><a href="#高级排序算法" class="headerlink" title="高级排序算法"></a>高级排序算法</h2><h3 id="1-希尔排序"><a href="#1-希尔排序" class="headerlink" title="1 希尔排序"></a>1 希尔排序</h3><p>希尔排序在插入排序的基础上做了一些改变，它会首先比较距离较远的元素而非距离较近的元素。然后不断缩小元素之间的比较距离直到处理到数据集末尾，这时候算法开始比较相邻元素。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">function shellSort(arr)&#123;</div><div class="line">var length = arr.length;</div><div class="line">var h=1;</div><div class="line">while(h&lt;length/3)&#123;</div><div class="line">	h = 3*h +1;</div><div class="line">&#125;</div><div class="line">while(h&gt;=1)&#123;</div><div class="line">	for(var i=h; i&lt;length;i++)&#123;</div><div class="line">		for(var j=i;j&gt;=h&amp;&amp;arr[j]&lt;arr[j-h];j=j-h)&#123;</div><div class="line">			if(arr[j]&lt;arr[j-h])&#123;</div><div class="line">				temp = arr[j];</div><div class="line">				arr[j] = arr[j-h];</div><div class="line">				arr[j-h] = temp;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	h=(h-1)/3;</div><div class="line">&#125;</div><div class="line">return arr;</div><div class="line">&#125;</div><div class="line">var a =[92,31,5,96,44,88,34,57,44,72,20,83,4,623,12,12,932,54];</div><div class="line">shellSort(a);</div><div class="line">结果为： [4, 5, 12, 12, 20, 31, 34, 44, 44, 54, 57, 72, 83, 88, 92, 96, 623, 932]</div></pre></td></tr></table></figure></p>
+<h3 id="2-快速排序"><a href="#2-快速排序" class="headerlink" title="2 快速排序"></a>2 快速排序</h3><p>首先在列表中选择一个基准值，数据围绕基准值进行分类，将小于基准值的放在基准值的左边，大于基准值的放在基准值的右边。快速排序对于大型数据集合非常实用，在处理小型数据集合时性能反而会下降<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">function fastSort(arr)&#123;</div><div class="line">if(arr.length==0)&#123;</div><div class="line">	return[];</div><div class="line">&#125;</div><div class="line">var lesser = [];</div><div class="line">var greater = [];</div><div class="line">var standard = arr[0];</div><div class="line">for(var i=1;i&lt;arr.length;i++)&#123;</div><div class="line">	if(arr[i]&lt;standard)&#123;</div><div class="line">		lesser.push(arr[i])</div><div class="line">	&#125;else&#123;</div><div class="line">		greater.push(arr[i]);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">return fastSort(lesser).concat(standard,fastSort(greater))</div><div class="line">&#125;</div><div class="line">var a =[68,80,12,95,70,97,27,88,93];</div><div class="line">fastSort(a);</div><div class="line">结果：[12, 27, 68, 70, 80, 88, 93, 95, 97]</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/16/js数据结构与算法(3)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="superDjy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://img.mp.itc.cn/upload/20170429/a2379efc26214d7fa790af6105312132">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="С�����ľ���">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/06/16/js数据结构与算法(3)/" itemprop="url">JS中的数据结构与算法(3)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-16T00:00:00+08:00">
+                2017-06-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/js数据结构与算法/" itemprop="url" rel="index">
+                    <span itemprop="name">js数据结构与算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/06/16/js数据结构与算法(3)/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/06/16/js数据结构与算法(3)/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/06/16/js数据结构与算法(3)/" class="leancloud_visitors" data-flag-title="JS中的数据结构与算法(3)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="二叉树与二叉查找树"><a href="#二叉树与二叉查找树" class="headerlink" title="二叉树与二叉查找树"></a>二叉树与二叉查找树</h1><p>树是一种非线性的数据结构，以分层的方式存储数据。<br>二叉树由节点构成，在这里需要定义一个Node对象<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">function Node(data,left,right)&#123;</div><div class="line">	this.data = data;</div><div class="line">	this.left = left;</div><div class="line">	this.right = right;</div><div class="line">	this.show = show;</div><div class="line">&#125;</div><div class="line">function show()&#123;</div><div class="line">	return this.data;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在这里可以创建一个类来表示二叉查找树(BST),该类的构造函数将根节点初始化为null,以此创建一个空节点。此外，还有一个insert()方法，用来向树中增加新节点。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">function BST()&#123;</div><div class="line">	this.root = null;</div><div class="line">	this.insert = insert;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>具体的insert()方法实现思想：</p>
+<p>(1)判断有无根节点，如果没有根节点，将插入点直接设为根节点，结束。</p>
+<p>(2)如何已有根节点，将根节点设为当前节点，比较待插数据与根节点的大小，如果小于当前节点，设新的当前节点为原节点的做节点，否则设为右节点。</p>
+<p>(3)知道当前节点的做节点或右节点为空时，插入数据，完成算法。<br>具体实现：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">function insert(data)&#123;</div><div class="line">	var n = new Node(data,null,null);</div><div class="line">	if(this.root==null)&#123;</div><div class="line">		this.root = n;</div><div class="line">	&#125;</div><div class="line">	else&#123;</div><div class="line">		var current = this.root;</div><div class="line">		var parent;</div><div class="line">		while(true)&#123;</div><div class="line">				parent = current; </div><div class="line">				if(current.data&gt;data)&#123;</div><div class="line">					current = current.left;</div><div class="line">					if(current==null)&#123;</div><div class="line">						parent.left = n;</div><div class="line">						break;</div><div class="line">					&#125;</div><div class="line">				&#125;</div><div class="line">				else&#123;</div><div class="line">					current = current.right;</div><div class="line">					if(current==null)&#123;</div><div class="line">						parent.right = n;</div><div class="line">						break;</div><div class="line">					&#125;</div><div class="line">				&#125;</div><div class="line">		&#125;</div><div class="line">	</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="常用的遍历二叉查找树的方法有三种：中序、先序，后序。"><a href="#常用的遍历二叉查找树的方法有三种：中序、先序，后序。" class="headerlink" title="常用的遍历二叉查找树的方法有三种：中序、先序，后序。"></a>常用的遍历二叉查找树的方法有三种：中序、先序，后序。</h2><p>中序：即为升序排列。左，中，右<br>先序：从最左边开始：中，左，右。<br>后序：从最左边开始：左，右，中。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/16/js数据结构与算法(2)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="superDjy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://img.mp.itc.cn/upload/20170429/a2379efc26214d7fa790af6105312132">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="С�����ľ���">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/06/16/js数据结构与算法(2)/" itemprop="url">JS中的数据结构与算法(2)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-16T00:00:00+08:00">
+                2017-06-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/js数据结构与算法/" itemprop="url" rel="index">
+                    <span itemprop="name">js数据结构与算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/06/16/js数据结构与算法(2)/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/06/16/js数据结构与算法(2)/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/06/16/js数据结构与算法(2)/" class="leancloud_visitors" data-flag-title="JS中的数据结构与算法(2)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h1><p>js中实现一个栈的低层数据结构是数组。</p>
+<h2 id="利用栈的几种情况"><a href="#利用栈的几种情况" class="headerlink" title="利用栈的几种情况"></a>利用栈的几种情况</h2><h3 id="示例1-数制之间的相互转换"><a href="#示例1-数制之间的相互转换" class="headerlink" title="示例1:数制之间的相互转换"></a>示例1:数制之间的相互转换</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">function chang(num,base)&#123;</div><div class="line">	var arr=[];</div><div class="line">	var result = &quot;&quot;;</div><div class="line">	do&#123;</div><div class="line">		arr.push(num%base);</div><div class="line">		num = num/base;</div><div class="line">	&#125;while(num&gt;=1);</div><div class="line">	arr.reverse();</div><div class="line">	for(var i=0;i&lt;arr.length;i++)&#123;</div><div class="line">		result = result + arr[i];</div><div class="line">	&#125;</div><div class="line">	return result;</div><div class="line">&#125;</div><div class="line">var haha = chang(256,8);</div><div class="line">console.log(haha);</div><div class="line">结果:400</div></pre></td></tr></table></figure>
+<h3 id="示例2-判断回文"><a href="#示例2-判断回文" class="headerlink" title="示例2:判断回文"></a>示例2:判断回文</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">function back(s)&#123;</div><div class="line">	var regexp=/[a-z]/gi;//全局匹配不区分大小写</div><div class="line">	var arr=s.match(regexp);</div><div class="line">	var arrRevs=arr.reverse();</div><div class="line">	if(arr.join(&apos;&apos;)==arrRevs.join(&apos;&apos;))&#123;</div><div class="line">		return true;</div><div class="line">	&#125;</div><div class="line">	return false;</div><div class="line">&#125;</div><div class="line">var str = &apos;A man, a plan, a canal: Panama&apos;; </div><div class="line">console.log(back(str));</div><div class="line">结果：true</div></pre></td></tr></table></figure>
+<h1 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h1><p>队列先进先出，可以利用js中的<code>push()</code>和<code>shift()</code>方法从尾部增加，从头部删除。</p>
+<h2 id="利用队列的示例"><a href="#利用队列的示例" class="headerlink" title="利用队列的示例"></a>利用队列的示例</h2><h3 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h3><p>基数排序的基本原理：从个位，十位，百位的数字依次进行排序。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">//sort函数功能将数组根据个位或者十位的大小进行分组</div><div class="line">function sort(nums,digital,queue)&#123;</div><div class="line">	for(var i=0;i&lt;nums.length;i++)</div><div class="line">    &#123;</div><div class="line">        if(digital==1)&#123;</div><div class="line">            queue[nums[i]%10].push(nums[i]);</div><div class="line">        &#125;</div><div class="line">        else&#123;</div><div class="line">			queue[Math.floor(nums[i]/10)].push(nums[i]);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">	</div><div class="line">&#125;</div><div class="line">//将前面的排序结果选出，准备下次排序</div><div class="line">function out(queue)&#123;</div><div class="line">	var arr=[];</div><div class="line">	for(var i=0;i&lt;10;i++)&#123;</div><div class="line">		if(queue[i].length!=0)&#123;</div><div class="line">			var h=queue[i].length;</div><div class="line">			for(var j=0;j&lt;h;j++)&#123;</div><div class="line">				arr.push(queue[i].shift());</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">			</div><div class="line">		</div><div class="line">	&#125;</div><div class="line">	return arr;</div><div class="line">&#125;</div><div class="line">var nums=[45,72,93,51,21,16,70,41,27,31];</div><div class="line">var queues=[];</div><div class="line">for(var i =0;i&lt;10;i++)&#123;</div><div class="line">	queues[i]=[];</div><div class="line">&#125;</div><div class="line">sort(nums,1,queues);</div><div class="line">console.log(queues[1]);</div><div class="line">var temp = out(queues);</div><div class="line">console.log(temp);</div><div class="line">sort(temp,10,queues);</div><div class="line">var result = out(queues);</div><div class="line">console.log(result);</div><div class="line">结果: [51, 21, 41, 31]</div><div class="line">      [70, 51, 21, 41, 31, 72, 93, 45, 16, 27]</div><div class="line">      [16, 21, 27, 31, 41, 45, 51, 70, 72, 93]</div></pre></td></tr></table></figure></p>
+<h1 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h1><p>一种不同于数组的一种底层存储的数据结构<br>基于对象的列表包含两个类，分别为Node类和LinkedLise类；Node类的构造函数有两个属性<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">function Node(element)&#123;</div><div class="line">	this.element = element;</div><div class="line">	this.next = null;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>LinkedList类的构造函数只有一个属性，此外还包含链表中的一些方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function()&#123;</div><div class="line">	this.head=new Node(&apos;head&apos;);</div><div class="line">	this.find=find;</div><div class="line">	this.insert=insert;</div><div class="line">	this.remove=remove;</div><div class="line">	this.display=display; </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="散列"><a href="#散列" class="headerlink" title="散列"></a>散列</h1><p>使用散列存储数据时，通过一个高效的散列函数将键映射到一个数字，这个数字的长度是0到散列表的长度。<br>当散列对于多个输入同时产生同样的输出时，就会产生碰撞。解决散列表的碰撞问题的方法有1.开链法2.线性探测法。<br><code>开链法</code>：实现散列表的底层数组中，每个数组元素有都是一个新的数据结构，比如数组，这样就能存储多个键。<br><code>线性探测法</code>：检查散列表的下一个位置是否为空，如果为空，就将数据存入该位置；如果不为空，则继续检查下一个位置，直到找到一个空位置为止。</p>
+<h2 id="两种方法比较"><a href="#两种方法比较" class="headerlink" title="两种方法比较"></a>两种方法比较</h2><p>当数据量比较大的时候，存储数据使用数组比较大时，使用线性探测法比较好(数组大小是待存数据的两倍或两倍以上时)，其他使用开链法比较好。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/14/js数据结构与算法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -502,1217 +2104,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/12/JS中应该掌握的知识2.0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="superDjy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://img.mp.itc.cn/upload/20170429/a2379efc26214d7fa790af6105312132">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="С�����ľ���">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/06/12/JS中应该掌握的知识2.0/" itemprop="url">JS中应该掌握的知识2.0</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-12T00:00:00+08:00">
-                2017-06-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/基本知识/" itemprop="url" rel="index">
-                    <span itemprop="name">基本知识</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/06/12/JS中应该掌握的知识2.0/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/06/12/JS中应该掌握的知识2.0/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/06/12/JS中应该掌握的知识2.0/" class="leancloud_visitors" data-flag-title="JS中应该掌握的知识2.0">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="柯里化-Currying"><a href="#柯里化-Currying" class="headerlink" title="柯里化(Currying)"></a>柯里化(Currying)</h1><p>函数柯里化的含义:对于每一个逻辑参数，柯里化函数会逐渐返回已配置的函数，直到所有的参数用完。</p>
-<h2 id="示例1："><a href="#示例1：" class="headerlink" title="示例1："></a>示例1：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">function Currying(n)</div><div class="line"> &#123;</div><div class="line">   return function(d)&#123;</div><div class="line">	  return n/d;</div><div class="line">	&#125;</div><div class="line">  &#125;;</div><div class="line">var result = Currying(10);</div><div class="line">result(2);</div><div class="line">结果:5</div></pre></td></tr></table></figure>
-<h2 id="示例2"><a href="#示例2" class="headerlink" title="示例2:"></a>示例2:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">function Currying(fun)&#123;</div><div class="line"> return function(secondPara)&#123;</div><div class="line">    return function(firstPara)&#123;</div><div class="line">		return fun(firstPara,secondPara);</div><div class="line">	 &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">function div(n,d)&#123;return n/d&#125;;</div><div class="line">  var result = Currying(div)(2);</div><div class="line">  result(10);</div><div class="line">结果:5</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/11/JS中应该掌握的知识/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="superDjy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://img.mp.itc.cn/upload/20170429/a2379efc26214d7fa790af6105312132">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="С�����ľ���">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/06/11/JS中应该掌握的知识/" itemprop="url">JS中应该掌握的知识</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-11T00:00:00+08:00">
-                2017-06-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/基本知识/" itemprop="url" rel="index">
-                    <span itemprop="name">基本知识</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/06/11/JS中应该掌握的知识/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/06/11/JS中应该掌握的知识/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/06/11/JS中应该掌握的知识/" class="leancloud_visitors" data-flag-title="JS中应该掌握的知识">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="闭包相关知识"><a href="#闭包相关知识" class="headerlink" title="闭包相关知识"></a>闭包相关知识</h1><h2 id="闭包的定义：闭包是一个函数，用于捕获作用域内的外部绑定"><a href="#闭包的定义：闭包是一个函数，用于捕获作用域内的外部绑定" class="headerlink" title="闭包的定义：闭包是一个函数，用于捕获作用域内的外部绑定"></a>闭包的定义：闭包是一个函数，用于捕获作用域内的外部绑定</h2><h2 id="函数调用之闭包"><a href="#函数调用之闭包" class="headerlink" title="函数调用之闭包:"></a>函数调用之闭包:</h2><h3 id="示例1"><a href="#示例1" class="headerlink" title="示例1:"></a>示例1:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">var haha=&apos;hello&apos;;</div><div class="line">  function test(n)&#123;</div><div class="line">	 var haha=&apos;hi&apos;;</div><div class="line">	 return function(n)&#123;</div><div class="line">		return haha+n; </div><div class="line">	 &#125; </div><div class="line">  &#125;</div><div class="line">console.log(test());</div><div class="line"></div><div class="line">结果: function (n)&#123;</div><div class="line">		return haha+n; </div><div class="line">	  &#125;</div><div class="line">	 var result1 = test();</div><div class="line">	 console.log(result1(&apos;123&apos;))</div><div class="line">结果: hi123</div></pre></td></tr></table></figure>
-<p>  当然这里的参数n可以是任何类型，数组，对象，函数等。此外，需要注意JS中对于函数的调用和引用的不同</p>
-<h3 id="示例2"><a href="#示例2" class="headerlink" title="示例2:"></a>示例2:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">var haha=&apos;hello&apos;;</div><div class="line">  function test(n)&#123;</div><div class="line">    var haha=&apos;hi&apos;;</div><div class="line">	return function(n)&#123;</div><div class="line">		return haha+n; </div><div class="line">	 &#125; </div><div class="line">  &#125;</div><div class="line">console.log(test);</div><div class="line">var result1 = test;</div><div class="line">console.log(result1(&apos;123&apos;))</div><div class="line">结果: </div><div class="line">function test(n)&#123;</div><div class="line">  var haha=&apos;hi&apos;;</div><div class="line">  return function(n)&#123;</div><div class="line">	return haha+n; </div><div class="line">  &#125; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h1 id="apply和call的具体使用"><a href="#apply和call的具体使用" class="headerlink" title="apply和call的具体使用"></a>apply和call的具体使用</h1><p>  <code>obj.call(thisObj, arg1, arg2, ...);</code><br>  <code>obj.apply(thisObj, [arg1, arg2, ...]);</code><br>  两者作用一致，都是把<code>obj</code>(即<code>this</code>)绑定到<code>thisObj</code>，这时候<code>thisObj</code>具备了<code>obj</code>的属性和方法。或者说thisObj“继承”了obj的属性和方法。可以看出<code>call</code>和<code>apply</code>是为了动态改变<code>this</code>而出现的。<br>  绑定后会立即执行函数。两者之间唯一区别是<code>apply</code>接受的是数组参数，<code>call</code>接受的是连续参数。</p>
-<h2 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例:"></a>使用示例:</h2><h3 id="示例3"><a href="#示例3" class="headerlink" title="示例3:"></a>示例3:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">function add(j, k)&#123;</div><div class="line">	return j+k;</div><div class="line">&#125;</div><div class="line"></div><div class="line">function sub(j, k)&#123;</div><div class="line">	return j-k;</div><div class="line">&#125;</div><div class="line">add(5,3); //8</div><div class="line">add.call(sub, 5, 3); //结果8</div><div class="line">add.apply(sub, [5, 3]); //结果8</div><div class="line"></div><div class="line">sub(5, 3); //2</div><div class="line">sub.call(add, 5, 3); //结果2</div><div class="line">sub.apply(add, [5, 3]); //结果2</div></pre></td></tr></table></figure>
-<h2 id="调用原生对象的方法"><a href="#调用原生对象的方法" class="headerlink" title="调用原生对象的方法"></a>调用原生对象的方法</h2><p> 对象<code>a</code>类似<code>array</code>，但不具备<code>array</code>的<code>slice</code>等方法。使用<code>call</code>绑定，这时候就可以调用slice方法。</p>
-<h3 id="示例4"><a href="#示例4" class="headerlink" title="示例4:"></a>示例4:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var a = &#123;0:1, 1:&quot;yjc&quot;, length: 2&#125;; </div><div class="line"></div><div class="line">a.slice(); //结果TypeError: a.slice is not a function</div><div class="line"></div><div class="line">Array.prototype.slice.call(a);//结果[1, &quot;yjc&quot;]</div></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/14/面试题/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="superDjy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://img.mp.itc.cn/upload/20170429/a2379efc26214d7fa790af6105312132">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="С�����ľ���">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/01/14/面试题/" itemprop="url">笔试面试题（1）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-01-14T12:26:36+08:00">
-                2017-01-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/基本知识/" itemprop="url" rel="index">
-                    <span itemprop="name">基本知识</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/01/14/面试题/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/01/14/面试题/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/01/14/面试题/" class="leancloud_visitors" data-flag-title="笔试面试题（1）">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ol>
-<li>行内元素有哪些？块级元素有哪些？CSS的盒模型？<br>行内元素有：<code>a b span I b em img input select strong</code>;<br>块级元素有：<code>div ul ol li dl dt dd h1 h2 h3 h4…p</code>;<br>盒模型：由内到外：<code>margin  border  padding  width</code>;<br>2.<code>CSS</code>引入的方式有哪些? <code>link</code>和<code>@import</code>的区别是?<br>（1）<br> i. 使用 <code>LINK</code>标签将样式规则写在<code>.css</code>的样式文件中，再以<code>&lt;link&gt;</code>标签引入。<br>   例如:<code>&lt;link rel=stylesheet type=&quot;text/css&quot; href=&quot;example.css&quot;&gt;</code><br>ii. 使用@import引入跟link方法很像，但必须放在<style>…</style> 中<br>   例如:<code>&lt;STYLE TYPE=&quot;text/css&quot;&gt;&lt;!--　　@import url(css/example.css);--&gt;&lt;/STYLE&gt;</code><br>iii. 使用<code>STYLE</code>标签将样式规则写在<code>&lt;STYLE&gt;...&lt;/STYLE&gt;</code>标签之中。<br>iv. 使用<code>STYL</code>E属性<br> v. 使用<code>&lt;span&gt;&lt;/span&gt;</code>标记引入样式<br>（2）<br>两者区别：加载顺序的差别。当一个页面被加载的时候，<code>link</code>引用的<code>css</code>会同时被加载，而<code>@import</code>引用的<code>CSS</code>会等到页面全部被下载完再被加载。<code>@import</code>可以在<code>css</code>中再次引入其他样式表，比如可以创建一个主样式表，在主样式表中再引入其他的样式表，这样做有一个缺点，会对网站服务器产生过多的<code>HTTP</code>请求，以前是一个文件，而现在却是两个或更多文件了，服务器的压力增大<p></p></li>
-<li>前端页面由哪三层构成，分别是什么？作用是什么？<p>网页分成三个层次，即：结构层、表示层、行为层。<br>网页的结构层<code>(structural layer)</code>由 <code>HTML</code> 或 <code>XHTML</code> 之类的标记语言负责创建。标签，也就是那些出现在尖括号里的单词，对网页内容的语义含义做出了描述，但这些标签不包含任何关于如何显示有关内容的信息。例如，P 标签表达了这样一种语义：“这是一个文本段。”<br>网页的表示层<code>(presentation layer)</code> 由 <code>CSS</code> 负责创建。 <code>CSS</code> 对“如何显示有关内容”的问题做出了回答。<br>网页的行为层<code>(behavior layer)</code>负责回答“内容应该如何对事件做出反应”这一问题。这是 <code>Javascript</code>语言和<code>DOM</code>主宰的领域</p></li>
-<li>H5&amp;css3<p>在<code>HTML5</code>平台上，视频，音频，图象，动画，以及同电脑的交互都被标准化。<code>HTML5</code>的技术概览：<br> <code>HTML5</code>新增和移除的元素<br> <code>HTML5</code>新增了很多多媒体和交互性元素如<code>video</code>, <code>audio</code>，在<code>HTML4</code>当中如果要嵌入一个视频或是音频的话需要引入一大段的代码，还有兼容各个浏览器，而<code>HTML5</code>只需要通过引入一个标签就可以，就像img标签一样方便。<br> <code>HTML5</code>对表单的支持<br> <code>HTML5</code>提供了强大的控件类型如<code>url, email, date, tel</code>等，强大的约束属性，如<code>required</code>表示必填，文件上传的<code>accept</code>属性，以及一些表单重复元素模型的支持，<code>HTML5</code>在提交表单的时候还可 以设置提交的方式为<code>XML</code>提交方式，这样服务器端接收到的数据将是<code>XML</code>格式，<code>HTML5</code>的表单被定义为“Web Forms 2.0”<br> <code>CSS3</code>实现圆角，阴影，对文字加特效，增加了更多的CSS选择器<br> <code>CSS3</code>对于动画的支持<br> <code>CSS3</code>支持的动画类型有：<code>transform</code>(变换)、<code>transition</code>(过渡)和<code>animation</code>(动画)。你可以对特定的属性设置<code>transition</code>，<code>transiton</code>和<code>animation</code>的区别不大，<code>animation</code>的动画是自己定义的，面向的更多的是脚本开发者，往往更加复杂</p></li>
-<li>如何理解<code>HTML</code>结构的语意化？<p>i. 去掉或样式丢失的时候能让页面呈现清晰的结构<br>ii. 屏幕阅读器（如果访客有视障）会完全根据你的标记来“读”你的网页<br>iii. PDA、手机等设备可能无法像普通电脑的浏览器一样来渲染网页（通常是因为这些设备对<code>CSS</code>的支持较弱）<br>iv. 搜索引擎的爬虫也依赖于标记来确定上下文和各个关键字的权重，页面是否对爬虫容易理解非常重要,因为爬虫很大程度上会忽略用于表现的标记,而只注重语义标记<br>v. W3C给我们定了一个很好的标准，在团队中大家都遵循这个标准，可以减少很多差异化的东西，方便开发和维护，提高开发效率</p></li>
-<li>谈谈以前端角度出发做好<code>SEO</code>需要考虑什么？ <p>i.了解搜索引擎如何抓取网页和如何索引网页<br>   <code>&amp;nbsp;&amp;nbsp;</code>你需要知道一些搜索引擎的基本工作原理，各个搜索引擎之间的区别，搜索机器人（<code>SE robot</code>或叫<code>web crawler</code>）如何进行工作，搜索引擎如何对搜索结果进行排序等等。<br>ii. <code>Meta</code>标签优化<br>   &nbsp;&nbsp;主要包括主题<code>(Title)</code>，网站描述<code>(Description)</code>，和关键词<code>(Keywords)</code>。还有一些其它的隐藏文字比如<code>Author</code>（作者），<code>Category</code>（目录），<code>Language</code>（编码语种）等。<br>iii.如何选取关键词并在网页中放置关键词<br>   &nbsp;&nbsp;搜索就得用关键词。关键词分析和选择是<code>SEO</code>最重要的工作之一。首先要给网站确定主关键词（一般在5个上下），然后针对这些关键词进行优化，包括关键词密度（Density），相关度（Relavancy），突出性（Prominency）等等。<br>iv.了解主要的搜索引擎<br>   &nbsp;虽然搜索引擎有很多，但是对网站流量起决定作用的就那么几个。比如英文的主要有Google，Yahoo，Bing等；中文的有百度，搜狗，有道等。不同的搜索引擎对页面的抓取和索引、排序的规则都不一样。还要了解各搜索门户和搜索引擎之间的关系，比如AOL网页搜索用的是Google的搜索技术，MSN用的是Bing的技术。<br> v.主要的互联网目录<br>   &nbsp;&nbsp;Open Directory自身不是搜索引擎，而是一个大型的网站目录，他和搜索引擎的主要区别是网站内容的收集方式不同。目录是人工编辑的，主要收录网站主页；搜索引擎是自动收集的，除了主页外还抓取大量的内容页面。<br>vi.按点击付费的搜索引擎<br>   &nbsp;搜索引擎也需要生存，随着互联网商务的越来越成熟，收费的搜索引擎也开始大行其道。最典型的有<code>Overture</code>和百度，当然也包括<code>Google</code>的广告项目<code>Google Adwords</code>。越来越多的人通过搜索引擎的点击广告来定位商业网站，这里面也大有优化和排名的学问，你得学会用最少的广告投入获得最多的点击。<br>vii.搜索引擎登录<br>   &nbsp;&nbsp;网站做完了以后，别躺在那里等着客人从天而降。要让别人找到你，最简单的办法就是将网站提交（submit）到搜索引擎。如果你的是商业网站，主要的搜索引擎和目录都会要求你付费来获得收录（比如Yahoo要299美元），但是好消息是（至少到目前为止）最大的搜索引擎Google目前还是免费，而且它主宰着60％以上的搜索市场。<br>viii.链接交换和链接广泛度<code>（Link Popularity）</code><br>   &nbsp;&nbsp;网页内容都是以超文本<code>（Hypertext）</code>的方式来互相链接的，网站之间也是如此。除了搜索引擎以外，人们也每天通过不同网站之间的链接来Surfing（“冲浪”）。其它网站到你的网站的链接越多，你也就会获得更多的访问量。更重要的是，你的网站的外部链接数越多，会被搜索引擎认为它的重要性越大，从而给你更高的排名。<br>ix.标签的合理使用</p></li>
-<li>经常遇到的浏览器的兼容性有哪些？怎么会出现？解决方法是什么？<p>兼容性处理要点<br>i. <code>DOCTYPE</code>影响<code>CSS</code>处理<br>ii. FF: 设置<code>padding</code>后,<code>div</code>会增加<code>height</code>和<code>width</code>， 但<code>IE</code>不会， 故需要用<code>!important</code>多设一个<code>height</code>和<code>width</code><br>iii. FF: 支持<code>!important</code>， <code>IE</code>则忽略， 可用<code>!important</code>为 FF 特别设置样式<br>iv. div 的垂直居中问题: vertical-align:middle; 将行距增加到和整个DIV一样高 line-height:200px; 然后插入文字，就垂直居中了。缺点是要控制内容不要换行<br>v. 在mozilla firefox和IE中的BOX模型解释不一致导致相差2px解决方法：<br>    &nbsp;&nbsp;div{margin:30px!important;margin:28px;}<br>    注意这两个margin的顺序一定不能写反，!important这个属性IE不能识别，但别的浏览器可以识别。<br>    所以在IE下其实解释成这样：<br>    div{maring:30px;margin:28px}<br>    重复定义的话按照最后一个来执行，所以不可以只写margin:XXpx!important;<br>浏览器差异<br>i.ul和ol列表缩进问题<br>  &nbsp;&nbsp;消除ul、ol等列表的缩进时，样式应写成：list-style:none;margin:0px;padding:0px;<br>  其中margin属性对IE有效，padding属性对FireFox有效。<br>  [注] 经验证，在IE中，设置margin:0px可以去除列表的上下左右缩进、空白以及列表编号或圆点，设置padding对样式没有影响；在 Firefox 中，设置margin:0px仅仅可以去除上下的空白，设置padding:0px后仅仅可以去掉左右缩进，还必须设置list- style:none才 能去除列表编号或圆点。也就是说，在IE中仅仅设置margin:0px即可达到最终效果，而在Firefox中必须同时设置margin:0px、 padding:0px以及list-style:none三项才能达到最终效果。<br>ii.CSS透明问题<br>  &nbsp;&nbsp;IE：filter:progid:DXImageTransform.Microsoft.Alpha(style=0,opacity=60)。<br>  &nbsp;&nbsp;FF：opacity:0.6。<br>  [注] 最好两个都写，并将opacity属性放在下面。<br>iii.CSS圆角问题<br>    &nbsp;&nbsp;IE：ie7以下版本不支持圆角。<br>iv.cursor:hand VS cursor:pointer<br>   &nbsp;&nbsp;问题说明：firefox不支持hand，但ie支持pointer ，两者都是手形指示。<br>   &nbsp;&nbsp;解决方法：统一使用pointer<br>v.字体大小定义不同<br>   &nbsp;&nbsp;对字体大小small的定义不同，Firefox中为13px，而IE中为16px，差别挺大。<br>   &nbsp;&nbsp;解决方法：使用指定的字体大小如14px。<br>   &nbsp;&nbsp;并列排列的多个元素（图片或者链接）的div和div之间，代码中的空格和回车在firefox中都会被忽略，而IE中却默认显示为空格（约3px）。</p></li>
-<li>ajax是什么？ajax的交互模型？同步和异步的区别？如何解决跨域问题？<p>ajax(动态网站静态化)伴随的goole 的推动，越来越多的站点开始使用了，在开大ajax(动态网站静态化)程序的时候会遇到很多的问题，主要有以下几个方面：<br> i. 跨浏览器问题<br>ii. 历史后退状态问题<br>iii. 跨域问题<br> 跨浏览器的问题因为现在有很多的开元的框架已经解决了，我们无需为此而烦恼。历史后退状态问题我们可以使用一个数组来保存历史纪录，然后把这些数据村到历史对象中去，中的也可以解决，并且还有很多的开元框架给与支持，这样问题就不是很大<br> 跨域的问题就不是很好的解决，但是还是有办法的，一下给出一些基本的解决方案供大家选择：<br> &nbsp;&nbsp;i.使用代理，你可以使用web端的程序编写代理程序，把所有的ajax(动态网站静态化)请求的数据进行转发，web程序可以使php(做为现在的主流 开发语言)，jsp(SUN企业级应用的首选)，asp等所有的编程语言。相信大家对这种方式一定很熟悉，这里就不详细的介绍了<br>&nbsp;&nbsp;ii.使用iframe的方式来定势的刷新叶面，这种方式只是取得数据来显示，并不能真正的和求得的数据进行交互，转化成本页面的动态数据，不是很可取，应用也不是很多。<br>&nbsp;&nbsp;iii.使用apache(Unix平台最流行的WEB服务器平台)的代理功能，主要就是apache(Unix平台最流行的WEB服务器平台)的方向代理， 或者是url从定向，你也可以把其他的站点直接的挂在自己的网站上，这样的方式可能会友邦权的问题，多的九部介绍了，有兴趣的本有可以自己实践以下<br>&nbsp;&nbsp;iv.使用<script>标签的方式，这样的话就可以保正使用真正的ajax(动态网站静态化)来跨域，并且可以使用返回来的数据，在我们的后台程序处理后的到的结果都直接的用javascript 的方式返回，在我们的html中直接的使用返回数据的变量就可以了</p>
-</li>
-</ol>
-</script></p></li></ol>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/13/ES6-promise/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="superDjy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://img.mp.itc.cn/upload/20170429/a2379efc26214d7fa790af6105312132">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="С�����ľ���">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/01/13/ES6-promise/" itemprop="url">ES6-promise</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-01-13T11:02:41+08:00">
-                2017-01-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/01/13/ES6-promise/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/01/13/ES6-promise/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/01/13/ES6-promise/" class="leancloud_visitors" data-flag-title="ES6-promise">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>##　含义：<br>Promise是一个对象，从它可以获取异步操作的消息。它有两个特点：</p>
-<p>1.对象的状态不受外界影响：Promise对象代表一个异步曹组，有三种状态：pending（进行中），Resolved（已完成），Rejected(已失败)。只有异步操作的结果才能决定当前是哪一种状态，其他操作都无法改变这个状态。</p>
-<p>2.一旦状改变就不会再变。一旦状态幼pending转变为Resolved或者Rejected之后，就不会再变，会一直保持这个结果。</p>
-<p><strong>优点：有了Promise对象，就可以将异步操作以同步操作的流程表达出来，避免了层层嵌套的回调函数。此外，Promise对象提供统一的接口，使得控制异步操作更加容易</strong>。</p>
-<h2 id="Promise的基本实现"><a href="#Promise的基本实现" class="headerlink" title="Promise的基本实现:"></a>Promise的基本实现:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var promise = new Promise(function(resolve,reject)&#123;</div><div class="line">	if(异步操作成功)&#123;|</div><div class="line">		resolve(value)</div><div class="line">	&#125;else</div><div class="line">	reject(error)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<p>Promise构造函数接受一个函数作为参数，该函数的两个参数分别是resolve和reject。它们是两个函数，由 JavaScript 引擎提供，不用自己部署。</p>
-<p>Promise实例生成以后，可以用then方法分别指定Resolved状态和Reject状态的回调函数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">promise.then(function(value)&#123;&#125;,function(error)&#123;&#125;);</div></pre></td></tr></table></figure>
-<p><strong>then方法可以接受两个回调函数作为参数。第一个回调函数是Promise对象的状态变为Resolved时调用，第二个回调函数是Promise对象的状态变为Rejected时调用。其中，第二个函数是可选的，不一定要提供。</strong></p>
-<h3 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">function timeout(ms) &#123;</div><div class="line">  return new Promise((resolve, reject) =&gt; &#123;</div><div class="line">    setTimeout(resolve, ms);</div><div class="line">  &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">timeout(1000).then(() =&gt; &#123;</div><div class="line">  console.log(&quot;haha&quot;);</div><div class="line">&#125;);</div><div class="line">Promise &#123;[[PromiseStatus]]: &quot;pending&quot;, [[PromiseValue]]: undefined&#125;</div><div class="line"></div><div class="line">haha</div></pre></td></tr></table></figure>
-<h3 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var promise=new Promise((resolve,reject)=&gt;&#123;</div><div class="line">	console.log(1);</div><div class="line">	resolve();</div><div class="line">&#125;);</div><div class="line">promise.then(()=&gt;&#123;console.log(2)&#125;);</div><div class="line">console.log(3);</div><div class="line"></div><div class="line">VM505:2 1</div><div class="line">VM505:6 3</div><div class="line">VM505:5 2</div></pre></td></tr></table></figure>
-<p>上面代码中，timeout方法返回一个Promise实例，表示一段时间以后才会发生的结果。过了指定的时间（ms参数）以后，Promise实例的状态变为Resolved，就会触发then方法绑定的回调函数。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">new Promise((resolve, reject) =&gt; &#123;</div><div class="line">  resolve(1);</div><div class="line">  console.log(2);</div><div class="line">&#125;).then(r =&gt; &#123;</div><div class="line">  console.log(r);</div><div class="line">&#125;);</div><div class="line">结果：2</div><div class="line">     1</div></pre></td></tr></table></figure>
-<p><strong>如果调用resolve函数和reject函数时带有参数，那么它们的参数会被传递给then方法的回调函数。</strong></p>
-<p>##Promise.prototype.catch()<br>Promise.prototype.catch方法是.then(null, rejection)的别名，用于指定发生错误时的回调函数。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">var promise = new Promise(function(resolve, reject) &#123;</div><div class="line">//   console.log(&quot;haha&quot;);</div><div class="line">//   resolve(4);</div><div class="line">  throw new Error(&apos;test&apos;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">promise.then((value)=&gt;&#123;console.log(value)&#125;).catch(function(error) &#123;</div><div class="line">  console.log(error);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">结果：Error: test</div><div class="line">    at &lt;anonymous&gt;:4:9</div><div class="line">    at Promise (&lt;anonymous&gt;)</div><div class="line">    at &lt;anonymous&gt;:1:15</div></pre></td></tr></table></figure>
-<p>若在此之前调用resolv()方法，则不会catch到错误，因为得到Resolved状态后，状态不会再改变。</p>
-<h2 id="Promise-all"><a href="#Promise-all" class="headerlink" title="Promise.all()"></a>Promise.all()</h2><p>Promise.all方法接受一个数组作为参数Promise.all([p1,p2,p3])，p1、p2、p3<strong>都是 Promise 实例</strong>。</p>
-<p>p的状态由p1、p2、p3决定，分成两种情况。</p>
-<p>（1）只有p1、p2、p3的状态都变成fulfilled，p的状态才会变成fulfilled，此时p1、p2、p3的返回值组成一个数组，传递给p的回调函数。</p>
-<p>（2）只要p1、p2、p3之中有一个被rejected，p的状态就变成rejected，此时第一个被reject的实例的返回值，会传递给p的回调函数。</p>
-<h2 id="Demo：同时并发现象（一次性计算10个数）"><a href="#Demo：同时并发现象（一次性计算10个数）" class="headerlink" title="Demo：同时并发现象（一次性计算10个数）"></a>Demo：同时并发现象（一次性计算10个数）</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div></pre></td><td class="code"><pre><div class="line">function add(a, b, cb)</div><div class="line">&#123;</div><div class="line"> setTimeout(function()&#123;</div><div class="line">   cb(a + b);</div><div class="line"> &#125;, 1000);</div><div class="line">&#125;</div><div class="line"></div><div class="line">function addQ(a, b)</div><div class="line">&#123;</div><div class="line">	return new Promise((resolve, reject) =&gt; &#123;</div><div class="line">		add(a, b, function(result)</div><div class="line">		&#123;</div><div class="line">			resolve(result);</div><div class="line">		&#125;);</div><div class="line">	&#125;);</div><div class="line">&#125;</div><div class="line">	</div><div class="line">let running = false, i = 0, task = [];</div><div class="line">let timerID = setInterval(() =&gt; &#123;</div><div class="line">	if(running)</div><div class="line">	&#123;</div><div class="line">		return;</div><div class="line">	&#125;</div><div class="line">	running = true;</div><div class="line">// 任务结束条件</div><div class="line">	if(i == 10)</div><div class="line">	&#123;</div><div class="line">		running = false;</div><div class="line">		clearInterval(timerID);</div><div class="line">		Promise.all(tasks)</div><div class="line">		.then((results) =&gt;</div><div class="line">		&#123;</div><div class="line">			console.log(results);</div><div class="line">		&#125;);</div><div class="line">	&#125;</div><div class="line"> //任务可以继续</div><div class="line">	let task = addQ(i, 2)</div><div class="line">	.then((result) =&gt; &#123;</div><div class="line">		return addQ(3, result);</div><div class="line">	&#125;)</div><div class="line">	.then((result) =&gt; &#123;</div><div class="line">		return addQ(4, result);</div><div class="line">	&#125;)</div><div class="line">	.then((result) =&gt; &#123;</div><div class="line">		running = false;</div><div class="line">		return result;</div><div class="line">	&#125;);</div><div class="line">	tasks.push(task);</div><div class="line">	i++;</div><div class="line">&#125;, 200);</div><div class="line"></div><div class="line">add(1, 2, function(result)&#123;</div><div class="line">	add(result, 3, function(result)&#123;</div><div class="line">		add(result, 4, function(result)&#123;</div><div class="line">			console.log(result);</div><div class="line">		&#125;);</div><div class="line">	&#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/12/原生js基础/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="superDjy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://img.mp.itc.cn/upload/20170429/a2379efc26214d7fa790af6105312132">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="С�����ľ���">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/01/12/原生js基础/" itemprop="url">原生js知识</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-01-12T16:40:34+08:00">
-                2017-01-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/基本知识/" itemprop="url" rel="index">
-                    <span itemprop="name">基本知识</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/01/12/原生js基础/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/01/12/原生js基础/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/01/12/原生js基础/" class="leancloud_visitors" data-flag-title="原生js知识">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="删除自身元素"><a href="#删除自身元素" class="headerlink" title="删除自身元素"></a>删除自身元素</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">&lt;body&gt;</div><div class="line">  &lt;div id=&quot;J_container&quot;&gt;</div><div class="line">    &lt;div class=&quot;record-head&quot;&gt;</div><div class="line">      &lt;div class=&quot;head id&quot;&gt;序号&lt;/div&gt;&lt;div class=&quot;head name&quot;&gt;姓名&lt;/div&gt;&lt;div class=&quot;head sex&quot;&gt;性别&lt;/div&gt;&lt;div class=&quot;head tel&quot;&gt;电话号码&lt;/div&gt;&lt;div class=&quot;head province&quot;&gt;省份&lt;/div&gt;&lt;div class=&quot;head&quot;&gt;操作&lt;/div&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">    &lt;ul id=&quot;J_List&quot;&gt;</div><div class="line">      &lt;li&gt;&lt;div class=&quot;id&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;name&quot;&gt;张三&lt;/div&gt;&lt;div class=&quot;sex&quot;&gt;男&lt;/div&gt;&lt;div class=&quot;tel&quot;&gt;13788888888&lt;/div&gt;&lt;div class=&quot;province&quot;&gt;浙江&lt;/div&gt;&lt;div class=&quot;user-delete&quot; &gt;删除&lt;/div&gt;&lt;/li&gt;</div><div class="line">      &lt;li&gt;&lt;div class=&quot;id&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;name&quot;&gt;李四&lt;/div&gt;&lt;div class=&quot;sex&quot;&gt;女&lt;/div&gt;&lt;div class=&quot;tel&quot;&gt;13788887777&lt;/div&gt;&lt;div class=&quot;province&quot;&gt;四川&lt;/div&gt;&lt;div class=&quot;user-delete&quot;&gt;删除&lt;/div&gt;&lt;/li&gt;</div><div class="line">      &lt;li&gt;&lt;div class=&quot;id&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;name&quot;&gt;王二&lt;/div&gt;&lt;div class=&quot;sex&quot;&gt;男&lt;/div&gt;&lt;div class=&quot;tel&quot;&gt;13788889999&lt;/div&gt;&lt;div class=&quot;province&quot;&gt;广东&lt;/div&gt;&lt;div class=&quot;user-delete&quot;&gt;删除&lt;/div&gt;&lt;/li&gt;</div><div class="line">    &lt;/ul&gt;</div><div class="line">  &lt;/div&gt;</div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">// 此处也可换成ES6的写法</div><div class="line">function Contact()&#123;</div><div class="line">    this.init();</div><div class="line">&#125;</div><div class="line"></div><div class="line">var _ul = document.getElementsByTagName(&apos;ul&apos;)[0];</div><div class="line">var _li = _ul.getElementsByTagName(&apos;li&apos;);</div><div class="line">var _delete = document.getElementsByClassName(&quot;user-delete&quot;);</div><div class="line">// console.log(_li[1].parentNode.removeChild(_li[1]));</div><div class="line">// console.log(_li[0].childNodes[5]===_delete[0])</div><div class="line"></div><div class="line">for(var i=0;i&lt;_li.length;i++)&#123;</div><div class="line"></div><div class="line">  _delete[i].onclick=function()&#123;</div><div class="line">    this.parentNode.parentNode.removeChild(this.parentNode);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">//删除元素自己本身，利用this.parentNode.removeChild(this);</div><div class="line">//删除元素父类，利用this.parentNode.parentNode.removeChild(this.parentNode);</div><div class="line"> </div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
-<h2 id="原生Ajax的实现"><a href="#原生Ajax的实现" class="headerlink" title="原生Ajax的实现"></a>原生Ajax的实现</h2><p>1.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var xmlHttp;</div><div class="line">function createxmlHttpRequest()&#123;</div><div class="line">if(window.ActiveXObject)&#123;</div><div class="line">	xmlHttp=new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);</div><div class="line">&#125;else if(window.XMLHttpRequest)</div><div class="line">	xmlHttp=new XMLHttpRequest();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>2.GET方法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">function doGet(url)&#123;//注意在传参数值的时候最好使用encodeURI处理一下，防止乱码</div><div class="line">	createxmlHttpRequest();</div><div class="line">	xmlHttp.open(&quot;GET&quot;,url);</div><div class="line">	xmlHttp.send(null);</div><div class="line">	xmlHttp.onreadystatechange=function()&#123;</div><div class="line">		if(xmlHttp.readyState==4&amp;&amp;xmlHttp.status==200)&#123;</div><div class="line">			alert(&apos;success&apos;);</div><div class="line">		&#125;else&#123;</div><div class="line">			alert(&apos;fail&apos;);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>其中url的格式为：</p>
-<p>1.传递的参数必须在？后指定，多个参数时用&amp;分隔。</p>
-<p>2.GET方法请求同一URL时会有缓存，通过参数是否一致来判断</p>
-<p>3.解决缓存问题，价格时间戳即可，使得每次的参数不一致</p>
-<p>具体方式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">url+Math.random()</div></pre></td></tr></table></figure></p>
-<p>2.POST方法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">function doPost(url,data)&#123;//注意在传参数值的时候最好使用encodeURI处理一下，防止乱码</div><div class="line">	createxmlHttpRequest();</div><div class="line">	xmlHttp.open(&quot;POST&quot;,url);</div><div class="line">	xmlHttp.setRequestHeader(&quot;Content-Type&quot;,&quot;application/x-www-form-urlencoded&quot;);</div><div class="line">	xmlHttp.send(data);</div><div class="line">	xmlHttp.onreadystatechange=function()&#123;</div><div class="line">		if(xmlHttp.readyState==4&amp;&amp;xmlHttp.status==200)&#123;</div><div class="line">			alert(&apos;success&apos;);</div><div class="line">		&#125;else&#123;</div><div class="line">			alert(&apos;fail&apos;);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><strong>这里注意：</strong></p>
-<p>1.POST方法没有缓存</p>
-<p>2.POST方法发送数据量大</p>
-<p>3.Ajax无法发送文件</p>
-<p>4.readyState改变时触发onreadystatechange事件，4为完成。</p>
-<p>5.status是返回状态，200便是成功，404是找不到页面</p>
-<p>6.responseText是返回的数据，为字符串格式</p>
-<h2 id="Json"><a href="#Json" class="headerlink" title="Json"></a>Json</h2><p>JSON(JavaScript Object Notation, JS 对象标记）</p>
-<p><strong>JSON 和 JS 对象互转</strong></p>
-<p>要实现从对象转换为 JSON 字符串，使用 JSON.stringify() 方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var json = JSON.stringify(&#123;a: &apos;Hello&apos;, b: &apos;World&apos;&#125;); //结果是 &apos;&#123;&quot;a&quot;: &quot;Hello&quot;, &quot;b&quot;: &quot;World&quot;&#125;&apos;</div></pre></td></tr></table></figure></p>
-<p>要实现从 JSON 转换为对象，使用 JSON.parse() 方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var obj = JSON.parse(&apos;&#123;&quot;a&quot;: &quot;Hello&quot;, &quot;b&quot;: &quot;World&quot;&#125;&apos;); //结果是 &#123;a: &apos;Hello&apos;, b: &apos;World&apos;&#125;</div></pre></td></tr></table></figure></p>
-<p>优点：书写简单，一目了然；符合JavaScript原生语法，可以由解释引擎直接处理，不用另外添加解析代码。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/12/common-knowledge/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="superDjy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://img.mp.itc.cn/upload/20170429/a2379efc26214d7fa790af6105312132">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="С�����ľ���">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/01/12/common-knowledge/" itemprop="url">常用Git命令</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-01-12T16:40:34+08:00">
-                2017-01-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/基本知识/" itemprop="url" rel="index">
-                    <span itemprop="name">基本知识</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/01/12/common-knowledge/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/01/12/common-knowledge/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/01/12/common-knowledge/" class="leancloud_visitors" data-flag-title="常用Git命令">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Git需要掌握的命令："><a href="#Git需要掌握的命令：" class="headerlink" title="Git需要掌握的命令："></a>Git需要掌握的命令：</h1><p><code>git branch</code>（列出所有本地分支）</p>
-<p><code>git init</code> （在当前目录新建一个git代码库）</p>
-<p><code>git add -a</code>   （添加指定文件到暂时存在的地方）</p>
-<p><code>git commit</code>   （可以将已经标识的内容提交到本地仓库）</p>
-<p><code>git commit -a</code> （提交工作区从上次commit之后的变化，直接到仓库内）</p>
-<p><code>git commit -m</code> （提交暂存区到仓库内）</p>
-<p><code>git checkout -b</code> 分支名称 （可以创建自己的分支，一般情况下分支名称用你的名字拼音）</p>
-<p><code>git remote add</code> 源名称 https网址 （在本地初始化的仓库中配置远程服务器地址和源名称）</p>
-<p><code>git checkout</code> 分支名称 （切换至本地已经存在的分支）</p>
-<p><code>git push 源名称（origin）</code> 分支名称 （将本地分支名称发送到远程服务器）</p>
-<p><code>git pull</code> 源名称 分支名称 （将远程服务器指定分支下载到本地，如果与当前分支有冲突需合并）</p>
-<p><code>git merge</code> 分支名称 （将指定的分支合并到当前分支）</p>
-<p><code>git clone [url]</code> （下载一个项目和他的整个历史代码）</p>
-<p><code>git status</code> （显示有变更的文件）</p>
-<p><code>git log</code> （查看当前分支的历史版本）</p>
-<p><code>*.gitignore</code>文件可以标记当前路径中哪些文件可以不进行git管理。为了避免将依赖代码和自己开发代码一起审核的混乱，我们一般会忽略<code>node_modules</code>和<code>bower_components</code>目录，同时也会忽略<code>.DS_STORE</code>这种操作系统缓存文件。</p>
-<h1 id="node-js含义："><a href="#node-js含义：" class="headerlink" title="node.js含义："></a>node.js含义：</h1><p><code>nodejs</code> 是一个将<code>Google V8 Javascript</code>引擎与封装给Javascript使用的系统API集合，<code>nodejs</code>还提供了<code>npm</code>包管理工具来管理依赖包关系，<code>cnpm</code>是<code>npm</code>工具的国内版本，下载速度更快。</p>
-<h1 id="Npm含义："><a href="#Npm含义：" class="headerlink" title="Npm含义："></a>Npm含义：</h1><p><code>npm（node package manager）</code>是<code>nodejs</code>的包管理器，用于<code>node</code>插件管理（包括安装、卸载、管理依赖等）。</p>
-<p><code>npm init</code>命令可以初始化当前路径，建立<code>package.json</code>，通过<code>npm install</code> 包名称 可以将工具安装到当前目录的<code>node_modules</code>中，通过<code>sudo npm install -g</code> 包名称可以讲工具安装到全局（也就是任意目录下均可以使用）；通过<code>–save</code>,<code>–save-dev</code>参数分别可以将依赖包标记为运行时依赖和开发阶段依赖。</p>
-<h1 id="Cnmp的含义："><a href="#Cnmp的含义：" class="headerlink" title="Cnmp的含义："></a>Cnmp的含义：</h1><p><code>cnpm</code>跟<code>npm</code>用法完全一致，只是在执行命令时将<code>npm</code>改为<code>cnpm</code>。</p>
-<h1 id="Bower的含义："><a href="#Bower的含义：" class="headerlink" title="Bower的含义："></a>Bower的含义：</h1><p><code>bower init</code>命令可以初始化当前路径的前端包依赖，建立<code>bower.json</code>，通过<code>bower install</code>包名称可以安装前端包到<code>bower_components</code>目录中；</p>
-<p>通过<code>–save</code>,<code>–save-dev</code>参数分别可以将依赖包标记为运行时依赖和开发阶段依赖。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/12/yopu/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="superDjy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://img.mp.itc.cn/upload/20170429/a2379efc26214d7fa790af6105312132">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="С�����ľ���">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/01/12/yopu/" itemprop="url">实习经历</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-01-12T15:38:14+08:00">
-                2017-01-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/基本知识/" itemprop="url" rel="index">
-                    <span itemprop="name">基本知识</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/01/12/yopu/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/01/12/yopu/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/01/12/yopu/" class="leancloud_visitors" data-flag-title="实习经历">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="前端发布（打版本到服务器）"><a href="#前端发布（打版本到服务器）" class="headerlink" title="前端发布（打版本到服务器）"></a>前端发布（打版本到服务器）</h1><p>打开项目文件（此文件不能做任何添加和改动，复制文件命名）<br><code>git pull origin master</code><br><code>run deploy:prod</code> （命令结束之后会在文件夹下生成一个新文件<code>dist</code>目录）<br>桌面上找到服务器进去（<code>user01</code>软件）选择左边的站点<br>进入<code>/root/var/www/htm</code>l<br>删除除了<code>pmn</code>以外的文件<br>复制dist中的所有文件到<code>/var/www/html</code>内</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1758,7 +2154,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">38</span>
+                <span class="site-state-item-count">47</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1769,7 +2165,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1780,7 +2176,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
