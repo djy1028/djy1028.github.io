@@ -120,7 +120,7 @@
 <meta property="og:site_name" content="С�����ľ���">
 <meta property="og:description" content="平衡二叉树平衡二叉树（Self-balancing binary search tree）又被称为AVL树（有别于AVL算法），且具有以下性质：它是一棵空树或它的左右两个子树的高度差的绝对值不超过1，并且左右两个子树都是一棵平衡二叉树。其公式为F(n)=F(n-1)+F(n-2)+11是根节点，F(n-1)是左子树的节点数量，F(n-2)是右子树的节点数量。平衡二叉树的常用实现的算法有红黑树、AV">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-17T14:35:38.925Z">
+<meta property="og:updated_time" content="2017-08-19T13:45:40.276Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据结构与算法">
 <meta name="twitter:description" content="平衡二叉树平衡二叉树（Self-balancing binary search tree）又被称为AVL树（有别于AVL算法），且具有以下性质：它是一棵空树或它的左右两个子树的高度差的绝对值不超过1，并且左右两个子树都是一棵平衡二叉树。其公式为F(n)=F(n-1)+F(n-2)+11是根节点，F(n-1)是左子树的节点数量，F(n-2)是右子树的节点数量。平衡二叉树的常用实现的算法有红黑树、AV">
@@ -449,6 +449,11 @@
         <h2 id="平衡二叉树"><a href="#平衡二叉树" class="headerlink" title="平衡二叉树"></a>平衡二叉树</h2><p>平衡二叉树（Self-balancing binary search tree）又被称为AVL树（有别于AVL算法），且具有以下性质：它是<strong>一棵空树或它的左右两个子树的高度差的绝对值不超过1</strong>，并且左右两个子树都是一棵平衡二叉树。其公式为<code>F(n)=F(n-1)+F(n-2)+1</code>1是根节点，F(n-1)是左子树的节点数量，F(n-2)是右子树的节点数量。平衡二叉树的常用实现的算法有红黑树、AVL、替罪羊树、Treap、伸展树等。</p>
 <p><strong>红黑树的应用比较广泛，主要是用它来存储有序的数据，它的时间复杂度是O(lgn)，效率非常之高</strong></p>
 <h3 id="红黑树的基本操作-一-左旋和右旋"><a href="#红黑树的基本操作-一-左旋和右旋" class="headerlink" title="红黑树的基本操作(一) 左旋和右旋"></a>红黑树的基本操作(一) 左旋和右旋</h3><h3 id="红黑树的基本操作（二）插入和删除"><a href="#红黑树的基本操作（二）插入和删除" class="headerlink" title="红黑树的基本操作（二）插入和删除"></a>红黑树的基本操作（二）插入和删除</h3><p>见文章：！[]<a href="http://www.cnblogs.com/PerkinsZhu/p/5824015.html" target="_blank" rel="external">http://www.cnblogs.com/PerkinsZhu/p/5824015.html</a></p>
+<h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><p>但数据量一旦超过几万，插入和冒泡的性能会非常差。这时时间复杂度的渐进优势就表现出来了。 平均情况下快速排序的时间复杂度是<code>Θ(nlgn)</code>，最坏情况是<code>n2</code>，但通过随机算法可以避免最坏情况。由于递归调用，快排的空间复杂度是<code>Θ(lgn)</code></p>
+<p>**快速排序算法其实很简单，采用分治策略。步骤如下：</p>
+<p>(1)选取一个基准元素（pivot）</p>
+<p>(2)比pivot小的放到pivot左边，比pivot大的放到pivot右边</p>
+<p>(3)对pivot左边的序列和右边的序列分别递归的执行步骤1和步骤2**</p>
 
       
     </div>
@@ -479,8 +484,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/06/16/js数据结构与算法(4)/" rel="next" title="JS中的数据结构与算法(4)">
-                <i class="fa fa-chevron-left"></i> JS中的数据结构与算法(4)
+              <a href="/2017/06/17/js数据结构与算法(5 end)/" rel="next" title="JS中的数据结构与算法(5)">
+                <i class="fa fa-chevron-left"></i> JS中的数据结构与算法(5)
               </a>
             
           </div>
@@ -489,8 +494,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/06/17/js数据结构与算法(5 end)/" rel="prev" title="JS中的数据结构与算法(5)">
-                JS中的数据结构与算法(5) <i class="fa fa-chevron-right"></i>
+              <a href="/2017/06/17/js中设计模式基础/" rel="prev" title="JS中的设计模式">
+                JS中的设计模式 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -598,7 +603,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">47</span>
+                <span class="site-state-item-count">48</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -679,7 +684,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#平衡二叉树"><span class="nav-number">1.</span> <span class="nav-text">平衡二叉树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#红黑树的基本操作-一-左旋和右旋"><span class="nav-number">1.1.</span> <span class="nav-text">红黑树的基本操作(一) 左旋和右旋</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#红黑树的基本操作（二）插入和删除"><span class="nav-number">1.2.</span> <span class="nav-text">红黑树的基本操作（二）插入和删除</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#平衡二叉树"><span class="nav-number">1.</span> <span class="nav-text">平衡二叉树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#红黑树的基本操作-一-左旋和右旋"><span class="nav-number">1.1.</span> <span class="nav-text">红黑树的基本操作(一) 左旋和右旋</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#红黑树的基本操作（二）插入和删除"><span class="nav-number">1.2.</span> <span class="nav-text">红黑树的基本操作（二）插入和删除</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#快速排序"><span class="nav-number">2.</span> <span class="nav-text">快速排序</span></a></li></ol></div>
             
 
           </div>

@@ -335,6 +335,212 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/26/http基础/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="superDjy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://img.mp.itc.cn/upload/20170429/a2379efc26214d7fa790af6105312132">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="С�����ľ���">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/06/26/http基础/" itemprop="url">Http基础知识</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-26T00:00:00+08:00">
+                2017-06-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Http/" itemprop="url" rel="index">
+                    <span itemprop="name">Http</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/06/26/http基础/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/06/26/http基础/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/06/26/http基础/" class="leancloud_visitors" data-flag-title="Http基础知识">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Http基础知识介绍"><a href="#Http基础知识介绍" class="headerlink" title="Http基础知识介绍"></a>Http基础知识介绍</h1><p>定义：基于文本的、用来在因特网中传输数据的协议。基于tcp/ip协议。Web的开发者们至少应该关注HTTP请求的两个方面：<strong>1.请求的目的是获取资源2.HTTP是一个无状态的协议。</strong></p>
+<p><strong>1.资源</strong></p>
+<p>访问资源首先需要使用URL。它指明了要使用的协议、服务器地址、要在服务器访问的特定文件。</p>
+<p>HTTP中资源具体而言就是：作为对象请求的响应，服务器总是会往客户端(用户代理)返回一些东西。这些东西可能是直接响应，也可能是间接响应。直接响应会把请求的资源返回，例如一张图片、一个HTML文档。间接响应会返回请求在指定资源上执行的结果，例如是一个告知操作成功失败的界面，或者一个状态码。</p>
+<p><strong>2.无状态</strong></p>
+<p>HTTP是一种无状态协议，因为每个请求/响应周期都是独立的，服务器无法通过HTTP协议来判断多个请求是否来自同一个用户代理。因此，许多web服务器引入了‘会话’(Session)的概念。‘会话概念’的引入使得服务器可以得以在多个请求之间存放状态。通常，不通的会话是通过客户端和服务器之间反复传递一二独一无二的<strong>秘钥</strong>(通常称为<strong>会话ID</strong>)，通常使用cookies来维护会话ID</p>
+<p>会话的实现机制：cookie与session是各种教材，网上文章所介绍到的与HTTP会话相关的两个内容。这两者较常见的解释是：cookie存在在浏览器，session存储在服务器中。但实际上这是一种不严谨的说法。<strong>实际上会话的实现机制是</strong>：<em>首先，用户端向服务端发送一个请求，服务端接收到请求（这里忽悠无须会话控制的情况）后，初始化会话，生成相应的会话信息，核心是会话ID，把会话ID发送给客户端，客户端接收到这个会话ID，把它存储起来，下一次发送请求的时候，附带着这个会话ID一起发送给服务端，服务端只要根据这个会话ID，就知道是谁**了</em>。</p>
+<p>对于如何存储会话ID，服务端与客户端是不同的，服务端存储会话ID有多种方式，常见的有本地存储，如：普通文本，文本名就是会话ID。对于文件系统，同一目录下，同一文件名只允许唯一一个文件，那么使用会话ID作为文件名是可以做到唯一确定会话的。除了本地文件存储，还可以使用memcache、redis、或者Mysql之类的数据库存储，即使用第三方数据库进行存储。只有一个原则：存储的会话ID必须是唯一的。客户端对于会话信息的存储就是使用“域”，不同的域拥有独立的会话。客户端以域相关信息作为文件标识符创建会话文件（客户端存储）对会话信息进行存储，其中域与会话ID结合就能唯一确定服务端，并且确定会话。浏览器是最常见的HTTP客户端，浏览器存储会话信息，是使用cookie文件的，里面保存着cookieE信息，而服务端返回的会话ID也存储在里面。会话ID存储在cookie文件中是一般情况下的，而cookie信息是作为HTTP头发送给服务端的，也就是说这种情况下，会话ID是附带在请求头中。<br><em>粗糙地，可理解为服务端返回给客户端的会话ID是存储在COOKIE文件中的</em></p>
+<h2 id="请求类型"><a href="#请求类型" class="headerlink" title="请求类型"></a>请求类型</h2><h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>实际上，客户端可以往服务器发送的请求有8种。不同的请求类型根据其在请求中指定的发送方法来辨别。HTTP请求方法有包括：GET,HEAD,POST,PUT,DELETE,TRACE,OPTIONS,CONNECT。常用的有get,post,head方法。一般来说，get一般用于获取/查询资源信息，而post一般用于更新资源信息。</p>
+<p><strong>1.根据HTTP规范，GET用于信息获取，而且应该是安全的和幂等的</strong>。</p>
+<p>　　(1)这里所谓安全的意味着该操作用于获取信息而非修改信息。换句话说，GET 请求一般不应产生副作用。就是说，它仅仅是获取资源信息，就像数据库查询一样，不会修改，增加数据，不会影响资源的状态。</p>
+<p>　　<em>* 注意：这里安全的含义仅仅是指是非修改信息。</em></p>
+<p>　　(2)幂等的意味着对同一URL的多个请求应该返回同样的结果</p>
+<p><strong>2.根据HTTP规范，POST表示可能修改变服务器上的资源的请求</strong></p>
+<h3 id="方法的区别"><a href="#方法的区别" class="headerlink" title="方法的区别"></a>方法的区别</h3><p>原理性的问题，我们再从表面现像上面看看GET和POST的区别：</p>
+<p>1.GET请求的数据会附在URL之后（就是把数据放置在HTTP协议头中），以?分割URL和传输数据，参数之间以&amp;相连。POST把提交的数据则放置在是HTTP包的包体中。</p>
+<p>2.POST的安全性要比GET的安全性高，在地址栏看不到。注意：这里所说的安全性和上面GET提到的“安全”不是同个概念。上面“安全”的含义仅仅是不作数据修改，而这里安全的含义是真正的Security的含义，比如：通过GET提交数据，用户名和密码将明文出现在URL上，因为(1)登录页面有可能被浏览器缓存</p>
+<p>3.GET方式提交的数据是有限制的（因为其参数通过URL传递，而浏览器对于URL的长度限制为1024个字节），这里的限制是特定的浏览器和服务器对它的限制。理论上POST没有限制，可传较大量的数据。</p>
+<h2 id="HTTP消息格式"><a href="#HTTP消息格式" class="headerlink" title="HTTP消息格式"></a>HTTP消息格式</h2><p>一个HTTP周期由请求和响应构成，因此HTTP消息格式分为<strong>请求消息格式</strong>和<strong>响应消息格式</strong>，通常情况下，浏览器或者Ajax的XMLHttpRequest对象会为我们格式化这些消息。</p>
+<p><strong>请求消息格式</strong>：</p>
+<p>1.起始行。定义使用的方法，资源和协议。字段之间用一个空格隔开。</p>
+<p>2.首部行(可以没有也可以多个)。每行规定一个首部，包含首部名、冒号、至少一个空白字符，以及首部值。</p>
+<p>3.一个可选的请求消息正文。它的解释方法取决于它的使用方法。</p>
+<p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">********请求头*******</div><div class="line">POST /some/path/folder/haha.html HTTP/1.1&lt;CRLF&gt;</div><div class="line"></div><div class="line">Host: www.haha.com: 80&lt;CRLF&gt;//必须是域名，不能是IP地址</div><div class="line"></div><div class="line">Connection: keep-alive</div><div class="line"></div><div class="line">//告诉服务器客户端可以接受什么类型文件</div><div class="line">Accept: text/html,application/xhtml+xml</div><div class="line"></div><div class="line">//指定了客户端提交给服务器的数据类型，这里multipart/form-data(二进制数据)是其中一种</div><div class="line">Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryqrt*******</div><div class="line">（随机的边界分割符）</div><div class="line"></div><div class="line">User-Agent: somebody&apos;s browser &lt;CRLF&gt;//浏览器类型</div><div class="line"></div><div class="line">********请求主体********************</div><div class="line">-------WebKitFormBoundaryqrt*******</div><div class="line"></div><div class="line">Content-Disposition: 提交数据</div><div class="line"></div><div class="line">-------WebKitFormBoundaryqrt*******</div><div class="line"></div><div class="line">如果是文件上传的话</div></pre></td></tr></table></figure>
+<p><strong>响应消息格式</strong>:<br>1.起始行。定义使用的协议、响应状态码和一个原因字符串(状态码解释)。</p>
+<p>2.首部行(可以没有也可以多个)。每行规定一个首部，包含首部名、冒号、至少一个空白字符，以及首部值。</p>
+<p>3.返回的数据。它的解释取决于所使用的方法。</p>
+<p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">HTTP/1.1 200 OK&lt;CRLF&gt;</div><div class="line"></div><div class="line">Content-type: text/html&lt;CRLF&gt;</div><div class="line"></div><div class="line">Content-length: 55&lt;CRLF&gt;</div><div class="line"></div><div class="line">&lt;html&gt;</div><div class="line">	&lt;body&gt;</div><div class="line">		haha here!</div><div class="line">	&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<p>HTTP中的状态码有很多，常见的有200-OK,403-Forbidden(禁止访问),404-Not Found(文件找不到),500-Internal Server Error</p>
+<h2 id="使用Ajax生成请求"><a href="#使用Ajax生成请求" class="headerlink" title="使用Ajax生成请求"></a>使用Ajax生成请求</h2><p>示例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">new Ajax.Request(&apos;/the/server/side/resource&apos;,&#123;</div><div class="line">	method:&apos;post&apos;,</div><div class="line">	requestHeaders: [</div><div class="line">						&apos;x-headerName1&apos;,&apos;headValue1&apos;,</div><div class="line">						&apos;x-headerName2&apos;,&apos;headValue2&apos;						</div><div class="line">					],</div><div class="line">	poseBody: Form.serialize(document.someForm)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>这段代码中第一个参数定义了资源地址，另外一个参数对象则定义了方法、请求首部和要发送的POST正文。</p>
+<h2 id="通过Ajax获取响应"><a href="#通过Ajax获取响应" class="headerlink" title="通过Ajax获取响应"></a>通过Ajax获取响应</h2><p>利用Ajax的XMLHttpRequest对象获取响应，并允许使用该对象的一些方法和属性对响应进行处理。</p>
+<p>方法属性列表：</p>
+<p>responseText:成功请求后的响应文本。</p>
+<p>responseXML:此属性包含一个XML DOM，仅仅当响应首部中规定的内容类型为text/html时有效。</p>
+<p>status: 响应状态码</p>
+<p>statusText: 状态原因消息</p>
+<p>getAllHeaders():返回所有响应的首部</p>
+<p>getHeader(name):返回指定响应首部</p>
+<p>HTTP协议1.0与HTTP协议1.1的主要区别在于引入connection:keep-alive,使得连接中断后仍然能够保证一段时间的连接。其他的区别还包括：<br>支持持久连接，虚拟主机，代理连接</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/26/js设计模式(3)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -507,7 +713,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/26/http基础/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/26/js设计模式(2)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="superDjy">
@@ -526,7 +732,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/06/26/http基础/" itemprop="url">Http基础知识</a></h1>
+                <a class="post-title-link" href="/2017/06/26/js设计模式(2)/" itemprop="url">js设计模式基础(2)</a></h1>
         
 
         <div class="post-meta">
@@ -561,8 +767,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Http/" itemprop="url" rel="index">
-                    <span itemprop="name">Http</span>
+                  <a href="/categories/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
                   </a>
                 </span>
 
@@ -579,9 +785,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/06/26/http基础/#comments" itemprop="discussionUrl">
+                <a href="/2017/06/26/js设计模式(2)/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/06/26/http基础/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/06/26/js设计模式(2)/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -589,7 +795,7 @@
 
           
           
-             <span id="/2017/06/26/http基础/" class="leancloud_visitors" data-flag-title="Http基础知识">
+             <span id="/2017/06/26/js设计模式(2)/" class="leancloud_visitors" data-flag-title="js设计模式基础(2)">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -622,49 +828,20 @@
       
         
           
-            <h1 id="Http基础知识介绍"><a href="#Http基础知识介绍" class="headerlink" title="Http基础知识介绍"></a>Http基础知识介绍</h1><p>定义：基于文本的、用来在因特网中传输数据的协议。基于tcp/ip协议。Web的开发者们至少应该关注HTTP请求的两个方面：<strong>1.请求的目的是获取资源2.HTTP是一个无状态的协议。</strong></p>
-<p><strong>1.资源</strong></p>
-<p>访问资源首先需要使用URL。它指明了要使用的协议、服务器地址、要在服务器访问的特定文件。</p>
-<p>HTTP中资源具体而言就是：作为对象请求的响应，服务器总是会往客户端(用户代理)返回一些东西。这些东西可能是直接响应，也可能是间接响应。直接响应会把请求的资源返回，例如一张图片、一个HTML文档。间接响应会返回请求在指定资源上执行的结果，例如是一个告知操作成功失败的界面，或者一个状态码。</p>
-<p><strong>2.无状态</strong></p>
-<p>HTTP是一种无状态协议，因为每个请求/响应周期都是独立的，服务器无法通过HTTP协议来判断多个请求是否来自同一个用户代理。因此，许多web服务器引入了‘会话’(Session)的概念。‘会话概念’的引入使得服务器可以得以在多个请求之间存放状态。通常，不通的会话是通过客户端和服务器之间反复传递一二独一无二的<strong>秘钥</strong>(通常称为<strong>会话ID</strong>)，通常使用cookies来维护会话ID</p>
-<p>会话的实现机制：cookie与session是各种教材，网上文章所介绍到的与HTTP会话相关的两个内容。这两者较常见的解释是：cookie存在在浏览器，session存储在服务器中。但实际上这是一种不严谨的说法。<strong>实际上会话的实现机制是</strong>：<em>首先，用户端向服务端发送一个请求，服务端接收到请求（这里忽悠无须会话控制的情况）后，初始化会话，生成相应的会话信息，核心是会话ID，把会话ID发送给客户端，客户端接收到这个会话ID，把它存储起来，下一次发送请求的时候，附带着这个会话ID一起发送给服务端，服务端只要根据这个会话ID，就知道是谁**了</em>。</p>
-<p>对于如何存储会话ID，服务端与客户端是不同的，服务端存储会话ID有多种方式，常见的有本地存储，如：普通文本，文本名就是会话ID。对于文件系统，同一目录下，同一文件名只允许唯一一个文件，那么使用会话ID作为文件名是可以做到唯一确定会话的。除了本地文件存储，还可以使用memcache、redis、或者Mysql之类的数据库存储，即使用第三方数据库进行存储。只有一个原则：存储的会话ID必须是唯一的。客户端对于会话信息的存储就是使用“域”，不同的域拥有独立的会话。客户端以域相关信息作为文件标识符创建会话文件（客户端存储）对会话信息进行存储，其中域与会话ID结合就能唯一确定服务端，并且确定会话。浏览器是最常见的HTTP客户端，浏览器存储会话信息，是使用cookie文件的，里面保存着cookieE信息，而服务端返回的会话ID也存储在里面。会话ID存储在cookie文件中是一般情况下的，而cookie信息是作为HTTP头发送给服务端的，也就是说这种情况下，会话ID是附带在请求头中。<br><em>粗糙地，可理解为服务端返回给客户端的会话ID是存储在COOKIE文件中的</em></p>
-<h2 id="请求类型"><a href="#请求类型" class="headerlink" title="请求类型"></a>请求类型</h2><h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>实际上，客户端可以往服务器发送的请求有8种。不同的请求类型根据其在请求中指定的发送方法来辨别。HTTP请求方法有包括：GET,HEAD,POST,PUT,DELETE,TRACE,OPTIONS,CONNECT。常用的有get,post,head方法。一般来说，get一般用于获取/查询资源信息，而post一般用于更新资源信息。</p>
-<p><strong>1.根据HTTP规范，GET用于信息获取，而且应该是安全的和幂等的</strong>。</p>
-<p>　　(1)这里所谓安全的意味着该操作用于获取信息而非修改信息。换句话说，GET 请求一般不应产生副作用。就是说，它仅仅是获取资源信息，就像数据库查询一样，不会修改，增加数据，不会影响资源的状态。</p>
-<p>　　<em>* 注意：这里安全的含义仅仅是指是非修改信息。</em></p>
-<p>　　(2)幂等的意味着对同一URL的多个请求应该返回同样的结果</p>
-<p><strong>2.根据HTTP规范，POST表示可能修改变服务器上的资源的请求</strong></p>
-<h3 id="方法的区别"><a href="#方法的区别" class="headerlink" title="方法的区别"></a>方法的区别</h3><p>原理性的问题，我们再从表面现像上面看看GET和POST的区别：</p>
-<p>1.GET请求的数据会附在URL之后（就是把数据放置在HTTP协议头中），以?分割URL和传输数据，参数之间以&amp;相连。POST把提交的数据则放置在是HTTP包的包体中。</p>
-<p>2.POST的安全性要比GET的安全性高，在地址栏看不到。注意：这里所说的安全性和上面GET提到的“安全”不是同个概念。上面“安全”的含义仅仅是不作数据修改，而这里安全的含义是真正的Security的含义，比如：通过GET提交数据，用户名和密码将明文出现在URL上，因为(1)登录页面有可能被浏览器缓存</p>
-<p>3.GET方式提交的数据是有限制的（因为其参数通过URL传递，而浏览器对于URL的长度限制为1024个字节），这里的限制是特定的浏览器和服务器对它的限制。理论上POST没有限制，可传较大量的数据。</p>
-<h2 id="HTTP消息格式"><a href="#HTTP消息格式" class="headerlink" title="HTTP消息格式"></a>HTTP消息格式</h2><p>一个HTTP周期由请求和响应构成，因此HTTP消息格式分为<strong>请求消息格式</strong>和<strong>响应消息格式</strong>，通常情况下，浏览器或者Ajax的XMLHttpRequest对象会为我们格式化这些消息。</p>
-<p><strong>请求消息格式</strong>：</p>
-<p>1.起始行。定义使用的方法，资源和协议。字段之间用一个空格隔开。</p>
-<p>2.首部行(可以没有也可以多个)。每行规定一个首部，包含首部名、冒号、至少一个空白字符，以及首部值。</p>
-<p>3.一个可选的请求消息正文。它的解释方法取决于它的使用方法。</p>
-<p>示例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">********请求头*******</div><div class="line">POST /some/path/folder/haha.html HTTP/1.1&lt;CRLF&gt;</div><div class="line"></div><div class="line">Host: www.haha.com: 80&lt;CRLF&gt;//必须是域名，不能是IP地址</div><div class="line"></div><div class="line">Connection: keep-alive</div><div class="line"></div><div class="line">//告诉服务器客户端可以接受什么类型文件</div><div class="line">Accept: text/html,application/xhtml+xml</div><div class="line"></div><div class="line">//指定了客户端提交给服务器的数据类型，这里multipart/form-data(二进制数据)是其中一种</div><div class="line">Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryqrt*******</div><div class="line">（随机的边界分割符）</div><div class="line"></div><div class="line">User-Agent: somebody&apos;s browser &lt;CRLF&gt;//浏览器类型</div><div class="line"></div><div class="line">********请求主体********************</div><div class="line">-------WebKitFormBoundaryqrt*******</div><div class="line"></div><div class="line">Content-Disposition: 提交数据</div><div class="line"></div><div class="line">-------WebKitFormBoundaryqrt*******</div><div class="line"></div><div class="line">如果是文件上传的话</div></pre></td></tr></table></figure>
-<p><strong>响应消息格式</strong>:<br>1.起始行。定义使用的协议、响应状态码和一个原因字符串(状态码解释)。</p>
-<p>2.首部行(可以没有也可以多个)。每行规定一个首部，包含首部名、冒号、至少一个空白字符，以及首部值。</p>
-<p>3.返回的数据。它的解释取决于所使用的方法。</p>
-<p>示例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">HTTP/1.1 200 OK&lt;CRLF&gt;</div><div class="line"></div><div class="line">Content-type: text/html&lt;CRLF&gt;</div><div class="line"></div><div class="line">Content-length: 55&lt;CRLF&gt;</div><div class="line"></div><div class="line">&lt;html&gt;</div><div class="line">	&lt;body&gt;</div><div class="line">		haha here!</div><div class="line">	&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
-<p>HTTP中的状态码有很多，常见的有200-OK,403-Forbidden(禁止访问),404-Not Found(文件找不到),500-Internal Server Error</p>
-<h2 id="使用Ajax生成请求"><a href="#使用Ajax生成请求" class="headerlink" title="使用Ajax生成请求"></a>使用Ajax生成请求</h2><p>示例</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">new Ajax.Request(&apos;/the/server/side/resource&apos;,&#123;</div><div class="line">	method:&apos;post&apos;,</div><div class="line">	requestHeaders: [</div><div class="line">						&apos;x-headerName1&apos;,&apos;headValue1&apos;,</div><div class="line">						&apos;x-headerName2&apos;,&apos;headValue2&apos;						</div><div class="line">					],</div><div class="line">	poseBody: Form.serialize(document.someForm)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<p>这段代码中第一个参数定义了资源地址，另外一个参数对象则定义了方法、请求首部和要发送的POST正文。</p>
-<h2 id="通过Ajax获取响应"><a href="#通过Ajax获取响应" class="headerlink" title="通过Ajax获取响应"></a>通过Ajax获取响应</h2><p>利用Ajax的XMLHttpRequest对象获取响应，并允许使用该对象的一些方法和属性对响应进行处理。</p>
-<p>方法属性列表：</p>
-<p>responseText:成功请求后的响应文本。</p>
-<p>responseXML:此属性包含一个XML DOM，仅仅当响应首部中规定的内容类型为text/html时有效。</p>
-<p>status: 响应状态码</p>
-<p>statusText: 状态原因消息</p>
-<p>getAllHeaders():返回所有响应的首部</p>
-<p>getHeader(name):返回指定响应首部</p>
-<p>HTTP协议1.0与HTTP协议1.1的主要区别在于引入connection:keep-alive,使得连接中断后仍然能够保证一段时间的连接。其他的区别还包括：<br>支持持久连接，虚拟主机，代理连接</p>
+            <h1 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h1><p>闭包在js中的作用：1.封装变量 2.延续局部变量的寿命</p>
+<p><strong>利用闭包解决onclick时间被异步触发</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;body&gt;</div><div class="line">	&lt;div&gt;1&lt;/div&gt;</div><div class="line">	&lt;div&gt;2&lt;/div&gt;</div><div class="line">    &lt;div&gt;3&lt;/div&gt;</div><div class="line">	&lt;div&gt;4&lt;/div&gt;</div><div class="line">	&lt;div&gt;5&lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;script&gt;</div><div class="line">	var node = document.getElementsByTagName(&apos;div&apos;);</div><div class="line">	for(var i=0;i&lt;node.length;i++)</div><div class="line">	&#123;</div><div class="line">			node[i].onclick=function()&#123;</div><div class="line">				console.log(i);</div><div class="line">			&#125;</div><div class="line">	    </div><div class="line">		</div><div class="line">	&#125;</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+<p>无论点击那个div,都会出现5，因为for循环早已结束，而onclick为异步调用。</p>
+<p><strong>解决方法</strong></p>
+<p>将每次循环的i值封闭起来。当在事件函数中顺着作用域链从内而外查找变量i时，会先找到被封闭在闭包环境中的i<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;body&gt;</div><div class="line">	&lt;div&gt;1&lt;/div&gt;</div><div class="line">	&lt;div&gt;2&lt;/div&gt;</div><div class="line">    &lt;div&gt;3&lt;/div&gt;</div><div class="line">	&lt;div&gt;4&lt;/div&gt;</div><div class="line">	&lt;div&gt;5&lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;script&gt;</div><div class="line">	var node = document.getElementsByTagName(&apos;div&apos;);</div><div class="line">	for(var i=0;i&lt;node.length;i++)</div><div class="line">	&#123;</div><div class="line">		(function(i)&#123;</div><div class="line">			node[i].onclick=function()&#123;</div><div class="line">				console.log(i);</div><div class="line">			&#125;</div><div class="line">	    &#125;)(i)</div><div class="line">		</div><div class="line">	&#125;</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;/html&gt;</div><div class="line"></div><div class="line">结果：2</div><div class="line">     3</div></pre></td></tr></table></figure></p>
+<p>闭包优缺点：</p>
+<p>优点：将变量封闭在闭包中，是因为后续可能依然还会用到。<br>缺点：会带来内存泄漏的问题。</p>
+<h1 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h1><p>充分条件：</p>
+<p><em>1.函数可以作为一个参数被传递</em></p>
+<p>函数作为参数传递案例包括：1.回调函数 2.Array.prototype.sort()方法</p>
+<p><em>2.函数可以作为返回值输出。</em></p>
+<p>1.判断数据类型<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">Object.prototype.toString.call([1]);</div><div class="line">&quot;[object Array]&quot;</div><div class="line"></div><div class="line">Object.prototype.toString.call(&#123;a:1&#125;);</div><div class="line">&quot;[object Object]&quot;</div><div class="line"></div><div class="line">Object.prototype.toString.call(&apos;haha&apos;);</div><div class="line">&quot;[object String]&quot;</div><div class="line"></div><div class="line">Object.prototype.toString.call(1);</div><div class="line">&quot;[object Number]&quot;</div><div class="line"></div><div class="line">Object.prototype.toString.call(true);</div><div class="line">&quot;[object Boolean]&quot;</div><div class="line"></div><div class="line">Object.prototype.toString.call(undefined);</div><div class="line">&quot;[object Undefined]&quot;</div><div class="line"></div><div class="line">Object.prototype.toString.call(null);</div><div class="line">&quot;[object Null]&quot;</div></pre></td></tr></table></figure></p>
+<p><em>3.实现AOP编程</em></p>
+<p>js中的AOP实现一般是将一个函数‘动态织入’另外一个函数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">Function.prototype.before = function(beforefn)&#123;</div><div class="line">	var self=this;            //保存原函数的引用</div><div class="line">	return function()&#123;        </div><div class="line">		beforefn.apply(this,arguments);   //修正this，执行新函数</div><div class="line">		return self.apply(this,arguments);//修正this，执行原函数</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">var func=function()&#123;console.log(2)&#125;;</div><div class="line">func = func.before(function()&#123;console.log(3)&#125;);</div><div class="line">func()</div><div class="line">结果：3</div><div class="line">     2</div><div class="line"></div><div class="line">Function.prototype.before = function(beforefn)&#123;</div><div class="line">	var self=this;</div><div class="line">	return function()&#123;</div><div class="line">		beforefn.apply(null,arguments);</div><div class="line">		return self.apply(null,arguments);</div><div class="line">	&#125;</div><div class="line">&#125;;</div><div class="line">Function.prototype.after = function(afterfn)&#123;</div><div class="line">	var self = this;</div><div class="line">	return function()&#123;</div><div class="line">		self.apply(this,arguments);</div><div class="line">		return afterfn.apply(this,arguments);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">var func=function()&#123;console.log(2)&#125;;</div><div class="line">func = func.before(function()&#123;console.log(3)&#125;).after(function()&#123;console.log(1)&#125;);</div><div class="line">func()</div><div class="line"> 3</div><div class="line"> 2</div><div class="line"> 1</div></pre></td></tr></table></figure></p>
 
           
         
@@ -1087,6 +1264,177 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/17/数据结构/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="superDjy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://img.mp.itc.cn/upload/20170429/a2379efc26214d7fa790af6105312132">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="С�����ľ���">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/06/17/数据结构/" itemprop="url">数据结构与算法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-17T00:00:00+08:00">
+                2017-06-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据结构与算法/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构与算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/06/17/数据结构/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/06/17/数据结构/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/06/17/数据结构/" class="leancloud_visitors" data-flag-title="数据结构与算法">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="平衡二叉树"><a href="#平衡二叉树" class="headerlink" title="平衡二叉树"></a>平衡二叉树</h2><p>平衡二叉树（Self-balancing binary search tree）又被称为AVL树（有别于AVL算法），且具有以下性质：它是<strong>一棵空树或它的左右两个子树的高度差的绝对值不超过1</strong>，并且左右两个子树都是一棵平衡二叉树。其公式为<code>F(n)=F(n-1)+F(n-2)+1</code>1是根节点，F(n-1)是左子树的节点数量，F(n-2)是右子树的节点数量。平衡二叉树的常用实现的算法有红黑树、AVL、替罪羊树、Treap、伸展树等。</p>
+<p><strong>红黑树的应用比较广泛，主要是用它来存储有序的数据，它的时间复杂度是O(lgn)，效率非常之高</strong></p>
+<h3 id="红黑树的基本操作-一-左旋和右旋"><a href="#红黑树的基本操作-一-左旋和右旋" class="headerlink" title="红黑树的基本操作(一) 左旋和右旋"></a>红黑树的基本操作(一) 左旋和右旋</h3><h3 id="红黑树的基本操作（二）插入和删除"><a href="#红黑树的基本操作（二）插入和删除" class="headerlink" title="红黑树的基本操作（二）插入和删除"></a>红黑树的基本操作（二）插入和删除</h3><p>见文章：！[]<a href="http://www.cnblogs.com/PerkinsZhu/p/5824015.html" target="_blank" rel="external">http://www.cnblogs.com/PerkinsZhu/p/5824015.html</a></p>
+<h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><p>但数据量一旦超过几万，插入和冒泡的性能会非常差。这时时间复杂度的渐进优势就表现出来了。 平均情况下快速排序的时间复杂度是<code>Θ(nlgn)</code>，最坏情况是<code>n2</code>，但通过随机算法可以避免最坏情况。由于递归调用，快排的空间复杂度是<code>Θ(lgn)</code></p>
+<p>**快速排序算法其实很简单，采用分治策略。步骤如下：</p>
+<p>(1)选取一个基准元素（pivot）</p>
+<p>(2)比pivot小的放到pivot左边，比pivot大的放到pivot右边</p>
+<p>(3)对pivot左边的序列和右边的序列分别递归的执行步骤1和步骤2**</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/17/js数据结构与算法(5 end)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1214,339 +1562,6 @@
 <p>3.按比例降序方法来建立对应数组。</p>
 <p>4.尽可能的放过多的物品。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">function ksack(values,weights,capacity)&#123;</div><div class="line">	var load=0;</div><div class="line">	var i=0;</div><div class="line">	var w=0;</div><div class="line">	while(load&lt;capacity&amp;&amp;i&lt;values.length)&#123;</div><div class="line">		if(weights[i]&lt;=(capacity-load))&#123;</div><div class="line">			w = w + values[i];</div><div class="line">			load = load + weights[i];</div><div class="line">		&#125;else&#123;</div><div class="line">			var r=(capacity-load)/weights[i];</div><div class="line">			w = w + r * values[i];</div><div class="line">			load = load +weights[i];</div><div class="line">		&#125;</div><div class="line">	i++;</div><div class="line">	&#125;</div><div class="line">return w;</div><div class="line">&#125;</div><div class="line">ksack([13,10,11,4,5],[9,7,8,3,4],16);</div><div class="line">23</div></pre></td></tr></table></figure></p>
 <p><strong>背包问题的递归方法</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">function ksack(capacity,size,value,n)&#123;</div><div class="line">	if(n==0||capacity==0)&#123;</div><div class="line">		return 0;</div><div class="line">	&#125;</div><div class="line">	if(size[n-1]&gt;capacity)&#123;</div><div class="line">		return ksack(capacity,size,value,n-1);</div><div class="line">	&#125;else&#123;</div><div class="line">		return max(value[n-1]+ksack(capacity-size[n-1],size,value,n-1),ksack(capacity,size,value,n-1))</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">function max(a,c)&#123;</div><div class="line">	return (a&gt;c)?a:c;</div><div class="line">&#125;</div><div class="line">ksack(16,[3,4,7,8,9],[4,5,10,11,13],5)</div><div class="line">23</div></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/17/数据结构/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="superDjy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://img.mp.itc.cn/upload/20170429/a2379efc26214d7fa790af6105312132">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="С�����ľ���">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/06/17/数据结构/" itemprop="url">数据结构与算法</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-17T00:00:00+08:00">
-                2017-06-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据结构与算法/" itemprop="url" rel="index">
-                    <span itemprop="name">数据结构与算法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/06/17/数据结构/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/06/17/数据结构/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/06/17/数据结构/" class="leancloud_visitors" data-flag-title="数据结构与算法">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="平衡二叉树"><a href="#平衡二叉树" class="headerlink" title="平衡二叉树"></a>平衡二叉树</h2><p>平衡二叉树（Self-balancing binary search tree）又被称为AVL树（有别于AVL算法），且具有以下性质：它是<strong>一棵空树或它的左右两个子树的高度差的绝对值不超过1</strong>，并且左右两个子树都是一棵平衡二叉树。其公式为<code>F(n)=F(n-1)+F(n-2)+1</code>1是根节点，F(n-1)是左子树的节点数量，F(n-2)是右子树的节点数量。平衡二叉树的常用实现的算法有红黑树、AVL、替罪羊树、Treap、伸展树等。</p>
-<p><strong>红黑树的应用比较广泛，主要是用它来存储有序的数据，它的时间复杂度是O(lgn)，效率非常之高</strong></p>
-<h3 id="红黑树的基本操作-一-左旋和右旋"><a href="#红黑树的基本操作-一-左旋和右旋" class="headerlink" title="红黑树的基本操作(一) 左旋和右旋"></a>红黑树的基本操作(一) 左旋和右旋</h3><h3 id="红黑树的基本操作（二）插入和删除"><a href="#红黑树的基本操作（二）插入和删除" class="headerlink" title="红黑树的基本操作（二）插入和删除"></a>红黑树的基本操作（二）插入和删除</h3><p>见文章：！[]<a href="http://www.cnblogs.com/PerkinsZhu/p/5824015.html" target="_blank" rel="external">http://www.cnblogs.com/PerkinsZhu/p/5824015.html</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/16/js数据结构与算法(4)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="superDjy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://img.mp.itc.cn/upload/20170429/a2379efc26214d7fa790af6105312132">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="С�����ľ���">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/06/16/js数据结构与算法(4)/" itemprop="url">JS中的数据结构与算法(4)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-16T00:00:00+08:00">
-                2017-06-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/js数据结构与算法/" itemprop="url" rel="index">
-                    <span itemprop="name">js数据结构与算法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/06/16/js数据结构与算法(4)/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/06/16/js数据结构与算法(4)/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/06/16/js数据结构与算法(4)/" class="leancloud_visitors" data-flag-title="JS中的数据结构与算法(4)">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h1><h2 id="简单排序算法"><a href="#简单排序算法" class="headerlink" title="简单排序算法"></a>简单排序算法</h2><h3 id="1-冒泡排序"><a href="#1-冒泡排序" class="headerlink" title="1 冒泡排序"></a>1 冒泡排序</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">function bubble(arr)&#123;</div><div class="line">	var length = arr.length;</div><div class="line">	var temp;</div><div class="line">	for(var i =0; i&lt;length;i++)&#123;</div><div class="line">		for(var j=length-1;j&gt;i;j--)&#123;</div><div class="line">			if(arr[i]&lt;=arr[j])&#123;</div><div class="line">				temp = arr[i];</div><div class="line">				arr[i] = arr[j];</div><div class="line">				arr[j] = temp;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	return arr;</div><div class="line">&#125;</div><div class="line">var a = [3,2,4,1];</div><div class="line">bubble(a);</div><div class="line">结果为:[4, 3, 2, 1]</div></pre></td></tr></table></figure>
-<h3 id="2-选择排序"><a href="#2-选择排序" class="headerlink" title="2 选择排序"></a>2 选择排序</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">function select(arr)&#123;</div><div class="line">	var length = arr.length;</div><div class="line">	var temp;</div><div class="line">	var min</div><div class="line">	for(var i =0; i&lt;length-2;++i)&#123;</div><div class="line">		min = i;</div><div class="line">		for(var j=i+1;j&lt;length-1;++j)&#123;</div><div class="line">			if(arr[j]&lt;=arr[min])&#123;</div><div class="line">				min = j;</div><div class="line">			&#125;</div><div class="line">			temp = arr[i];</div><div class="line">			arr[i] = arr[min];</div><div class="line">			arr[min] = temp;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	return arr;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="高级排序算法"><a href="#高级排序算法" class="headerlink" title="高级排序算法"></a>高级排序算法</h2><h3 id="1-希尔排序"><a href="#1-希尔排序" class="headerlink" title="1 希尔排序"></a>1 希尔排序</h3><p>希尔排序在插入排序的基础上做了一些改变，它会首先比较距离较远的元素而非距离较近的元素。然后不断缩小元素之间的比较距离直到处理到数据集末尾，这时候算法开始比较相邻元素。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">function shellSort(arr)&#123;</div><div class="line">var length = arr.length;</div><div class="line">var h=1;</div><div class="line">while(h&lt;length/3)&#123;</div><div class="line">	h = 3*h +1;</div><div class="line">&#125;</div><div class="line">while(h&gt;=1)&#123;</div><div class="line">	for(var i=h; i&lt;length;i++)&#123;</div><div class="line">		for(var j=i;j&gt;=h&amp;&amp;arr[j]&lt;arr[j-h];j=j-h)&#123;</div><div class="line">			if(arr[j]&lt;arr[j-h])&#123;</div><div class="line">				temp = arr[j];</div><div class="line">				arr[j] = arr[j-h];</div><div class="line">				arr[j-h] = temp;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	h=(h-1)/3;</div><div class="line">&#125;</div><div class="line">return arr;</div><div class="line">&#125;</div><div class="line">var a =[92,31,5,96,44,88,34,57,44,72,20,83,4,623,12,12,932,54];</div><div class="line">shellSort(a);</div><div class="line">结果为： [4, 5, 12, 12, 20, 31, 34, 44, 44, 54, 57, 72, 83, 88, 92, 96, 623, 932]</div></pre></td></tr></table></figure></p>
-<h3 id="2-快速排序"><a href="#2-快速排序" class="headerlink" title="2 快速排序"></a>2 快速排序</h3><p>首先在列表中选择一个基准值，数据围绕基准值进行分类，将小于基准值的放在基准值的左边，大于基准值的放在基准值的右边。快速排序对于大型数据集合非常实用，在处理小型数据集合时性能反而会下降<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">function fastSort(arr)&#123;</div><div class="line">if(arr.length==0)&#123;</div><div class="line">	return[];</div><div class="line">&#125;</div><div class="line">var lesser = [];</div><div class="line">var greater = [];</div><div class="line">var standard = arr[0];</div><div class="line">for(var i=1;i&lt;arr.length;i++)&#123;</div><div class="line">	if(arr[i]&lt;standard)&#123;</div><div class="line">		lesser.push(arr[i])</div><div class="line">	&#125;else&#123;</div><div class="line">		greater.push(arr[i]);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">return fastSort(lesser).concat(standard,fastSort(greater))</div><div class="line">&#125;</div><div class="line">var a =[68,80,12,95,70,97,27,88,93];</div><div class="line">fastSort(a);</div><div class="line">结果：[12, 27, 68, 70, 80, 88, 93, 95, 97]</div></pre></td></tr></table></figure></p>
 
           
         
@@ -1937,7 +1952,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/14/js数据结构与算法/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/16/js数据结构与算法(4)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="superDjy">
@@ -1956,7 +1971,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/06/14/js数据结构与算法/" itemprop="url">JS中的数据结构与算法</a></h1>
+                <a class="post-title-link" href="/2017/06/16/js数据结构与算法(4)/" itemprop="url">JS中的数据结构与算法(4)</a></h1>
         
 
         <div class="post-meta">
@@ -1968,8 +1983,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-14T00:00:00+08:00">
-                2017-06-14
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-16T00:00:00+08:00">
+                2017-06-16
               </time>
             
 
@@ -2009,9 +2024,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/06/14/js数据结构与算法/#comments" itemprop="discussionUrl">
+                <a href="/2017/06/16/js数据结构与算法(4)/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/06/14/js数据结构与算法/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/06/16/js数据结构与算法(4)/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -2019,7 +2034,7 @@
 
           
           
-             <span id="/2017/06/14/js数据结构与算法/" class="leancloud_visitors" data-flag-title="JS中的数据结构与算法">
+             <span id="/2017/06/16/js数据结构与算法(4)/" class="leancloud_visitors" data-flag-title="JS中的数据结构与算法(4)">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -2052,23 +2067,10 @@
       
         
           
-            <h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><h2 id="数组中常用方法"><a href="#数组中常用方法" class="headerlink" title="数组中常用方法"></a>数组中常用方法</h2><h3 id="1-判断数组方法"><a href="#1-判断数组方法" class="headerlink" title="1. 判断数组方法"></a>1. 判断数组方法</h3><p>  js中数组对外类型显示为object,因而判断数组的方式可以是调用<code>Array.isArray();</code>来判断数组。</p>
-<h4 id="示例1"><a href="#示例1" class="headerlink" title="示例1:"></a>示例1:</h4><p> <code>var arr=[];console.log(Array.isArray(arr))
- 结果:true</code></p>
-<h3 id="2-查找元素方法"><a href="#2-查找元素方法" class="headerlink" title="2.查找元素方法"></a>2.查找元素方法</h3><p>  数组查找方法有<code>indexOf();</code>该函数返回第一个与参数相同的元素的索引位置。<code>laseIndexOf()</code>该函数返回参数相同元素的最后的索引位置。</p>
-<h4 id="示例2"><a href="#示例2" class="headerlink" title="示例2:"></a>示例2:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var a=[&apos;you&apos;,&apos;need&apos;,&apos;to&apos;,&apos;live&apos;,&apos;a&apos;,&apos;life&apos;,&apos;you&apos;,&apos;will&apos;,&apos;remember&apos;];console.log(a.indexOf(&apos;you&apos;),a.lastIndexOf(&apos;you&apos;));</div><div class="line">结果:0 6</div></pre></td></tr></table></figure>
-<h3 id="3-数组的字符串表示"><a href="#3-数组的字符串表示" class="headerlink" title="3. 数组的字符串表示"></a>3. 数组的字符串表示</h3><p>  数组的字符串表示方法有<code>join()</code>和<code>toString()</code>;</p>
-<h4 id="示例3"><a href="#示例3" class="headerlink" title="示例3:"></a>示例3:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var a=[&apos;you&apos;,&apos;need&apos;,&apos;to&apos;,&apos;live&apos;,&apos;a&apos;,&apos;life&apos;,&apos;you&apos;,&apos;will&apos;,&apos;remember&apos;];a.join();</div><div class="line">结果:&quot;you,need,to,live,a,life,you,will,remember&quot;</div><div class="line">var a=[&apos;you&apos;,&apos;need&apos;,&apos;to&apos;,&apos;live&apos;,&apos;a&apos;,&apos;life&apos;,&apos;you&apos;,&apos;will&apos;,&apos;remember&apos;];a.toString();</div><div class="line">结果:&quot;you,need,to,live,a,life,you,will,remember&quot;</div><div class="line">var a=[&apos;you&apos;,&apos;need&apos;,&apos;to&apos;,&apos;live&apos;,&apos;a&apos;,&apos;life&apos;,&apos;you&apos;,&apos;will&apos;,&apos;remember&apos;];a.join(&apos;&apos;);</div><div class="line">结果:s&quot;youneedtolivealifeyouwillremember&quot;</div></pre></td></tr></table></figure>
-<h3 id="4-从已有数组创建新的数组"><a href="#4-从已有数组创建新的数组" class="headerlink" title="4. 从已有数组创建新的数组"></a>4. 从已有数组创建新的数组</h3><p>  <code>concat()</code>以及<code>splice()</code>方法都可以从已有数组中创建新的数组</p>
-<h4 id="示例4"><a href="#示例4" class="headerlink" title="示例4:"></a>示例4:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">var a=[&apos;you&apos;,&apos;need&apos;,&apos;to&apos;,&apos;live&apos;,&apos;a&apos;,&apos;life&apos;,&apos;you&apos;,&apos;will&apos;,&apos;remember&apos;]; </div><div class="line">var b=[&apos;I&apos;,&apos;remember&apos;,&apos;that&apos;,&apos;she&apos;,&apos;told&apos;,&apos;me&apos;];</div><div class="line">a.concat(b);</div><div class="line">结果:[&quot;you&quot;, &quot;need&quot;, &quot;to&quot;, &quot;live&quot;, &quot;a&quot;, &quot;life&quot;, &quot;you&quot;, &quot;will&quot;, &quot;remember&quot;, &quot;I&quot;, &quot;remember&quot;, &quot;that&quot;, &quot;she&quot;, &quot;told&quot;, &quot;me&quot;]</div><div class="line">删除数组元素</div><div class="line"></div><div class="line">var a=[&apos;you&apos;,&apos;need&apos;,&apos;to&apos;,&apos;live&apos;,&apos;a&apos;,&apos;life&apos;,&apos;you&apos;,&apos;will&apos;,&apos;remember&apos;]; </div><div class="line">var b=[&apos;I&apos;,&apos;remember&apos;,&apos;that&apos;,&apos;she&apos;,&apos;told&apos;,&apos;me&apos;];</div><div class="line">a.splice(3);</div><div class="line">结果:[&quot;live&quot;, &quot;a&quot;, &quot;life&quot;, &quot;you&quot;, &quot;will&quot;, &quot;remember&quot;]</div><div class="line"></div><div class="line">var a=[&apos;you&apos;,&apos;need&apos;,&apos;to&apos;,&apos;live&apos;,&apos;a&apos;,&apos;life&apos;,&apos;you&apos;,&apos;will&apos;,&apos;remember&apos;]; </div><div class="line">var b=[&apos;I&apos;,&apos;remember&apos;,&apos;that&apos;,&apos;she&apos;,&apos;told&apos;,&apos;me&apos;];</div><div class="line">console.log(a.splice(3,2),a);</div><div class="line">结果: [&quot;live&quot;, &quot;a&quot;] (7) [&quot;you&quot;, &quot;need&quot;, &quot;to&quot;, &quot;life&quot;, &quot;you&quot;, &quot;will&quot;, &quot;remember&quot;]</div><div class="line">增加数组元素</div><div class="line"></div><div class="line">var a=[&apos;you&apos;,&apos;need&apos;,&apos;to&apos;,&apos;live&apos;,&apos;a&apos;,&apos;life&apos;,&apos;you&apos;,&apos;will&apos;,&apos;remember&apos;]; </div><div class="line">var b=[&apos;I&apos;,&apos;remember&apos;,&apos;that&apos;,&apos;she&apos;,&apos;told&apos;,&apos;me&apos;];</div><div class="line">console.log(a.splice(3,1,&apos;haha&apos;),a);</div><div class="line">结果:[&quot;live&quot;] (9) [&quot;you&quot;, &quot;need&quot;, &quot;to&quot;, &quot;haha&quot;, &quot;a&quot;, &quot;life&quot;, &quot;you&quot;, &quot;will&quot;, &quot;remember&quot;]</div></pre></td></tr></table></figure>
-<h3 id="5-也可以利用push-unshift-pop-shift-方法改变数组"><a href="#5-也可以利用push-unshift-pop-shift-方法改变数组" class="headerlink" title="5.也可以利用push(),unshift(),pop(),shift()方法改变数组"></a>5.也可以利用push(),unshift(),pop(),shift()方法改变数组</h3><p>   <code>push()</code>方法从数组尾部添加一个元素，<code>pop()</code>方法从尾部删除一个元素，<code>unshift()</code>方法从头部增加一个元素，<code>shift()</code>方法从头部删除一个元素，以上方法均为返回该元素。</p>
-<h3 id="6-迭代器方法"><a href="#6-迭代器方法" class="headerlink" title="6. 迭代器方法"></a>6. 迭代器方法</h3><p>  迭代器方法接受一个函数作为参数，对数组中每个元素应用该函数。</p>
-<h4 id="1-不生成新数组的迭代器方法"><a href="#1-不生成新数组的迭代器方法" class="headerlink" title="(1)不生成新数组的迭代器方法"></a>(1)不生成新数组的迭代器方法</h4><p>  <code>forEach()</code>方法接受一个函数作为参数，对数组中每个元素应用该函数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[1,24,4].forEach(function(n)&#123;</div><div class="line">	console.log(n*n)&#125;</div><div class="line">);</div><div class="line">结果:1</div><div class="line">576</div><div class="line">16</div></pre></td></tr></table></figure></p>
-<p>  <code>every()</code>方法接受一个返回值为布尔类型的函数，对数组中每个元素使用该该函数，每个元素返回结果都为<code>true</code>时，该方法返回<code>true</code>，否则返回<code>false</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">function even(num)&#123;</div><div class="line">	if(num%2==0)</div><div class="line">		return true</div><div class="line">&#125;;</div><div class="line">[1,24,3].every(even);</div><div class="line">结果:false</div></pre></td></tr></table></figure></p>
-<p>  <code>some()</code>方法与<code>every()</code>方法类似，但是只要某个元素满足条件返回<code>true</code>,则该方法返回<code>true</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function even(num)&#123;</div><div class="line">	if(num%2==0)</div><div class="line">		return true</div><div class="line">&#125;;</div><div class="line">[1,24,3].some(even);</div></pre></td></tr></table></figure></p>
-<p>  <code>reduce()</code>接受一个函数，返回一个值。它会从一个累加值开始，不断地对累加值和数组中的后续元素调用该函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function SUM(sum,currentValue)&#123;</div><div class="line">	return sum+currentValue</div><div class="line">&#125;;</div><div class="line">[1,24,3].reduce(SUM)</div><div class="line">结果:28</div></pre></td></tr></table></figure></p>
-<h4 id="2-生成新数组的迭代器方法"><a href="#2-生成新数组的迭代器方法" class="headerlink" title="(2)生成新数组的迭代器方法"></a>(2)生成新数组的迭代器方法</h4><p>  <code>map()</code>方法与<code>forEach()</code>方法类型，只是返回一个新的数组<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var nums=[1,24,4];</div><div class="line">var newarr=nums.map(function(n)&#123;return(n*n)&#125;);</div><div class="line">console.log(nums,newarr);</div><div class="line">结果:[1, 24, 4] [1, 576, 16]</div></pre></td></tr></table></figure></p>
-<p>  <code>filter()</code>方法与<code>every()</code>方法类似，但是其返回的为满足条件为<code>true</code>时的新数组<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">function grade(nums)&#123;</div><div class="line">	if(nums&gt;60) </div><div class="line">	return true</div><div class="line">&#125;;</div><div class="line">for(var i=0;i&lt;10;i++)&#123;</div><div class="line">  var marks=[];</div><div class="line">  marks[i]=Math.floor(Math.random()*101);</div><div class="line">&#125;</div><div class="line">marks.filter(grade);</div><div class="line">结果:[97]</div></pre></td></tr></table></figure></p>
+            <h1 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h1><h2 id="简单排序算法"><a href="#简单排序算法" class="headerlink" title="简单排序算法"></a>简单排序算法</h2><h3 id="1-冒泡排序"><a href="#1-冒泡排序" class="headerlink" title="1 冒泡排序"></a>1 冒泡排序</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">function bubble(arr)&#123;</div><div class="line">	var length = arr.length;</div><div class="line">	var temp;</div><div class="line">	for(var i =0; i&lt;length;i++)&#123;</div><div class="line">		for(var j=length-1;j&gt;i;j--)&#123;</div><div class="line">			if(arr[i]&lt;=arr[j])&#123;</div><div class="line">				temp = arr[i];</div><div class="line">				arr[i] = arr[j];</div><div class="line">				arr[j] = temp;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	return arr;</div><div class="line">&#125;</div><div class="line">var a = [3,2,4,1];</div><div class="line">bubble(a);</div><div class="line">结果为:[4, 3, 2, 1]</div></pre></td></tr></table></figure>
+<h3 id="2-选择排序"><a href="#2-选择排序" class="headerlink" title="2 选择排序"></a>2 选择排序</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">function select(arr)&#123;</div><div class="line">	var length = arr.length;</div><div class="line">	var temp;</div><div class="line">	var min</div><div class="line">	for(var i =0; i&lt;length-2;++i)&#123;</div><div class="line">		min = i;</div><div class="line">		for(var j=i+1;j&lt;length-1;++j)&#123;</div><div class="line">			if(arr[j]&lt;=arr[min])&#123;</div><div class="line">				min = j;</div><div class="line">			&#125;</div><div class="line">			temp = arr[i];</div><div class="line">			arr[i] = arr[min];</div><div class="line">			arr[min] = temp;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	return arr;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="高级排序算法"><a href="#高级排序算法" class="headerlink" title="高级排序算法"></a>高级排序算法</h2><h3 id="1-希尔排序"><a href="#1-希尔排序" class="headerlink" title="1 希尔排序"></a>1 希尔排序</h3><p>希尔排序在插入排序的基础上做了一些改变，它会首先比较距离较远的元素而非距离较近的元素。然后不断缩小元素之间的比较距离直到处理到数据集末尾，这时候算法开始比较相邻元素。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">function shellSort(arr)&#123;</div><div class="line">var length = arr.length;</div><div class="line">var h=1;</div><div class="line">while(h&lt;length/3)&#123;</div><div class="line">	h = 3*h +1;</div><div class="line">&#125;</div><div class="line">while(h&gt;=1)&#123;</div><div class="line">	for(var i=h; i&lt;length;i++)&#123;</div><div class="line">		for(var j=i;j&gt;=h&amp;&amp;arr[j]&lt;arr[j-h];j=j-h)&#123;</div><div class="line">			if(arr[j]&lt;arr[j-h])&#123;</div><div class="line">				temp = arr[j];</div><div class="line">				arr[j] = arr[j-h];</div><div class="line">				arr[j-h] = temp;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	h=(h-1)/3;</div><div class="line">&#125;</div><div class="line">return arr;</div><div class="line">&#125;</div><div class="line">var a =[92,31,5,96,44,88,34,57,44,72,20,83,4,623,12,12,932,54];</div><div class="line">shellSort(a);</div><div class="line">结果为： [4, 5, 12, 12, 20, 31, 34, 44, 44, 54, 57, 72, 83, 88, 92, 96, 623, 932]</div></pre></td></tr></table></figure></p>
+<h3 id="2-快速排序"><a href="#2-快速排序" class="headerlink" title="2 快速排序"></a>2 快速排序</h3><p>首先在列表中选择一个基准值，数据围绕基准值进行分类，将小于基准值的放在基准值的左边，大于基准值的放在基准值的右边。快速排序对于大型数据集合非常实用，在处理小型数据集合时性能反而会下降<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">function fastSort(arr)&#123;</div><div class="line">if(arr.length==0)&#123;</div><div class="line">	return[];</div><div class="line">&#125;</div><div class="line">var lesser = [];</div><div class="line">var greater = [];</div><div class="line">var standard = arr[0];</div><div class="line">for(var i=1;i&lt;arr.length;i++)&#123;</div><div class="line">	if(arr[i]&lt;standard)&#123;</div><div class="line">		lesser.push(arr[i])</div><div class="line">	&#125;else&#123;</div><div class="line">		greater.push(arr[i]);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">return fastSort(lesser).concat(standard,fastSort(greater))</div><div class="line">&#125;</div><div class="line">var a =[68,80,12,95,70,97,27,88,93];</div><div class="line">fastSort(a);</div><div class="line">结果：[12, 27, 68, 70, 80, 88, 93, 95, 97]</div></pre></td></tr></table></figure></p>
 
           
         
@@ -2154,7 +2156,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">47</span>
+                <span class="site-state-item-count">48</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

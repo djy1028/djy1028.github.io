@@ -335,6 +335,186 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/14/js数据结构与算法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="superDjy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://img.mp.itc.cn/upload/20170429/a2379efc26214d7fa790af6105312132">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="С�����ľ���">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/06/14/js数据结构与算法/" itemprop="url">JS中的数据结构与算法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-14T00:00:00+08:00">
+                2017-06-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/js数据结构与算法/" itemprop="url" rel="index">
+                    <span itemprop="name">js数据结构与算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/06/14/js数据结构与算法/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/06/14/js数据结构与算法/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/06/14/js数据结构与算法/" class="leancloud_visitors" data-flag-title="JS中的数据结构与算法">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><h2 id="数组中常用方法"><a href="#数组中常用方法" class="headerlink" title="数组中常用方法"></a>数组中常用方法</h2><h3 id="1-判断数组方法"><a href="#1-判断数组方法" class="headerlink" title="1. 判断数组方法"></a>1. 判断数组方法</h3><p>  js中数组对外类型显示为object,因而判断数组的方式可以是调用<code>Array.isArray();</code>来判断数组。</p>
+<h4 id="示例1"><a href="#示例1" class="headerlink" title="示例1:"></a>示例1:</h4><p> <code>var arr=[];console.log(Array.isArray(arr))
+ 结果:true</code></p>
+<h3 id="2-查找元素方法"><a href="#2-查找元素方法" class="headerlink" title="2.查找元素方法"></a>2.查找元素方法</h3><p>  数组查找方法有<code>indexOf();</code>该函数返回第一个与参数相同的元素的索引位置。<code>laseIndexOf()</code>该函数返回参数相同元素的最后的索引位置。</p>
+<h4 id="示例2"><a href="#示例2" class="headerlink" title="示例2:"></a>示例2:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var a=[&apos;you&apos;,&apos;need&apos;,&apos;to&apos;,&apos;live&apos;,&apos;a&apos;,&apos;life&apos;,&apos;you&apos;,&apos;will&apos;,&apos;remember&apos;];console.log(a.indexOf(&apos;you&apos;),a.lastIndexOf(&apos;you&apos;));</div><div class="line">结果:0 6</div></pre></td></tr></table></figure>
+<h3 id="3-数组的字符串表示"><a href="#3-数组的字符串表示" class="headerlink" title="3. 数组的字符串表示"></a>3. 数组的字符串表示</h3><p>  数组的字符串表示方法有<code>join()</code>和<code>toString()</code>;</p>
+<h4 id="示例3"><a href="#示例3" class="headerlink" title="示例3:"></a>示例3:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var a=[&apos;you&apos;,&apos;need&apos;,&apos;to&apos;,&apos;live&apos;,&apos;a&apos;,&apos;life&apos;,&apos;you&apos;,&apos;will&apos;,&apos;remember&apos;];a.join();</div><div class="line">结果:&quot;you,need,to,live,a,life,you,will,remember&quot;</div><div class="line">var a=[&apos;you&apos;,&apos;need&apos;,&apos;to&apos;,&apos;live&apos;,&apos;a&apos;,&apos;life&apos;,&apos;you&apos;,&apos;will&apos;,&apos;remember&apos;];a.toString();</div><div class="line">结果:&quot;you,need,to,live,a,life,you,will,remember&quot;</div><div class="line">var a=[&apos;you&apos;,&apos;need&apos;,&apos;to&apos;,&apos;live&apos;,&apos;a&apos;,&apos;life&apos;,&apos;you&apos;,&apos;will&apos;,&apos;remember&apos;];a.join(&apos;&apos;);</div><div class="line">结果:s&quot;youneedtolivealifeyouwillremember&quot;</div></pre></td></tr></table></figure>
+<h3 id="4-从已有数组创建新的数组"><a href="#4-从已有数组创建新的数组" class="headerlink" title="4. 从已有数组创建新的数组"></a>4. 从已有数组创建新的数组</h3><p>  <code>concat()</code>以及<code>splice()</code>方法都可以从已有数组中创建新的数组</p>
+<h4 id="示例4"><a href="#示例4" class="headerlink" title="示例4:"></a>示例4:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">var a=[&apos;you&apos;,&apos;need&apos;,&apos;to&apos;,&apos;live&apos;,&apos;a&apos;,&apos;life&apos;,&apos;you&apos;,&apos;will&apos;,&apos;remember&apos;]; </div><div class="line">var b=[&apos;I&apos;,&apos;remember&apos;,&apos;that&apos;,&apos;she&apos;,&apos;told&apos;,&apos;me&apos;];</div><div class="line">a.concat(b);</div><div class="line">结果:[&quot;you&quot;, &quot;need&quot;, &quot;to&quot;, &quot;live&quot;, &quot;a&quot;, &quot;life&quot;, &quot;you&quot;, &quot;will&quot;, &quot;remember&quot;, &quot;I&quot;, &quot;remember&quot;, &quot;that&quot;, &quot;she&quot;, &quot;told&quot;, &quot;me&quot;]</div><div class="line">删除数组元素</div><div class="line"></div><div class="line">var a=[&apos;you&apos;,&apos;need&apos;,&apos;to&apos;,&apos;live&apos;,&apos;a&apos;,&apos;life&apos;,&apos;you&apos;,&apos;will&apos;,&apos;remember&apos;]; </div><div class="line">var b=[&apos;I&apos;,&apos;remember&apos;,&apos;that&apos;,&apos;she&apos;,&apos;told&apos;,&apos;me&apos;];</div><div class="line">a.splice(3);</div><div class="line">结果:[&quot;live&quot;, &quot;a&quot;, &quot;life&quot;, &quot;you&quot;, &quot;will&quot;, &quot;remember&quot;]</div><div class="line"></div><div class="line">var a=[&apos;you&apos;,&apos;need&apos;,&apos;to&apos;,&apos;live&apos;,&apos;a&apos;,&apos;life&apos;,&apos;you&apos;,&apos;will&apos;,&apos;remember&apos;]; </div><div class="line">var b=[&apos;I&apos;,&apos;remember&apos;,&apos;that&apos;,&apos;she&apos;,&apos;told&apos;,&apos;me&apos;];</div><div class="line">console.log(a.splice(3,2),a);</div><div class="line">结果: [&quot;live&quot;, &quot;a&quot;] (7) [&quot;you&quot;, &quot;need&quot;, &quot;to&quot;, &quot;life&quot;, &quot;you&quot;, &quot;will&quot;, &quot;remember&quot;]</div><div class="line">增加数组元素</div><div class="line"></div><div class="line">var a=[&apos;you&apos;,&apos;need&apos;,&apos;to&apos;,&apos;live&apos;,&apos;a&apos;,&apos;life&apos;,&apos;you&apos;,&apos;will&apos;,&apos;remember&apos;]; </div><div class="line">var b=[&apos;I&apos;,&apos;remember&apos;,&apos;that&apos;,&apos;she&apos;,&apos;told&apos;,&apos;me&apos;];</div><div class="line">console.log(a.splice(3,1,&apos;haha&apos;),a);</div><div class="line">结果:[&quot;live&quot;] (9) [&quot;you&quot;, &quot;need&quot;, &quot;to&quot;, &quot;haha&quot;, &quot;a&quot;, &quot;life&quot;, &quot;you&quot;, &quot;will&quot;, &quot;remember&quot;]</div></pre></td></tr></table></figure>
+<h3 id="5-也可以利用push-unshift-pop-shift-方法改变数组"><a href="#5-也可以利用push-unshift-pop-shift-方法改变数组" class="headerlink" title="5.也可以利用push(),unshift(),pop(),shift()方法改变数组"></a>5.也可以利用push(),unshift(),pop(),shift()方法改变数组</h3><p>   <code>push()</code>方法从数组尾部添加一个元素，<code>pop()</code>方法从尾部删除一个元素，<code>unshift()</code>方法从头部增加一个元素，<code>shift()</code>方法从头部删除一个元素，以上方法均为返回该元素。</p>
+<h3 id="6-迭代器方法"><a href="#6-迭代器方法" class="headerlink" title="6. 迭代器方法"></a>6. 迭代器方法</h3><p>  迭代器方法接受一个函数作为参数，对数组中每个元素应用该函数。</p>
+<h4 id="1-不生成新数组的迭代器方法"><a href="#1-不生成新数组的迭代器方法" class="headerlink" title="(1)不生成新数组的迭代器方法"></a>(1)不生成新数组的迭代器方法</h4><p>  <code>forEach()</code>方法接受一个函数作为参数，对数组中每个元素应用该函数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[1,24,4].forEach(function(n)&#123;</div><div class="line">	console.log(n*n)&#125;</div><div class="line">);</div><div class="line">结果:1</div><div class="line">576</div><div class="line">16</div></pre></td></tr></table></figure></p>
+<p>  <code>every()</code>方法接受一个返回值为布尔类型的函数，对数组中每个元素使用该该函数，每个元素返回结果都为<code>true</code>时，该方法返回<code>true</code>，否则返回<code>false</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">function even(num)&#123;</div><div class="line">	if(num%2==0)</div><div class="line">		return true</div><div class="line">&#125;;</div><div class="line">[1,24,3].every(even);</div><div class="line">结果:false</div></pre></td></tr></table></figure></p>
+<p>  <code>some()</code>方法与<code>every()</code>方法类似，但是只要某个元素满足条件返回<code>true</code>,则该方法返回<code>true</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function even(num)&#123;</div><div class="line">	if(num%2==0)</div><div class="line">		return true</div><div class="line">&#125;;</div><div class="line">[1,24,3].some(even);</div></pre></td></tr></table></figure></p>
+<p>  <code>reduce()</code>接受一个函数，返回一个值。它会从一个累加值开始，不断地对累加值和数组中的后续元素调用该函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function SUM(sum,currentValue)&#123;</div><div class="line">	return sum+currentValue</div><div class="line">&#125;;</div><div class="line">[1,24,3].reduce(SUM)</div><div class="line">结果:28</div></pre></td></tr></table></figure></p>
+<h4 id="2-生成新数组的迭代器方法"><a href="#2-生成新数组的迭代器方法" class="headerlink" title="(2)生成新数组的迭代器方法"></a>(2)生成新数组的迭代器方法</h4><p>  <code>map()</code>方法与<code>forEach()</code>方法类型，只是返回一个新的数组<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var nums=[1,24,4];</div><div class="line">var newarr=nums.map(function(n)&#123;return(n*n)&#125;);</div><div class="line">console.log(nums,newarr);</div><div class="line">结果:[1, 24, 4] [1, 576, 16]</div></pre></td></tr></table></figure></p>
+<p>  <code>filter()</code>方法与<code>every()</code>方法类似，但是其返回的为满足条件为<code>true</code>时的新数组<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">function grade(nums)&#123;</div><div class="line">	if(nums&gt;60) </div><div class="line">	return true</div><div class="line">&#125;;</div><div class="line">for(var i=0;i&lt;10;i++)&#123;</div><div class="line">  var marks=[];</div><div class="line">  marks[i]=Math.floor(Math.random()*101);</div><div class="line">&#125;</div><div class="line">marks.filter(grade);</div><div class="line">结果:[97]</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/12/JS中应该掌握的知识2.0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1600,7 +1780,7 @@ div{maring:30px;margin:28px}
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">47</span>
+                <span class="site-state-item-count">48</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
