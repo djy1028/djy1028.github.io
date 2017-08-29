@@ -120,7 +120,7 @@
 <meta property="og:site_name" content="С�����ľ���">
 <meta property="og:description" content="React理念React 最初的目的是使用JavaScript创建大型的，快速响应的网络应用。它在我们的Facebook和Instagram中已经实践的非常好了。 React的众多优点之一是它让你在编写代码的时候同时也在思考你的应用。 理念步骤： 1.把 UI 划分出组件层级例如：单一功能原则，在理想状况下，一个组件应该只做一件事情。如果这个组件功能不断丰富，它应该被分成更小的组。 2.用Reac">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-15T07:21:57.087Z">
+<meta property="og:updated_time" content="2017-08-28T08:34:07.640Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="React.js基础">
 <meta name="twitter:description" content="React理念React 最初的目的是使用JavaScript创建大型的，快速响应的网络应用。它在我们的Facebook和Instagram中已经实践的非常好了。 React的众多优点之一是它让你在编写代码的时候同时也在思考你的应用。 理念步骤： 1.把 UI 划分出组件层级例如：单一功能原则，在理想状况下，一个组件应该只做一件事情。如果这个组件功能不断丰富，它应该被分成更小的组。 2.用Reac">
@@ -459,7 +459,8 @@
 <p>（3）你能够根据组件中任何其他的<code>state</code>或<code>props</code>把它计算出来吗？如果是，它不是<code>state</code>。</p>
 <h3 id="4-确定state应该位于哪里"><a href="#4-确定state应该位于哪里" class="headerlink" title="4.确定state应该位于哪里"></a>4.确定state应该位于哪里</h3><p>确定了应用<code>state</code>的最小集合。接下来，我们需要确定哪个组件会改变，或拥有这个<code>state</code>。</p>
 <p>（1）确定每一个需要这个<code>state</code>来渲染的组件。</p>
-<p>（2）找到一个公共所有者组件(一个在层级上高于所有其他需要这个<code>state</code>的组件的组件)<br>（3）这个公共所有者组件或另一个层级更高的组件应该拥有这个<code>state</code>。</p>
+<p>（2）找到一个公共所有者组件(一个在层级上高于所有其他需要这个<code>state</code>的组件的组件)</p>
+<p>（3）这个公共所有者组件或另一个层级更高的组件应该拥有这个<code>state</code>。</p>
 <p>（4）如果你没有找到可以拥有这个<code>state</code>的组件，创建一个仅用来保存状态的组件并把它加入比这个公共所有者组件层级更高的地方。</p>
 <h3 id="5-添加反向数据流"><a href="#5-添加反向数据流" class="headerlink" title="5.添加反向数据流"></a>5.添加反向数据流</h3><p>正确渲染的应用程序，它的数据在层级中通过函数的<code>props</code>和<code>state</code>向下流动。层级结构中最底层的表单组件需要去更新在父组件中的<code>state</code>。</p>
 <p>当我们想确保每当用户更改低层组件的表单时，我们更新父组件的状态来反应用户输入。<strong>因为组件应该只更新自己的状态，所以父组件会将一个回调函数传递给子组件，每当应该更新状态时，它就会触发。我们可以使用子组件输入上的onChange事件来调用它。父组件传入的回调函数会调用setState()，这时应用程序会被更新。</strong></p>
@@ -613,7 +614,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">48</span>
+                <span class="site-state-item-count">50</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

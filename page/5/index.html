@@ -335,6 +335,348 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/16/js数据结构与算法(3)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="superDjy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://img.mp.itc.cn/upload/20170429/a2379efc26214d7fa790af6105312132">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="С�����ľ���">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/06/16/js数据结构与算法(3)/" itemprop="url">JS中的数据结构与算法(3)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-16T00:00:00+08:00">
+                2017-06-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/js数据结构与算法/" itemprop="url" rel="index">
+                    <span itemprop="name">js数据结构与算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/06/16/js数据结构与算法(3)/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/06/16/js数据结构与算法(3)/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/06/16/js数据结构与算法(3)/" class="leancloud_visitors" data-flag-title="JS中的数据结构与算法(3)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="二叉树与二叉查找树"><a href="#二叉树与二叉查找树" class="headerlink" title="二叉树与二叉查找树"></a>二叉树与二叉查找树</h1><p>树是一种非线性的数据结构，以分层的方式存储数据。<br>二叉树由节点构成，在这里需要定义一个Node对象<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">function Node(data,left,right)&#123;</div><div class="line">	this.data = data;</div><div class="line">	this.left = left;</div><div class="line">	this.right = right;</div><div class="line">	this.show = show;</div><div class="line">&#125;</div><div class="line">function show()&#123;</div><div class="line">	return this.data;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在这里可以创建一个类来表示二叉查找树(BST),该类的构造函数将根节点初始化为null,以此创建一个空节点。此外，还有一个insert()方法，用来向树中增加新节点。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">function BST()&#123;</div><div class="line">	this.root = null;</div><div class="line">	this.insert = insert;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>具体的insert()方法实现思想：</p>
+<p>(1)判断有无根节点，如果没有根节点，将插入点直接设为根节点，结束。</p>
+<p>(2)如何已有根节点，将根节点设为当前节点，比较待插数据与根节点的大小，如果小于当前节点，设新的当前节点为原节点的做节点，否则设为右节点。</p>
+<p>(3)知道当前节点的做节点或右节点为空时，插入数据，完成算法。<br>具体实现：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">function insert(data)&#123;</div><div class="line">	var n = new Node(data,null,null);</div><div class="line">	if(this.root==null)&#123;</div><div class="line">		this.root = n;</div><div class="line">	&#125;</div><div class="line">	else&#123;</div><div class="line">		var current = this.root;</div><div class="line">		var parent;</div><div class="line">		while(true)&#123;</div><div class="line">				parent = current; </div><div class="line">				if(current.data&gt;data)&#123;</div><div class="line">					current = current.left;</div><div class="line">					if(current==null)&#123;</div><div class="line">						parent.left = n;</div><div class="line">						break;</div><div class="line">					&#125;</div><div class="line">				&#125;</div><div class="line">				else&#123;</div><div class="line">					current = current.right;</div><div class="line">					if(current==null)&#123;</div><div class="line">						parent.right = n;</div><div class="line">						break;</div><div class="line">					&#125;</div><div class="line">				&#125;</div><div class="line">		&#125;</div><div class="line">	</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="常用的遍历二叉查找树的方法有三种：中序、先序，后序。"><a href="#常用的遍历二叉查找树的方法有三种：中序、先序，后序。" class="headerlink" title="常用的遍历二叉查找树的方法有三种：中序、先序，后序。"></a>常用的遍历二叉查找树的方法有三种：中序、先序，后序。</h2><p>中序：即为升序排列。左，中，右<br>先序：从最左边开始：中，左，右。<br>后序：从最左边开始：左，右，中。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/16/js数据结构与算法(2)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="superDjy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://img.mp.itc.cn/upload/20170429/a2379efc26214d7fa790af6105312132">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="С�����ľ���">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/06/16/js数据结构与算法(2)/" itemprop="url">JS中的数据结构与算法(2)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-16T00:00:00+08:00">
+                2017-06-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/js数据结构与算法/" itemprop="url" rel="index">
+                    <span itemprop="name">js数据结构与算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/06/16/js数据结构与算法(2)/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/06/16/js数据结构与算法(2)/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/06/16/js数据结构与算法(2)/" class="leancloud_visitors" data-flag-title="JS中的数据结构与算法(2)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h1><p>js中实现一个栈的低层数据结构是数组。</p>
+<h2 id="利用栈的几种情况"><a href="#利用栈的几种情况" class="headerlink" title="利用栈的几种情况"></a>利用栈的几种情况</h2><h3 id="示例1-数制之间的相互转换"><a href="#示例1-数制之间的相互转换" class="headerlink" title="示例1:数制之间的相互转换"></a>示例1:数制之间的相互转换</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">function chang(num,base)&#123;</div><div class="line">	var arr=[];</div><div class="line">	var result = &quot;&quot;;</div><div class="line">	do&#123;</div><div class="line">		arr.push(num%base);</div><div class="line">		num = num/base;</div><div class="line">	&#125;while(num&gt;=1);</div><div class="line">	arr.reverse();</div><div class="line">	for(var i=0;i&lt;arr.length;i++)&#123;</div><div class="line">		result = result + arr[i];</div><div class="line">	&#125;</div><div class="line">	return result;</div><div class="line">&#125;</div><div class="line">var haha = chang(256,8);</div><div class="line">console.log(haha);</div><div class="line">结果:400</div></pre></td></tr></table></figure>
+<h3 id="示例2-判断回文"><a href="#示例2-判断回文" class="headerlink" title="示例2:判断回文"></a>示例2:判断回文</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">function back(s)&#123;</div><div class="line">	var regexp=/[a-z]/gi;//全局匹配不区分大小写</div><div class="line">	var arr=s.match(regexp);</div><div class="line">	var arrRevs=arr.reverse();</div><div class="line">	if(arr.join(&apos;&apos;)==arrRevs.join(&apos;&apos;))&#123;</div><div class="line">		return true;</div><div class="line">	&#125;</div><div class="line">	return false;</div><div class="line">&#125;</div><div class="line">var str = &apos;A man, a plan, a canal: Panama&apos;; </div><div class="line">console.log(back(str));</div><div class="line">结果：true</div></pre></td></tr></table></figure>
+<h1 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h1><p>队列先进先出，可以利用js中的<code>push()</code>和<code>shift()</code>方法从尾部增加，从头部删除。</p>
+<h2 id="利用队列的示例"><a href="#利用队列的示例" class="headerlink" title="利用队列的示例"></a>利用队列的示例</h2><h3 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h3><p>基数排序的基本原理：从个位，十位，百位的数字依次进行排序。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">//sort函数功能将数组根据个位或者十位的大小进行分组</div><div class="line">function sort(nums,digital,queue)&#123;</div><div class="line">	for(var i=0;i&lt;nums.length;i++)</div><div class="line">    &#123;</div><div class="line">        if(digital==1)&#123;</div><div class="line">            queue[nums[i]%10].push(nums[i]);</div><div class="line">        &#125;</div><div class="line">        else&#123;</div><div class="line">			queue[Math.floor(nums[i]/10)].push(nums[i]);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">	</div><div class="line">&#125;</div><div class="line">//将前面的排序结果选出，准备下次排序</div><div class="line">function out(queue)&#123;</div><div class="line">	var arr=[];</div><div class="line">	for(var i=0;i&lt;10;i++)&#123;</div><div class="line">		if(queue[i].length!=0)&#123;</div><div class="line">			var h=queue[i].length;</div><div class="line">			for(var j=0;j&lt;h;j++)&#123;</div><div class="line">				arr.push(queue[i].shift());</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">			</div><div class="line">		</div><div class="line">	&#125;</div><div class="line">	return arr;</div><div class="line">&#125;</div><div class="line">var nums=[45,72,93,51,21,16,70,41,27,31];</div><div class="line">var queues=[];</div><div class="line">for(var i =0;i&lt;10;i++)&#123;</div><div class="line">	queues[i]=[];</div><div class="line">&#125;</div><div class="line">sort(nums,1,queues);</div><div class="line">console.log(queues[1]);</div><div class="line">var temp = out(queues);</div><div class="line">console.log(temp);</div><div class="line">sort(temp,10,queues);</div><div class="line">var result = out(queues);</div><div class="line">console.log(result);</div><div class="line">结果: [51, 21, 41, 31]</div><div class="line">      [70, 51, 21, 41, 31, 72, 93, 45, 16, 27]</div><div class="line">      [16, 21, 27, 31, 41, 45, 51, 70, 72, 93]</div></pre></td></tr></table></figure></p>
+<h1 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h1><p>一种不同于数组的一种底层存储的数据结构<br>基于对象的列表包含两个类，分别为Node类和LinkedLise类；Node类的构造函数有两个属性<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">function Node(element)&#123;</div><div class="line">	this.element = element;</div><div class="line">	this.next = null;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>LinkedList类的构造函数只有一个属性，此外还包含链表中的一些方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function()&#123;</div><div class="line">	this.head=new Node(&apos;head&apos;);</div><div class="line">	this.find=find;</div><div class="line">	this.insert=insert;</div><div class="line">	this.remove=remove;</div><div class="line">	this.display=display; </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="散列"><a href="#散列" class="headerlink" title="散列"></a>散列</h1><p>使用散列存储数据时，通过一个高效的散列函数将键映射到一个数字，这个数字的长度是0到散列表的长度。<br>当散列对于多个输入同时产生同样的输出时，就会产生碰撞。解决散列表的碰撞问题的方法有1.开链法2.线性探测法。<br><code>开链法</code>：实现散列表的底层数组中，每个数组元素有都是一个新的数据结构，比如数组，这样就能存储多个键。<br><code>线性探测法</code>：检查散列表的下一个位置是否为空，如果为空，就将数据存入该位置；如果不为空，则继续检查下一个位置，直到找到一个空位置为止。</p>
+<h2 id="两种方法比较"><a href="#两种方法比较" class="headerlink" title="两种方法比较"></a>两种方法比较</h2><p>当数据量比较大的时候，存储数据使用数组比较大时，使用线性探测法比较好(数组大小是待存数据的两倍或两倍以上时)，其他使用开链法比较好。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/14/js数据结构与算法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -978,8 +1320,10 @@
         
           
             <ol>
-<li>行内元素有哪些？块级元素有哪些？CSS的盒模型？<br>行内元素有：<code>a b span I b em img input select strong</code>;<br>块级元素有：<code>div ul ol li dl dt dd h1 h2 h3 h4…p</code>;<br>盒模型：由内到外：<code>margin  border  padding  width</code>;<br>2.<code>CSS</code>引入的方式有哪些? <code>link</code>和<code>@import</code>的区别是?<br>（1）<br> i. 使用 <code>LINK</code>标签将样式规则写在<code>.css</code>的样式文件中，再以<code>&lt;link&gt;</code>标签引入。<br>   例如:<code>&lt;link rel=stylesheet type=&quot;text/css&quot; href=&quot;example.css&quot;&gt;</code><br>ii. 使用@import引入跟link方法很像，但必须放在<style>…</style> 中<br>   例如:<code>&lt;STYLE TYPE=&quot;text/css&quot;&gt;&lt;!--　　@import url(css/example.css);--&gt;&lt;/STYLE&gt;</code><br>iii. 使用<code>STYLE</code>标签将样式规则写在<code>&lt;STYLE&gt;...&lt;/STYLE&gt;</code>标签之中。<br>iv. 使用<code>STYL</code>E属性<br> v. 使用<code>&lt;span&gt;&lt;/span&gt;</code>标记引入样式<br>（2）<br>两者区别：加载顺序的差别。当一个页面被加载的时候，<code>link</code>引用的<code>css</code>会同时被加载，而<code>@import</code>引用的<code>CSS</code>会等到页面全部被下载完再被加载。<code>@import</code>可以在<code>css</code>中再次引入其他样式表，比如可以创建一个主样式表，在主样式表中再引入其他的样式表，这样做有一个缺点，会对网站服务器产生过多的<code>HTTP</code>请求，以前是一个文件，而现在却是两个或更多文件了，服务器的压力增大<p></p></li>
-<li>前端页面由哪三层构成，分别是什么？作用是什么？<p>网页分成三个层次，即：结构层、表示层、行为层。<br>网页的结构层<code>(structural layer)</code>由 <code>HTML</code> 或 <code>XHTML</code> 之类的标记语言负责创建。标签，也就是那些出现在尖括号里的单词，对网页内容的语义含义做出了描述，但这些标签不包含任何关于如何显示有关内容的信息。例如，P 标签表达了这样一种语义：“这是一个文本段。”<br>网页的表示层<code>(presentation layer)</code> 由 <code>CSS</code> 负责创建。 <code>CSS</code> 对“如何显示有关内容”的问题做出了回答。<br>网页的行为层<code>(behavior layer)</code>负责回答“内容应该如何对事件做出反应”这一问题。这是 <code>Javascript</code>语言和<code>DOM</code>主宰的领域</p></li>
+<li><p>行内元素有哪些？块级元素有哪些？CSS的盒模型？<br>行内元素有：<code>a b span I b em img input select strong</code>;<br>块级元素有：<code>div ul ol li dl dt dd h1 h2 h3 h4…p</code>;<br>盒模型：由内到外：<code>margin  border  padding  width</code>;<br>2.<code>CSS</code>引入的方式有哪些? <code>link</code>和<code>@import</code>的区别是?<br>（1）<br> i. 使用 <code>LINK</code>标签将样式规则写在<code>.css</code>的样式文件中，再以<code>&lt;link&gt;</code>标签引入。<br>   例如:<code>&lt;link rel=stylesheet type=&quot;text/css&quot; href=&quot;example.css&quot;&gt;</code><br>ii. 使用@import引入跟link方法很像，但必须放在<style>…</style> 中<br>   例如:<code>&lt;STYLE TYPE=&quot;text/css&quot;&gt;&lt;!--　　@import url(css/example.css);--&gt;&lt;/STYLE&gt;</code><br>iii. 使用<code>STYLE</code>标签将样式规则写在<code>&lt;STYLE&gt;...&lt;/STYLE&gt;</code>标签之中。<br>iv. 使用<code>STYL</code>E属性<br> v. 使用<code>&lt;span&gt;&lt;/span&gt;</code>标记引入样式<br>（2）<br>两者区别：加载顺序的差别。当一个页面被加载的时候，<code>link</code>引用的<code>css</code>会同时被加载，而<code>@import</code>引用的<code>CSS</code>会等到页面全部被下载完再被加载。<code>@import</code>可以在<code>css</code>中再次引入其他样式表，比如可以创建一个主样式表，在主样式表中再引入其他的样式表，这样做有一个缺点，会对网站服务器产生过多的<code>HTTP</code>请求，以前是一个文件，而现在却是两个或更多文件了，服务器的压力增大</p><p></p>
+</li>
+<li><p>前端页面由哪三层构成，分别是什么？作用是什么？</p>
+<p>网页分成三个层次，即：结构层、表示层、行为层。<br>网页的结构层<code>(structural layer)</code>由 <code>HTML</code> 或 <code>XHTML</code> 之类的标记语言负责创建。标签，也就是那些出现在尖括号里的单词，对网页内容的语义含义做出了描述，但这些标签不包含任何关于如何显示有关内容的信息。例如，P 标签表达了这样一种语义：“这是一个文本段。”<br>网页的表示层<code>(presentation layer)</code> 由 <code>CSS</code> 负责创建。 <code>CSS</code> 对“如何显示有关内容”的问题做出了回答。<br>网页的行为层<code>(behavior layer)</code>负责回答“内容应该如何对事件做出反应”这一问题。这是 <code>Javascript</code>语言和<code>DOM</code>主宰的领域</p></li>
 <li>H5&amp;css3<p>在<code>HTML5</code>平台上，视频，音频，图象，动画，以及同电脑的交互都被标准化。<code>HTML5</code>的技术概览：<br> <code>HTML5</code>新增和移除的元素<br> <code>HTML5</code>新增了很多多媒体和交互性元素如<code>video</code>, <code>audio</code>，在<code>HTML4</code>当中如果要嵌入一个视频或是音频的话需要引入一大段的代码，还有兼容各个浏览器，而<code>HTML5</code>只需要通过引入一个标签就可以，就像img标签一样方便。<br> <code>HTML5</code>对表单的支持<br> <code>HTML5</code>提供了强大的控件类型如<code>url, email, date, tel</code>等，强大的约束属性，如<code>required</code>表示必填，文件上传的<code>accept</code>属性，以及一些表单重复元素模型的支持，<code>HTML5</code>在提交表单的时候还可 以设置提交的方式为<code>XML</code>提交方式，这样服务器端接收到的数据将是<code>XML</code>格式，<code>HTML5</code>的表单被定义为“Web Forms 2.0”<br> <code>CSS3</code>实现圆角，阴影，对文字加特效，增加了更多的CSS选择器<br> <code>CSS3</code>对于动画的支持<br> <code>CSS3</code>支持的动画类型有：<code>transform</code>(变换)、<code>transition</code>(过渡)和<code>animation</code>(动画)。你可以对特定的属性设置<code>transition</code>，<code>transiton</code>和<code>animation</code>的区别不大，<code>animation</code>的动画是自己定义的，面向的更多的是脚本开发者，往往更加复杂</p></li>
 <li>如何理解<code>HTML</code>结构的语意化？<p>i. 去掉或样式丢失的时候能让页面呈现清晰的结构<br>ii. 屏幕阅读器（如果访客有视障）会完全根据你的标记来“读”你的网页<br>iii. PDA、手机等设备可能无法像普通电脑的浏览器一样来渲染网页（通常是因为这些设备对<code>CSS</code>的支持较弱）<br>iv. 搜索引擎的爬虫也依赖于标记来确定上下文和各个关键字的权重，页面是否对爬虫容易理解非常重要,因为爬虫很大程度上会忽略用于表现的标记,而只注重语义标记<br>v. W3C给我们定了一个很好的标准，在团队中大家都遵循这个标准，可以减少很多差异化的东西，方便开发和维护，提高开发效率</p></li>
 <li>谈谈以前端角度出发做好<code>SEO</code>需要考虑什么？ <p>i.了解搜索引擎如何抓取网页和如何索引网页<br>   <code>&amp;nbsp;&amp;nbsp;</code>你需要知道一些搜索引擎的基本工作原理，各个搜索引擎之间的区别，搜索机器人（<code>SE robot</code>或叫<code>web crawler</code>）如何进行工作，搜索引擎如何对搜索结果进行排序等等。<br>ii. <code>Meta</code>标签优化<br>   &nbsp;&nbsp;主要包括主题<code>(Title)</code>，网站描述<code>(Description)</code>，和关键词<code>(Keywords)</code>。还有一些其它的隐藏文字比如<code>Author</code>（作者），<code>Category</code>（目录），<code>Language</code>（编码语种）等。<br>iii.如何选取关键词并在网页中放置关键词<br>   &nbsp;&nbsp;搜索就得用关键词。关键词分析和选择是<code>SEO</code>最重要的工作之一。首先要给网站确定主关键词（一般在5个上下），然后针对这些关键词进行优化，包括关键词密度（Density），相关度（Relavancy），突出性（Prominency）等等。<br>iv.了解主要的搜索引擎<br>   &nbsp;虽然搜索引擎有很多，但是对网站流量起决定作用的就那么几个。比如英文的主要有Google，Yahoo，Bing等；中文的有百度，搜狗，有道等。不同的搜索引擎对页面的抓取和索引、排序的规则都不一样。还要了解各搜索门户和搜索引擎之间的关系，比如AOL网页搜索用的是Google的搜索技术，MSN用的是Bing的技术。<br> v.主要的互联网目录<br>   &nbsp;&nbsp;Open Directory自身不是搜索引擎，而是一个大型的网站目录，他和搜索引擎的主要区别是网站内容的收集方式不同。目录是人工编辑的，主要收录网站主页；搜索引擎是自动收集的，除了主页外还抓取大量的内容页面。<br>vi.按点击付费的搜索引擎<br>   &nbsp;搜索引擎也需要生存，随着互联网商务的越来越成熟，收费的搜索引擎也开始大行其道。最典型的有<code>Overture</code>和百度，当然也包括<code>Google</code>的广告项目<code>Google Adwords</code>。越来越多的人通过搜索引擎的点击广告来定位商业网站，这里面也大有优化和排名的学问，你得学会用最少的广告投入获得最多的点击。<br>vii.搜索引擎登录<br>   &nbsp;&nbsp;网站做完了以后，别躺在那里等着客人从天而降。要让别人找到你，最简单的办法就是将网站提交（submit）到搜索引擎。如果你的是商业网站，主要的搜索引擎和目录都会要求你付费来获得收录（比如Yahoo要299美元），但是好消息是（至少到目前为止）最大的搜索引擎Google目前还是免费，而且它主宰着60％以上的搜索市场。<br>viii.链接交换和链接广泛度<code>（Link Popularity）</code><br>   &nbsp;&nbsp;网页内容都是以超文本<code>（Hypertext）</code>的方式来互相链接的，网站之间也是如此。除了搜索引擎以外，人们也每天通过不同网站之间的链接来Surfing（“冲浪”）。其它网站到你的网站的链接越多，你也就会获得更多的访问量。更重要的是，你的网站的外部链接数越多，会被搜索引擎认为它的重要性越大，从而给你更高的排名。<br>ix.标签的合理使用</p></li>
@@ -1142,10 +1486,10 @@ div{maring:30px;margin:28px}
 <p>1.对象的状态不受外界影响：Promise对象代表一个异步曹组，有三种状态：pending（进行中），Resolved（已完成），Rejected(已失败)。只有异步操作的结果才能决定当前是哪一种状态，其他操作都无法改变这个状态。</p>
 <p>2.一旦状改变就不会再变。一旦状态幼pending转变为Resolved或者Rejected之后，就不会再变，会一直保持这个结果。</p>
 <p><strong>优点：有了Promise对象，就可以将异步操作以同步操作的流程表达出来，避免了层层嵌套的回调函数。此外，Promise对象提供统一的接口，使得控制异步操作更加容易</strong>。</p>
-<h2 id="Promise的基本实现"><a href="#Promise的基本实现" class="headerlink" title="Promise的基本实现:"></a>Promise的基本实现:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var promise = new Promise(function(resolve,reject)&#123;</div><div class="line">	if(异步操作成功)&#123;|</div><div class="line">		resolve(value)</div><div class="line">	&#125;else</div><div class="line">	reject(error)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h2 id="Promise的基本实现"><a href="#Promise的基本实现" class="headerlink" title="Promise的基本实现:"></a>Promise的基本实现:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">var promise = new Promise(function(resolve,reject)&#123;</div><div class="line">	if(异步操作成功)&#123;|</div><div class="line">		resolve(value)</div><div class="line">	&#125;else</div><div class="line">	reject(error)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
 <p>Promise构造函数接受一个函数作为参数，该函数的两个参数分别是resolve和reject。它们是两个函数，由 JavaScript 引擎提供，不用自己部署。</p>
 <p>Promise实例生成以后，可以用then方法分别指定Resolved状态和Reject状态的回调函数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">promise.then(function(value)&#123;&#125;,function(error)&#123;&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">promise.then(function(value)&#123;&#125;,function(error)&#123;&#125;);</div></pre></td></tr></table></figure>
 <p><strong>then方法可以接受两个回调函数作为参数。第一个回调函数是Promise对象的状态变为Resolved时调用，第二个回调函数是Promise对象的状态变为Rejected时调用。其中，第二个函数是可选的，不一定要提供。</strong></p>
 <h3 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">function timeout(ms) &#123;</div><div class="line">  return new Promise((resolve, reject) =&gt; &#123;</div><div class="line">    setTimeout(resolve, ms);</div><div class="line">  &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">timeout(1000).then(() =&gt; &#123;</div><div class="line">  console.log(&quot;haha&quot;);</div><div class="line">&#125;);</div><div class="line">Promise &#123;[[PromiseStatus]]: &quot;pending&quot;, [[PromiseValue]]: undefined&#125;</div><div class="line"></div><div class="line">haha</div></pre></td></tr></table></figure>
 <h3 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var promise=new Promise((resolve,reject)=&gt;&#123;</div><div class="line">	console.log(1);</div><div class="line">	resolve();</div><div class="line">&#125;);</div><div class="line">promise.then(()=&gt;&#123;console.log(2)&#125;);</div><div class="line">console.log(3);</div><div class="line"></div><div class="line">VM505:2 1</div><div class="line">VM505:6 3</div><div class="line">VM505:5 2</div></pre></td></tr></table></figure>
@@ -1780,7 +2124,7 @@ div{maring:30px;margin:28px}
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">48</span>
+                <span class="site-state-item-count">50</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

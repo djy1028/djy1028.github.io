@@ -112,18 +112,18 @@
 
 
 
-<meta name="description" content="webpack（模块的打包器）有自己的特性（coding spliting）代码分割（切分加载）。webpack可以通过loader模块处理各种各样的文件，无论其模块化方式是AMD，Commonjs，ES6。模块热更新特性可以在开发中提高调试效率。 定义WebPack可以看做是模块打包机：它做的事情是，分析你的项目结构，找到JavaScript模块以及其它的一些浏览器不能直接运行的拓展语言（Scs">
+<meta name="description" content="webpack（模块的打包器）有自己的特性（coding spliting）代码分割（切分加载）。webpack可以通过loader模块处理各种各样的文件，无论其模块化方式是AMD，Commonjs，ES6。模块热更新特性可以在开发中提高调试效率。 定义WebPack可以看做是模块打包机：它做的事情是分析你的项目结构，找到JavaScript模块以及其它的一些浏览器不能直接运行的拓展语言（Scss">
 <meta name="keywords" content="webpack">
 <meta property="og:type" content="article">
 <meta property="og:title" content="webpack基础">
 <meta property="og:url" content="http://yoursite.com/2017/08/16/webpack基础/index.html">
 <meta property="og:site_name" content="С�����ľ���">
-<meta property="og:description" content="webpack（模块的打包器）有自己的特性（coding spliting）代码分割（切分加载）。webpack可以通过loader模块处理各种各样的文件，无论其模块化方式是AMD，Commonjs，ES6。模块热更新特性可以在开发中提高调试效率。 定义WebPack可以看做是模块打包机：它做的事情是，分析你的项目结构，找到JavaScript模块以及其它的一些浏览器不能直接运行的拓展语言（Scs">
+<meta property="og:description" content="webpack（模块的打包器）有自己的特性（coding spliting）代码分割（切分加载）。webpack可以通过loader模块处理各种各样的文件，无论其模块化方式是AMD，Commonjs，ES6。模块热更新特性可以在开发中提高调试效率。 定义WebPack可以看做是模块打包机：它做的事情是分析你的项目结构，找到JavaScript模块以及其它的一些浏览器不能直接运行的拓展语言（Scss">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-18T06:20:30.404Z">
+<meta property="og:updated_time" content="2017-08-28T07:08:07.043Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="webpack基础">
-<meta name="twitter:description" content="webpack（模块的打包器）有自己的特性（coding spliting）代码分割（切分加载）。webpack可以通过loader模块处理各种各样的文件，无论其模块化方式是AMD，Commonjs，ES6。模块热更新特性可以在开发中提高调试效率。 定义WebPack可以看做是模块打包机：它做的事情是，分析你的项目结构，找到JavaScript模块以及其它的一些浏览器不能直接运行的拓展语言（Scs">
+<meta name="twitter:description" content="webpack（模块的打包器）有自己的特性（coding spliting）代码分割（切分加载）。webpack可以通过loader模块处理各种各样的文件，无论其模块化方式是AMD，Commonjs，ES6。模块热更新特性可以在开发中提高调试效率。 定义WebPack可以看做是模块打包机：它做的事情是分析你的项目结构，找到JavaScript模块以及其它的一些浏览器不能直接运行的拓展语言（Scss">
 
 
 
@@ -446,11 +446,11 @@
       
 
       
-        <p>webpack（模块的打包器）有自己的特性（coding spliting）代码分割（切分加载）。webpack可以通过loader模块处理各种各样的文件，无论其模块化方式是AMD，Commonjs，ES6。模块热更新特性可以在开发中提高调试效率。</p>
-<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>WebPack可以看做是模块打包机：它做的事情是<strong>，分析你的项目结构，找到JavaScript模块以及其它的一些浏览器不能直接运行的拓展语言（Scss，TypeScript等），并将其转换和打包为合适的格式供浏览器使用</strong></p>
+        <p>webpack（模块的打包器）有自己的特性（coding spliting）代码分割（切分加载）。<strong>webpack可以通过loader模块处理各种各样的文件</strong>，无论其模块化方式是AMD，Commonjs，ES6。模块热更新特性可以在开发中提高调试效率。</p>
+<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>WebPack可以看做是模块打包机：它做的事情是<strong>分析你的项目结构，找到JavaScript模块以及其它的一些浏览器不能直接运行的拓展语言（Scss，TypeScript等），并将其转换和打包为合适的格式供浏览器使用</strong></p>
 <h3 id="WebPack和Grunt以及Gulp相比有什么特性"><a href="#WebPack和Grunt以及Gulp相比有什么特性" class="headerlink" title="WebPack和Grunt以及Gulp相比有什么特性"></a>WebPack和Grunt以及Gulp相比有什么特性</h3><p>其实Webpack和另外两个并没有太多的可比性，Gulp/Grunt是一种能够<strong>优化前端的开发流程的工具</strong>，而<strong>WebPack是一种模块化的解决方案</strong>，不过Webpack的优点使得Webpack在很多场景下可以替代Gulp/Grunt类的工具。</p>
 <p>Grunt和Gulp的工作方式是：<strong>在一个配置文件中，指明对某些文件进行类似编译，组合，压缩等任务的具体步骤，工具之后可以自动替你完成这些任务</strong></p>
-<h4 id="Webpack的工作方式"><a href="#Webpack的工作方式" class="headerlink" title="Webpack的工作方式"></a>Webpack的工作方式</h4><p>把你的项目当做一个整体，<em>通过一个给定的主文件（如：index.js）</em>，Webpack将从这个文件开始找到你的项目的所有依赖文件，<strong>使用loaders处理它们，最后打包为一个（或多个）浏览器可识别的JavaScript文件</strong></p>
+<h4 id="Webpack的工作方式"><a href="#Webpack的工作方式" class="headerlink" title="Webpack的工作方式"></a>Webpack的工作方式</h4><p>把你的项目当做一个整体，<em>通过一个给定的主文件（如：index.js）</em>，Webpack将从这个文件开始找到你的<strong>项目的所有依赖文件</strong>，<strong>使用loaders处理它们，最后打包为一个（或多个）浏览器可识别的JavaScript文件</strong></p>
 <p>详情配置参考！[]<a href="http://www.jianshu.com/p/42e11515c10f" target="_blank" rel="external">http://www.jianshu.com/p/42e11515c10f</a></p>
 <h2 id="loaders"><a href="#loaders" class="headerlink" title="loaders"></a>loaders</h2><p>Loaders是webpack提供的最激动人心的功能之一了。<strong>通过使用不同的loader，webpack有能力调用外部的脚本或工具，实现对不同格式的文件的处理</strong>，比如说分析转换scss为css，或者把下一代的JS文件（ES6，ES7)转换为现代浏览器兼容的JS文件，对React的开发而言，合适的Loaders可以把React的中用到的JSX文件转换为JS文件</p>
 <p>Loaders需要单独安装并且需要在webpack.config.js中的modules关键字下进行配置，Loaders的配置包括以下几方面：</p>
@@ -624,7 +624,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">48</span>
+                <span class="site-state-item-count">50</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

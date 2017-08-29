@@ -335,6 +335,437 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/30/笔试面试（11）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="superDjy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://img.mp.itc.cn/upload/20170429/a2379efc26214d7fa790af6105312132">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="С�����ľ���">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/30/笔试面试（11）/" itemprop="url">笔试面试题（11）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-30T00:00:00+08:00">
+                2017-08-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/基本知识/" itemprop="url" rel="index">
+                    <span itemprop="name">基本知识</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/08/30/笔试面试（11）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/08/30/笔试面试（11）/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/08/30/笔试面试（11）/" class="leancloud_visitors" data-flag-title="笔试面试题（11）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="浏览器安全问题"><a href="#浏览器安全问题" class="headerlink" title="浏览器安全问题"></a>浏览器安全问题</h2><h3 id="同源策略"><a href="#同源策略" class="headerlink" title="同源策略"></a>同源策略</h3><p>同源策略限制了一个源（origin）中加载文本或脚本与来自其它源（origin）中资源的交互方式。简单的说就是<strong>一个源的页面上的js只能访问当前源的资源，不能访问其他源的资源</strong>。</p>
+<p>那么资源是什么呢？<strong>DOM，通过AJAX请求的网络资源，Cookie，WebStorage，webSql</strong>。</p>
+<h3 id="XSS-Cross-Site-Script"><a href="#XSS-Cross-Site-Script" class="headerlink" title="XSS(Cross-Site Script)"></a>XSS(Cross-Site Script)</h3><p>跨站脚本攻击本质上是一种注入攻击（有兴趣了解更多注入攻击可以看这里）。其原理，简单的说就是利用各种手段把恶意代码添加到网页中，并让受害者执行这段脚本，可对用户盗取cookie信息，会话劫持等各种攻击。主要包括client(客户端型)，server(服务端型)两大类型错误。</p>
+<p>无论是服务端型还是客户端型xss，攻击达成需要两个条件</p>
+<p>（1）代码被注入</p>
+<p>（2）代码被执行</p>
+<p>其实只要做好无论任何情况下<strong>保证代码不被执行就能完全杜绝xss攻击</strong>。常见做法就是将不受信任的代码进行转义</p>
+<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><p>(1) 输入过滤。永远不要相信用户的输入，对用户输入的数据做一定的过滤。如输入的数据是否符合预期的格式，比如日期格式，Email格式，电话号码格式等等。这样可以初步对XSS漏洞进行防御。后台服务器需要在接收到用户输入的数据后，对特殊危险字符进行过滤或者转义处理，然后再存储到数据库中</p>
+<p>(2) 输出编码。服务器端输出到浏览器的数据，可以使用系统的安全函数来进行编码或转义来防范XSS攻击</p>
+<p>(3)(4) HttpOnly Cookie。预防XSS攻击窃取用户cookie最有效的防御手段。<strong>Web应用程序在设置cookie时</strong>，将其属性设为HttpOnly</p>
+<h3 id="sql注入"><a href="#sql注入" class="headerlink" title="sql注入"></a>sql注入</h3><p>将SQL命令插入到<strong>Web表单提交</strong>或<strong>输入域名</strong>或<strong>页面请求的查询字符串</strong>，最终达到欺骗服务器执行恶意的SQL命令。</p>
+<p>常用防范方法：</p>
+<p>（1）数据转义。设置php.ini选项magic_quotes_gpc=on，它会将提交的变量中所有的’(单引号)，”(双引号)，(反斜杠)，空白字符等都在前面自动加上\。或者采用mysql_real_escape()函数或addslashes()函数进行输入参数的转义。</p>
+<p>（2）增加黑名单或者白名单验证。白名单验证一般指，检查用户输入是否是符合预期的类型、长度、数值范围或者其他格式标准。黑名单验证是指，若在用户输入中，包含明显的恶意内容则拒绝该条用户请求。</p>
+<h3 id="开发中遇到的问题"><a href="#开发中遇到的问题" class="headerlink" title="开发中遇到的问题"></a>开发中遇到的问题</h3><p>Webpack + react 文件打包出来过大，动则几百k上兆（bundle.js : 852kb.）。</p>
+<p>问题分析：</p>
+<p>（1）在使用 import css 的时候，Webpack Css 直接作为模块打包到js中。</p>
+<p>（2）所有Js 模块 + 依赖都会打包到一个文件，导致文件很大。</p>
+<p>（3）React、React-dom 文件过大</p>
+<p>解决方案：</p>
+<p>（1）分离 css 文件,将css 单独打包（bundle.css – 56kb bundle.js -796kb）</p>
+<p>（2）那么就从 react 上入手，发现react 里面存在很多注释，警告等，是一个开发版本。那么如何切换成生产版本呢？通过 webpack.DefinePlugin 的process.env 来切换成生产版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">new webpack.DefinePlugin(&#123;</div><div class="line">    &apos;process.env&apos;: &#123;</div><div class="line">        NODE_ENV: JSON.stringify(process.env.NODE_ENV),</div><div class="line">    &#125;,</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h3 id="解决加载过慢的问题"><a href="#解决加载过慢的问题" class="headerlink" title="解决加载过慢的问题"></a>解决加载过慢的问题</h3><h4 id="从webpack入手，webpack本身会有一些插件的优化方法"><a href="#从webpack入手，webpack本身会有一些插件的优化方法" class="headerlink" title="从webpack入手，webpack本身会有一些插件的优化方法"></a>从webpack入手，webpack本身会有一些插件的优化方法</h4><p>1.UglifyJsPlugin 压缩代码的插件(这个可以很显著的缩小包的体积）。<code>new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } })</code></p>
+<p>2.CommonsChunkPlugin (合并代码)：两个用法，一个是抽取公共的包，另一个则是把多个保重的公共依赖抽取出来</p>
+<h4 id="从代码层面入手"><a href="#从代码层面入手" class="headerlink" title="从代码层面入手"></a>从代码层面入手</h4><p>首先你应该要知道code splitting这个东西，这个是代码层面优化的根基。code splitting，就是代码分割，就是代码分割成一个个小块，每次页面加载时，我只需要加载那些我需要的部分(加载包的体积变小了)，这样可以让页面加载的更快。通过webpack简而言之实现按需加载。</p>
+<p>从实际代码入手如何实现呢？</p>
+<p>借助工具：<code>npm install webpack-visualizer-plugin webpack-stats-plugin --save-dev</code></p>
+<p>分析代码结构，这样就可以分析出你到底是什么导致你bundle.js报如此之大了，但有一些包我们是无法缩减的，例如react-dom,react,但是绝大部分的包都是可以进行缩减的。</p>
+<p>流程：！[]<a href="https://segmentfault.com/a/1190000009792759" target="_blank" rel="external">https://segmentfault.com/a/1190000009792759</a></p>
+<p>比如：加入你这个界面中用到了一个三方的图形控件Echart,那么这个包总是很大的，即使是最小的也有300k左右，其实你其他的代码可能都不到100k，那么这300k将会非常影响你这个界面的加载速度，所以需要给这个<strong>控件做一个按需加载</strong>，这样可以先展示其余的这100k所展示的界面，等待其余的300k下载好了再把Echart给补上。</p>
+<p>通过服务器对代码进行gzip压缩</p>
+<p>服务器端渲染</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/25/笔试面试（10）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="superDjy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://img.mp.itc.cn/upload/20170429/a2379efc26214d7fa790af6105312132">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="С�����ľ���">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/25/笔试面试（10）/" itemprop="url">笔试面试题（10）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-25T00:00:00+08:00">
+                2017-08-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/基本知识/" itemprop="url" rel="index">
+                    <span itemprop="name">基本知识</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/08/25/笔试面试（10）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/08/25/笔试面试（10）/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/08/25/笔试面试（10）/" class="leancloud_visitors" data-flag-title="笔试面试题（10）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="前端工程化"><a href="#前端工程化" class="headerlink" title="前端工程化"></a>前端工程化</h2><p>前端流程：开发，测试，部署，就是把一整套前端工作流程中能用工具搞定的部分，用工具搞定。</p>
+<p>目前来说，Web业务日益复杂化和多元化，前端开发已经由以WebPage模式为主转变为以WebApp模式为主了。现在随便找个前端项目，都已经不是过去的拼个页面+搞几个jQuery插件就能完成的了。工程复杂了就会产生许多问题，比如：如何进行高效的多人协作？如何保证项目的可维护性？如何提高项目的开发质量？…</p>
+<p>前端工程化主要应该从<strong>模块化、组件化、规范化、自动化</strong>四个方面来思考，下面一一展开。</p>
+<h3 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h3><p>简单来说，模块化就是将一个大文件拆分成相互依赖的小文件，再进行统一的拼装和加载。只有这样，才有多人协作的可能。</p>
+<h3 id="组件化"><a href="#组件化" class="headerlink" title="组件化"></a>组件化</h3><p>首先，组件化≠模块化。好多人对这两个概念有些混淆。<strong>模块化只是在文件层面上，对代码或资源的拆分；而组件化是在设计层面上，对UI（用户界面）的拆分。</strong></p>
+<p>从<strong>UI拆分下来的每个包含模板(HTML)+样式(CSS)+逻辑(JS)功能完备的结构单元</strong>，我们称之为组件。</p>
+<h3 id="规范化"><a href="#规范化" class="headerlink" title="规范化"></a>规范化</h3><p>目录结构的制定</p>
+<p>编码规范</p>
+<p>前后端接口规范</p>
+<p>文档规范</p>
+<p>组件管理</p>
+<h2 id="垃圾回收机制的种类"><a href="#垃圾回收机制的种类" class="headerlink" title="垃圾回收机制的种类"></a>垃圾回收机制的种类</h2><p>函数中的局部变量的生命周期：局部变量只在函数执行的过程中存在。而在这个过程中，会为局部变量在栈（或堆）内存上分配相应的空间，以便存储它们的值。然后在函数中使用这些变量，直至函数执行结束。此时，局部变量就没有存在的必要了，因此可以释放它们的内存以供将来使用。在这种情况下，很容易判断变量是否还有存在的必要；但并非所有情况下都这么容易就能得出结论。垃圾回收器必须跟踪哪个变量有用，哪个变量没用，对于不再有用的变量打上标记，以备将来收回其占用的内存。用于标识无用变量的策略可能会因实现而异，但具体到浏览器中的实现，则通常有两个策略。</p>
+<h3 id="标记清除"><a href="#标记清除" class="headerlink" title="标记清除"></a>标记清除</h3><p>js中最常用的垃圾回收方式就是标记清除。当变量进入环境时，例如，在函数中声明一个变量，就将这个变量标记为“进入环境”。从逻辑上讲，永远不能释放进入环境的变量所占用的内存，因为只要执行流进入相应的环境，就可能会用到它们。而当变量离开环境时，则将其标记为“离开环境”。</p>
+<p><strong>垃圾回收器在运行的时候会给存储在内存中的所有变量都加上标记（当然，可以使用任何标记方式）。然后，它会去掉环境中的变量以及被环境中的变量引用的变量的标记（闭包）</strong>。而在此之后再被加上标记的变量将被视为准备删除的变量，原因是环境中的变量已经无法访问到这些变量了。最后，垃圾回收器完成内存清除工作，销毁那些带标记的值并回收它们所占用的内存空间。</p>
+<p>到2008年为止，IE、Firefox、Opera、Chrome、Safari的js实现使用的都是标记清除的垃圾回收策略或类似的策略，只不过垃圾收集的时间间隔互不相同。</p>
+<h3 id="引用计数"><a href="#引用计数" class="headerlink" title="引用计数"></a>引用计数</h3><p>引用计数的含义是跟踪记录每个值被引用的次数。当声明了一个变量并将一个引用类型值赋给该变量时，则这个值的引用次数就是1。如果同一个值又被赋给另一个变量，则该值的引用次数加1。相反，如果包含对这个值引用的变量又取得了另外一个值，则这个值的引用次数减1。当这个值的引用次数变成0时，则说明没有办法再访问这个值了，因而就可以将其占用的内存空间回收回来。这样，当垃圾回收器下次再运行时，它就会释放那些引用次数为0的值所占用的内存。</p>
+<h2 id="var-let-const区别"><a href="#var-let-const区别" class="headerlink" title="var let const区别"></a>var let const区别</h2><h3 id="var的bug"><a href="#var的bug" class="headerlink" title="var的bug"></a>var的bug</h3><p>(1)Js没有块级作用域</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">for(let i-0;i&lt;10;i++)&#123;</div><div class="line">var a = &apos;a&apos;;</div><div class="line">&#125;</div><div class="line">console.log(i)</div><div class="line">循环外仍然能够输出a和i</div></pre></td></tr></table></figure>
+<p>(2) 循环内变量过度共享 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">for (var i = 0; i &lt; 3; i++) &#123;</div><div class="line">    setTimeout(function () &#123;</div><div class="line">      console.log(i)</div><div class="line">    &#125;, 1000);</div><div class="line">&#125;</div><div class="line">输出：3个3</div></pre></td></tr></table></figure>
+<h3 id="let的好处"><a href="#let的好处" class="headerlink" title="let的好处"></a>let的好处</h3><p>（1）let声明的变量拥有块级作用域</p>
+<p>（2）let声明的全局变量不是全局对象的属性</p>
+<p>（3）形如for (let x…)的循环在每次迭代时都为x创建新的绑定</p>
+<p>（4）用let重定义变量会抛出一个语法错误</p>
+<h3 id="const用来定义常量"><a href="#const用来定义常量" class="headerlink" title="const用来定义常量"></a>const用来定义常量</h3><p>必须赋值，不可随意修改</p>
+<h2 id="cookie-sessionstorage-localstorage的区别"><a href="#cookie-sessionstorage-localstorage的区别" class="headerlink" title="cookie sessionstorage localstorage的区别"></a>cookie sessionstorage localstorage的区别</h2><h3 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h3><p>只适合<strong>小容量的数据存储，它会在同源的http请求中来回传递</strong>，因此会一定程度上影响网站的性能，原生的API不友好。大小为4k左右</p>
+<h3 id="sessionstorage"><a href="#sessionstorage" class="headerlink" title="sessionstorage"></a>sessionstorage</h3><p>针对一个 会话（session）进行数据存储。当用户关闭该标签页或者浏览器后，数据通常会被删除。大于5M</p>
+<h3 id="localstorage"><a href="#localstorage" class="headerlink" title="localstorage"></a>localstorage</h3><p>可以实现<strong>永久存储，通过事件监听可以实现多个标签页的通信</strong>。大于5M</p>
+<h2 id="严格模式"><a href="#严格模式" class="headerlink" title="严格模式"></a>严格模式</h2><p>严格模式变量必须要声明</p>
+<p>严格模式下禁止this指向全局对象，如果使用返回undefined</p>
+<h2 id="undefined和null的区别"><a href="#undefined和null的区别" class="headerlink" title="undefined和null的区别"></a>undefined和null的区别</h2><p><strong>undefined:</strong></p>
+<p>（1）变量被声明了，但没有赋值时，就等于undefined。</p>
+<p>（2) 调用函数时，应该提供的参数没有提供，该参数等于undefined。</p>
+<p>（3）对象没有赋值的属性，该属性的值为undefined。</p>
+<p>（4）函数没有返回值时，默认返回undefined。</p>
+<p><strong>null表示”没有对象”，即该处不应该有值</strong></p>
+<p>（1） 作为函数的参数，表示该函数的参数不是对象。</p>
+<p>（2） 作为对象原型链的终点。</p>
+<h2 id="rem和em"><a href="#rem和em" class="headerlink" title="rem和em"></a>rem和em</h2><p>em是相对长度单位。<strong>相对于当前对象内文本的字体尺寸</strong>。如当前对行内文本的字体尺寸未被人为设置，则相对于浏览器的默认字体尺</p>
+<p>区别在于使用rem为元素设定字体大小时，仍然是相对大小，但<strong>相对的只是HTML根元素的大小</strong>。</p>
+<h2 id="为什么需要跨域限制"><a href="#为什么需要跨域限制" class="headerlink" title="为什么需要跨域限制"></a>为什么需要跨域限制</h2><p>比如一个黑客,他利用iframe把真正的银行登录页面嵌到他的页面上,当你使用真实的用户名和密码登录时<strong>,如果没有同源限制</strong>,他的页面就可以通过 JavaScript读取到你的表单中输入的内容,这样用户名和密码就轻松到手了</p>
+<h2 id="防抖和节流"><a href="#防抖和节流" class="headerlink" title="防抖和节流"></a>防抖和节流</h2><p> <em>.debounce 和 </em>.throttle</p>
+<p>例如：想象每天上班大厦底下的电梯。把电梯完成一次运送，类比为一次函数的执行和响应。假设电梯有两种运行策略 throttle 和 debounce ，超时设定为15秒，不考虑容量限制。</p>
+<p>throttle 策略的电梯。保证如果电梯第一个人进来后，15秒后准时运送一次，不等待。如果没有人，则待机。</p>
+<p>debounce 策略的电梯。如果电梯里有人进来，等待15秒。如果又人进来，15秒等待重新计时，直到15秒超时，开始运送。</p>
+<h2 id="浅谈vue和react的区别"><a href="#浅谈vue和react的区别" class="headerlink" title="浅谈vue和react的区别"></a>浅谈vue和react的区别</h2><p>###相同处：</p>
+<p>React与Vue存在很多相似之处，例如他们都是JavaScript的UI框架，专注于创造前端的富应用。React与Vue只有框架的骨架，其他的功能如路由、状态管理等是框架分离的组件。Virtual DOM是一个映射真实DOM的JavaScript对象，如果需要改变任何元素的状态，那么是先在Virtual DOM上进行改变，而不是直接改变真实的DOM</p>
+<p>组件化:<strong>将应用分拆成一个个功能明确的模块，每个模块之间可以通过合适的方式互相联系</strong></p>
+<p><strong>React和Vue都有自己的构建工具，配套框架</strong>，你可以使用它快速搭建开发环境。React可以使用Create React App (CRA)，而Vue对应的则是vue-cli。两个工具都能让你得到一个根据最佳实践设置的项目模板。Vue的核心团队维护着vue-router和vuex，它们都是作为官方推荐的存在。而React的react-router和react-redux则是由社区成员维护</p>
+<h3 id="主要区别"><a href="#主要区别" class="headerlink" title="主要区别"></a>主要区别</h3><p>模板 vs JSX：React与Vue最大的不同是<strong>模板的编写</strong>。Vue鼓励你去写近似常规HTML的模板。写起来很接近标准HTML元素，只是多了一些属性。React应用不使用模板，它要求开发者借助JSX在JavaScript中创建DOM。</p>
+<p>状态管理 vs 对象属性：在Vue对象中，data参数就是应用中数据的保存者。应用中的<strong>状态</strong>是（React）关键的概念。也有一些配套框架被设计为管理一个大的state对象，如Redux。此外，state对象在React应用中是不可变的，意味着它不能被直接改变。在React中你需要使用setState()方法去更新状态。React中是通过比较当前state和前一个state来决定<strong>何时在DOM中进行重渲染以及渲染的内容</strong>，因此<strong>需要不可变（immutable）的state</strong>。Vue中的数据是可变（mutated）的，所以同样的操作看起来更加简洁</p>
+<p>React Native<strong>能在手机上创建原生应用，React在这方面处于领先位置。</strong>React Native是一个使用Javascript构建移动端原生应用程序（iOS，Android）的库。 它与React.js相同，<strong>只是不使用Web组件，而是使用原生组件</strong>。 如果你学过React.js，很快就能上手React Native</p>
+<h3 id="总结一下："><a href="#总结一下：" class="headerlink" title="总结一下："></a>总结一下：</h3><h4 id="Vue的优势是："><a href="#Vue的优势是：" class="headerlink" title="Vue的优势是："></a>Vue的优势是：</h4><p>模板和渲染函数的弹性选择</p>
+<p>简单的语法和项目配置</p>
+<p>更快的渲染速度和更小的体积</p>
+<h4 id="React的优势是："><a href="#React的优势是：" class="headerlink" title="React的优势是："></a>React的优势是：</h4><p>更适合大型应用和更好的可测试性（vue的模板技术引入的技术债会阻碍应用扩展到更大的规模。模板容易出现很难注意到的运行时错误，同时也很难去测试，重构和分解。react的immutable应用状态可能写起来不够简洁，但它在大型应用中意义非凡，因为透明度和可测试性在大型项目中变得至关重要。）</p>
+<p>Web端和移动端原生APP通吃</p>
+<p>更大的生态系统，更多的支持和好用的工具</p>
+<h3 id="axios"><a href="#axios" class="headerlink" title="axios"></a>axios</h3><p>定义：基于 Promise 的 HTTP 请求客户端，可同时在浏览器和 node.js 中使用</p>
+<p>axios.request(config)</p>
+<p>axios.get(url[, config])</p>
+<p>axios.delete(url[, config])</p>
+<p>axios.head(url[, config])</p>
+<p>axios.post(url[, data[, config]])</p>
+<p>axios.put(url[, data[, config]])</p>
+<p>axios.patch(url[, data[, config]])</p>
+<h4 id="axios用法"><a href="#axios用法" class="headerlink" title="axios用法"></a>axios用法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">axios.post(url,&#123;&#125;,config)</div><div class="line">    .then(function(res)&#123;</div><div class="line">        console.log(res);</div><div class="line">    &#125;)</div><div class="line">    .catch(function(err)&#123;</div><div class="line">        console.log(err);</div><div class="line">    &#125;)</div></pre></td></tr></table></figure>
+<p>//axios请求返回的也是一个promise,跟踪错误只需要在最后加一个catch就可以了。<br>//下面是关于同时发起多个请求时的处理</p>
+<p>axios.all([get1(), get2()])<br>  .then(axios.spread(function (res1, res2) {<br>    // 只有两个请求都完成才会成功，否则会被catch捕获<br>  }));</p>
+<p><strong>处理并发请求的帮助方法</strong></p>
+<p>axios.spread(callback)</p>
+<p>vue中利用axios做了一个ajax封装</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/20/笔试面试题（9）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -469,6 +900,69 @@
 <p>2、Rendering Tree 并不与 DOM Tree 对应，比如像 <head> 标签内容或带有 display: none; 的元素节点并不包括在 Rendering Tree 中 。</head></p>
 <p>3、通过 CSS Rule Tree 匹配 DOM Tree 进行定位坐标和大小，是否换行，以及 position、overflow、z-index 等等属性，这个过程称为 Flow 或 Layout 。</p>
 <p>4、最终通过调用<code>Native GUI</code>的<code>API</code>绘制网页画面的过程称为 Paint 。</p>
+<h4 id="浏览器性能优化方法"><a href="#浏览器性能优化方法" class="headerlink" title="浏览器性能优化方法"></a>浏览器性能优化方法</h4><p>（1）白屏</p>
+<p>HTML 和 CSS 的加载及解析速度</p>
+<p><head> 内的脚本加载及执行</head></p>
+<p>（2）图片加载（懒加载、预加载）</p>
+<p><body> 内的脚本加载及执行</body></p>
+<p><strong>CSS优化方法：</strong></p>
+<p>将 CSS 放到文档头部，避免使用 CSS import。</p>
+<h3 id="sql语句中模糊查询"><a href="#sql语句中模糊查询" class="headerlink" title="sql语句中模糊查询"></a>sql语句中模糊查询</h3><p>（1）%：表示任意0个或多个字符。可匹配任意类型和长度的字符，有些情况下若是中文，请运用两个百分号（%%）表示。</p>
+<p>（2）_： 表示任意单个字符。匹配单个任意字符，它常用来限定表达式的字符长度语句。</p>
+<p>（3）[]：表示括号内所列字符中的一个（类似正则表达式）。指定一个字符、字符串或范围，要求所匹配对象为它们中的任一个。</p>
+<p>（4）[^] ：表示不在括号所列之内的单个字符。其取值和 [] 相同，但它要求所匹配对象为指定字符以外的任一个字符</p>
+<h3 id="页面缓存算法-页面置换算法"><a href="#页面缓存算法-页面置换算法" class="headerlink" title="页面缓存算法(页面置换算法)"></a>页面缓存算法(页面置换算法)</h3><p>（1）缓存数据和目标数据的一致性问题。</p>
+<p>（2）缓存的过期策略（机制）。其中，缓存的过期策略涉及淘汰算法。常用的淘汰算法有下面几种：</p>
+<p> （1）FIFO：First In First Out，先进先出</p>
+<p> （2）LRU：Least Recently Used，最近最少使用</p>
+<p> （3）LFU：Least Frequently Used，最不经常使用</p>
+<h3 id="DOCTYPE"><a href="#DOCTYPE" class="headerlink" title="DOCTYPE"></a>DOCTYPE</h3><p>DOCTYPE是用来声明文档类型和DTD规范的，一个主要的用途便是文件的合法性验证。 如果文件代码不合法，那么浏览器解析时便会出一些差错。</p>
+<h3 id="浏览器兼容性问题大汇总"><a href="#浏览器兼容性问题大汇总" class="headerlink" title="浏览器兼容性问题大汇总"></a>浏览器兼容性问题大汇总</h3><p><strong>css</strong></p>
+<h4 id="css中的width和padding"><a href="#css中的width和padding" class="headerlink" title="css中的width和padding"></a>css中的width和padding</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">box.style&#123;</div><div class="line">    width:100;</div><div class="line">    border 1px;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>ie理解为box.width = 100 </p>
+<p>ff理解为box.width = 100 + 1*2 = 102 //加上边框2px</p>
+<p>解决方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">div&#123;</div><div class="line">    margin:30px!important;</div><div class="line">    margin:28px;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="不同浏览器的标签默认的外补丁和内补丁不同"><a href="#不同浏览器的标签默认的外补丁和内补丁不同" class="headerlink" title="不同浏览器的标签默认的外补丁和内补丁不同"></a>不同浏览器的标签默认的外补丁和内补丁不同</h4><p>问题症状：随便写几个标签，不加样式控制的情况下，各自的margin 和padding差异较大。</p>
+<p>解决方案：CSS里 *{margin:0;padding:0;}</p>
+<p><strong>js</strong></p>
+<h4 id="new-Date-getYear"><a href="#new-Date-getYear" class="headerlink" title="new Date().getYear()"></a>new Date().getYear()</h4><p>//方式一  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var year= new Date().getYear();  </div><div class="line">year = (year&lt;1900?(1900+year):year);  </div><div class="line">document.write(year);</div></pre></td></tr></table></figure>
+<h3 id="前端性能优化方案"><a href="#前端性能优化方案" class="headerlink" title="前端性能优化方案"></a>前端性能优化方案</h3><p><strong>(1)请求和响应</strong></p>
+<p>缓存控制</p>
+<p>减少HTTP请求</p>
+<p>使用CDN</p>
+<p><strong>(2) HTML</strong></p>
+<p>减少DOM</p>
+<p>过多的DOM元素会影响渲染、加载、执行。除了精简页面结构外，还可以适时删除不必要的DOM元素（页面内已经不会再访问的元素），又或者可以懒加载（不一定会使用到的元素，如登录框）</p>
+<p>CSS 和 JavaScript 文件位置</p>
+<p>原因：样式表不参与 DOM 修改，所以不会为了解析样式停止文档解析</p>
+<p><strong>（3） JavaScript</strong></p>
+<p>优化建议：修改 className 而非 style；离线 DOM 后修改，如 documentFragment 或者 display:none 后再调整样式；缓存属性值；不使用 table 布局（牵一发动全身）</p>
+<p>事件委托</p>
+<p><strong>（4）资源</strong></p>
+<p>懒加载</p>
+<p>如图像的懒加载（滚动到显示区域后才加载）等。</p>
+<p>预加载</p>
+<p>针对之后会用到的资源提前加载。</p>
+<p>文件合并</p>
+<p>文件最小化/文件压缩</p>
+<p>使用 CDN 托管</p>
+<p>缓存的使用（多个域名来提供缓存）</p>
+<p>减少页面加载时间的方法：<br>1.优化图片 </p>
+<p>2.图像格式的选择（GIF：提供的颜色较少，可用在一些对颜色要求不高的地方） </p>
+<p>3.优化CSS（压缩合并css，如margin-top,margin-left…) </p>
+<p>4.网址后加斜杠（如www.campr.com/目录，会判断这个“目录是什么文件类型，或者是目录。） </p>
+<p>5.标明高度和宽度（如果浏览器没有找到这两个参数，它需要一边下载图片一边计算大小，如果图片很多，浏览器需要不断地调整页面。这不但影响速度，也影响浏览体验。<br>当浏览器知道了高度和宽度参数后，即使图片暂时无法显示，页面上也会腾出图片的空位，然后继续加载后面的内容。从而加载时间快了，浏览体验也更好了。） </p>
+<p>6.减少http请求（合并文件，合并图片）。</p>
+<p><strong>性能优化方法</strong></p>
+<p>  （1） 减少http请求次数：CSS Sprites, JS、CSS源码压缩、图片大小控制合适；网页Gzip，CDN托管，data缓存 ，图片服务器。</p>
+<p>  （2） 前端模板 JS+数据，减少由于HTML标签导致的带宽浪费，前端用变量保存AJAX请求结果，每次操作本地变量，不用请求，减少请求次数</p>
+<p>  （3） 用innerHTML代替DOM操作，减少DOM操作次数，优化javascript性能。</p>
+<p>  （4） 当需要设置的样式很多时设置className而不是直接操作style。</p>
+<p>  （5） 少用全局变量、缓存DOM节点查找的结果。减少IO读取操作。</p>
+<p>  （6） 避免使用CSS Expression（css表达式)又称Dynamic properties(动态属性)。</p>
+<p>  （7） 图片预加载，将样式表放在顶部，将脚本放在底部  加上时间戳。</p>
 
           
         
@@ -632,11 +1126,11 @@
       
         
           
-            <p>webpack（模块的打包器）有自己的特性（coding spliting）代码分割（切分加载）。webpack可以通过loader模块处理各种各样的文件，无论其模块化方式是AMD，Commonjs，ES6。模块热更新特性可以在开发中提高调试效率。</p>
-<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>WebPack可以看做是模块打包机：它做的事情是<strong>，分析你的项目结构，找到JavaScript模块以及其它的一些浏览器不能直接运行的拓展语言（Scss，TypeScript等），并将其转换和打包为合适的格式供浏览器使用</strong></p>
+            <p>webpack（模块的打包器）有自己的特性（coding spliting）代码分割（切分加载）。<strong>webpack可以通过loader模块处理各种各样的文件</strong>，无论其模块化方式是AMD，Commonjs，ES6。模块热更新特性可以在开发中提高调试效率。</p>
+<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>WebPack可以看做是模块打包机：它做的事情是<strong>分析你的项目结构，找到JavaScript模块以及其它的一些浏览器不能直接运行的拓展语言（Scss，TypeScript等），并将其转换和打包为合适的格式供浏览器使用</strong></p>
 <h3 id="WebPack和Grunt以及Gulp相比有什么特性"><a href="#WebPack和Grunt以及Gulp相比有什么特性" class="headerlink" title="WebPack和Grunt以及Gulp相比有什么特性"></a>WebPack和Grunt以及Gulp相比有什么特性</h3><p>其实Webpack和另外两个并没有太多的可比性，Gulp/Grunt是一种能够<strong>优化前端的开发流程的工具</strong>，而<strong>WebPack是一种模块化的解决方案</strong>，不过Webpack的优点使得Webpack在很多场景下可以替代Gulp/Grunt类的工具。</p>
 <p>Grunt和Gulp的工作方式是：<strong>在一个配置文件中，指明对某些文件进行类似编译，组合，压缩等任务的具体步骤，工具之后可以自动替你完成这些任务</strong></p>
-<h4 id="Webpack的工作方式"><a href="#Webpack的工作方式" class="headerlink" title="Webpack的工作方式"></a>Webpack的工作方式</h4><p>把你的项目当做一个整体，<em>通过一个给定的主文件（如：index.js）</em>，Webpack将从这个文件开始找到你的项目的所有依赖文件，<strong>使用loaders处理它们，最后打包为一个（或多个）浏览器可识别的JavaScript文件</strong></p>
+<h4 id="Webpack的工作方式"><a href="#Webpack的工作方式" class="headerlink" title="Webpack的工作方式"></a>Webpack的工作方式</h4><p>把你的项目当做一个整体，<em>通过一个给定的主文件（如：index.js）</em>，Webpack将从这个文件开始找到你的<strong>项目的所有依赖文件</strong>，<strong>使用loaders处理它们，最后打包为一个（或多个）浏览器可识别的JavaScript文件</strong></p>
 <p>详情配置参考！[]<a href="http://www.jianshu.com/p/42e11515c10f" target="_blank" rel="external">http://www.jianshu.com/p/42e11515c10f</a></p>
 <h2 id="loaders"><a href="#loaders" class="headerlink" title="loaders"></a>loaders</h2><p>Loaders是webpack提供的最激动人心的功能之一了。<strong>通过使用不同的loader，webpack有能力调用外部的脚本或工具，实现对不同格式的文件的处理</strong>，比如说分析转换scss为css，或者把下一代的JS文件（ES6，ES7)转换为现代浏览器兼容的JS文件，对React的开发而言，合适的Loaders可以把React的中用到的JSX文件转换为JS文件</p>
 <p>Loaders需要单独安装并且需要在webpack.config.js中的modules关键字下进行配置，Loaders的配置包括以下几方面：</p>
@@ -1197,7 +1691,16 @@
         
           
             <h2 id="单页应用之前端路由"><a href="#单页应用之前端路由" class="headerlink" title="单页应用之前端路由"></a>单页应用之前端路由</h2><p>前端路由主要有两种方案，一种是以angular1.x为代表的hash的解决方案，可以兼容低版本的浏览器，一种是HTML5提出的新的api。</p>
-<h3 id="History-API"><a href="#History-API" class="headerlink" title="History API"></a>History API</h3><p>主要就是<code>window.history.pushState</code> 和<code>window.history.replaceState</code>。这两种API都需要传入三个参数,</p>
+<h3 id="History-API"><a href="#History-API" class="headerlink" title="History API"></a>History API</h3><p>无刷新实现步骤：</p>
+<ol>
+<li><p>在A页面 通过发AJAX请求 请求页面中的B数据。</p>
+</li>
+<li><p>在页面A中通过JS装载相应的信息到相应的位置来。</p>
+</li>
+<li><p>通过History API在不刷新页面的情况下在浏览器的地址栏中从页面A的URL地址切换到页面B的URL地址</p>
+</li>
+</ol>
+<p>主要就是<code>window.history.pushState</code> 和<code>window.history.replaceState</code>。这两种API都需要传入三个参数,</p>
 <p>状态对象（state object）:一个JavaScript对象，与用pushState()方法创建的新历史记录条目关联。无论何时用户导航到新创建的状态，popstate事件都会被触发，并且事件对象的state属性都包含历史记录条目的状态对象的拷贝。</p>
 <p>标题（title）:FireFox浏览器目前会忽略该参数，虽然以后可能会用上。考虑到未来可能会对该方法进行修改，传一个空字符串会比较安全。或者，你也可以传入一个简短的标题，标明将要进入的状态。</p>
 <p>地址（URL）：新的历史记录条目的地址。浏览器不会在调用pushState()方法后加载该地址，但之后，可能会试图加载，例如用户重启浏览器。新的URL不一定是绝对路径；如果是相对路径，它将以当前URL为基准；传入的URL与当前URL应该是同源的，否则，pushState()会抛出异常。该参数是可选的；不指定的话则为文档当前URL。</p>
@@ -1225,7 +1728,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">function* gen(x) &#123;</div><div class="line">    var y = yield x + 2;</div><div class="line">    return y;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var g = gen(1);</div><div class="line">g.next() //&#123;value:3,done:false&#125;</div><div class="line">//value是yield语句后面表达式的值，表示当前阶段的值，done表示函数是否执行完毕，是否还有下一个阶段。</div><div class="line">g.next() //&#123;value:undefined,done:true&#125;</div></pre></td></tr></table></figure>
 <p><strong>调用generator函数会返回一个内部指针g</strong>，执行它不会返回结果,而是返回的指针对象。调用指针的g的next方法，会移动内部指针，指向第一个遇到的yield语句即x+2处。</p>
 <h3 id="Set数据结构"><a href="#Set数据结构" class="headerlink" title="Set数据结构"></a>Set数据结构</h3><p>类似于数组但是成员的值都是唯一的，没有重复的值。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var s = new Set([1,2,3,4,4]);</div><div class="line">[...s] </div><div class="line">结果：[1, 2, 3, 4]</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">var s = new Set([1,2,3,4,4]);</div><div class="line">[...s] </div><div class="line">结果：[1, 2, 3, 4]</div></pre></td></tr></table></figure>
 <p>（1）操作方法<br>add:添加某个值，放回set结构本身</p>
 <p>delete:删除某个值返回一个布尔值，表示删除是否成功</p>
 <p>has(value):返回一个布尔值，表示该值是否为set的成员</p>
@@ -1435,7 +1938,8 @@
 <p>（3）你能够根据组件中任何其他的<code>state</code>或<code>props</code>把它计算出来吗？如果是，它不是<code>state</code>。</p>
 <h3 id="4-确定state应该位于哪里"><a href="#4-确定state应该位于哪里" class="headerlink" title="4.确定state应该位于哪里"></a>4.确定state应该位于哪里</h3><p>确定了应用<code>state</code>的最小集合。接下来，我们需要确定哪个组件会改变，或拥有这个<code>state</code>。</p>
 <p>（1）确定每一个需要这个<code>state</code>来渲染的组件。</p>
-<p>（2）找到一个公共所有者组件(一个在层级上高于所有其他需要这个<code>state</code>的组件的组件)<br>（3）这个公共所有者组件或另一个层级更高的组件应该拥有这个<code>state</code>。</p>
+<p>（2）找到一个公共所有者组件(一个在层级上高于所有其他需要这个<code>state</code>的组件的组件)</p>
+<p>（3）这个公共所有者组件或另一个层级更高的组件应该拥有这个<code>state</code>。</p>
 <p>（4）如果你没有找到可以拥有这个<code>state</code>的组件，创建一个仅用来保存状态的组件并把它加入比这个公共所有者组件层级更高的地方。</p>
 <h3 id="5-添加反向数据流"><a href="#5-添加反向数据流" class="headerlink" title="5.添加反向数据流"></a>5.添加反向数据流</h3><p>正确渲染的应用程序，它的数据在层级中通过函数的<code>props</code>和<code>state</code>向下流动。层级结构中最底层的表单组件需要去更新在父组件中的<code>state</code>。</p>
 <p>当我们想确保每当用户更改低层组件的表单时，我们更新父组件的状态来反应用户输入。<strong>因为组件应该只更新自己的状态，所以父组件会将一个回调函数传递给子组件，每当应该更新状态时，它就会触发。我们可以使用子组件输入上的onChange事件来调用它。父组件传入的回调函数会调用setState()，这时应用程序会被更新。</strong></p>
@@ -1604,7 +2108,8 @@
         
           
             <h2 id="state-amp-amp-生命周期"><a href="#state-amp-amp-生命周期" class="headerlink" title="state&amp;&amp;生命周期"></a>state&amp;&amp;生命周期</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">class Clock extends React.Component&#123;</div><div class="line">  constructor(props)&#123;</div><div class="line">    super(props);</div><div class="line">    this.state=&#123;date: new Date()&#125;</div><div class="line">  &#125;</div><div class="line">   render()&#123;</div><div class="line">      return(</div><div class="line">        &lt;div&gt;</div><div class="line">          &lt;h1&gt; this is a test&lt;/h1&gt;</div><div class="line">          &lt;h2&gt;&#123;this.state.date.toLocaleTimeString()&#125;&lt;/h2&gt;</div><div class="line">        &lt;/div&gt;</div><div class="line">      )</div><div class="line">    &#125;</div><div class="line">  componentDidMount()&#123;</div><div class="line">    this.timer=setInterval(()=&gt;&#123;this.tick()&#125;,1000) </div><div class="line">  &#125;</div><div class="line">  componentWillUnmount()&#123;</div><div class="line">    clearInterval(this.timer)</div><div class="line">  &#125;</div><div class="line">  tick()&#123;</div><div class="line">    this.setState(&#123;date: new Date()&#125;)</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">ReactDOM.render(&lt;Clock /&gt;, document.getElementById(&apos;root&apos;))</div></pre></td></tr></table></figure>
-<p>上述代码实际作用：<br>1) 当 <clock> 被传递给 ReactDOM.render()时，React调用Clock组件的构造函数。由于 Clock 需要显示当前时间，所以使用<strong>包含当前时间的对象</strong>来初始化this.state。我们稍后会更新此状态。</clock></p>
+<p>上述代码实际作用：</p>
+<p>1) 当 <clock> 被传递给 ReactDOM.render()时，React调用Clock组件的构造函数。由于 Clock 需要显示当前时间，所以使用<strong>包含当前时间的对象</strong>来初始化this.state。我们稍后会更新此状态。</clock></p>
 <p>2) React然后调用Clock组件的render()方法。这是React了解屏幕上应该显示什么内容，然后 React更新DOM以匹配 Clock 的渲染输出。</p>
 <p>3) 当Clock的输出插入到DOM中时，React调用componentDidMount()生命周期钩子。在其中，Clock组件要求浏览器设置一个定时器，每秒钟调用一次 tick()。</p>
 <p>4) 浏览器每秒钟调用tick()方法。 在其中，Clock 组件通过使用包含当前时间的对象调用 setState()来调度UI更新。 通过调用setState()，React 知道状态已经改变，并再次调用 render()方法来确定屏幕上应当显示什么。这一次，render()方法中的this.state.date 将不同，所以渲染输出将包含更新的时间，并相应地更新DOM。</p>
@@ -1633,6 +2138,9 @@
 <h3 id="属性默认值"><a href="#属性默认值" class="headerlink" title="属性默认值"></a>属性默认值</h3><p>通过配置<code>defaultProps</code>为props定义默认值：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">class Greeting extends React.Component &#123;</div><div class="line">  render() &#123;</div><div class="line">    return (</div><div class="line">      &lt;h1&gt;Hello, &#123;this.props.name&#125;&lt;/h1&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 为属性指定默认值:</div><div class="line">Greeting.defaultProps = &#123;</div><div class="line">  name: &apos;Stranger&apos;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <p><code>defaultProps</code>用来确保<code>this.props.name</code>在父组件没有特别指定的情况下，有一个初始值</p>
+<h2 id="父子组件数据通信"><a href="#父子组件数据通信" class="headerlink" title="父子组件数据通信"></a>父子组件数据通信</h2><p>父子组件之间的数据通信细分其实还有两种：父与子之间和子与父之间。</p>
+<p>在React中，<strong>父与子之间的数据通信是通过props属性就行传递的</strong>；</p>
+<p>而子与父之间的数据通信<strong>可以通过父组件定义事件，子组件触发父组件中的事件时，通过实参的形式来改变父组件中的数据来通信</strong>;</p>
 
           
         
@@ -1808,319 +2316,9 @@
 <p>3.当最开始渲染时，Calculator组件把内部的handleCelsiusChange方法指定给摄氏输入组件TemperatureInput的onTemperatureChange方法，并且把handleFahrenheitChange方法指定给华氏输入组件TemperatureInput的onTemperatureChange。两个Calculator内部的方法都会在相应输入框被编辑时被调用。</p>
 <p>4.在这些方法内部，Calculator组件会让React使用编辑输入的新值和当前输入框的温标来调用this.setState()方法来重渲染自身。</p>
 <p>5.React会调用Calculator组件的render方法来识别UI界面的样子。基于当前温度和温标，两个输入框的值会被重新计算。温度转换就是在这里被执行的。</p>
-<p>6.接着React会使用Calculator指定的新props来分别调用TemperatureInput组件。React也会识别出子组件的UI界面。<br>React DOM 会更新DOM来匹配对应的值。我们编辑的输入框获取新值，而另一个输入框则更新经过转换的温度值。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div></pre></td><td class="code"><pre><div class="line">const scaleNames = &#123;</div><div class="line">  c: &apos;Celsius&apos;,</div><div class="line">  f: &apos;Fahrenheit&apos;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">function toCelsius(fahrenheit) &#123;</div><div class="line">  return (fahrenheit - 32) * 5 / 9;</div><div class="line">&#125;</div><div class="line"></div><div class="line">function toFahrenheit(celsius) &#123;</div><div class="line">  return (celsius * 9 / 5) + 32;</div><div class="line">&#125;</div><div class="line"></div><div class="line">function tryConvert(temperature, convert) &#123;</div><div class="line">  const input = parseFloat(temperature);</div><div class="line">  if (Number.isNaN(input)) &#123;</div><div class="line">    return &apos;&apos;;</div><div class="line">  &#125;</div><div class="line">  const output = convert(input);</div><div class="line">  const rounded = Math.round(output * 1000) / 1000;</div><div class="line">  return rounded.toString();</div><div class="line">&#125;</div><div class="line"></div><div class="line">function BoilingVerdict(props) &#123;</div><div class="line">  if (props.celsius &gt;= 100) &#123;</div><div class="line">    return &lt;p&gt;The water would boil.&lt;/p&gt;;</div><div class="line">  &#125;</div><div class="line">  return &lt;p&gt;The water would not boil.&lt;/p&gt;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">class TemperatureInput extends React.Component&#123;</div><div class="line">  constructor(props)&#123;</div><div class="line">    super(props);</div><div class="line">    this.handleChange = this.handleChange.bind(this);</div><div class="line">    </div><div class="line">  &#125;</div><div class="line">  handleChange(e)&#123;</div><div class="line">    this.props.onTemperatureChange(e.target.value);</div><div class="line">  &#125;</div><div class="line">  render()&#123;</div><div class="line">    const temperature = this.props.temperature;</div><div class="line">    const scale = this.props.scale;</div><div class="line">    return(</div><div class="line">      &lt;fieldset&gt;</div><div class="line">        &lt;legend&gt;在&#123;scaleNames[scale]&#125;中输温度值 &lt;/legend&gt;</div><div class="line">        &lt;input type=&quot;text&quot; value=&#123;temperature&#125; onChange=&#123;this.handleChange&#125; /&gt;</div><div class="line">      &lt;/fieldset&gt;</div><div class="line">    )</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">class Calculator extends React.Component&#123;</div><div class="line">  constructor(props)&#123;</div><div class="line">    super(props);</div><div class="line">    this.state=&#123;temperature: &apos;&apos;,scale: &apos;c&apos;&#125;;</div><div class="line">    this.handleCelsiusChange = this.handleCelsiusChange.bind(this);</div><div class="line">    this.handleFahrenheitChange = this.handleFahrenheitChange.bind(this);</div><div class="line">  &#125;</div><div class="line">  handleCelsiusChange(value)&#123;</div><div class="line">    this.setState(&#123;</div><div class="line">      scale: &apos;c&apos;,temperature: value</div><div class="line">    &#125;)</div><div class="line">  &#125;</div><div class="line">  handleFahrenheitChange(value)&#123;</div><div class="line">    this.setState(&#123;</div><div class="line">      scale: &apos;f&apos;,temperature: value</div><div class="line">    &#125;)</div><div class="line">  &#125;</div><div class="line">  render()&#123;</div><div class="line">    const scale = this.state.scale;</div><div class="line">    const temperature = this.state.temperature;</div><div class="line">    const celsius = scale===&apos;f&apos;? tryConvert(temperature,toCelsius):temperature;</div><div class="line">    const fahrenheit = scale===&apos;c&apos;?tryConvert(temperature,toFahrenheit):temperature;</div><div class="line">    return(</div><div class="line">      &lt;div&gt;</div><div class="line">        &lt;TemperatureInput </div><div class="line">          scale=&apos;c&apos; </div><div class="line">          temperature=&#123;celsius&#125; </div><div class="line">          onTemperatureChange=&#123;this.handleCelsiusChange&#125; /&gt;</div><div class="line">        </div><div class="line">        &lt;TemperatureInput </div><div class="line">          scale=&apos;f&apos; </div><div class="line">          temperature=&#123;fahrenheit&#125; </div><div class="line">          onTemperatureChange=&#123;this.handleFahrenheitChange&#125; /&gt;</div><div class="line">        &lt; BoilingVerdict celsius=&#123;celsius&#125; /&gt;</div><div class="line">        </div><div class="line">      &lt;/div&gt;</div><div class="line">    )</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">ReactDOM.render(</div><div class="line">  &lt;Calculator /&gt;,</div><div class="line">  document.getElementById(&apos;root&apos;)</div><div class="line">);</div></pre></td></tr></table></figure></p>
+<p>6.接着React会使用Calculator指定的新props来分别调用TemperatureInput组件。React也会识别出子组件的UI界面。React DOM 会更新DOM来匹配对应的值。我们编辑的输入框获取新值，而另一个输入框则更新经过转换的温度值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div></pre></td><td class="code"><pre><div class="line">const scaleNames = &#123;</div><div class="line">  c: &apos;Celsius&apos;,</div><div class="line">  f: &apos;Fahrenheit&apos;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">function toCelsius(fahrenheit) &#123;</div><div class="line">  return (fahrenheit - 32) * 5 / 9;</div><div class="line">&#125;</div><div class="line"></div><div class="line">function toFahrenheit(celsius) &#123;</div><div class="line">  return (celsius * 9 / 5) + 32;</div><div class="line">&#125;</div><div class="line"></div><div class="line">function tryConvert(temperature, convert) &#123;</div><div class="line">  const input = parseFloat(temperature);</div><div class="line">  if (Number.isNaN(input)) &#123;</div><div class="line">    return &apos;&apos;;</div><div class="line">  &#125;</div><div class="line">  const output = convert(input);</div><div class="line">  const rounded = Math.round(output * 1000) / 1000;</div><div class="line">  return rounded.toString();</div><div class="line">&#125;</div><div class="line"></div><div class="line">function BoilingVerdict(props) &#123;</div><div class="line">  if (props.celsius &gt;= 100) &#123;</div><div class="line">    return &lt;p&gt;The water would boil.&lt;/p&gt;;</div><div class="line">  &#125;</div><div class="line">  return &lt;p&gt;The water would not boil.&lt;/p&gt;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">class TemperatureInput extends React.Component&#123;</div><div class="line">  constructor(props)&#123;</div><div class="line">    super(props);</div><div class="line">    this.handleChange = this.handleChange.bind(this);</div><div class="line">    </div><div class="line">  &#125;</div><div class="line">  handleChange(e)&#123;</div><div class="line">    this.props.onTemperatureChange(e.target.value);</div><div class="line">  &#125;</div><div class="line">  render()&#123;</div><div class="line">    const temperature = this.props.temperature;</div><div class="line">    const scale = this.props.scale;</div><div class="line">    return(</div><div class="line">      &lt;fieldset&gt;</div><div class="line">        &lt;legend&gt;在&#123;scaleNames[scale]&#125;中输温度值 &lt;/legend&gt;</div><div class="line">        &lt;input type=&quot;text&quot; value=&#123;temperature&#125; onChange=&#123;this.handleChange&#125; /&gt;</div><div class="line">      &lt;/fieldset&gt;</div><div class="line">    )</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">class Calculator extends React.Component&#123;</div><div class="line">  constructor(props)&#123;</div><div class="line">    super(props);</div><div class="line">    this.state=&#123;temperature: &apos;&apos;,scale: &apos;c&apos;&#125;;</div><div class="line">    this.handleCelsiusChange = this.handleCelsiusChange.bind(this);</div><div class="line">    this.handleFahrenheitChange = this.handleFahrenheitChange.bind(this);</div><div class="line">  &#125;</div><div class="line">  handleCelsiusChange(value)&#123;</div><div class="line">    this.setState(&#123;</div><div class="line">      scale: &apos;c&apos;,temperature: value</div><div class="line">    &#125;)</div><div class="line">  &#125;</div><div class="line">  handleFahrenheitChange(value)&#123;</div><div class="line">    this.setState(&#123;</div><div class="line">      scale: &apos;f&apos;,temperature: value</div><div class="line">    &#125;)</div><div class="line">  &#125;</div><div class="line">  render()&#123;</div><div class="line">    const scale = this.state.scale;</div><div class="line">    const temperature = this.state.temperature;</div><div class="line">    const celsius = scale===&apos;f&apos;? tryConvert(temperature,toCelsius):temperature;</div><div class="line">    const fahrenheit = scale===&apos;c&apos;?tryConvert(temperature,toFahrenheit):temperature;</div><div class="line">    return(</div><div class="line">      &lt;div&gt;</div><div class="line">        &lt;TemperatureInput </div><div class="line">          scale=&apos;c&apos; </div><div class="line">          temperature=&#123;celsius&#125; </div><div class="line">          onTemperatureChange=&#123;this.handleCelsiusChange&#125; /&gt;</div><div class="line">        </div><div class="line">        &lt;TemperatureInput </div><div class="line">          scale=&apos;f&apos; </div><div class="line">          temperature=&#123;fahrenheit&#125; </div><div class="line">          onTemperatureChange=&#123;this.handleFahrenheitChange&#125; /&gt;</div><div class="line">        &lt; BoilingVerdict celsius=&#123;celsius&#125; /&gt;</div><div class="line">        </div><div class="line">      &lt;/div&gt;</div><div class="line">    )</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">ReactDOM.render(</div><div class="line">  &lt;Calculator /&gt;,</div><div class="line">  document.getElementById(&apos;root&apos;)</div><div class="line">);</div></pre></td></tr></table></figure>
 <h2 id="组合"><a href="#组合" class="headerlink" title="组合"></a>组合</h2><p>React 具有强大的组合模型，建议<strong>使用组合而不是继承来复用组件之间</strong>的代码</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/04/原生js基础(2)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="superDjy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://img.mp.itc.cn/upload/20170429/a2379efc26214d7fa790af6105312132">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="С�����ľ���">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/08/04/原生js基础(2)/" itemprop="url">未命名</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-04T20:06:09+08:00">
-                2017-08-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/08/04/原生js基础(2)/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/08/04/原生js基础(2)/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/08/04/原生js基础(2)/" class="leancloud_visitors" data-flag-title="">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<p>title: 原生js知识<br>date: 2017-07-09<br>tags: 基本知识</p>
-<h2 id="categories-基本知识"><a href="#categories-基本知识" class="headerlink" title="categories: 基本知识"></a>categories: 基本知识</h2><p>#Object对象的一些属性和方法</p>
-<h2 id="constructor属性"><a href="#constructor属性" class="headerlink" title="constructor属性"></a>constructor属性</h2><p><strong>指定创建一个对象的函数</strong>。</p>
-<p>constructor属性是每个具有原型的对象的原型成员。  这包括除 Global 和 Math 对象之外的所有内部 JavaScript 对象。 constructor 属性包含了对某种函数的引用，此种函数构造了特定对象的实例。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function MyObj() &#123;</div><div class="line">    this.number = 1;</div><div class="line">&#125;</div><div class="line">var y = new MyObj;</div><div class="line">if (y.constructor == MyObj)</div><div class="line">    console.log(true)</div><div class="line">输出true</div></pre></td></tr></table></figure></p>
-<h2 id="prototype属性"><a href="#prototype属性" class="headerlink" title="prototype属性"></a>prototype属性</h2><p><strong>为对象的类返回原型的引用</strong></p>
-<p>用 prototype 属性为对象的类提供一组基本功能。  对象的新的实例“继承”了赋予该对象的原型的行为。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">function array_max()&#123;</div><div class="line">    var i, max = this[0];</div><div class="line">    for (i = 1; i &lt; this.length; i++)</div><div class="line">    &#123;</div><div class="line">    if (max &lt; this[i])</div><div class="line">    max = this[i];</div><div class="line">    &#125;</div><div class="line">    return max;</div><div class="line">&#125;</div><div class="line">Array.prototype.max = array_max;</div><div class="line">var myArray = new Array(7, 1, 3, 11, 25, 9</div><div class="line">);</div><div class="line">document.write(myArray.max()</div></pre></td></tr></table></figure>
-<p>所有内部 JavaScript 对象都有一个只读的 prototype 属性。可将属性和方法添加到原型中，但不能为对象分配其他原型。<strong>但是，可以向用户定义的对象分配新的原型</strong></p>
-<h2 id="Object-assign"><a href="#Object-assign" class="headerlink" title="Object.assign();"></a>Object.assign();</h2><p>将来自一个或多个源对象中的值复制到一个目标对象。Object.assign(target, …sources)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var first = &#123; name: &quot;Bob&quot; &#125;;</div><div class="line">var last = &#123; lastName: &quot;Smith&quot; &#125;;</div><div class="line"></div><div class="line">var person = Object.assign(first, last);</div><div class="line">console.log(person);</div><div class="line"></div><div class="line">// Output:</div><div class="line">// &#123; name: &quot;Bob&quot;, lastName: &quot;Smith&quot; &#125;</div></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var obj = &#123; person: &quot;Bob Smith&quot;&#125;;</div><div class="line">var clone = Object.assign(&#123;&#125;, obj);</div></pre></td></tr></table></figure>
-<h2 id="Object-keys-方法"><a href="#Object-keys-方法" class="headerlink" title="Object.keys()方法"></a>Object.keys()方法</h2><p>在实际开发中，我们有时需要知道对象的所有属性，原生js给我们提供了一个很好的方法：<code>Object.keys()</code>，该方法返回一个数组<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">var obj = &#123;&apos;a&apos;:&apos;123&apos;,&apos;b&apos;:&apos;345&apos;&#125;;</div><div class="line">console.log(Object.keys(obj));  //[&apos;a&apos;,&apos;b&apos;]</div><div class="line"></div><div class="line">var obj1 = &#123; 100: &quot;a&quot;, 2: &quot;b&quot;, 7: &quot;c&quot;&#125;;</div><div class="line">console.log(Object.keys(obj1)); // console: [&quot;2&quot;, &quot;7&quot;, &quot;100&quot;]</div><div class="line"></div><div class="line">var obj2 = Object.create(&#123;&#125;, &#123; getFoo : &#123; value : function () &#123; return this.foo &#125; &#125; &#125;);</div><div class="line">obj2.foo = 1;</div><div class="line">console.log(Object.keys(obj2)); // console: [&quot;foo&quot;]</div><div class="line"></div><div class="line">var obj = &#123;</div><div class="line">    name : &quot;ziksang&quot;,</div><div class="line">&#125;</div><div class="line">//声明一个obj对象</div><div class="line">obj.__proto__.a = 1</div><div class="line">//在obj的原型上加一个a的属性</div><div class="line">console.log(Object.keys(obj))</div><div class="line">&quot;name&quot;/不可以枚举原型上的属性</div></pre></td></tr></table></figure></p>
-<h2 id="Object-defineProperty"><a href="#Object-defineProperty" class="headerlink" title="Object.defineProperty()"></a>Object.defineProperty()</h2><p><strong>将属性添加到对象(添加新属性)，或修改现有属性的特性。返回修改属性后的对象</strong></p>
-<p><strong>Object.defineProperty(object, propertyname, descriptor)</strong>，其中object为要在其上添加或修改属性的对象。 这可能是一个本机JavaScript对象（即用户定义的对象或内置对象）或DOM对象。<br>propertyname是一个包含属性名称的字符串。<br>descriptor是属性描述符，它可以针对数据属性或访问器属性。</p>
-<h3 id="示例1-添加数据属性"><a href="#示例1-添加数据属性" class="headerlink" title="示例1:添加数据属性"></a>示例1:添加数据属性</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var obj=&#123;&#125;;</div><div class="line">Object.defineProperty(obj,&quot;haha&quot;,&#123;</div><div class="line">	value:1,</div><div class="line">	writable:true,</div><div class="line">	configurable:true,</div><div class="line">	enumerable:true</div><div class="line">&#125;)</div><div class="line">console.log(obj.haha);</div></pre></td></tr></table></figure>
-<h3 id="添加访问器属性"><a href="#添加访问器属性" class="headerlink" title="添加访问器属性"></a>添加访问器属性</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">var obj=&#123;&#125;;</div><div class="line">Object.defineProperty(obj,&quot;haha&quot;,&#123;</div><div class="line">	set:function(x)&#123;</div><div class="line">		this.hehe = x;</div><div class="line">	&#125;,</div><div class="line">	get:function()&#123;</div><div class="line">		return this.hehe</div><div class="line">	&#125;,</div><div class="line">	configurable:true,</div><div class="line">	enumerable:true</div><div class="line">&#125;)</div><div class="line">obj.haha=30;</div><div class="line">console.log(obj.hehe);</div><div class="line">结果： 30</div></pre></td></tr></table></figure>
-<h2 id="Object-create"><a href="#Object-create" class="headerlink" title="Object.create()"></a>Object.create()</h2><p>Object.create(prototype, descriptors)<br>创建一个具有指定原型且可选择性地包含指定属性的对象。prototype是要用作原型的对象。可以为null。 descriptors是包含一个或多个属性描述符的JavaScript对象。“数据属性”是可获取且可设置值的属性。数据属性描述符包含 value 特性，以及 writable、enumerable 和 configurable 特性。如果未指定最后三个特性，则它们默认为 false。只要检索或设置该值，“访问器属性”就会调用用户提供的函数。访问器属性描述符包含set特性和/或 get 特性。</p>
-<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">var newObj = Object.create(null, &#123;</div><div class="line">            size: &#123;</div><div class="line">                value: &quot;large&quot;,</div><div class="line">                enumerable: true</div><div class="line">            &#125;,</div><div class="line">            shape: &#123;</div><div class="line">                value: &quot;round&quot;,</div><div class="line">                enumerable: true</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line"></div><div class="line">document.write(newObj.size + &quot;&lt;br/&gt;&quot;);</div><div class="line">document.write(newObj.shape + &quot;&lt;br/&gt;&quot;);</div><div class="line">document.write(Object.getPrototypeOf(newObj));</div><div class="line"></div><div class="line">// Output:</div><div class="line">// large</div><div class="line">// round</div><div class="line">// null</div></pre></td></tr></table></figure>
-<h2 id="Object-getOwnPropertyDescriptor-object-propertyname"><a href="#Object-getOwnPropertyDescriptor-object-propertyname" class="headerlink" title="Object.getOwnPropertyDescriptor(object, propertyname)"></a>Object.getOwnPropertyDescriptor(object, propertyname)</h2><p>object是指包含属性的对象，propertyname是属性名称。获取指定对象的自身属性描述符。自身属性描述符是指直接在对象上定义（而非从对象的原型继承）的描述符。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">var obj=&#123;&#125;;</div><div class="line">obj.haha=&quot;hello&quot;;</div><div class="line">var discriptor=Object.getOwnPropertyDescriptor(obj,&quot;haha&quot;);</div><div class="line">discriptor.writable = false;</div><div class="line">for(var props in discriptor)&#123;</div><div class="line">	console.log(props+&quot; &quot;+discriptor[props])</div><div class="line">&#125;</div><div class="line"></div><div class="line">输出： value hello</div><div class="line"> 	  writable false</div><div class="line">	  enumerable true</div><div class="line">      configurable true</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/04/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="superDjy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://img.mp.itc.cn/upload/20170429/a2379efc26214d7fa790af6105312132">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="С�����ľ���">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/08/04/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-04T15:58:05+08:00">
-                2017-08-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/08/04/hello-world/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/08/04/hello-world/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/08/04/hello-world/" class="leancloud_visitors" data-flag-title="Hello World">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
 
           
         
@@ -2206,7 +2404,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">48</span>
+                <span class="site-state-item-count">50</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

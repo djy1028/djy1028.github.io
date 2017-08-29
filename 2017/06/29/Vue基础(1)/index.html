@@ -112,18 +112,18 @@
 
 
 
-<meta name="description" content="Vue中组件之间的通信父组件可以通过调用子组件的形式来在父组件的模板中渲染出子组件的内容，当然，父组件也可以通过组件属性，向子组件传递信息。 ##　示例1 父组件想子组件中传递信息 1234567891011121314151617181920212223242526272829303132333435363738394041&amp;lt;template&amp;gt;  &amp;lt;div id=&amp;quot;a">
+<meta name="description" content="Vue中组件之间的通信父组件可以通过调用子组件的形式来在父组件的模板中渲染出子组件的内容，当然，父组件也可以通过组件属性，向子组件传递信息。 ##　示例1 父组件向子组件中传递信息 1234567891011121314151617181920212223242526272829303132333435363738394041&amp;lt;template&amp;gt;  &amp;lt;div id=&amp;quot;a">
 <meta name="keywords" content="Vue.js">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Vue.js基础">
 <meta property="og:url" content="http://yoursite.com/2017/06/29/Vue基础(1)/index.html">
 <meta property="og:site_name" content="С�����ľ���">
-<meta property="og:description" content="Vue中组件之间的通信父组件可以通过调用子组件的形式来在父组件的模板中渲染出子组件的内容，当然，父组件也可以通过组件属性，向子组件传递信息。 ##　示例1 父组件想子组件中传递信息 1234567891011121314151617181920212223242526272829303132333435363738394041&amp;lt;template&amp;gt;  &amp;lt;div id=&amp;quot;a">
+<meta property="og:description" content="Vue中组件之间的通信父组件可以通过调用子组件的形式来在父组件的模板中渲染出子组件的内容，当然，父组件也可以通过组件属性，向子组件传递信息。 ##　示例1 父组件向子组件中传递信息 1234567891011121314151617181920212223242526272829303132333435363738394041&amp;lt;template&amp;gt;  &amp;lt;div id=&amp;quot;a">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-09T02:54:09.391Z">
+<meta property="og:updated_time" content="2017-08-22T01:06:24.043Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue.js基础">
-<meta name="twitter:description" content="Vue中组件之间的通信父组件可以通过调用子组件的形式来在父组件的模板中渲染出子组件的内容，当然，父组件也可以通过组件属性，向子组件传递信息。 ##　示例1 父组件想子组件中传递信息 1234567891011121314151617181920212223242526272829303132333435363738394041&amp;lt;template&amp;gt;  &amp;lt;div id=&amp;quot;a">
+<meta name="twitter:description" content="Vue中组件之间的通信父组件可以通过调用子组件的形式来在父组件的模板中渲染出子组件的内容，当然，父组件也可以通过组件属性，向子组件传递信息。 ##　示例1 父组件向子组件中传递信息 1234567891011121314151617181920212223242526272829303132333435363738394041&amp;lt;template&amp;gt;  &amp;lt;div id=&amp;quot;a">
 
 
 
@@ -448,7 +448,7 @@
       
         <h1 id="Vue中组件之间的通信"><a href="#Vue中组件之间的通信" class="headerlink" title="Vue中组件之间的通信"></a>Vue中组件之间的通信</h1><p><strong>父组件可以通过调用子组件的形式来在父组件的模板中渲染出子组件的内容，当然，父组件也可以通过组件属性，向子组件传递信息。</strong></p>
 <p>##　示例1</p>
-<p><strong>父组件想子组件中传递信息</strong></p>
+<p><strong>父组件向子组件中传递信息</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line">&lt;template&gt;</div><div class="line">  &lt;div id=&quot;app&quot;&gt;</div><div class="line">    &lt;img src=&quot;./assets/logo.png&quot;&gt;</div><div class="line">    &lt;hello&gt;&lt;/hello&gt;</div><div class="line">	**//定义message属性，并将属性值传回子组件</div><div class="line">    &lt;testComponent message=&quot;welcome to the App&quot; &gt;&lt;/testComponent&gt;**</div><div class="line">  &lt;/div&gt;</div><div class="line">&lt;/template&gt;</div><div class="line"></div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">import Hello from &apos;./components/Hello&apos;</div><div class="line">import TestComponent from &apos;./components/TestComponent&apos;</div><div class="line">import Store from &apos;./store&apos;</div><div class="line">export default &#123;</div><div class="line">  name: &apos;app&apos;,</div><div class="line">  data()&#123;</div><div class="line">    return&#123;</div><div class="line">      msg: &apos;Welcome to Your Vue.js App&apos;,</div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  components: &#123;</div><div class="line">    Hello,</div><div class="line">    TestComponent</div><div class="line">  &#125;,</div><div class="line">&#125;</div><div class="line">&lt;/script&gt;</div><div class="line"></div><div class="line">&lt;style&gt;</div><div class="line">#app &#123;</div><div class="line">  font-family: &apos;Avenir&apos;, Helvetica, Arial, sans-serif;</div><div class="line">  -webkit-font-smoothing: antialiased;</div><div class="line">  -moz-osx-font-smoothing: grayscale;</div><div class="line">  text-align: center;</div><div class="line">  color: #2c3e50;</div><div class="line">  margin-top: 60px;</div><div class="line">&#125;</div><div class="line">.finished&#123;</div><div class="line">  text-decoration:underline;</div><div class="line">&#125;</div><div class="line">&lt;/style&gt;</div></pre></td></tr></table></figure>
 <p>子组件中通过props:[]接受属性，此时在子组件即可对接受到的值进行渲染<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">&lt;template&gt;</div><div class="line">  &lt;div class=&quot;hello&quot;&gt;</div><div class="line">    &lt;h1&gt;&#123;&#123; msg &#125;&#125;&lt;/h1&gt;</div><div class="line">    &lt;button @click=&quot;acceptMessage&quot;&gt; acceptMessage&lt;/button&gt;</div><div class="line">  &lt;/div&gt;</div><div class="line">&lt;/template&gt;</div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">export default &#123;</div><div class="line">  name: &apos;testComponent&apos;,</div><div class="line">  data () &#123;</div><div class="line">    return &#123;   </div><div class="line">          msg:&apos;Here is testComponent&apos;     </div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  props:[&quot;message&quot;],</div><div class="line">  methods:&#123;</div><div class="line">    acceptMessage:function()&#123;</div><div class="line">		//直接调用父组件的信息进行渲染</div><div class="line">      this.msg = this.message;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;style scoped&gt;</div><div class="line">h1, h2 &#123;</div><div class="line">  font-weight: normal;</div><div class="line">&#125;</div><div class="line"></div><div class="line">ul &#123;</div><div class="line">  list-style-type: none;</div><div class="line">  padding: 0;</div><div class="line">&#125;</div><div class="line"></div><div class="line">li &#123;</div><div class="line">  display: inline-block;</div><div class="line">  margin: 0 10px;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <h2 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h2><p><strong>子组件向父组件中传递信息</strong><br>通过以上可知，父组件是使用props传递数据给子组件，但如果子组件要把数据传递回去，应该怎样做？那就是<strong>自定义事件！</strong></p>
@@ -488,8 +488,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/06/29/js设计模式(9)/" rel="next" title="js设计模式(9)">
-                <i class="fa fa-chevron-left"></i> js设计模式(9)
+              <a href="/2017/06/29/js设计模式(10)/" rel="next" title="js设计模式(10)">
+                <i class="fa fa-chevron-left"></i> js设计模式(10)
               </a>
             
           </div>
@@ -498,8 +498,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/06/29/js设计模式(10)/" rel="prev" title="js设计模式(10)">
-                js设计模式(10) <i class="fa fa-chevron-right"></i>
+              <a href="/2017/06/30/vue(3)/" rel="prev" title="Vue.js基础">
+                Vue.js基础 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -607,7 +607,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">48</span>
+                <span class="site-state-item-count">50</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

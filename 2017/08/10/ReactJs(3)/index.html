@@ -120,7 +120,7 @@
 <meta property="og:site_name" content="С�����ľ���">
 <meta property="og:description" content="state&amp;amp;&amp;amp;生命周期12345678910111213141516171819202122232425class Clock extends React.Component&amp;#123;  constructor(props)&amp;#123;    super(props);    this.state=&amp;#123;date: new Date()&amp;#125;  &amp;#125;   re">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-15T11:32:29.357Z">
+<meta property="og:updated_time" content="2017-08-28T08:53:04.174Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="React.js基础">
 <meta name="twitter:description" content="state&amp;amp;&amp;amp;生命周期12345678910111213141516171819202122232425class Clock extends React.Component&amp;#123;  constructor(props)&amp;#123;    super(props);    this.state=&amp;#123;date: new Date()&amp;#125;  &amp;#125;   re">
@@ -447,7 +447,8 @@
 
       
         <h2 id="state-amp-amp-生命周期"><a href="#state-amp-amp-生命周期" class="headerlink" title="state&amp;&amp;生命周期"></a>state&amp;&amp;生命周期</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">class Clock extends React.Component&#123;</div><div class="line">  constructor(props)&#123;</div><div class="line">    super(props);</div><div class="line">    this.state=&#123;date: new Date()&#125;</div><div class="line">  &#125;</div><div class="line">   render()&#123;</div><div class="line">      return(</div><div class="line">        &lt;div&gt;</div><div class="line">          &lt;h1&gt; this is a test&lt;/h1&gt;</div><div class="line">          &lt;h2&gt;&#123;this.state.date.toLocaleTimeString()&#125;&lt;/h2&gt;</div><div class="line">        &lt;/div&gt;</div><div class="line">      )</div><div class="line">    &#125;</div><div class="line">  componentDidMount()&#123;</div><div class="line">    this.timer=setInterval(()=&gt;&#123;this.tick()&#125;,1000) </div><div class="line">  &#125;</div><div class="line">  componentWillUnmount()&#123;</div><div class="line">    clearInterval(this.timer)</div><div class="line">  &#125;</div><div class="line">  tick()&#123;</div><div class="line">    this.setState(&#123;date: new Date()&#125;)</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">ReactDOM.render(&lt;Clock /&gt;, document.getElementById(&apos;root&apos;))</div></pre></td></tr></table></figure>
-<p>上述代码实际作用：<br>1) 当 <clock> 被传递给 ReactDOM.render()时，React调用Clock组件的构造函数。由于 Clock 需要显示当前时间，所以使用<strong>包含当前时间的对象</strong>来初始化this.state。我们稍后会更新此状态。</clock></p>
+<p>上述代码实际作用：</p>
+<p>1) 当 <clock> 被传递给 ReactDOM.render()时，React调用Clock组件的构造函数。由于 Clock 需要显示当前时间，所以使用<strong>包含当前时间的对象</strong>来初始化this.state。我们稍后会更新此状态。</clock></p>
 <p>2) React然后调用Clock组件的render()方法。这是React了解屏幕上应该显示什么内容，然后 React更新DOM以匹配 Clock 的渲染输出。</p>
 <p>3) 当Clock的输出插入到DOM中时，React调用componentDidMount()生命周期钩子。在其中，Clock组件要求浏览器设置一个定时器，每秒钟调用一次 tick()。</p>
 <p>4) 浏览器每秒钟调用tick()方法。 在其中，Clock 组件通过使用包含当前时间的对象调用 setState()来调度UI更新。 通过调用setState()，React 知道状态已经改变，并再次调用 render()方法来确定屏幕上应当显示什么。这一次，render()方法中的this.state.date 将不同，所以渲染输出将包含更新的时间，并相应地更新DOM。</p>
@@ -476,6 +477,9 @@
 <h3 id="属性默认值"><a href="#属性默认值" class="headerlink" title="属性默认值"></a>属性默认值</h3><p>通过配置<code>defaultProps</code>为props定义默认值：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">class Greeting extends React.Component &#123;</div><div class="line">  render() &#123;</div><div class="line">    return (</div><div class="line">      &lt;h1&gt;Hello, &#123;this.props.name&#125;&lt;/h1&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 为属性指定默认值:</div><div class="line">Greeting.defaultProps = &#123;</div><div class="line">  name: &apos;Stranger&apos;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <p><code>defaultProps</code>用来确保<code>this.props.name</code>在父组件没有特别指定的情况下，有一个初始值</p>
+<h2 id="父子组件数据通信"><a href="#父子组件数据通信" class="headerlink" title="父子组件数据通信"></a>父子组件数据通信</h2><p>父子组件之间的数据通信细分其实还有两种：父与子之间和子与父之间。</p>
+<p>在React中，<strong>父与子之间的数据通信是通过props属性就行传递的</strong>；</p>
+<p>而子与父之间的数据通信<strong>可以通过父组件定义事件，子组件触发父组件中的事件时，通过实参的形式来改变父组件中的数据来通信</strong>;</p>
 
       
     </div>
@@ -625,7 +629,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">48</span>
+                <span class="site-state-item-count">50</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -706,7 +710,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#state-amp-amp-生命周期"><span class="nav-number">1.</span> <span class="nav-text">state&&生命周期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件处理"><span class="nav-number">2.</span> <span class="nav-text">事件处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#条件渲染"><span class="nav-number">3.</span> <span class="nav-text">条件渲染</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#元素变量"><span class="nav-number">3.1.</span> <span class="nav-text">元素变量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#列表-amp-amp-keys"><span class="nav-number">4.</span> <span class="nav-text">列表&&keys</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用PropTypes"><span class="nav-number">5.</span> <span class="nav-text">使用PropTypes</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#限制单个子代"><span class="nav-number">5.1.</span> <span class="nav-text">限制单个子代</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#属性默认值"><span class="nav-number">5.2.</span> <span class="nav-text">属性默认值</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#state-amp-amp-生命周期"><span class="nav-number">1.</span> <span class="nav-text">state&&生命周期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件处理"><span class="nav-number">2.</span> <span class="nav-text">事件处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#条件渲染"><span class="nav-number">3.</span> <span class="nav-text">条件渲染</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#元素变量"><span class="nav-number">3.1.</span> <span class="nav-text">元素变量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#列表-amp-amp-keys"><span class="nav-number">4.</span> <span class="nav-text">列表&&keys</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用PropTypes"><span class="nav-number">5.</span> <span class="nav-text">使用PropTypes</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#限制单个子代"><span class="nav-number">5.1.</span> <span class="nav-text">限制单个子代</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#属性默认值"><span class="nav-number">5.2.</span> <span class="nav-text">属性默认值</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#父子组件数据通信"><span class="nav-number">6.</span> <span class="nav-text">父子组件数据通信</span></a></li></ol></div>
             
 
           </div>

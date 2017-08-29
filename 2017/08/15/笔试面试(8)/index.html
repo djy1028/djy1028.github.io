@@ -112,18 +112,18 @@
 
 
 
-<meta name="description" content="单页应用之前端路由前端路由主要有两种方案，一种是以angular1.x为代表的hash的解决方案，可以兼容低版本的浏览器，一种是HTML5提出的新的api。 History API主要就是window.history.pushState 和window.history.replaceState。这两种API都需要传入三个参数, 状态对象（state object）:一个JavaScript对象，与">
+<meta name="description" content="单页应用之前端路由前端路由主要有两种方案，一种是以angular1.x为代表的hash的解决方案，可以兼容低版本的浏览器，一种是HTML5提出的新的api。 History API无刷新实现步骤：  在A页面 通过发AJAX请求 请求页面中的B数据。  在页面A中通过JS装载相应的信息到相应的位置来。  通过History API在不刷新页面的情况下在浏览器的地址栏中从页面A的URL地址切换到页面">
 <meta name="keywords" content="笔试面试题">
 <meta property="og:type" content="article">
 <meta property="og:title" content="笔试面试题（8）">
 <meta property="og:url" content="http://yoursite.com/2017/08/15/笔试面试(8)/index.html">
 <meta property="og:site_name" content="С�����ľ���">
-<meta property="og:description" content="单页应用之前端路由前端路由主要有两种方案，一种是以angular1.x为代表的hash的解决方案，可以兼容低版本的浏览器，一种是HTML5提出的新的api。 History API主要就是window.history.pushState 和window.history.replaceState。这两种API都需要传入三个参数, 状态对象（state object）:一个JavaScript对象，与">
+<meta property="og:description" content="单页应用之前端路由前端路由主要有两种方案，一种是以angular1.x为代表的hash的解决方案，可以兼容低版本的浏览器，一种是HTML5提出的新的api。 History API无刷新实现步骤：  在A页面 通过发AJAX请求 请求页面中的B数据。  在页面A中通过JS装载相应的信息到相应的位置来。  通过History API在不刷新页面的情况下在浏览器的地址栏中从页面A的URL地址切换到页面">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-19T07:31:43.639Z">
+<meta property="og:updated_time" content="2017-08-28T09:08:08.106Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="笔试面试题（8）">
-<meta name="twitter:description" content="单页应用之前端路由前端路由主要有两种方案，一种是以angular1.x为代表的hash的解决方案，可以兼容低版本的浏览器，一种是HTML5提出的新的api。 History API主要就是window.history.pushState 和window.history.replaceState。这两种API都需要传入三个参数, 状态对象（state object）:一个JavaScript对象，与">
+<meta name="twitter:description" content="单页应用之前端路由前端路由主要有两种方案，一种是以angular1.x为代表的hash的解决方案，可以兼容低版本的浏览器，一种是HTML5提出的新的api。 History API无刷新实现步骤：  在A页面 通过发AJAX请求 请求页面中的B数据。  在页面A中通过JS装载相应的信息到相应的位置来。  通过History API在不刷新页面的情况下在浏览器的地址栏中从页面A的URL地址切换到页面">
 
 
 
@@ -447,7 +447,16 @@
 
       
         <h2 id="单页应用之前端路由"><a href="#单页应用之前端路由" class="headerlink" title="单页应用之前端路由"></a>单页应用之前端路由</h2><p>前端路由主要有两种方案，一种是以angular1.x为代表的hash的解决方案，可以兼容低版本的浏览器，一种是HTML5提出的新的api。</p>
-<h3 id="History-API"><a href="#History-API" class="headerlink" title="History API"></a>History API</h3><p>主要就是<code>window.history.pushState</code> 和<code>window.history.replaceState</code>。这两种API都需要传入三个参数,</p>
+<h3 id="History-API"><a href="#History-API" class="headerlink" title="History API"></a>History API</h3><p>无刷新实现步骤：</p>
+<ol>
+<li><p>在A页面 通过发AJAX请求 请求页面中的B数据。</p>
+</li>
+<li><p>在页面A中通过JS装载相应的信息到相应的位置来。</p>
+</li>
+<li><p>通过History API在不刷新页面的情况下在浏览器的地址栏中从页面A的URL地址切换到页面B的URL地址</p>
+</li>
+</ol>
+<p>主要就是<code>window.history.pushState</code> 和<code>window.history.replaceState</code>。这两种API都需要传入三个参数,</p>
 <p>状态对象（state object）:一个JavaScript对象，与用pushState()方法创建的新历史记录条目关联。无论何时用户导航到新创建的状态，popstate事件都会被触发，并且事件对象的state属性都包含历史记录条目的状态对象的拷贝。</p>
 <p>标题（title）:FireFox浏览器目前会忽略该参数，虽然以后可能会用上。考虑到未来可能会对该方法进行修改，传一个空字符串会比较安全。或者，你也可以传入一个简短的标题，标明将要进入的状态。</p>
 <p>地址（URL）：新的历史记录条目的地址。浏览器不会在调用pushState()方法后加载该地址，但之后，可能会试图加载，例如用户重启浏览器。新的URL不一定是绝对路径；如果是相对路径，它将以当前URL为基准；传入的URL与当前URL应该是同源的，否则，pushState()会抛出异常。该参数是可选的；不指定的话则为文档当前URL。</p>
@@ -475,7 +484,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">function* gen(x) &#123;</div><div class="line">    var y = yield x + 2;</div><div class="line">    return y;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var g = gen(1);</div><div class="line">g.next() //&#123;value:3,done:false&#125;</div><div class="line">//value是yield语句后面表达式的值，表示当前阶段的值，done表示函数是否执行完毕，是否还有下一个阶段。</div><div class="line">g.next() //&#123;value:undefined,done:true&#125;</div></pre></td></tr></table></figure>
 <p><strong>调用generator函数会返回一个内部指针g</strong>，执行它不会返回结果,而是返回的指针对象。调用指针的g的next方法，会移动内部指针，指向第一个遇到的yield语句即x+2处。</p>
 <h3 id="Set数据结构"><a href="#Set数据结构" class="headerlink" title="Set数据结构"></a>Set数据结构</h3><p>类似于数组但是成员的值都是唯一的，没有重复的值。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var s = new Set([1,2,3,4,4]);</div><div class="line">[...s] </div><div class="line">结果：[1, 2, 3, 4]</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">var s = new Set([1,2,3,4,4]);</div><div class="line">[...s] </div><div class="line">结果：[1, 2, 3, 4]</div></pre></td></tr></table></figure>
 <p>（1）操作方法<br>add:添加某个值，放回set结构本身</p>
 <p>delete:删除某个值返回一个布尔值，表示删除是否成功</p>
 <p>has(value):返回一个布尔值，表示该值是否为set的成员</p>
@@ -658,7 +667,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">48</span>
+                <span class="site-state-item-count">50</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

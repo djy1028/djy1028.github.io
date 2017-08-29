@@ -120,7 +120,7 @@
 <meta property="og:site_name" content="С�����ľ���">
 <meta property="og:description" content="深拷贝最简单的方法： 1var cloneObj = JSON.parse(JSON.stringify(obj)); 正常方法：![]http://blog.csdn.net/flyingpig2016/article/details/52895620 1234567891011121314151617181920212223242526272829function deepCopy(obj)&amp;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-21T12:42:11.194Z">
+<meta property="og:updated_time" content="2017-08-28T07:02:23.447Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="笔试面试题（9）">
 <meta name="twitter:description" content="深拷贝最简单的方法： 1var cloneObj = JSON.parse(JSON.stringify(obj)); 正常方法：![]http://blog.csdn.net/flyingpig2016/article/details/52895620 1234567891011121314151617181920212223242526272829function deepCopy(obj)&amp;">
@@ -465,6 +465,69 @@
 <p>2、Rendering Tree 并不与 DOM Tree 对应，比如像 <head> 标签内容或带有 display: none; 的元素节点并不包括在 Rendering Tree 中 。</head></p>
 <p>3、通过 CSS Rule Tree 匹配 DOM Tree 进行定位坐标和大小，是否换行，以及 position、overflow、z-index 等等属性，这个过程称为 Flow 或 Layout 。</p>
 <p>4、最终通过调用<code>Native GUI</code>的<code>API</code>绘制网页画面的过程称为 Paint 。</p>
+<h4 id="浏览器性能优化方法"><a href="#浏览器性能优化方法" class="headerlink" title="浏览器性能优化方法"></a>浏览器性能优化方法</h4><p>（1）白屏</p>
+<p>HTML 和 CSS 的加载及解析速度</p>
+<p><head> 内的脚本加载及执行</head></p>
+<p>（2）图片加载（懒加载、预加载）</p>
+<p><body> 内的脚本加载及执行</body></p>
+<p><strong>CSS优化方法：</strong></p>
+<p>将 CSS 放到文档头部，避免使用 CSS import。</p>
+<h3 id="sql语句中模糊查询"><a href="#sql语句中模糊查询" class="headerlink" title="sql语句中模糊查询"></a>sql语句中模糊查询</h3><p>（1）%：表示任意0个或多个字符。可匹配任意类型和长度的字符，有些情况下若是中文，请运用两个百分号（%%）表示。</p>
+<p>（2）_： 表示任意单个字符。匹配单个任意字符，它常用来限定表达式的字符长度语句。</p>
+<p>（3）[]：表示括号内所列字符中的一个（类似正则表达式）。指定一个字符、字符串或范围，要求所匹配对象为它们中的任一个。</p>
+<p>（4）[^] ：表示不在括号所列之内的单个字符。其取值和 [] 相同，但它要求所匹配对象为指定字符以外的任一个字符</p>
+<h3 id="页面缓存算法-页面置换算法"><a href="#页面缓存算法-页面置换算法" class="headerlink" title="页面缓存算法(页面置换算法)"></a>页面缓存算法(页面置换算法)</h3><p>（1）缓存数据和目标数据的一致性问题。</p>
+<p>（2）缓存的过期策略（机制）。其中，缓存的过期策略涉及淘汰算法。常用的淘汰算法有下面几种：</p>
+<p> （1）FIFO：First In First Out，先进先出</p>
+<p> （2）LRU：Least Recently Used，最近最少使用</p>
+<p> （3）LFU：Least Frequently Used，最不经常使用</p>
+<h3 id="DOCTYPE"><a href="#DOCTYPE" class="headerlink" title="DOCTYPE"></a>DOCTYPE</h3><p>DOCTYPE是用来声明文档类型和DTD规范的，一个主要的用途便是文件的合法性验证。 如果文件代码不合法，那么浏览器解析时便会出一些差错。</p>
+<h3 id="浏览器兼容性问题大汇总"><a href="#浏览器兼容性问题大汇总" class="headerlink" title="浏览器兼容性问题大汇总"></a>浏览器兼容性问题大汇总</h3><p><strong>css</strong></p>
+<h4 id="css中的width和padding"><a href="#css中的width和padding" class="headerlink" title="css中的width和padding"></a>css中的width和padding</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">box.style&#123;</div><div class="line">    width:100;</div><div class="line">    border 1px;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>ie理解为box.width = 100 </p>
+<p>ff理解为box.width = 100 + 1*2 = 102 //加上边框2px</p>
+<p>解决方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">div&#123;</div><div class="line">    margin:30px!important;</div><div class="line">    margin:28px;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="不同浏览器的标签默认的外补丁和内补丁不同"><a href="#不同浏览器的标签默认的外补丁和内补丁不同" class="headerlink" title="不同浏览器的标签默认的外补丁和内补丁不同"></a>不同浏览器的标签默认的外补丁和内补丁不同</h4><p>问题症状：随便写几个标签，不加样式控制的情况下，各自的margin 和padding差异较大。</p>
+<p>解决方案：CSS里 *{margin:0;padding:0;}</p>
+<p><strong>js</strong></p>
+<h4 id="new-Date-getYear"><a href="#new-Date-getYear" class="headerlink" title="new Date().getYear()"></a>new Date().getYear()</h4><p>//方式一  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var year= new Date().getYear();  </div><div class="line">year = (year&lt;1900?(1900+year):year);  </div><div class="line">document.write(year);</div></pre></td></tr></table></figure>
+<h3 id="前端性能优化方案"><a href="#前端性能优化方案" class="headerlink" title="前端性能优化方案"></a>前端性能优化方案</h3><p><strong>(1)请求和响应</strong></p>
+<p>缓存控制</p>
+<p>减少HTTP请求</p>
+<p>使用CDN</p>
+<p><strong>(2) HTML</strong></p>
+<p>减少DOM</p>
+<p>过多的DOM元素会影响渲染、加载、执行。除了精简页面结构外，还可以适时删除不必要的DOM元素（页面内已经不会再访问的元素），又或者可以懒加载（不一定会使用到的元素，如登录框）</p>
+<p>CSS 和 JavaScript 文件位置</p>
+<p>原因：样式表不参与 DOM 修改，所以不会为了解析样式停止文档解析</p>
+<p><strong>（3） JavaScript</strong></p>
+<p>优化建议：修改 className 而非 style；离线 DOM 后修改，如 documentFragment 或者 display:none 后再调整样式；缓存属性值；不使用 table 布局（牵一发动全身）</p>
+<p>事件委托</p>
+<p><strong>（4）资源</strong></p>
+<p>懒加载</p>
+<p>如图像的懒加载（滚动到显示区域后才加载）等。</p>
+<p>预加载</p>
+<p>针对之后会用到的资源提前加载。</p>
+<p>文件合并</p>
+<p>文件最小化/文件压缩</p>
+<p>使用 CDN 托管</p>
+<p>缓存的使用（多个域名来提供缓存）</p>
+<p>减少页面加载时间的方法：<br>1.优化图片 </p>
+<p>2.图像格式的选择（GIF：提供的颜色较少，可用在一些对颜色要求不高的地方） </p>
+<p>3.优化CSS（压缩合并css，如margin-top,margin-left…) </p>
+<p>4.网址后加斜杠（如www.campr.com/目录，会判断这个“目录是什么文件类型，或者是目录。） </p>
+<p>5.标明高度和宽度（如果浏览器没有找到这两个参数，它需要一边下载图片一边计算大小，如果图片很多，浏览器需要不断地调整页面。这不但影响速度，也影响浏览体验。<br>当浏览器知道了高度和宽度参数后，即使图片暂时无法显示，页面上也会腾出图片的空位，然后继续加载后面的内容。从而加载时间快了，浏览体验也更好了。） </p>
+<p>6.减少http请求（合并文件，合并图片）。</p>
+<p><strong>性能优化方法</strong></p>
+<p>  （1） 减少http请求次数：CSS Sprites, JS、CSS源码压缩、图片大小控制合适；网页Gzip，CDN托管，data缓存 ，图片服务器。</p>
+<p>  （2） 前端模板 JS+数据，减少由于HTML标签导致的带宽浪费，前端用变量保存AJAX请求结果，每次操作本地变量，不用请求，减少请求次数</p>
+<p>  （3） 用innerHTML代替DOM操作，减少DOM操作次数，优化javascript性能。</p>
+<p>  （4） 当需要设置的样式很多时设置className而不是直接操作style。</p>
+<p>  （5） 少用全局变量、缓存DOM节点查找的结果。减少IO读取操作。</p>
+<p>  （6） 避免使用CSS Expression（css表达式)又称Dynamic properties(动态属性)。</p>
+<p>  （7） 图片预加载，将样式表放在顶部，将脚本放在底部  加上时间戳。</p>
 
       
     </div>
@@ -504,6 +567,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/25/笔试面试（10）/" rel="prev" title="笔试面试题（10）">
+                笔试面试题（10） <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -610,7 +677,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">48</span>
+                <span class="site-state-item-count">50</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -691,7 +758,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#深拷贝"><span class="nav-number">1.</span> <span class="nav-text">深拷贝</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#for函数里面setTimeout异步问题"><span class="nav-number">2.</span> <span class="nav-text">for函数里面setTimeout异步问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#让写个从几个li中取下标的闭包代码"><span class="nav-number">3.</span> <span class="nav-text">让写个从几个li中取下标的闭包代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#w3c事件与IE事件的区别"><span class="nav-number">4.</span> <span class="nav-text">w3c事件与IE事件的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#w3c事件"><span class="nav-number">4.1.</span> <span class="nav-text">w3c事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IE事件"><span class="nav-number">4.2.</span> <span class="nav-text">IE事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#浏览器如何渲染界面"><span class="nav-number">4.3.</span> <span class="nav-text">浏览器如何渲染界面</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#浏览器解析"><span class="nav-number">4.3.1.</span> <span class="nav-text">浏览器解析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#浏览器渲染"><span class="nav-number">4.3.2.</span> <span class="nav-text">浏览器渲染</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#深拷贝"><span class="nav-number">1.</span> <span class="nav-text">深拷贝</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#for函数里面setTimeout异步问题"><span class="nav-number">2.</span> <span class="nav-text">for函数里面setTimeout异步问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#让写个从几个li中取下标的闭包代码"><span class="nav-number">3.</span> <span class="nav-text">让写个从几个li中取下标的闭包代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#w3c事件与IE事件的区别"><span class="nav-number">4.</span> <span class="nav-text">w3c事件与IE事件的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#w3c事件"><span class="nav-number">4.1.</span> <span class="nav-text">w3c事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IE事件"><span class="nav-number">4.2.</span> <span class="nav-text">IE事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#浏览器如何渲染界面"><span class="nav-number">4.3.</span> <span class="nav-text">浏览器如何渲染界面</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#浏览器解析"><span class="nav-number">4.3.1.</span> <span class="nav-text">浏览器解析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#浏览器渲染"><span class="nav-number">4.3.2.</span> <span class="nav-text">浏览器渲染</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#浏览器性能优化方法"><span class="nav-number">4.3.3.</span> <span class="nav-text">浏览器性能优化方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sql语句中模糊查询"><span class="nav-number">4.4.</span> <span class="nav-text">sql语句中模糊查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#页面缓存算法-页面置换算法"><span class="nav-number">4.5.</span> <span class="nav-text">页面缓存算法(页面置换算法)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DOCTYPE"><span class="nav-number">4.6.</span> <span class="nav-text">DOCTYPE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#浏览器兼容性问题大汇总"><span class="nav-number">4.7.</span> <span class="nav-text">浏览器兼容性问题大汇总</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#css中的width和padding"><span class="nav-number">4.7.1.</span> <span class="nav-text">css中的width和padding</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#不同浏览器的标签默认的外补丁和内补丁不同"><span class="nav-number">4.7.2.</span> <span class="nav-text">不同浏览器的标签默认的外补丁和内补丁不同</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#new-Date-getYear"><span class="nav-number">4.7.3.</span> <span class="nav-text">new Date().getYear()</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#前端性能优化方案"><span class="nav-number">4.8.</span> <span class="nav-text">前端性能优化方案</span></a></li></ol></li></ol></div>
             
 
           </div>

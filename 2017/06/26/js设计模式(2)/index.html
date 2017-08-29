@@ -112,18 +112,18 @@
 
 
 
-<meta name="description" content="闭包闭包在js中的作用：1.封装变量 2.延续局部变量的寿命 利用闭包解决onclick时间被异步触发123456789101112131415161718192021&amp;lt;!DOCTYPE html&amp;gt;&amp;lt;html&amp;gt;&amp;lt;body&amp;gt;	&amp;lt;div&amp;gt;1&amp;lt;/div&amp;gt;	&amp;lt;div&amp;gt;2&amp;lt;/div&amp;gt;    &amp;lt;div&amp;gt;3&amp;lt;/">
+<meta name="description" content="闭包闭包在js中的作用：1.封装变量 2.延续局部变量的寿命。 通过使用闭包，我们可以做很多事情。比如模拟面向对象的代码风格；更优雅，更简洁的表达出代码；在某些方面提升代码的执行效率。 闭包的作用： （1）匿名自执行函数：实际情况下经常遇到这样一种情况，即有的函数只需要执行一次，其内部变量无需维护，比如UI的初始化，那么我们可以使用闭包 123456789101112131415var data=">
 <meta name="keywords" content="设计模式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="js设计模式基础(2)">
 <meta property="og:url" content="http://yoursite.com/2017/06/26/js设计模式(2)/index.html">
 <meta property="og:site_name" content="С�����ľ���">
-<meta property="og:description" content="闭包闭包在js中的作用：1.封装变量 2.延续局部变量的寿命 利用闭包解决onclick时间被异步触发123456789101112131415161718192021&amp;lt;!DOCTYPE html&amp;gt;&amp;lt;html&amp;gt;&amp;lt;body&amp;gt;	&amp;lt;div&amp;gt;1&amp;lt;/div&amp;gt;	&amp;lt;div&amp;gt;2&amp;lt;/div&amp;gt;    &amp;lt;div&amp;gt;3&amp;lt;/">
+<meta property="og:description" content="闭包闭包在js中的作用：1.封装变量 2.延续局部变量的寿命。 通过使用闭包，我们可以做很多事情。比如模拟面向对象的代码风格；更优雅，更简洁的表达出代码；在某些方面提升代码的执行效率。 闭包的作用： （1）匿名自执行函数：实际情况下经常遇到这样一种情况，即有的函数只需要执行一次，其内部变量无需维护，比如UI的初始化，那么我们可以使用闭包 123456789101112131415var data=">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-07-10T09:40:57.641Z">
+<meta property="og:updated_time" content="2017-08-29T08:59:06.790Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js设计模式基础(2)">
-<meta name="twitter:description" content="闭包闭包在js中的作用：1.封装变量 2.延续局部变量的寿命 利用闭包解决onclick时间被异步触发123456789101112131415161718192021&amp;lt;!DOCTYPE html&amp;gt;&amp;lt;html&amp;gt;&amp;lt;body&amp;gt;	&amp;lt;div&amp;gt;1&amp;lt;/div&amp;gt;	&amp;lt;div&amp;gt;2&amp;lt;/div&amp;gt;    &amp;lt;div&amp;gt;3&amp;lt;/">
+<meta name="twitter:description" content="闭包闭包在js中的作用：1.封装变量 2.延续局部变量的寿命。 通过使用闭包，我们可以做很多事情。比如模拟面向对象的代码风格；更优雅，更简洁的表达出代码；在某些方面提升代码的执行效率。 闭包的作用： （1）匿名自执行函数：实际情况下经常遇到这样一种情况，即有的函数只需要执行一次，其内部变量无需维护，比如UI的初始化，那么我们可以使用闭包 123456789101112131415var data=">
 
 
 
@@ -446,7 +446,15 @@
       
 
       
-        <h1 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h1><p>闭包在js中的作用：1.封装变量 2.延续局部变量的寿命</p>
+        <h1 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h1><p>闭包在js中的作用：1.封装变量 2.延续局部变量的寿命。</p>
+<p>通过使用闭包，我们可以做很多事情。比如模拟面向对象的代码风格；更优雅，更简洁的表达出代码；在某些方面提升代码的执行效率。</p>
+<p>闭包的作用：</p>
+<p>（1）匿名自执行函数：实际情况下经常遇到这样一种情况，即有的函数只需要执行一次，其内部变量无需维护，比如UI的初始化，那么我们可以使用闭包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">var data= &#123;    </div><div class="line">    table : [],    </div><div class="line">    tree : &#123;&#125;    </div><div class="line">&#125;;    </div><div class="line">     </div><div class="line">(function(dm)&#123;    </div><div class="line">    for(var i = 0; i &lt; dm.table.rows; i++)&#123;    </div><div class="line">       var row = dm.table.rows[i];    </div><div class="line">       for(var j = 0; j &lt; row.cells; i++)&#123;    </div><div class="line">           drawCell(i, j);    </div><div class="line">       &#125;    </div><div class="line">    &#125;    </div><div class="line">       </div><div class="line">&#125;)(data);</div></pre></td></tr></table></figure>
+<p>(2)结果缓存：我们开发中会碰到很多情况，设想我们有一个处理过程很耗时的函数对象，每次调用都会花费很长时间，那么我们就需要将计算出来的值存储起来，当调用这个函数的时候，首先在缓存中查找，如果找不到，则进行计算，然后更新缓存并返回值，如果找到了，直接返回查找到的值即可</p>
+<p>(3)封装变量</p>
+<p>(4)实现类和继承</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">function Person()&#123;    </div><div class="line">    var name = &quot;default&quot;;       </div><div class="line">       </div><div class="line">    return &#123;    </div><div class="line">       getName : function()&#123;    </div><div class="line">           return name;    </div><div class="line">       &#125;,    </div><div class="line">       setName : function(newName)&#123;    </div><div class="line">           name = newName;    </div><div class="line">       &#125;    </div><div class="line">    &#125;    </div><div class="line">    &#125;;   </div><div class="line"></div><div class="line">    var p = new Person();</div><div class="line">    p.setName(&quot;Tom&quot;);</div><div class="line">    alert(p.getName());</div><div class="line"></div><div class="line">    var Jack = function()&#123;&#125;;</div><div class="line">    //继承自Person</div><div class="line">    Jack.prototype = new Person();</div><div class="line">    //添加私有方法</div><div class="line">    Jack.prototype.Say = function()&#123;</div><div class="line">        alert(&quot;Hello,my name is Jack&quot;);</div><div class="line">    &#125;;</div><div class="line">    var j = new Jack();</div><div class="line">    j.setName(&quot;Jack&quot;);</div><div class="line">    j.Say();</div><div class="line">    alert(j.getName());</div></pre></td></tr></table></figure>
 <p><strong>利用闭包解决onclick时间被异步触发</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;body&gt;</div><div class="line">	&lt;div&gt;1&lt;/div&gt;</div><div class="line">	&lt;div&gt;2&lt;/div&gt;</div><div class="line">    &lt;div&gt;3&lt;/div&gt;</div><div class="line">	&lt;div&gt;4&lt;/div&gt;</div><div class="line">	&lt;div&gt;5&lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;script&gt;</div><div class="line">	var node = document.getElementsByTagName(&apos;div&apos;);</div><div class="line">	for(var i=0;i&lt;node.length;i++)</div><div class="line">	&#123;</div><div class="line">			node[i].onclick=function()&#123;</div><div class="line">				console.log(i);</div><div class="line">			&#125;</div><div class="line">	    </div><div class="line">		</div><div class="line">	&#125;</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
 <p>无论点击那个div,都会出现5，因为for循环早已结束，而onclick为异步调用。</p>
 <p><strong>解决方法</strong></p>
@@ -490,8 +498,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/06/25/js设计模式/" rel="next" title="js设计模式基础(1)">
-                <i class="fa fa-chevron-left"></i> js设计模式基础(1)
+              <a href="/2017/06/26/http基础/" rel="next" title="Http基础知识">
+                <i class="fa fa-chevron-left"></i> Http基础知识
               </a>
             
           </div>
@@ -500,8 +508,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/06/26/js设计模式(3)/" rel="prev" title="js设计模式(3)">
-                js设计模式(3) <i class="fa fa-chevron-right"></i>
+              <a href="/2017/06/27/js设计模式(7)/" rel="prev" title="js设计模式(7)">
+                js设计模式(7) <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -609,7 +617,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">48</span>
+                <span class="site-state-item-count">50</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
