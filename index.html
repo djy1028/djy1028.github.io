@@ -483,6 +483,7 @@
 <p>比如：加入你这个界面中用到了一个三方的图形控件Echart,那么这个包总是很大的，即使是最小的也有300k左右，其实你其他的代码可能都不到100k，那么这300k将会非常影响你这个界面的加载速度，所以需要给这个<strong>控件做一个按需加载</strong>，这样可以先展示其余的这100k所展示的界面，等待其余的300k下载好了再把Echart给补上。</p>
 <p>通过服务器对代码进行gzip压缩</p>
 <p>服务器端渲染</p>
+<p>### </p>
 
           
         
@@ -1011,6 +1012,236 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/16/ReactJs(7)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="superDjy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://img.mp.itc.cn/upload/20170429/a2379efc26214d7fa790af6105312132">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="С�����ľ���">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/16/ReactJs(7)/" itemprop="url">React.js基础</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-16T00:00:00+08:00">
+                2017-08-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/React-js/" itemprop="url" rel="index">
+                    <span itemprop="name">React.js</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/08/16/ReactJs(7)/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/08/16/ReactJs(7)/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/08/16/ReactJs(7)/" class="leancloud_visitors" data-flag-title="React.js基础">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="React-高阶API"><a href="#React-高阶API" class="headerlink" title="React 高阶API"></a>React 高阶API</h2><h3 id="Components"><a href="#Components" class="headerlink" title="Components"></a>Components</h3><p>React组件可以通过继承 React.Component 或 React.PureComponent 来定义。React.PureComponent 与 React.Component 几乎完全相同，但 React.PureComponent 通过prop和state的浅对比来实现 shouldComponentUpate()。</p>
+<p>如果React组件的 render() 函数在给定相同的props和state下渲染为相同的结果，在某些场景下你可以使用 React.PureComponent 来提升性能</p>
+<p>render()函数应该纯净，意味着其不应该改变组件的状态，其每次调用都应返回相同的结果，同时不直接和浏览器交互。若<strong>需要和浏览器交互，将任务放在componentDidMount()阶段或其他的生命周期方法</strong></p>
+<p>componentDidMount()在组件被装配后立即调用。<strong>初始化DOM节点应该进行到这里。若你需要从远端加载数据，这是一个适合实现网络请求的地方。在该方法里设置状态将会触发重渲</strong></p>
+<p>componentWillReceiveProps(nextProps)在装配了的组件接收到新属性前调用。若你需要<strong>更新状态响应属性改变</strong>（例如，重置它），你可能需对比this.props和nextProps并在该方法中使用this.setState()处理状态改变</p>
+<p>当接收到新属性或状态时，componentWillUpdate(nextProps, nextState)会在渲染前被立即调用。在更新发生前，使用该方法是一次准备机会。该方法不会在初始化渲染时调用。</p>
+<p>注意：<strong>不能在这调用this.setState()</strong>，若你需要更新状态响应属性的调整，使用componentWillReceiveProps()代替</p>
+<p><code>setState()</code>认为是一次请求而不是一次立即执行更新组件的命令。为了更为客观的性能，React可能会推迟它，稍后会一次性更新这些组件。React不会保证在setState之后，能够立刻拿到改变的结果。<code>setState()</code>不是立刻更新组件。其可能是批处理或推迟更新。这使得在调用setState()后立刻读取this.state的一个潜在陷阱。取而代之的是，使用componentDidUpdate或一个setState回调（setState(updater, callback)），当中的每个方法都会保证在更新被应用之后触发。</p>
+<p>setState()中的第一个函数是带签名的updater函数。prevState是之前状态的引用。其不应该被直接改变。代替地，改变应该通过构建一个来自于prevState 和 props输入的新对象来表示。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">this.setState((prevState, props) =&gt; &#123;</div><div class="line">  return &#123;counter: prevState.counter + props.step&#125;;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>updater函数接收到的prevState 和 props保证都是最新的。updater的输出是和prevState的浅合并。</p>
+<p>setState()的第二个参数是一个可选地回调函数，<strong>其将会在setState执行完成同时组件被重渲之后执行</strong>。通常，对于这类逻辑，我们推荐使用componentDidUpdate。</p>
+<h2 id="ReactDOM"><a href="#ReactDOM" class="headerlink" title="ReactDOM"></a>ReactDOM</h2><p>ReactDOM提供三个方法：render()、unmountComponentAtNode()、findDOMNode()</p>
+<p>findDOMNode:大多数情况下，你可以添加一个指向DOM节点的引用，从而完全避免使用findDOMNode 这个函数。当 render返回null或者false时，findDOMNode也返回null.</p>
+<h2 id="React基本理论"><a href="#React基本理论" class="headerlink" title="React基本理论"></a>React基本理论</h2><p>组件构建提供了三种方式：React.createClass(),Es6的classes方法，和无状态函数function方法。</p>
+<p>react中的setState是一种异步方法，一个生命周期内的所有的setState方法合并操作，具体原理详见后面<strong>React源码详解</strong>。</p>
+<p>可以使用setState的钩子函数有：componentWillMount()中执行setState组件只会渲染一次,componentDidMount()会中setState会在初始过程中渲染两次组件,componentWillReceiveProps(nextProps),componentDidUpdate()。</p>
+<p>DOM被真正添加到HTML中的生命周期方法是：componentDidMount()和componentDidUpdate</p>
+<h2 id="漫谈React"><a href="#漫谈React" class="headerlink" title="漫谈React"></a>漫谈React</h2><h3 id="react中的事件委派"><a href="#react中的事件委派" class="headerlink" title="react中的事件委派"></a>react中的事件委派</h3><p>react中并不会把事件处理函数直接绑定到真实的节点上，而是把所有事件绑定到结构的最外层，使用一个统一的事件监听器。这个事件监听器上维持一个映射来保存所有组件内部的事件监听和处理函数。当事件发生时，首先被这个统一的事件监听器处理，然后映射到真正的事件处理函数使用。</p>
+<h3 id="组件性能优化"><a href="#组件性能优化" class="headerlink" title="组件性能优化"></a>组件性能优化</h3><p>影响网页性能最大的问题是浏览器的重绘（reflow）和重排（repaint）。而React背后的virtual dom则是尽可能的减少浏览器的重绘和重排。从React渲染角度来说，如何避免不必要的渲染才是最需要去解决的问题。react提出一个方法叫PureRender();</p>
+<p>(1)纯函数的概念：1.给定相同的输入，会一直得到相同的输出。2.过程中没有副作用。3.没有额外的状态依赖。</p>
+<p>(2)PureRender():其中的Pure是指组件满足纯函数的条件。即组件的渲染是被相同的props和state渲染进而得到相同的结果。</p>
+<h4 id="PureRender的本质"><a href="#PureRender的本质" class="headerlink" title="PureRender的本质"></a>PureRender的本质</h4><p>在shouldComponentUpdate阶段中，让传入的state和props做浅比较。</p>
+<p>PureRender本质上对object只做了引用比较，并没有值的比较。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">function shallowEqual(obj,newObj)&#123;</div><div class="line">	if（obj==newObj）&#123;</div><div class="line">		return true</div><div class="line">	&#125;</div><div class="line">	const objKeys = Object.keys(obj);</div><div class="line">	const newObjKeys = Object.keys(newObj);</div><div class="line">	if(objKeys.length!==newObjKeys.length)&#123;</div><div class="line">		return false</div><div class="line">	&#125;</div><div class="line">	return objKeys.every(key=&gt;&#123;</div><div class="line">		return newObj[key]==obj[key];</div><div class="line">	&#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="优化PureRender"><a href="#优化PureRender" class="headerlink" title="优化PureRender"></a>优化PureRender</h4><p>但是在事实上，浅比较覆盖的场景并不是很多。如果在props或state为以下几种情况时，它都会触发PureRender为true。（1）直接为props或state设置对象或数组。（2）设置props方法并将其通过事件绑定在元素上 </p>
+<h3 id="Immutable"><a href="#Immutable" class="headerlink" title="Immutable"></a>Immutable</h3><p>在传递数据时可以使用Immutable Data来进一步提高组件的渲染性能。Immutable Data就是一旦创建就不能够更改的数据。immutable实现原理是<strong>持久化的数据结构</strong>，即使用旧数据创建新数据时，要保证旧数据同时可用且不变。同时，为了避免深拷贝带来的性能损耗，Immutable使用了共享结构，即如果对象树中的一个节点发生变化，只需要修改这个节点和守它影响的父节点，其他节点可以共享。</p>
+<p>Immutable.js库中的几种重要的数据结构：Map:键值对集合，对应于Object。List:有序可重复的列表，对应于Array。ArraySet:无序可重复的列表。</p>
+<p>Immutable的优点：（1）降低了可变带来的复杂度 （2）节省内存（3）并发安全（4）拥抱函数式编程（输入一致，输出肯定一致）</p>
+<p>语法难点：Map和List取值时语法和Js有一定的变化。例如：map.get(‘key’)而不是map.key；用array.get(0)而不是array[0]</p>
+<h4 id="immutable-js"><a href="#immutable-js" class="headerlink" title="immutable.js"></a>immutable.js</h4><p>Immutable提供了is方法来直接比较对象的值。Immutable.is比较的是两个对象的hashCode或valueOf。由于Immutable内部使用了trie数据结构来存储，只要两个对象的hashCode相等，值就是一样的。这样的算法避免了深度遍历比较，因此性能非常好</p>
+<p><strong>Immutable和PureRender</strong></p>
+<p>React做性能优化时最常用的是shouldcComponentUpdate方法，但是默认为true时会始终执行render方法，造成很多没有必要的渲染。当然，我们可以在shouldComponentUpdate中使用深拷贝和浅拷贝的方法来避免不必要的render,但是深拷贝和浅拷贝依然是比较昂贵的选择。</p>
+<p>利用Immutable在shouldCompoentUpdate使用，是一种简洁，高效的判断数据是否变化的方法。只需要===或者<code>is</code>比较就可以知道是否执行render,而这个操作成本几乎为0。</p>
+<p>修改后的shouldComponentUpdate为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">import React,&#123;Component&#125; from &apos;react&apos;</div><div class="line">import &#123;is&#125; from &apos;immutable&apos;</div><div class="line"></div><div class="line">class App extends Component&#123;</div><div class="line">	shouldComponentUpdate(nextProps,nextState)&#123;</div><div class="line">		const thisProps = this.props||&#123;&#125;;</div><div class="line">		cosnt thisState = this.state||&#123;&#125;;</div><div class="line">		if(Object.keys(thisProps).length!==Object.keys(nextProps).length||Object.keyss(thisState).length!==Object.keys(nextState).length)&#123;</div><div class="line">			return true</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		for(const key in nextProps)&#123;</div><div class="line">			if(thisProps[key]!==nextProps[key]||!is(thisProps[key],nextProps[key]))&#123;</div><div class="line">				return true;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line"></div><div class="line"></div><div class="line">		for(const key in nextState)&#123;</div><div class="line">			if(thisState[key]!==nextState[key]||!is(thisState[key],nextState[key]))&#123;</div><div class="line">				return true;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		return false;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="setState机制"><a href="#setState机制" class="headerlink" title="setState机制"></a>setState机制</h3><p>生命周期的渲染过程是通过递归实现的，由于递归的特性，父组件的componentWillMount会在其子组件的componentWillMount之前调用，而父组件的componentDidMount会在子组件的componentDidMount之后被调用。</p>
+<p>整个生命周期过程，可以调用setState方法的钩子函数有个：componentWillMount,componentDidMount,componentWillReceiveProps,componentDidUpdate,四个过程。</p>
+<h4 id="setState机制-1"><a href="#setState机制-1" class="headerlink" title="setState机制"></a>setState机制</h4><p>setState通过一个队列机制实现state的更新。当执行setState时，<strong>会将需要更新的state合并后放入状态队列</strong>，而不会立刻更新this.state，队列机制高效的批量更新state。（异步更新）</p>
+<p>流程示意：this.setState(newState) –&gt; newState存入pending队列 –&gt; 调用enqueueUpdate –&gt; 判断是否属于批量更新模式 –&gt; 如果是，将组建保存到dirtyComponents || 如果不是，遍历dirtyComponents，调用updateComponent，更新pending state props。</p>
+<p>判断是否属于批量更新是利用batchingStrategy的标志位isBatchingUpdates，为true时属于批量更新模式，存入dirtyComponents，否则，进入更新。</p>
+<h4 id="diff算法中的react-patch方法"><a href="#diff算法中的react-patch方法" class="headerlink" title="diff算法中的react patch方法"></a>diff算法中的react patch方法</h4><p>所谓的Patch，就是将tree diff计算出来的DOM差异队列更新到真实的DOM节点上，最终让浏览器渲染出数据。Patch主要是通过遍历差异队列，通过更新类型进行相应的操作，包括：新节点的插入，已有节点的移动和删除。</p>
+<h3 id="redux三大原则"><a href="#redux三大原则" class="headerlink" title="redux三大原则"></a>redux三大原则</h3><p>单一数据源</p>
+<p>状态是只读的</p>
+<p>状态的修改均由纯函数来完成：在Redux中，通过定义reducer来确定状态的修改，而每一个reducer都是纯函数，这意味着它没有副作用，即接受一定的输入，必定会得到一定的输出。</p>
+<p>Redux的<strong>核心API</strong>：<strong>Redux的核心是一个store</strong>,这个store由Redux提供的createStore(reducers,[initialState])方法生成。最核心的API是createStore,通过createStore方法创建的store是一个对象，它本身含有四个方法：</p>
+<p>getState():获取store中的状态,并返回当前状态；</p>
+<p>dispatch(action):分发一个action，并返回这个action,这是唯一能改变store中数据的方式。</p>
+<p>具体工作流程是这样：1.首先判断action是否为一个js对象，若不是则抛出错误。2.校验action是否包含type字段，没有则报错。3.确认当前是否处于某个action的分发过程中，如果不处于分发过程中，则先设定标志位，然后将当前的状态和action传给当前的reducer，用于生成新的reducer。</p>
+<p>subscribe(listener):注册一个监听者，它在store发生变化时别调用（在使用connect方式时已经隐式的调用了subscribe方法）</p>
+<p>replaceReducer(nextReducer):更新当前store里的reducer,一般只会在开发模式总使用（主要用于热替换）。</p>
+<p>在Redux中，负责响应action并修改数据的角色就是reducer，reducer本质上是一个函数，函数签名为reducer(previousState,action)–&gt;newState</p>
+<h3 id="Redux中的组件"><a href="#Redux中的组件" class="headerlink" title="Redux中的组件"></a>Redux中的组件</h3><p><strong>展示型组件：</strong></p>
+<p>目的：长什么样子(标签，样式)；</p>
+<p>无法感知Redux的存在</p>
+<p>获取数据方式：从this.props中获取；</p>
+<p>要改变数据：从props中传入action creator</p>
+<p><strong>容器型组件：</strong></p>
+<p>目的：干什么用（获取数据，更新状态）,在这一层中定义数据和action的入口，从这里将它们分发到各个子组件中去。</p>
+<p>能够感知Redux的存在</p>
+<p>获取数据方式：使用connect从Redux中获取</p>
+<p>要改变数据：直接分发任意action</p>
+<p>事实上，调用connect函数返回了一个高阶组件生成器，而这个生成器会基于原始组件生成一个全新的组件，并给这个组件增加额外的props。在构造一个高阶组件时，connect一般接受的参数有4个：</p>
+<p>mapStateToProps:接受完整的Redux状态树作为参数，返回当前组件相关部分的状态树，返回对象的所有key都会成为组件的props。</p>
+<p>mapDispatchToProps:接受Redux的dispatch方法作为参数，返回当前组件相关部分的<code>action creator</code>,将<code>action creator</code>和dispatch绑定</p>
+<h3 id="高阶reducer"><a href="#高阶reducer" class="headerlink" title="高阶reducer"></a>高阶reducer</h3><p>将reducer作为参数或者返回值的函数称为<strong>高阶reducer</strong></p>
+<p>高阶reducer可以解决reducer的复用问题，也可以对原始的reducer进行增强（使任意reducer变成可以执行撤销和重做的全新reducer）</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/16/webpack基础/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1156,378 +1387,6 @@
 <h3 id="使用插件的方法"><a href="#使用插件的方法" class="headerlink" title="使用插件的方法"></a>使用插件的方法</h3><p>要使用某个插件，我们需要<strong>通过npm安装它，然后要做的就是在webpack配置中的plugins关键字部分添加该插件的一个实例（plugins是一个数组）继续上面的例子</strong>，我们添加了一个给打包后代码添加版权声明的插件。</p>
 <h4 id="HtmlWebpackPlugin"><a href="#HtmlWebpackPlugin" class="headerlink" title="HtmlWebpackPlugin"></a>HtmlWebpackPlugin</h4><p>这个插件的作用是依据一个简单的index.html模板，生成一个自动引用你打包后的JS文件的新index.html。这在每次生成的js文件名称不同时非常有用</p>
 
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/16/ReactJs(7)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="superDjy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://img.mp.itc.cn/upload/20170429/a2379efc26214d7fa790af6105312132">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="С�����ľ���">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/08/16/ReactJs(7)/" itemprop="url">React.js基础</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-16T00:00:00+08:00">
-                2017-08-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/React-js/" itemprop="url" rel="index">
-                    <span itemprop="name">React.js</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/08/16/ReactJs(7)/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/08/16/ReactJs(7)/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/08/16/ReactJs(7)/" class="leancloud_visitors" data-flag-title="React.js基础">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="React-高阶API"><a href="#React-高阶API" class="headerlink" title="React 高阶API"></a>React 高阶API</h2><h3 id="Components"><a href="#Components" class="headerlink" title="Components"></a>Components</h3><p>React组件可以通过继承 React.Component 或 React.PureComponent 来定义。React.PureComponent 与 React.Component 几乎完全相同，但 React.PureComponent 通过prop和state的浅对比来实现 shouldComponentUpate()。</p>
-<p>如果React组件的 render() 函数在给定相同的props和state下渲染为相同的结果，在某些场景下你可以使用 React.PureComponent 来提升性能</p>
-<p>render()函数应该纯净，意味着其不应该改变组件的状态，其每次调用都应返回相同的结果，同时不直接和浏览器交互。若<strong>需要和浏览器交互，将任务放在componentDidMount()阶段或其他的生命周期方法</strong></p>
-<p>componentDidMount()在组件被装配后立即调用。<strong>初始化DOM节点应该进行到这里。若你需要从远端加载数据，这是一个适合实现网络请求的地方。在该方法里设置状态将会触发重渲</strong></p>
-<p>componentWillReceiveProps(nextProps)在装配了的组件接收到新属性前调用。若你需要<strong>更新状态响应属性改变</strong>（例如，重置它），你可能需对比this.props和nextProps并在该方法中使用this.setState()处理状态改变</p>
-<p>当接收到新属性或状态时，componentWillUpdate(nextProps, nextState)会在渲染前被立即调用。在更新发生前，使用该方法是一次准备机会。该方法不会在初始化渲染时调用。</p>
-<p>注意：<strong>不能在这调用this.setState()</strong>，若你需要更新状态响应属性的调整，使用componentWillReceiveProps()代替</p>
-<p><code>setState()</code>认为是一次请求而不是一次立即执行更新组件的命令。为了更为客观的性能，React可能会推迟它，稍后会一次性更新这些组件。React不会保证在setState之后，能够立刻拿到改变的结果。<code>setState()</code>不是立刻更新组件。其可能是批处理或推迟更新。这使得在调用setState()后立刻读取this.state的一个潜在陷阱。取而代之的是，使用componentDidUpdate或一个setState回调（setState(updater, callback)），当中的每个方法都会保证在更新被应用之后触发。</p>
-<p>setState()中的第一个函数是带签名的updater函数。prevState是之前状态的引用。其不应该被直接改变。代替地，改变应该通过构建一个来自于prevState 和 props输入的新对象来表示。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">this.setState((prevState, props) =&gt; &#123;</div><div class="line">  return &#123;counter: prevState.counter + props.step&#125;;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p>updater函数接收到的prevState 和 props保证都是最新的。updater的输出是和prevState的浅合并。</p>
-<p>setState()的第二个参数是一个可选地回调函数，<strong>其将会在setState执行完成同时组件被重渲之后执行</strong>。通常，对于这类逻辑，我们推荐使用componentDidUpdate。</p>
-<h2 id="ReactDOM"><a href="#ReactDOM" class="headerlink" title="ReactDOM"></a>ReactDOM</h2><p>ReactDOM提供三个方法：render()、unmountComponentAtNode()、findDOMNode()</p>
-<p>findDOMNode:大多数情况下，你可以添加一个指向DOM节点的引用，从而完全避免使用findDOMNode 这个函数。当 render返回null或者false时，findDOMNode也返回null.</p>
-<h2 id="React-redux"><a href="#React-redux" class="headerlink" title="React+redux"></a>React+redux</h2>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/15/ReactJs(6)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="superDjy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://img.mp.itc.cn/upload/20170429/a2379efc26214d7fa790af6105312132">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="С�����ľ���">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/08/15/ReactJs(6)/" itemprop="url">React.js基础</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-15T00:00:00+08:00">
-                2017-08-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/React-js/" itemprop="url" rel="index">
-                    <span itemprop="name">React.js</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/08/15/ReactJs(6)/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/08/15/ReactJs(6)/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/08/15/ReactJs(6)/" class="leancloud_visitors" data-flag-title="React.js基础">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Refs-amp-Dom"><a href="#Refs-amp-Dom" class="headerlink" title="Refs&amp;Dom"></a>Refs&amp;Dom</h2><p>在react典型的数据流中，props传递是父子组件交互的唯一方式；通过传递一个新的props值来使子组件重新re-render,从而达到父子组件通信。当然，就像react官网所描述的一样，在react典型的数据量之外，某些情况下（例如和第三方的dom库整合，或者某个dom元素focus等）为了修改子组件我们可能需要另一种方式，这就是ref方式。</p>
-<p>ref可以挂到任何组件上，可以挂到组件上也可以是dom元素上；二者不同是：挂到组件（这里组件指的是有状态组件）上的<strong>ref表示对组件实例的引用</strong>，而挂<strong>载到dom元素上时表示具体的dom元素节点</strong></p>
-<h3 id="ref可以设置回调函数"><a href="#ref可以设置回调函数" class="headerlink" title="ref可以设置回调函数"></a>ref可以设置回调函数</h3><p>ref属性可以设置为一个回调函数，这也是官方强烈推荐的用法；这个函数执行的时机为：</p>
-<p>(1)<strong>组件被挂载后，回调函数被立即执行，回调函数的参数为该组件的具体实例</strong>。</p>
-<p>(2)<strong>组件被卸载或者原有的ref属性本身发生变化时，回调也会被立即执行，此时回调函数参数为null，以确保内存泄露</strong>。</p>
-<p><strong>只能够对类组件和DOM元素添加ref属性</strong></p>
-<h4 id="对于DOM元素添加ref属性"><a href="#对于DOM元素添加ref属性" class="headerlink" title="对于DOM元素添加ref属性"></a>对于DOM元素添加ref属性</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">class CustomTextInput extends React.Component &#123;</div><div class="line">  constructor(props) &#123;</div><div class="line">    super(props);</div><div class="line">    this.focus = this.focus.bind(this);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  focus() &#123;</div><div class="line">    // 直接使用原生 API 使 text 输入框获得焦点</div><div class="line">    this.textInput.focus();</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  render() &#123;</div><div class="line">    // 使用 `ref` 的回调将 text 输入框的 DOM 节点存储到 React </div><div class="line">    // 实例上（比如 this.textInput）</div><div class="line">    return (</div><div class="line">      &lt;div&gt;</div><div class="line">        &lt;input</div><div class="line">          type=&quot;text&quot;</div><div class="line">          ref=&#123;(input) =&gt; &#123; this.textInput = input; &#125;&#125; /&gt;</div><div class="line">        &lt;input</div><div class="line">          type=&quot;button&quot;</div><div class="line">          value=&quot;Focus the text input&quot;</div><div class="line">          onClick=&#123;this.focus&#125;</div><div class="line">        /&gt;</div><div class="line">      &lt;/div&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h4 id="对于类组件添加ref属性"><a href="#对于类组件添加ref属性" class="headerlink" title="对于类组件添加ref属性"></a>对于类组件添加ref属性</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">class AutoFocusTextInput extends React.Component &#123;</div><div class="line">  componentDidMount() &#123;</div><div class="line">    this.textInput.focus();</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  render() &#123;</div><div class="line">    return (</div><div class="line">      &lt;CustomTextInput</div><div class="line">        ref=&#123;(input) =&gt; &#123; this.textInput = input; &#125;&#125; /&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="不使用ES6与使用ES6比较"><a href="#不使用ES6与使用ES6比较" class="headerlink" title="不使用ES6与使用ES6比较"></a>不使用ES6与使用ES6比较</h2><p>使用ES6的class关键字来创建组件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">class Greeting extends React.Component &#123;</div><div class="line">  render() &#123;</div><div class="line">    return &lt;h1&gt;Hello, &#123;this.props.name&#125;&lt;/h1&gt;;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>不使用的话,可以使用 create-react-class 模块来创建：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var createReactClass = require(&apos;create-react-class&apos;);</div><div class="line">var Greeting = createReactClass(&#123;</div><div class="line">  render: function() &#123;</div><div class="line">    return &lt;h1&gt;Hello, &#123;this.props.name&#125;&lt;/h1&gt;;</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
-<p>ES6中class相关的接口与createReactClass方法十分相似，但有以下几个区别值得注意：</p>
-<h3 id="声明默认属性"><a href="#声明默认属性" class="headerlink" title="声明默认属性"></a>声明默认属性</h3><p>如果使用 class 关键字创建组件，可以直接把自定义属性对象写到类的<code>defaultProps</code>属性中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">class Greeting extends React.Component &#123;</div><div class="line">  // ...</div><div class="line">&#125;</div><div class="line"></div><div class="line">Greeting.defaultProps = &#123;</div><div class="line">  name: &apos;Mary&apos;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-<p>如果使用 createReactClass 方法创建组件，那就需要在参数对象中定义<code>getDefaultProps</code>方法，并且在这个方法中返回包含自定义属性的对象：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var Greeting = createReactClass(&#123;</div><div class="line">  getDefaultProps: function() &#123;</div><div class="line">    return &#123;</div><div class="line">      name: &apos;Mary&apos;</div><div class="line">    &#125;;</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  // ...</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<h3 id="自动绑定"><a href="#自动绑定" class="headerlink" title="自动绑定"></a>自动绑定</h3><p>对于使用 class 关键字创建的 React 组件，组件中的方法是不会自动绑定 this 的。类似地，通过 ES6 class 生成的实例，实例上的方法也不会绑定 this。因此，你需要在 constructor 中为方法手动添加 .bind(this)：</p>
-<p>如果使用 createReactClass 方法创建组件，组件中的方法会自动绑定至实例，不需要像上面那样加 .bind(this)：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">var SayHello = createReactClass(&#123;</div><div class="line">  getInitialState: function() &#123;</div><div class="line">    return &#123;message: &apos;Hello!&apos;&#125;;</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  handleClick: function() &#123;</div><div class="line">    alert(this.state.message);</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  render: function() &#123;</div><div class="line">    return (</div><div class="line">      &lt;button onClick=&#123;this.handleClick&#125;&gt;</div><div class="line">        Say hello</div><div class="line">      &lt;/button&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p>为了保险起见，以下三种做法都是可以的：</p>
-<p>(1)把方法绑定给构造器 (constructor)</p>
-<p>(2)使用箭头函数，比如这样写：onClick={(e) =&gt; this.handleClick(e)}.</p>
-<p>(3)使用 createReactClass.</p>
-<h2 id="协调（Reconciliation）"><a href="#协调（Reconciliation）" class="headerlink" title="协调（Reconciliation）"></a>协调（Reconciliation）</h2><p>接下来会介绍React对比算法的选择以让组件更新可预测并使得高性能应用足够快。</p>
-<p>React基于两点假设，实现了一个启发的O(n)算法：</p>
-<p><strong>（1）两个不同类型的元素将产生不同的树。</strong></p>
-<p><strong>（2）通过渲染器附带key属性，开发者可以示意哪些子元素可能是稳定的</strong></p>
-<h3 id="元素的不同类型"><a href="#元素的不同类型" class="headerlink" title="元素的不同类型"></a>元素的不同类型</h3><p>每当根元素有不同类型，React将卸载旧树并重新构建新树。从<code>&lt;a&gt;</code>到<code>&lt;img&gt;</code>或从<code>&lt;Article&gt;</code>到<code>&lt;Comment&gt;</code>，或从<code>&lt;Button&gt;</code> 到 <code>&lt;div&gt;</code>，任何的调整都会导致全部重建。当树被卸载，旧的DOM节点将被销毁。组件实例将会接收到componentWillUnmount()方法。</p>
-<p>当构建一棵新树，新的DOM节点被插入到DOM中。组件实例将接收到componentWillMount()以及之后的componentDidMount()。任何有关旧树的状态都将被丢弃</p>
-<h3 id="相同类型的DOM元素"><a href="#相同类型的DOM元素" class="headerlink" title="相同类型的DOM元素"></a>相同类型的DOM元素</h3><p>当比较两个相同类型的<code>React DOM</code>元素时，<code>React</code>则会观察二者的属性，保持相同的底层DOM节点，并仅更新变化的属性。</p>
-<h3 id="相同类型的组件元素"><a href="#相同类型的组件元素" class="headerlink" title="相同类型的组件元素"></a>相同类型的组件元素</h3><p>当组件更新时，实例仍保持一致，以让状态能够在渲染之间保留。React更新底层组件实例的属性以满足新元素，并在底层实例上调用<code>componentWillReceiveProps()</code>和 <code>componentWillUpdate()</code>方法</p>
-<h3 id="利用keys来递归子树"><a href="#利用keys来递归子树" class="headerlink" title="利用keys来递归子树"></a>利用keys来递归子树</h3><p><strong>当子节点有key时，React使用key来匹配原本树的子节点和新树的子节点</strong></p>
-<h2 id="context-API"><a href="#context-API" class="headerlink" title="context API"></a>context API</h2><p>无需手动向下传递props属性，但是应用需要谨慎。</p>
-<h2 id="高阶组件"><a href="#高阶组件" class="headerlink" title="高阶组件"></a>高阶组件</h2>
           
         
       
@@ -1810,6 +1669,201 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/15/ReactJs(6)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="superDjy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://img.mp.itc.cn/upload/20170429/a2379efc26214d7fa790af6105312132">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="С�����ľ���">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/15/ReactJs(6)/" itemprop="url">React.js基础</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-15T00:00:00+08:00">
+                2017-08-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/React-js/" itemprop="url" rel="index">
+                    <span itemprop="name">React.js</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/08/15/ReactJs(6)/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/08/15/ReactJs(6)/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/08/15/ReactJs(6)/" class="leancloud_visitors" data-flag-title="React.js基础">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Refs-amp-Dom"><a href="#Refs-amp-Dom" class="headerlink" title="Refs&amp;Dom"></a>Refs&amp;Dom</h2><p>在react典型的数据流中，props传递是父子组件交互的唯一方式；通过传递一个新的props值来使子组件重新re-render,从而达到父子组件通信。当然，就像react官网所描述的一样，在react典型的数据量之外，某些情况下（例如和第三方的dom库整合，或者某个dom元素focus等）为了修改子组件我们可能需要另一种方式，这就是ref方式。</p>
+<p>ref可以挂到任何组件上，可以挂到组件上也可以是dom元素上；二者不同是：挂到组件（这里组件指的是有状态组件）上的<strong>ref表示对组件实例的引用</strong>，而挂<strong>载到dom元素上时表示具体的dom元素节点</strong></p>
+<h3 id="ref可以设置回调函数"><a href="#ref可以设置回调函数" class="headerlink" title="ref可以设置回调函数"></a>ref可以设置回调函数</h3><p>ref属性可以设置为一个回调函数，这也是官方强烈推荐的用法；这个函数执行的时机为：</p>
+<p>(1)<strong>组件被挂载后，回调函数被立即执行，回调函数的参数为该组件的具体实例</strong>。</p>
+<p>(2)<strong>组件被卸载或者原有的ref属性本身发生变化时，回调也会被立即执行，此时回调函数参数为null，以确保内存泄露</strong>。</p>
+<p><strong>只能够对类组件和DOM元素添加ref属性</strong></p>
+<h4 id="对于DOM元素添加ref属性"><a href="#对于DOM元素添加ref属性" class="headerlink" title="对于DOM元素添加ref属性"></a>对于DOM元素添加ref属性</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">class CustomTextInput extends React.Component &#123;</div><div class="line">  constructor(props) &#123;</div><div class="line">    super(props);</div><div class="line">    this.focus = this.focus.bind(this);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  focus() &#123;</div><div class="line">    // 直接使用原生 API 使 text 输入框获得焦点</div><div class="line">    this.textInput.focus();</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  render() &#123;</div><div class="line">    // 使用 `ref` 的回调将 text 输入框的 DOM 节点存储到 React </div><div class="line">    // 实例上（比如 this.textInput）</div><div class="line">    return (</div><div class="line">      &lt;div&gt;</div><div class="line">        &lt;input</div><div class="line">          type=&quot;text&quot;</div><div class="line">          ref=&#123;(input) =&gt; &#123; this.textInput = input; &#125;&#125; /&gt;</div><div class="line">        &lt;input</div><div class="line">          type=&quot;button&quot;</div><div class="line">          value=&quot;Focus the text input&quot;</div><div class="line">          onClick=&#123;this.focus&#125;</div><div class="line">        /&gt;</div><div class="line">      &lt;/div&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="对于类组件添加ref属性"><a href="#对于类组件添加ref属性" class="headerlink" title="对于类组件添加ref属性"></a>对于类组件添加ref属性</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">class AutoFocusTextInput extends React.Component &#123;</div><div class="line">  componentDidMount() &#123;</div><div class="line">    this.textInput.focus();</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  render() &#123;</div><div class="line">    return (</div><div class="line">      &lt;CustomTextInput</div><div class="line">        ref=&#123;(input) =&gt; &#123; this.textInput = input; &#125;&#125; /&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="不使用ES6与使用ES6比较"><a href="#不使用ES6与使用ES6比较" class="headerlink" title="不使用ES6与使用ES6比较"></a>不使用ES6与使用ES6比较</h2><p>使用ES6的class关键字来创建组件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">class Greeting extends React.Component &#123;</div><div class="line">  render() &#123;</div><div class="line">    return &lt;h1&gt;Hello, &#123;this.props.name&#125;&lt;/h1&gt;;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>不使用的话,可以使用 create-react-class 模块来创建：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var createReactClass = require(&apos;create-react-class&apos;);</div><div class="line">var Greeting = createReactClass(&#123;</div><div class="line">  render: function() &#123;</div><div class="line">    return &lt;h1&gt;Hello, &#123;this.props.name&#125;&lt;/h1&gt;;</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>ES6中class相关的接口与createReactClass方法十分相似，但有以下几个区别值得注意：</p>
+<h3 id="声明默认属性"><a href="#声明默认属性" class="headerlink" title="声明默认属性"></a>声明默认属性</h3><p>如果使用 class 关键字创建组件，可以直接把自定义属性对象写到类的<code>defaultProps</code>属性中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">class Greeting extends React.Component &#123;</div><div class="line">  // ...</div><div class="line">&#125;</div><div class="line"></div><div class="line">Greeting.defaultProps = &#123;</div><div class="line">  name: &apos;Mary&apos;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>如果使用 createReactClass 方法创建组件，那就需要在参数对象中定义<code>getDefaultProps</code>方法，并且在这个方法中返回包含自定义属性的对象：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var Greeting = createReactClass(&#123;</div><div class="line">  getDefaultProps: function() &#123;</div><div class="line">    return &#123;</div><div class="line">      name: &apos;Mary&apos;</div><div class="line">    &#125;;</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  // ...</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="自动绑定"><a href="#自动绑定" class="headerlink" title="自动绑定"></a>自动绑定</h3><p>对于使用 class 关键字创建的 React 组件，组件中的方法是不会自动绑定 this 的。类似地，通过 ES6 class 生成的实例，实例上的方法也不会绑定 this。因此，你需要在 constructor 中为方法手动添加 .bind(this)：</p>
+<p>如果使用 createReactClass 方法创建组件，组件中的方法会自动绑定至实例，不需要像上面那样加 .bind(this)：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">var SayHello = createReactClass(&#123;</div><div class="line">  getInitialState: function() &#123;</div><div class="line">    return &#123;message: &apos;Hello!&apos;&#125;;</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  handleClick: function() &#123;</div><div class="line">    alert(this.state.message);</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  render: function() &#123;</div><div class="line">    return (</div><div class="line">      &lt;button onClick=&#123;this.handleClick&#125;&gt;</div><div class="line">        Say hello</div><div class="line">      &lt;/button&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>为了保险起见，以下三种做法都是可以的：</p>
+<p>(1)把方法绑定给构造器 (constructor)</p>
+<p>(2)使用箭头函数，比如这样写：onClick={(e) =&gt; this.handleClick(e)}.</p>
+<p>(3)使用 createReactClass.</p>
+<h2 id="协调（Reconciliation）"><a href="#协调（Reconciliation）" class="headerlink" title="协调（Reconciliation）"></a>协调（Reconciliation）</h2><p>接下来会介绍React对比算法的选择以让组件更新可预测并使得高性能应用足够快。</p>
+<p>React基于两点假设，实现了一个启发的O(n)算法：</p>
+<p><strong>（1）两个不同类型的元素将产生不同的树。</strong></p>
+<p><strong>（2）通过渲染器附带key属性，开发者可以示意哪些子元素可能是稳定的</strong></p>
+<h3 id="元素的不同类型"><a href="#元素的不同类型" class="headerlink" title="元素的不同类型"></a>元素的不同类型</h3><p>每当根元素有不同类型，React将卸载旧树并重新构建新树。从<code>&lt;a&gt;</code>到<code>&lt;img&gt;</code>或从<code>&lt;Article&gt;</code>到<code>&lt;Comment&gt;</code>，或从<code>&lt;Button&gt;</code> 到 <code>&lt;div&gt;</code>，任何的调整都会导致全部重建。当树被卸载，旧的DOM节点将被销毁。组件实例将会接收到componentWillUnmount()方法。</p>
+<p>当构建一棵新树，新的DOM节点被插入到DOM中。组件实例将接收到componentWillMount()以及之后的componentDidMount()。任何有关旧树的状态都将被丢弃</p>
+<h3 id="相同类型的DOM元素"><a href="#相同类型的DOM元素" class="headerlink" title="相同类型的DOM元素"></a>相同类型的DOM元素</h3><p>当比较两个相同类型的<code>React DOM</code>元素时，<code>React</code>则会观察二者的属性，保持相同的底层DOM节点，并仅更新变化的属性。</p>
+<h3 id="相同类型的组件元素"><a href="#相同类型的组件元素" class="headerlink" title="相同类型的组件元素"></a>相同类型的组件元素</h3><p>当组件更新时，实例仍保持一致，以让状态能够在渲染之间保留。React更新底层组件实例的属性以满足新元素，并在底层实例上调用<code>componentWillReceiveProps()</code>和 <code>componentWillUpdate()</code>方法</p>
+<h3 id="利用keys来递归子树"><a href="#利用keys来递归子树" class="headerlink" title="利用keys来递归子树"></a>利用keys来递归子树</h3><p><strong>当子节点有key时，React使用key来匹配原本树的子节点和新树的子节点</strong></p>
+<h2 id="context-API"><a href="#context-API" class="headerlink" title="context API"></a>context API</h2><p>无需手动向下传递props属性，但是应用需要谨慎。</p>
+<h2 id="高阶组件"><a href="#高阶组件" class="headerlink" title="高阶组件"></a>高阶组件</h2>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/14/ReactJs(5)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1944,6 +1998,184 @@
 <h3 id="5-添加反向数据流"><a href="#5-添加反向数据流" class="headerlink" title="5.添加反向数据流"></a>5.添加反向数据流</h3><p>正确渲染的应用程序，它的数据在层级中通过函数的<code>props</code>和<code>state</code>向下流动。层级结构中最底层的表单组件需要去更新在父组件中的<code>state</code>。</p>
 <p>当我们想确保每当用户更改低层组件的表单时，我们更新父组件的状态来反应用户输入。<strong>因为组件应该只更新自己的状态，所以父组件会将一个回调函数传递给子组件，每当应该更新状态时，它就会触发。我们可以使用子组件输入上的onChange事件来调用它。父组件传入的回调函数会调用setState()，这时应用程序会被更新。</strong></p>
 <p>虽然这听起来很复杂，但它只是几行代码的问题。而且，你可以清楚地看出你的应用中数据是如何流动的。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/10/ReactJs(4)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="superDjy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://img.mp.itc.cn/upload/20170429/a2379efc26214d7fa790af6105312132">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="С�����ľ���">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/10/ReactJs(4)/" itemprop="url">React.js基础</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-10T00:00:00+08:00">
+                2017-08-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/React-js/" itemprop="url" rel="index">
+                    <span itemprop="name">React.js</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/08/10/ReactJs(4)/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/08/10/ReactJs(4)/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/08/10/ReactJs(4)/" class="leancloud_visitors" data-flag-title="React.js基础">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="表单（利用受控组件绑定value）"><a href="#表单（利用受控组件绑定value）" class="headerlink" title="表单（利用受控组件绑定value）"></a>表单（利用受控组件绑定value）</h2><p>值由React控制的输入表单元素称为“受控组件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">class NameForm extends React.Component&#123;</div><div class="line">  constructor(props)&#123;</div><div class="line">    super(props);</div><div class="line">    this.state=&#123;value: &apos;&apos;&#125;;</div><div class="line">    this.formSubmit = this.formSubmit.bind(this);</div><div class="line">    this.changeValue = this.changeValue.bind(this);</div><div class="line">  &#125;</div><div class="line">  formSubmit(event)&#123;</div><div class="line">    alert(&apos;this name is&apos; +this.state.value);</div><div class="line">    event.preventDefault();</div><div class="line">  &#125;</div><div class="line">  changeValue(event)&#123;</div><div class="line">    this.setState(&#123;value: event.target.value&#125;)</div><div class="line">  &#125;</div><div class="line">  render()&#123;</div><div class="line">    return(</div><div class="line">      &lt;form onSubmit=&#123;this.formSubmit&#125;&gt;</div><div class="line">      &lt;label&gt;</div><div class="line">        Name:&lt;input type=&quot;text&quot; value=&#123;this.state.value&#125; onChange=&#123;this.changeValue&#125; /&gt;</div><div class="line">      &lt;/label&gt;</div><div class="line">    &lt;/form&gt;</div><div class="line">    )</div><div class="line"></div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">ReactDOM.render(</div><div class="line">  &lt;NameForm /&gt;,</div><div class="line">  document.getElementById(&apos;root&apos;)</div><div class="line">);</div></pre></td></tr></table></figure></p>
+<p>使用”受控组件”,每个状态的改变都有一个与之相关的处理函数。这样就可以直接修改或验证用户输入。总之，<input type="text">，<textarea>,和</textarea><select>都十分类似，他们都通过传入一个value属性来实现对组件的控制。</select></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;form onSubmit=&#123;this.formSubmit&#125;&gt;</div><div class="line">		//在select根属性上设置value</div><div class="line">        &lt;select value=&#123;this.state.value&#125; onChange=&#123;this.changeValue&#125;&gt;</div><div class="line">        &lt;option value=&quot;haha&quot;&gt;Haha&lt;/option&gt;</div><div class="line">          &lt;option value=&quot;hehe&quot;&gt;Hehe&lt;/option&gt;</div><div class="line">          &lt;option  selected value=&quot;hihi&quot;&gt;Hihi&lt;/option&gt;</div><div class="line">          &lt;option value=&quot;lala&quot;&gt;Lala&lt;/option&gt;</div><div class="line">        &lt;/select&gt;</div><div class="line">       &lt;input type=&quot;submit&quot; value=&quot;Submit&quot; /&gt;</div><div class="line">    &lt;/form&gt;</div></pre></td></tr></table></figure>
+<p>当你有处理多个受控的input元素时，你可以通过给每个元素添加一个name属性，来让处理函数根据 event.target.name的值来选择做什么</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">  handleChange(event)&#123;</div><div class="line">    let target = event.target;</div><div class="line">    let name = target.name;</div><div class="line">    let value = name===&quot;checkbox&quot;?target.checked : target.value;</div><div class="line">    this.setState(&#123;</div><div class="line">      [name]: value</div><div class="line">    &#125;)</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  render()&#123;</div><div class="line">      return (</div><div class="line">        &lt;form &gt;</div><div class="line">          &lt;label&gt; </div><div class="line">            isGoing:&lt;input type=&quot;checkbox&quot; value=&#123;this.state.isGoing&#125; name=&quot;isGoing&quot; onChange=&#123;this.handleChange&#125; /&gt;</div><div class="line">          &lt;/label&gt;  </div><div class="line">          &lt;br /&gt;</div><div class="line">          &lt;label&gt;</div><div class="line">            输入框：&lt;input type=&quot;text&quot; value=&#123;this.state.nameValue&#125; name=&quot;nameValue&quot; onChange=&#123;this.handleChange&#125; /&gt;</div><div class="line">          &lt;/label&gt;</div><div class="line">        &lt;/form&gt;</div><div class="line">      )</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="状态提升"><a href="#状态提升" class="headerlink" title="状态提升"></a>状态提升</h2><p>使用 react 经常会遇到几个组件需要共用状态数据的情况。这种情况下，我们最好将这部分<strong>共享的状态提升至他们最近的父组件当中</strong>进行管理</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">function BoilingVerdict(props)&#123;</div><div class="line">  if(props.celcius&gt;=100)&#123;</div><div class="line">    return &lt;p&gt;The water is boiling &lt;/p&gt;</div><div class="line">  &#125;else&#123;</div><div class="line">    return &lt;p&gt; The water is not boiling&lt;/p&gt;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">handleChange(event)&#123;</div><div class="line">this.setState(&#123;temperature: event.target.value&#125;)</div><div class="line">&#125;</div><div class="line"></div><div class="line">render()&#123;</div><div class="line">const temperature = this.state.temperature;</div><div class="line">return(</div><div class="line">  &lt;fieldset&gt;</div><div class="line">    &lt;legend&gt;This a tap &lt;/legend&gt;</div><div class="line">    &lt;label&gt;</div><div class="line">      输入温度：&lt;input type=&quot;text&quot; value=&#123;temperature&#125;  onChange=&#123;this.handleChange&#125;/&gt;</div><div class="line">    &lt;/label&gt;</div><div class="line">    &lt;BoilingVerdict celcius=&#123;temperature&#125; /&gt;</div><div class="line">      </div><div class="line">  &lt;/fieldset&gt;</div><div class="line">)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>1.React在DOM原生组件<input>上调用指定的onChange函数。在本例中，指的是TemperatureInput组件上的handleChange函数。</p>
+<p>2.TemperatureInput组件的handleChange函数会在值发生变化时调用this.props.onTemperatureChange()函数。这些props属性，像onTemperatureChange都是由父组件Calculator提供的。</p>
+<p>3.当最开始渲染时，Calculator组件把内部的handleCelsiusChange方法指定给摄氏输入组件TemperatureInput的onTemperatureChange方法，并且把handleFahrenheitChange方法指定给华氏输入组件TemperatureInput的onTemperatureChange。两个Calculator内部的方法都会在相应输入框被编辑时被调用。</p>
+<p>4.在这些方法内部，Calculator组件会让React使用编辑输入的新值和当前输入框的温标来调用this.setState()方法来重渲染自身。</p>
+<p>5.React会调用Calculator组件的render方法来识别UI界面的样子。基于当前温度和温标，两个输入框的值会被重新计算。温度转换就是在这里被执行的。</p>
+<p>6.接着React会使用Calculator指定的新props来分别调用TemperatureInput组件。React也会识别出子组件的UI界面。React DOM 会更新DOM来匹配对应的值。我们编辑的输入框获取新值，而另一个输入框则更新经过转换的温度值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div></pre></td><td class="code"><pre><div class="line">const scaleNames = &#123;</div><div class="line">  c: &apos;Celsius&apos;,</div><div class="line">  f: &apos;Fahrenheit&apos;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">function toCelsius(fahrenheit) &#123;</div><div class="line">  return (fahrenheit - 32) * 5 / 9;</div><div class="line">&#125;</div><div class="line"></div><div class="line">function toFahrenheit(celsius) &#123;</div><div class="line">  return (celsius * 9 / 5) + 32;</div><div class="line">&#125;</div><div class="line"></div><div class="line">function tryConvert(temperature, convert) &#123;</div><div class="line">  const input = parseFloat(temperature);</div><div class="line">  if (Number.isNaN(input)) &#123;</div><div class="line">    return &apos;&apos;;</div><div class="line">  &#125;</div><div class="line">  const output = convert(input);</div><div class="line">  const rounded = Math.round(output * 1000) / 1000;</div><div class="line">  return rounded.toString();</div><div class="line">&#125;</div><div class="line"></div><div class="line">function BoilingVerdict(props) &#123;</div><div class="line">  if (props.celsius &gt;= 100) &#123;</div><div class="line">    return &lt;p&gt;The water would boil.&lt;/p&gt;;</div><div class="line">  &#125;</div><div class="line">  return &lt;p&gt;The water would not boil.&lt;/p&gt;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">class TemperatureInput extends React.Component&#123;</div><div class="line">  constructor(props)&#123;</div><div class="line">    super(props);</div><div class="line">    this.handleChange = this.handleChange.bind(this);</div><div class="line">    </div><div class="line">  &#125;</div><div class="line">  handleChange(e)&#123;</div><div class="line">    this.props.onTemperatureChange(e.target.value);</div><div class="line">  &#125;</div><div class="line">  render()&#123;</div><div class="line">    const temperature = this.props.temperature;</div><div class="line">    const scale = this.props.scale;</div><div class="line">    return(</div><div class="line">      &lt;fieldset&gt;</div><div class="line">        &lt;legend&gt;在&#123;scaleNames[scale]&#125;中输温度值 &lt;/legend&gt;</div><div class="line">        &lt;input type=&quot;text&quot; value=&#123;temperature&#125; onChange=&#123;this.handleChange&#125; /&gt;</div><div class="line">      &lt;/fieldset&gt;</div><div class="line">    )</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">class Calculator extends React.Component&#123;</div><div class="line">  constructor(props)&#123;</div><div class="line">    super(props);</div><div class="line">    this.state=&#123;temperature: &apos;&apos;,scale: &apos;c&apos;&#125;;</div><div class="line">    this.handleCelsiusChange = this.handleCelsiusChange.bind(this);</div><div class="line">    this.handleFahrenheitChange = this.handleFahrenheitChange.bind(this);</div><div class="line">  &#125;</div><div class="line">  handleCelsiusChange(value)&#123;</div><div class="line">    this.setState(&#123;</div><div class="line">      scale: &apos;c&apos;,temperature: value</div><div class="line">    &#125;)</div><div class="line">  &#125;</div><div class="line">  handleFahrenheitChange(value)&#123;</div><div class="line">    this.setState(&#123;</div><div class="line">      scale: &apos;f&apos;,temperature: value</div><div class="line">    &#125;)</div><div class="line">  &#125;</div><div class="line">  render()&#123;</div><div class="line">    const scale = this.state.scale;</div><div class="line">    const temperature = this.state.temperature;</div><div class="line">    const celsius = scale===&apos;f&apos;? tryConvert(temperature,toCelsius):temperature;</div><div class="line">    const fahrenheit = scale===&apos;c&apos;?tryConvert(temperature,toFahrenheit):temperature;</div><div class="line">    return(</div><div class="line">      &lt;div&gt;</div><div class="line">        &lt;TemperatureInput </div><div class="line">          scale=&apos;c&apos; </div><div class="line">          temperature=&#123;celsius&#125; </div><div class="line">          onTemperatureChange=&#123;this.handleCelsiusChange&#125; /&gt;</div><div class="line">        </div><div class="line">        &lt;TemperatureInput </div><div class="line">          scale=&apos;f&apos; </div><div class="line">          temperature=&#123;fahrenheit&#125; </div><div class="line">          onTemperatureChange=&#123;this.handleFahrenheitChange&#125; /&gt;</div><div class="line">        &lt; BoilingVerdict celsius=&#123;celsius&#125; /&gt;</div><div class="line">        </div><div class="line">      &lt;/div&gt;</div><div class="line">    )</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">ReactDOM.render(</div><div class="line">  &lt;Calculator /&gt;,</div><div class="line">  document.getElementById(&apos;root&apos;)</div><div class="line">);</div></pre></td></tr></table></figure>
+<h2 id="组合"><a href="#组合" class="headerlink" title="组合"></a>组合</h2><p>React 具有强大的组合模型，建议<strong>使用组合而不是继承来复用组件之间</strong>的代码</p>
 
           
         
@@ -2176,189 +2408,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/10/ReactJs(4)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="superDjy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://img.mp.itc.cn/upload/20170429/a2379efc26214d7fa790af6105312132">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="С�����ľ���">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/08/10/ReactJs(4)/" itemprop="url">React.js基础</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-10T00:00:00+08:00">
-                2017-08-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/React-js/" itemprop="url" rel="index">
-                    <span itemprop="name">React.js</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/08/10/ReactJs(4)/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/08/10/ReactJs(4)/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/08/10/ReactJs(4)/" class="leancloud_visitors" data-flag-title="React.js基础">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="表单（利用受控组件绑定value）"><a href="#表单（利用受控组件绑定value）" class="headerlink" title="表单（利用受控组件绑定value）"></a>表单（利用受控组件绑定value）</h2><p>值由React控制的输入表单元素称为“受控组件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">class NameForm extends React.Component&#123;</div><div class="line">  constructor(props)&#123;</div><div class="line">    super(props);</div><div class="line">    this.state=&#123;value: &apos;&apos;&#125;;</div><div class="line">    this.formSubmit = this.formSubmit.bind(this);</div><div class="line">    this.changeValue = this.changeValue.bind(this);</div><div class="line">  &#125;</div><div class="line">  formSubmit(event)&#123;</div><div class="line">    alert(&apos;this name is&apos; +this.state.value);</div><div class="line">    event.preventDefault();</div><div class="line">  &#125;</div><div class="line">  changeValue(event)&#123;</div><div class="line">    this.setState(&#123;value: event.target.value&#125;)</div><div class="line">  &#125;</div><div class="line">  render()&#123;</div><div class="line">    return(</div><div class="line">      &lt;form onSubmit=&#123;this.formSubmit&#125;&gt;</div><div class="line">      &lt;label&gt;</div><div class="line">        Name:&lt;input type=&quot;text&quot; value=&#123;this.state.value&#125; onChange=&#123;this.changeValue&#125; /&gt;</div><div class="line">      &lt;/label&gt;</div><div class="line">    &lt;/form&gt;</div><div class="line">    )</div><div class="line"></div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">ReactDOM.render(</div><div class="line">  &lt;NameForm /&gt;,</div><div class="line">  document.getElementById(&apos;root&apos;)</div><div class="line">);</div></pre></td></tr></table></figure></p>
-<p>使用”受控组件”,每个状态的改变都有一个与之相关的处理函数。这样就可以直接修改或验证用户输入。总之，<input type="text">，<textarea>,和</textarea><select>都十分类似，他们都通过传入一个value属性来实现对组件的控制。</select></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;form onSubmit=&#123;this.formSubmit&#125;&gt;</div><div class="line">		//在select根属性上设置value</div><div class="line">        &lt;select value=&#123;this.state.value&#125; onChange=&#123;this.changeValue&#125;&gt;</div><div class="line">        &lt;option value=&quot;haha&quot;&gt;Haha&lt;/option&gt;</div><div class="line">          &lt;option value=&quot;hehe&quot;&gt;Hehe&lt;/option&gt;</div><div class="line">          &lt;option  selected value=&quot;hihi&quot;&gt;Hihi&lt;/option&gt;</div><div class="line">          &lt;option value=&quot;lala&quot;&gt;Lala&lt;/option&gt;</div><div class="line">        &lt;/select&gt;</div><div class="line">       &lt;input type=&quot;submit&quot; value=&quot;Submit&quot; /&gt;</div><div class="line">    &lt;/form&gt;</div></pre></td></tr></table></figure>
-<p>当你有处理多个受控的input元素时，你可以通过给每个元素添加一个name属性，来让处理函数根据 event.target.name的值来选择做什么</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">  handleChange(event)&#123;</div><div class="line">    let target = event.target;</div><div class="line">    let name = target.name;</div><div class="line">    let value = name===&quot;checkbox&quot;?target.checked : target.value;</div><div class="line">    this.setState(&#123;</div><div class="line">      [name]: value</div><div class="line">    &#125;)</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  render()&#123;</div><div class="line">      return (</div><div class="line">        &lt;form &gt;</div><div class="line">          &lt;label&gt; </div><div class="line">            isGoing:&lt;input type=&quot;checkbox&quot; value=&#123;this.state.isGoing&#125; name=&quot;isGoing&quot; onChange=&#123;this.handleChange&#125; /&gt;</div><div class="line">          &lt;/label&gt;  </div><div class="line">          &lt;br /&gt;</div><div class="line">          &lt;label&gt;</div><div class="line">            输入框：&lt;input type=&quot;text&quot; value=&#123;this.state.nameValue&#125; name=&quot;nameValue&quot; onChange=&#123;this.handleChange&#125; /&gt;</div><div class="line">          &lt;/label&gt;</div><div class="line">        &lt;/form&gt;</div><div class="line">      )</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="状态提升"><a href="#状态提升" class="headerlink" title="状态提升"></a>状态提升</h2><p>使用 react 经常会遇到几个组件需要共用状态数据的情况。这种情况下，我们最好将这部分<strong>共享的状态提升至他们最近的父组件当中</strong>进行管理</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">function BoilingVerdict(props)&#123;</div><div class="line">  if(props.celcius&gt;=100)&#123;</div><div class="line">    return &lt;p&gt;The water is boiling &lt;/p&gt;</div><div class="line">  &#125;else&#123;</div><div class="line">    return &lt;p&gt; The water is not boiling&lt;/p&gt;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">handleChange(event)&#123;</div><div class="line">this.setState(&#123;temperature: event.target.value&#125;)</div><div class="line">&#125;</div><div class="line"></div><div class="line">render()&#123;</div><div class="line">const temperature = this.state.temperature;</div><div class="line">return(</div><div class="line">  &lt;fieldset&gt;</div><div class="line">    &lt;legend&gt;This a tap &lt;/legend&gt;</div><div class="line">    &lt;label&gt;</div><div class="line">      输入温度：&lt;input type=&quot;text&quot; value=&#123;temperature&#125;  onChange=&#123;this.handleChange&#125;/&gt;</div><div class="line">    &lt;/label&gt;</div><div class="line">    &lt;BoilingVerdict celcius=&#123;temperature&#125; /&gt;</div><div class="line">      </div><div class="line">  &lt;/fieldset&gt;</div><div class="line">)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>1.React在DOM原生组件<input>上调用指定的onChange函数。在本例中，指的是TemperatureInput组件上的handleChange函数。</p>
-<p>2.TemperatureInput组件的handleChange函数会在值发生变化时调用this.props.onTemperatureChange()函数。这些props属性，像onTemperatureChange都是由父组件Calculator提供的。</p>
-<p>3.当最开始渲染时，Calculator组件把内部的handleCelsiusChange方法指定给摄氏输入组件TemperatureInput的onTemperatureChange方法，并且把handleFahrenheitChange方法指定给华氏输入组件TemperatureInput的onTemperatureChange。两个Calculator内部的方法都会在相应输入框被编辑时被调用。</p>
-<p>4.在这些方法内部，Calculator组件会让React使用编辑输入的新值和当前输入框的温标来调用this.setState()方法来重渲染自身。</p>
-<p>5.React会调用Calculator组件的render方法来识别UI界面的样子。基于当前温度和温标，两个输入框的值会被重新计算。温度转换就是在这里被执行的。</p>
-<p>6.接着React会使用Calculator指定的新props来分别调用TemperatureInput组件。React也会识别出子组件的UI界面。React DOM 会更新DOM来匹配对应的值。我们编辑的输入框获取新值，而另一个输入框则更新经过转换的温度值。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div></pre></td><td class="code"><pre><div class="line">const scaleNames = &#123;</div><div class="line">  c: &apos;Celsius&apos;,</div><div class="line">  f: &apos;Fahrenheit&apos;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">function toCelsius(fahrenheit) &#123;</div><div class="line">  return (fahrenheit - 32) * 5 / 9;</div><div class="line">&#125;</div><div class="line"></div><div class="line">function toFahrenheit(celsius) &#123;</div><div class="line">  return (celsius * 9 / 5) + 32;</div><div class="line">&#125;</div><div class="line"></div><div class="line">function tryConvert(temperature, convert) &#123;</div><div class="line">  const input = parseFloat(temperature);</div><div class="line">  if (Number.isNaN(input)) &#123;</div><div class="line">    return &apos;&apos;;</div><div class="line">  &#125;</div><div class="line">  const output = convert(input);</div><div class="line">  const rounded = Math.round(output * 1000) / 1000;</div><div class="line">  return rounded.toString();</div><div class="line">&#125;</div><div class="line"></div><div class="line">function BoilingVerdict(props) &#123;</div><div class="line">  if (props.celsius &gt;= 100) &#123;</div><div class="line">    return &lt;p&gt;The water would boil.&lt;/p&gt;;</div><div class="line">  &#125;</div><div class="line">  return &lt;p&gt;The water would not boil.&lt;/p&gt;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">class TemperatureInput extends React.Component&#123;</div><div class="line">  constructor(props)&#123;</div><div class="line">    super(props);</div><div class="line">    this.handleChange = this.handleChange.bind(this);</div><div class="line">    </div><div class="line">  &#125;</div><div class="line">  handleChange(e)&#123;</div><div class="line">    this.props.onTemperatureChange(e.target.value);</div><div class="line">  &#125;</div><div class="line">  render()&#123;</div><div class="line">    const temperature = this.props.temperature;</div><div class="line">    const scale = this.props.scale;</div><div class="line">    return(</div><div class="line">      &lt;fieldset&gt;</div><div class="line">        &lt;legend&gt;在&#123;scaleNames[scale]&#125;中输温度值 &lt;/legend&gt;</div><div class="line">        &lt;input type=&quot;text&quot; value=&#123;temperature&#125; onChange=&#123;this.handleChange&#125; /&gt;</div><div class="line">      &lt;/fieldset&gt;</div><div class="line">    )</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">class Calculator extends React.Component&#123;</div><div class="line">  constructor(props)&#123;</div><div class="line">    super(props);</div><div class="line">    this.state=&#123;temperature: &apos;&apos;,scale: &apos;c&apos;&#125;;</div><div class="line">    this.handleCelsiusChange = this.handleCelsiusChange.bind(this);</div><div class="line">    this.handleFahrenheitChange = this.handleFahrenheitChange.bind(this);</div><div class="line">  &#125;</div><div class="line">  handleCelsiusChange(value)&#123;</div><div class="line">    this.setState(&#123;</div><div class="line">      scale: &apos;c&apos;,temperature: value</div><div class="line">    &#125;)</div><div class="line">  &#125;</div><div class="line">  handleFahrenheitChange(value)&#123;</div><div class="line">    this.setState(&#123;</div><div class="line">      scale: &apos;f&apos;,temperature: value</div><div class="line">    &#125;)</div><div class="line">  &#125;</div><div class="line">  render()&#123;</div><div class="line">    const scale = this.state.scale;</div><div class="line">    const temperature = this.state.temperature;</div><div class="line">    const celsius = scale===&apos;f&apos;? tryConvert(temperature,toCelsius):temperature;</div><div class="line">    const fahrenheit = scale===&apos;c&apos;?tryConvert(temperature,toFahrenheit):temperature;</div><div class="line">    return(</div><div class="line">      &lt;div&gt;</div><div class="line">        &lt;TemperatureInput </div><div class="line">          scale=&apos;c&apos; </div><div class="line">          temperature=&#123;celsius&#125; </div><div class="line">          onTemperatureChange=&#123;this.handleCelsiusChange&#125; /&gt;</div><div class="line">        </div><div class="line">        &lt;TemperatureInput </div><div class="line">          scale=&apos;f&apos; </div><div class="line">          temperature=&#123;fahrenheit&#125; </div><div class="line">          onTemperatureChange=&#123;this.handleFahrenheitChange&#125; /&gt;</div><div class="line">        &lt; BoilingVerdict celsius=&#123;celsius&#125; /&gt;</div><div class="line">        </div><div class="line">      &lt;/div&gt;</div><div class="line">    )</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">ReactDOM.render(</div><div class="line">  &lt;Calculator /&gt;,</div><div class="line">  document.getElementById(&apos;root&apos;)</div><div class="line">);</div></pre></td></tr></table></figure>
-<h2 id="组合"><a href="#组合" class="headerlink" title="组合"></a>组合</h2><p>React 具有强大的组合模型，建议<strong>使用组合而不是继承来复用组件之间</strong>的代码</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2404,7 +2458,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">50</span>
+                <span class="site-state-item-count">51</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
