@@ -483,8 +483,43 @@
 <p>比如：加入你这个界面中用到了一个三方的图形控件Echart,那么这个包总是很大的，即使是最小的也有300k左右，其实你其他的代码可能都不到100k，那么这300k将会非常影响你这个界面的加载速度，所以需要给这个<strong>控件做一个按需加载</strong>，这样可以先展示其余的这100k所展示的界面，等待其余的300k下载好了再把Echart给补上。</p>
 <p>通过服务器对代码进行gzip压缩</p>
 <p>服务器端渲染</p>
-<p>### </p>
-
+<h2 id="跨域的实现方式"><a href="#跨域的实现方式" class="headerlink" title="跨域的实现方式"></a>跨域的实现方式</h2><p><em>由于浏览器同源策略，凡是发送请求url的协议、域名、端口三者之间任意一与当前页面地址不同即为跨域。</em></p>
+<p>（1）JSONP<br>这种方式主要是通过动态插入一个script标签。浏览器对script的资源引用没有同源限制（所谓同源是指所请求的主机，域名，协议，端口与当前相同），同时资源加载到页面后会立即执行。具体来说就是本站脚本创建一个<script>元素，地址指向第三方的API网址，形如：<code>&lt;script src=&quot;http://www.example.net/api?param1=1&amp;param2=2&quot;&gt;&lt;/script&gt;</code>并提供一个回调函数来接收数据（函数名可约定，或通过地址参数传递）。   </p>
+<p>第三方产生的响应为json数据的包装（故称之为jsonp，即json padding），形如：<code>callback({&quot;name&quot;:&quot;hax&quot;,&quot;gender&quot;:&quot;Male&quot;})</code>这样浏览器会调用callback函数，并传递解析后json对象作为参数，，客户端即可拿到数据。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">function json(jsonObj) &#123;</div><div class="line">   //dosomthing</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 调用jsonHandle，传入地址、追加参数，服务器端返回js代码，</div><div class="line">// 并调用客户端写好的json方法并把json数据传入进来。</div><div class="line">function jsonHandle(url) &#123;</div><div class="line">    var script = document.createElement(&quot;script&quot;);</div><div class="line">    script.setAttribute(&quot;src&quot;,url);</div><div class="line">    document.body.appendChild(script);</div><div class="line"></div><div class="line">    // 防止 script 标签冗余</div><div class="line">    if(oScript) &#123;</div><div class="line">      document.body.removeChild(oScript);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>(2)通过修改document.domain来跨<strong>子域</strong></p>
+<p>在页面<a href="http://www.example.com/a.html">http://www.example.com/a.html</a> 上设置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">document.domain = &apos;example.com&apos;;</div><div class="line">var ifr = document.createElement(&apos;iframe&apos;);</div><div class="line">ifr.src = &apos;http://example.com/b.html&apos;;</div><div class="line">ifr.style.display = &apos;none&apos;;</div><div class="line">document.body.appendChild(ifr);</div><div class="line">ifr.onload = function()&#123;</div><div class="line">    var doc = ifr.contentDocument || ifr.contentWindow.document;</div><div class="line">    // 在这里操纵b.html</div><div class="line">    alert(doc.getElementsByTagName(&quot;h1&quot;)[0].childNodes[0].nodeValue);</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>同时，在页面<a href="http://example.com/b.html上设置`document.domain">http://example.com/b.html上设置`document.domain</a> = ‘a.com’`</p>
+<p>##　安全性问题</p>
+<h3 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h3><p>所谓SQL注入，就是<strong>通过把SQL命令插入到Web表单提交或输入域名或页面请求的查询字符串</strong>，最终达到欺骗服务器执行恶意的SQL命令。<br>具体来说，它是利用现有应用程序，将(恶意)的SQL命令注入到后台数据库引擎执行的能力，它可以通过在Web表单中输入(恶意)SQL语句得到一个存在安全漏洞的网站上的数据库，而不是按照设计者意图去执行SQL语句。</p>
+<h3 id="Xss"><a href="#Xss" class="headerlink" title="Xss"></a>Xss</h3><p><strong>Xss表示Cross Site Scripting(跨站脚本攻击)</strong>。它与SQL注入攻击类似，SQL注入攻击中以SQL语句作为用户输入，从而达到查询/修改/删除数据的目的，而在Xss攻击中，通过插入恶意脚本，实现对用户浏览器的控制。它是不会对服务器端造成任何伤害，而是通过一些正常的站内交互途径，例如发布评论，提交含有 JavaScript 的内容文本。这时服务器端如果没有过滤或转义掉这些脚本，作为内容发布到了页面上，其他用户访问这个页面的时候就会运行这些脚本</p>
+<p>现代web开发框架如vue.js、react.js等，在设计的时候就考虑了Xss攻击<strong>对html插值进行了更进一步的抽象、过滤和转义（转义安全字符）</strong>，我们只要熟练正确地使用他们，就可以在大部分情况下避免XSS攻击。</p>
+<p>同时，<strong>许多基于MVVM框架的SPA（单页应用）不需要刷新URL来控制view，这样大大防止了XSS隐患</strong>。</p>
+<h3 id="Csrf"><a href="#Csrf" class="headerlink" title="Csrf"></a>Csrf</h3><p>跨站点请求伪造：对于未被授权系统有权访问的某个资源的情况。</p>
+<p>解决方法：</p>
+<p>1.验证发送的请求者是否有权限访问相应的资源，往往是在用户不知情的情况下构造网络请求。所以如果使用验证码，那么每次操作都需要用户进行互动，从而简单有效的防御了CSRF攻击。</p>
+<p>2.关键操作只接受POST请求</p>
+<p>3.Token：目前主流的做法是使用<code>Token</code>抵御 CSRF 攻击。下面通过分析<code>CSRF</code>攻击来理解为什么 Token 能够有效CSRF攻击要成功的条件在于攻击者能够预测所有的参数从而构造出合法的请求。所以根据不可预测性原则，我们可以对参数进行加密从而防止CSRF攻击。</p>
+<p>另一个更通用的做法是保持原有参数不变，另外添加一个参数Token，其值是随机的。这样攻击者因为不知道Token而无法构造出合法的请求进行攻击。</p>
+<p>Token 使用原则:</p>
+<p>Token 要足够随机————只有这样才算不可预测</p>
+<p>Token 是一次性的，即每次请求成功后要更新Token————这样可以增加攻击难度，增加预测难度</p>
+<p>Token 要注意保密性————敏感操作使用 post，防止 Token 出现在 URL 中</p>
+<h2 id="HTTP最常见的响应头如下所示"><a href="#HTTP最常见的响应头如下所示" class="headerlink" title="HTTP最常见的响应头如下所示"></a>HTTP最常见的响应头如下所示</h2><p> Allow：服务器支持哪些请求方法（如GET、POST等）；</p>
+<p>Content-Encoding： 文档的编码（Encode）方法。只有在解码之后才可以得到Content-Type头指定的内容类型。利用gzip压缩文档能够显著地减少HTML文档 的下载时间。Java的GZIPOutputStream可以很方便地进行gzip压缩，但只有Unix上的Netscape和Windows上的IE 4、IE 5才支持它。因此，Servlet应该通过查看Accept-Encoding头（即request.getHeader(“Accept- Encoding”)）检查浏览器是否支持gzip，为支持gzip的浏览器返回经gzip压缩的HTML页面，为其他浏览器返回普通页面；</p>
+<p>Content-Length：表示内容长度。只有当浏览器使用持久HTTP连接时才需要这个数据。如果你想要利用持久连接的优势，可以把输出文档写入<code>ByteArrayOutputStram</code>，完成后查看其大小，然后把该值放入Content-Length头，最后通过 <code>byteArrayStream.writeTo(response.getOutputStream())</code>发送内容；</p>
+<p>Content-Type：表示后面的文档属于什么MIME类型。Servlet默认为text/plain，但通常需要显式地指定为text/html。由于经常要设置 Content-Type，因此HttpServletResponse提供了一个专用的方法setContentTyep。可在web.xml文件中 配置扩展名和MIME类型的对应关系；</p>
+<p>Date：当前的GMT时间。你可以用setDateHeader来设置这个头以避免转换时间格式的麻烦；</p>
+<p>Expires：指明应该在什么时候认为文档已经过期，从而不再缓存它。</p>
+<p>Last-Modified：文档的最后改动时间。客户可以通过If-Modified-Since请求头提供一个日期，该请求将被视为一个条件GET，只有改动时间迟于指定时间的文档才会返回，否则返回一个304（Not Modified）状态。Last-Modified也可用setDateHeader方法来设置；</p>
+<p>Location：表示客户应当到哪里去提取文档。Location通常不是直接设置的，而是通过HttpServletResponse的sendRedirect方法，该方法同时设置状态代码为302；</p>
+<p>Refresh：表示浏览器应该在多少时间之后刷新文档，以秒计。除了刷新当前文档之外，你还可以通过setHeader(“Refresh”, “5; URL=<a href="http://host/path&quot;)让浏览器读取指定的页面。注意这种功能通常是通过设置HTML页面HEAD区的`">http://host/path&quot;)让浏览器读取指定的页面。注意这种功能通常是通过设置HTML页面HEAD区的`</a><META HTTP-EQUIV="Refresh" CONTENT="5;URL=http://host/path"><code>实现，这是因为，自动刷新或重定向对于那些不能使用CGI或Servlet的HTML编写者十分重要。但是，对于Servlet来说，直接设置 Refresh头更加方便。注意Refresh的意义是“N秒之后刷新本页面或访问指定页面”，而不是“每隔N秒刷新本页面或访问指定页面”。因此，连续 刷新要求每次都发送一个Refresh头，而发送204状态代码则可以阻止浏览器继续刷新，不管是使用Refresh头还是</code><META HTTP-EQUIV="Refresh" ...>`。注意Refresh头不属于HTTP 1.1正式规范的一部分，而是一个扩展，但Netscape和IE都支持它。</p>
+<h3 id="定时器"><a href="#定时器" class="headerlink" title="定时器"></a>定时器</h3><p>关于定时器要记住的最重要的一点是：指定的时间间隔表示何时将定时器的代码添加到队列，而不是何时执行代码。</p>
+<h3 id="函数节流"><a href="#函数节流" class="headerlink" title="函数节流"></a>函数节流</h3><p>DOM操作比起非DOM交互需要更多的内存和CPU时间，其高频率的更改有可能使得浏览器崩溃。可以使用定时器对该函数进行<strong>节流</strong></p>
+<p>函数节流背后的基本思想指的是：<strong>某些代码不可以在没有间断的情况下连续重复执行</strong>。节流函数形式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">function throttle(method,context)&#123;</div><div class="line">	clearTimeout(method.tId);</div><div class="line">	method.tId=setTimeout(function()&#123;</div><div class="line">		method.call(context)</div><div class="line">	&#125;,100)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>函数的两个参数为：1.要执行的函数 2.在那个作用域中执行。节流在resize函数中使用的最为频繁。当代码时周期性执行的时候，都应该使用节流。</p>
+</script></p>
           
         
       
@@ -940,7 +975,7 @@
 <p>原因：样式表不参与 DOM 修改，所以不会为了解析样式停止文档解析</p>
 <p><strong>（3） JavaScript</strong></p>
 <p>优化建议：修改 className 而非 style；离线 DOM 后修改，如 documentFragment 或者 display:none 后再调整样式；缓存属性值；不使用 table 布局（牵一发动全身）</p>
-<p>事件委托</p>
+<p>事件委托，事件代理</p>
 <p><strong>（4）资源</strong></p>
 <p>懒加载</p>
 <p>如图像的懒加载（滚动到显示区域后才加载）等。</p>
@@ -964,6 +999,7 @@
 <p>  （5） 少用全局变量、缓存DOM节点查找的结果。减少IO读取操作。</p>
 <p>  （6） 避免使用CSS Expression（css表达式)又称Dynamic properties(动态属性)。</p>
 <p>  （7） 图片预加载，将样式表放在顶部，将脚本放在底部  加上时间戳。</p>
+<h3 id="web-workers"><a href="#web-workers" class="headerlink" title="web workers"></a>web workers</h3><p>是可以运行异步javascript代码，避免阻塞用户界面。在执行复杂计算和数据处理的时候，这个API非常有用。</p>
 
           
         
