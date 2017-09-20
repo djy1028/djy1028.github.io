@@ -112,18 +112,18 @@
 
 
 
-<meta name="description" content="状态模式状态模式额关键在于区分事物内部的状态，事物内部状态的改变往往会带来行为的改变。 通常我们谈到的封装，一般会优先封装状态的行为，但是在状态模式中正好相反，状态模式的关键是将事物的每种状态都封装成单独的类，与此种状态有关的行为也会被封装在这个类的内部。 状态模式的定义：允许一个对象在其内部状态改变时改变它的行为，对象看起来似乎修改了它的类。 将这句话拆分开来解释的话就是：将状态封装成独立的类，">
+<meta name="description" content="状态模式状态模式的关键在于区分事物内部的状态，事物内部状态的改变往往会带来行为的改变 通常我们谈到的封装，一般会优先封装状态的行为，但是在状态模式中正好相反，状态模式的关键是将事物的每种状态都封装成单独的类，与此种状态有关的行为也会被封装在这个类的内部。 状态模式的定义：允许一个对象在其内部状态改变时改变它的行为，对象看起来似乎修改了它的类。 将这句话拆分开来解释的话就是：将状态封装成独立的类，并">
 <meta name="keywords" content="设计模式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="js设计模式(10)">
 <meta property="og:url" content="http://yoursite.com/2017/06/29/js设计模式(10)/index.html">
 <meta property="og:site_name" content="С�����ľ���">
-<meta property="og:description" content="状态模式状态模式额关键在于区分事物内部的状态，事物内部状态的改变往往会带来行为的改变。 通常我们谈到的封装，一般会优先封装状态的行为，但是在状态模式中正好相反，状态模式的关键是将事物的每种状态都封装成单独的类，与此种状态有关的行为也会被封装在这个类的内部。 状态模式的定义：允许一个对象在其内部状态改变时改变它的行为，对象看起来似乎修改了它的类。 将这句话拆分开来解释的话就是：将状态封装成独立的类，">
+<meta property="og:description" content="状态模式状态模式的关键在于区分事物内部的状态，事物内部状态的改变往往会带来行为的改变 通常我们谈到的封装，一般会优先封装状态的行为，但是在状态模式中正好相反，状态模式的关键是将事物的每种状态都封装成单独的类，与此种状态有关的行为也会被封装在这个类的内部。 状态模式的定义：允许一个对象在其内部状态改变时改变它的行为，对象看起来似乎修改了它的类。 将这句话拆分开来解释的话就是：将状态封装成独立的类，并">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-07-10T09:35:24.424Z">
+<meta property="og:updated_time" content="2017-09-18T02:50:23.113Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js设计模式(10)">
-<meta name="twitter:description" content="状态模式状态模式额关键在于区分事物内部的状态，事物内部状态的改变往往会带来行为的改变。 通常我们谈到的封装，一般会优先封装状态的行为，但是在状态模式中正好相反，状态模式的关键是将事物的每种状态都封装成单独的类，与此种状态有关的行为也会被封装在这个类的内部。 状态模式的定义：允许一个对象在其内部状态改变时改变它的行为，对象看起来似乎修改了它的类。 将这句话拆分开来解释的话就是：将状态封装成独立的类，">
+<meta name="twitter:description" content="状态模式状态模式的关键在于区分事物内部的状态，事物内部状态的改变往往会带来行为的改变 通常我们谈到的封装，一般会优先封装状态的行为，但是在状态模式中正好相反，状态模式的关键是将事物的每种状态都封装成单独的类，与此种状态有关的行为也会被封装在这个类的内部。 状态模式的定义：允许一个对象在其内部状态改变时改变它的行为，对象看起来似乎修改了它的类。 将这句话拆分开来解释的话就是：将状态封装成独立的类，并">
 
 
 
@@ -446,7 +446,7 @@
       
 
       
-        <h1 id="状态模式"><a href="#状态模式" class="headerlink" title="状态模式"></a>状态模式</h1><p><strong>状态模式额关键在于区分事物内部的状态，事物内部状态的改变往往会带来行为的改变。</strong></p>
+        <h1 id="状态模式"><a href="#状态模式" class="headerlink" title="状态模式"></a>状态模式</h1><p><strong>状态模式的关键在于区分事物内部的状态，事物内部状态的改变往往会带来行为的改变</strong></p>
 <p>通常我们谈到的封装，一般会优先封装状态的行为，但是在状态模式中正好相反，状态模式的关键是将事物的每种状态都封装成单独的类，与此种状态有关的行为也会被封装在这个类的内部。</p>
 <p><em>状态模式的定义：允许一个对象在其内部状态改变时改变它的行为，对象看起来似乎修改了它的类</em>。</p>
 <p>将这句话拆分开来解释的话就是：将状态封装成独立的类，并将请求委托给当前的状态对象，当对象内部状态发生改变时，会通过改变行为带来不同的变化。我们使用的对象，在不同状态下具有截然不同的行为，这个对象看起来是从不同的类中实例化而来。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line">//定义一个Light类（context），随后在Light类的构造函数中创建每个状态类的实例对象，context将持有这些状态对象的引用，以便把请求委托给状态对象。</div><div class="line">var Light=function()&#123;</div><div class="line">	this.offLightState= new OffLightState(this);</div><div class="line">	this.weakLightState=new WeakLightState(this);</div><div class="line">	this.strongLightState=new StrongLightState(this);</div><div class="line">	this.button=null;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Light.prototype.init=function()&#123;</div><div class="line">	var button =document.createElement(&apos;button&apos;);</div><div class="line">	self=this;</div><div class="line">	this.button=document.body.appendChild(button);</div><div class="line">	this.button.innerHTML=&apos;开关&apos;;</div><div class="line">	this.currState=this.offLightState;</div><div class="line">	this.button.onclick=function()&#123;</div><div class="line">	self.currState.buttonWasPressed();</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">//建立每个状态类</div><div class="line"></div><div class="line">var OffLightState=function(light)&#123;</div><div class="line">	this.light=light;</div><div class="line">&#125;</div><div class="line">OffLightState.prototype.buttonWasPressed=function()&#123;</div><div class="line">	console.log(&apos;weaklight&apos;);</div><div class="line">	this.light.setState(this.light.weakLightState);</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">var WeakLightState=function(light)&#123;</div><div class="line">	this.light=light;</div><div class="line">&#125;</div><div class="line">WeakLightState.prototype.buttonWasPressed=function()&#123;</div><div class="line">	console.log(&apos;stronglight&apos;);</div><div class="line">	this.light.setState(this.light.strongLightState);</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">var StrongLightState=function(light)&#123;</div><div class="line">	this.light=light;</div><div class="line">&#125;</div><div class="line">StrongLightState.prototype.buttonWasPressed=function()&#123;</div><div class="line">	console.log(&apos;offlight&apos;);</div><div class="line">	this.light.setState(this.light.offLightState);</div><div class="line">&#125;</div><div class="line"></div><div class="line">//设置状态</div><div class="line"></div><div class="line">Light.prototype.setState=function(newState)&#123;</div><div class="line">	this.currState.newState;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var light=new Light();</div><div class="line">light.init();</div></pre></td></tr></table></figure></p>
@@ -493,8 +493,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/06/29/Vue基础(1)/" rel="next" title="Vue.js基础">
-                <i class="fa fa-chevron-left"></i> Vue.js基础
+              <a href="/2017/06/29/js设计模式(9)/" rel="next" title="js设计模式(9)">
+                <i class="fa fa-chevron-left"></i> js设计模式(9)
               </a>
             
           </div>
@@ -503,8 +503,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/06/29/js设计模式(9)/" rel="prev" title="js设计模式(9)">
-                js设计模式(9) <i class="fa fa-chevron-right"></i>
+              <a href="/2017/06/30/vue(3)/" rel="prev" title="Vue.js基础">
+                Vue.js基础 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -612,7 +612,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">51</span>
+                <span class="site-state-item-count">52</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

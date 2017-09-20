@@ -335,7 +335,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/16/js数据结构与算法(4)/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/17/js数据结构与算法(5 end)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="superDjy">
@@ -354,7 +354,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/06/16/js数据结构与算法(4)/" itemprop="url">JS中的数据结构与算法(4)</a></h1>
+                <a class="post-title-link" href="/2017/06/17/js数据结构与算法(5 end)/" itemprop="url">JS中的数据结构与算法(5)</a></h1>
         
 
         <div class="post-meta">
@@ -366,8 +366,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-16T00:00:00+08:00">
-                2017-06-16
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-17T00:00:00+08:00">
+                2017-06-17
               </time>
             
 
@@ -407,9 +407,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/06/16/js数据结构与算法(4)/#comments" itemprop="discussionUrl">
+                <a href="/2017/06/17/js数据结构与算法(5 end)/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/06/16/js数据结构与算法(4)/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/06/17/js数据结构与算法(5 end)/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -417,7 +417,7 @@
 
           
           
-             <span id="/2017/06/16/js数据结构与算法(4)/" class="leancloud_visitors" data-flag-title="JS中的数据结构与算法(4)">
+             <span id="/2017/06/17/js数据结构与算法(5 end)/" class="leancloud_visitors" data-flag-title="JS中的数据结构与算法(5)">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -450,10 +450,18 @@
       
         
           
-            <h1 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h1><h2 id="简单排序算法"><a href="#简单排序算法" class="headerlink" title="简单排序算法"></a>简单排序算法</h2><h3 id="1-冒泡排序"><a href="#1-冒泡排序" class="headerlink" title="1 冒泡排序"></a>1 冒泡排序</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">function bubble(arr)&#123;</div><div class="line">	var length = arr.length;</div><div class="line">	var temp;</div><div class="line">	for(var i =0; i&lt;length;i++)&#123;</div><div class="line">		for(var j=length-1;j&gt;i;j--)&#123;</div><div class="line">			if(arr[i]&lt;=arr[j])&#123;</div><div class="line">				temp = arr[i];</div><div class="line">				arr[i] = arr[j];</div><div class="line">				arr[j] = temp;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	return arr;</div><div class="line">&#125;</div><div class="line">var a = [3,2,4,1];</div><div class="line">bubble(a);</div><div class="line">结果为:[4, 3, 2, 1]</div></pre></td></tr></table></figure>
-<h3 id="2-选择排序"><a href="#2-选择排序" class="headerlink" title="2 选择排序"></a>2 选择排序</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">function select(arr)&#123;</div><div class="line">	var length = arr.length;</div><div class="line">	var temp;</div><div class="line">	var min</div><div class="line">	for(var i =0; i&lt;length-2;++i)&#123;</div><div class="line">		min = i;</div><div class="line">		for(var j=i+1;j&lt;length-1;++j)&#123;</div><div class="line">			if(arr[j]&lt;=arr[min])&#123;</div><div class="line">				min = j;</div><div class="line">			&#125;</div><div class="line">			temp = arr[i];</div><div class="line">			arr[i] = arr[min];</div><div class="line">			arr[min] = temp;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	return arr;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="高级排序算法"><a href="#高级排序算法" class="headerlink" title="高级排序算法"></a>高级排序算法</h2><h3 id="1-希尔排序"><a href="#1-希尔排序" class="headerlink" title="1 希尔排序"></a>1 希尔排序</h3><p>希尔排序在插入排序的基础上做了一些改变，它会首先比较距离较远的元素而非距离较近的元素。然后不断缩小元素之间的比较距离直到处理到数据集末尾，这时候算法开始比较相邻元素。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">function shellSort(arr)&#123;</div><div class="line">var length = arr.length;</div><div class="line">var h=1;</div><div class="line">while(h&lt;length/3)&#123;</div><div class="line">	h = 3*h +1;</div><div class="line">&#125;</div><div class="line">while(h&gt;=1)&#123;</div><div class="line">	for(var i=h; i&lt;length;i++)&#123;</div><div class="line">		for(var j=i;j&gt;=h&amp;&amp;arr[j]&lt;arr[j-h];j=j-h)&#123;</div><div class="line">			if(arr[j]&lt;arr[j-h])&#123;</div><div class="line">				temp = arr[j];</div><div class="line">				arr[j] = arr[j-h];</div><div class="line">				arr[j-h] = temp;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	h=(h-1)/3;</div><div class="line">&#125;</div><div class="line">return arr;</div><div class="line">&#125;</div><div class="line">var a =[92,31,5,96,44,88,34,57,44,72,20,83,4,623,12,12,932,54];</div><div class="line">shellSort(a);</div><div class="line">结果为： [4, 5, 12, 12, 20, 31, 34, 44, 44, 54, 57, 72, 83, 88, 92, 96, 623, 932]</div></pre></td></tr></table></figure></p>
-<h3 id="2-快速排序"><a href="#2-快速排序" class="headerlink" title="2 快速排序"></a>2 快速排序</h3><p>首先在列表中选择一个基准值，数据围绕基准值进行分类，将小于基准值的放在基准值的左边，大于基准值的放在基准值的右边。快速排序对于大型数据集合非常实用，在处理小型数据集合时性能反而会下降<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">function fastSort(arr)&#123;</div><div class="line">if(arr.length==0)&#123;</div><div class="line">	return[];</div><div class="line">&#125;</div><div class="line">var lesser = [];</div><div class="line">var greater = [];</div><div class="line">var standard = arr[0];</div><div class="line">for(var i=1;i&lt;arr.length;i++)&#123;</div><div class="line">	if(arr[i]&lt;standard)&#123;</div><div class="line">		lesser.push(arr[i])</div><div class="line">	&#125;else&#123;</div><div class="line">		greater.push(arr[i]);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">return fastSort(lesser).concat(standard,fastSort(greater))</div><div class="line">&#125;</div><div class="line">var a =[68,80,12,95,70,97,27,88,93];</div><div class="line">fastSort(a);</div><div class="line">结果：[12, 27, 68, 70, 80, 88, 93, 95, 97]</div></pre></td></tr></table></figure></p>
+            <h1 id="高级算法"><a href="#高级算法" class="headerlink" title="高级算法"></a>高级算法</h1><h2 id="1-动态规划"><a href="#1-动态规划" class="headerlink" title="1 动态规划"></a>1 动态规划</h2><p>动态规划的解决方案与递归相反，它是通过从底部开始解决一个个小问题，然后合并成一个大的解决方案,从而解决一个大的问题</p>
+<h3 id="示例-1"><a href="#示例-1" class="headerlink" title="示例 1"></a>示例 1</h3><p><strong>fiboancci 对比</strong></p>
+<h4 id="递归方法"><a href="#递归方法" class="headerlink" title="递归方法"></a>递归方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">function recurFib(n)&#123;</div><div class="line">	if(n&lt;2)&#123;</div><div class="line">		return n;</div><div class="line">	&#125;</div><div class="line">	else &#123;</div><div class="line">		return recurFib(n-1)+ recurFib(n-2);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">recurFib(10);</div><div class="line">55</div></pre></td></tr></table></figure>
+<h4 id="动态规划方法"><a href="#动态规划方法" class="headerlink" title="动态规划方法"></a>动态规划方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">function recurFib(n)&#123;</div><div class="line">	var value=[];</div><div class="line">	for(var i=0;i&lt;=n;i++)&#123;</div><div class="line">		value[i]=0;</div><div class="line">	&#125;</div><div class="line">	if(n==1||n==2)&#123;</div><div class="line">		return 1;</div><div class="line">	&#125;</div><div class="line">	else &#123;</div><div class="line">		value[1]=1;</div><div class="line">		value[2]=1;</div><div class="line">		for(var j=3;j&lt;=n;j++)&#123;</div><div class="line">			value[j]=value[j-1]+value[j-2];</div><div class="line">		&#125;</div><div class="line">		return value[n]</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">recurFib(10);</div><div class="line">55</div></pre></td></tr></table></figure>
+<h3 id="示例-2"><a href="#示例-2" class="headerlink" title="示例 2"></a>示例 2</h3><p><strong>寻找公共子字符串的动态规划实现</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">function lcs(word1,word2)&#123;</div><div class="line">	var max = 0;</div><div class="line">	var index = 0;</div><div class="line">	var lcsarr = new Array(word1.length+1);</div><div class="line">	for(var i=0;i&lt;word1.length+1;i++)&#123;</div><div class="line">		lcsarr[i]=new Array(word2.length+1);</div><div class="line">		for(var j=0;j&lt;word2.length+1;j++)&#123;</div><div class="line">			lcsarr[i][j]=0;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">    for(var i=0; i&lt;=word1.length;i++)&#123;</div><div class="line">        for(var j=0; j&lt;=word2.length;j++)&#123;</div><div class="line">            if(i==0||j==0)&#123;</div><div class="line">                lcsarr[i][j]=0;</div><div class="line">            &#125;else&#123;</div><div class="line">                if(word1[i-1]==word2[j-1])&#123;</div><div class="line">                    lcsarr[i][j]=lcsarr[i-1][j-1]+1;</div><div class="line">                &#125;else&#123;</div><div class="line">                    lcsarr[i][j]=0;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">			if(max&lt;lcsarr[i][j])&#123;</div><div class="line">				max = lcsarr[i][j];</div><div class="line">				index = i;</div><div class="line">			&#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    var str = &apos;&apos;;</div><div class="line">    if(max==0)&#123;</div><div class="line">        return &quot;&quot;;</div><div class="line">    &#125;else&#123;</div><div class="line">        for(var i=index-max;i&lt;=max;i++)&#123;</div><div class="line">            str =str + word2[i]</div><div class="line">        &#125;</div><div class="line">        return str;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">lcs(&apos;abbcc&apos;,&apos;dbbcc&apos;);</div><div class="line">结果:&quot;bbcc&quot;</div></pre></td></tr></table></figure></p>
+<h3 id="示例3"><a href="#示例3" class="headerlink" title="示例3"></a>示例3</h3><p><strong>背包的问题利用贪婪算法解决，贪婪算法核心思想为解决找到局部次优解。</strong></p>
+<p>解决部分背包问题的方案：</p>
+<p>1.设背报容量为W，物品价格为v,物品重量为w。</p>
+<p>2.根据v/w的比例对物品排序。</p>
+<p>3.按比例降序方法来建立对应数组。</p>
+<p>4.尽可能的放过多的物品。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">function ksack(values,weights,capacity)&#123;</div><div class="line">	var load=0;</div><div class="line">	var i=0;</div><div class="line">	var w=0;</div><div class="line">	while(load&lt;capacity&amp;&amp;i&lt;values.length)&#123;</div><div class="line">		if(weights[i]&lt;=(capacity-load))&#123;</div><div class="line">			w = w + values[i];</div><div class="line">			load = load + weights[i];</div><div class="line">		&#125;else&#123;</div><div class="line">			var r=(capacity-load)/weights[i];</div><div class="line">			w = w + r * values[i];</div><div class="line">			load = load +weights[i];</div><div class="line">		&#125;</div><div class="line">	i++;</div><div class="line">	&#125;</div><div class="line">return w;</div><div class="line">&#125;</div><div class="line">ksack([13,10,11,4,5],[9,7,8,3,4],16);</div><div class="line">23</div></pre></td></tr></table></figure></p>
+<p><strong>背包问题的递归方法</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">function ksack(capacity,size,value,n)&#123;</div><div class="line">	if(n==0||capacity==0)&#123;</div><div class="line">		return 0;</div><div class="line">	&#125;</div><div class="line">	if(size[n-1]&gt;capacity)&#123;</div><div class="line">		return ksack(capacity,size,value,n-1);</div><div class="line">	&#125;else&#123;</div><div class="line">		return max(value[n-1]+ksack(capacity-size[n-1],size,value,n-1),ksack(capacity,size,value,n-1))</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">function max(a,c)&#123;</div><div class="line">	return (a&gt;c)?a:c;</div><div class="line">&#125;</div><div class="line">ksack(16,[3,4,7,8,9],[4,5,10,11,13],5)</div><div class="line">23</div></pre></td></tr></table></figure></p>
 
           
         
@@ -624,6 +632,173 @@
 <p>(2)如何已有根节点，将根节点设为当前节点，比较待插数据与根节点的大小，如果小于当前节点，设新的当前节点为原节点的做节点，否则设为右节点。</p>
 <p>(3)知道当前节点的做节点或右节点为空时，插入数据，完成算法。<br>具体实现：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">function insert(data)&#123;</div><div class="line">	var n = new Node(data,null,null);</div><div class="line">	if(this.root==null)&#123;</div><div class="line">		this.root = n;</div><div class="line">	&#125;</div><div class="line">	else&#123;</div><div class="line">		var current = this.root;</div><div class="line">		var parent;</div><div class="line">		while(true)&#123;</div><div class="line">				parent = current; </div><div class="line">				if(current.data&gt;data)&#123;</div><div class="line">					current = current.left;</div><div class="line">					if(current==null)&#123;</div><div class="line">						parent.left = n;</div><div class="line">						break;</div><div class="line">					&#125;</div><div class="line">				&#125;</div><div class="line">				else&#123;</div><div class="line">					current = current.right;</div><div class="line">					if(current==null)&#123;</div><div class="line">						parent.right = n;</div><div class="line">						break;</div><div class="line">					&#125;</div><div class="line">				&#125;</div><div class="line">		&#125;</div><div class="line">	</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <h2 id="常用的遍历二叉查找树的方法有三种：中序、先序，后序。"><a href="#常用的遍历二叉查找树的方法有三种：中序、先序，后序。" class="headerlink" title="常用的遍历二叉查找树的方法有三种：中序、先序，后序。"></a>常用的遍历二叉查找树的方法有三种：中序、先序，后序。</h2><p>中序：即为升序排列。左，中，右<br>先序：从最左边开始：中，左，右。<br>后序：从最左边开始：左，右，中。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/16/js数据结构与算法(4)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="superDjy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://img.mp.itc.cn/upload/20170429/a2379efc26214d7fa790af6105312132">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="С�����ľ���">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/06/16/js数据结构与算法(4)/" itemprop="url">JS中的数据结构与算法(4)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-16T00:00:00+08:00">
+                2017-06-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/js数据结构与算法/" itemprop="url" rel="index">
+                    <span itemprop="name">js数据结构与算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/06/16/js数据结构与算法(4)/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/06/16/js数据结构与算法(4)/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/06/16/js数据结构与算法(4)/" class="leancloud_visitors" data-flag-title="JS中的数据结构与算法(4)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h1><h2 id="简单排序算法"><a href="#简单排序算法" class="headerlink" title="简单排序算法"></a>简单排序算法</h2><h3 id="1-冒泡排序"><a href="#1-冒泡排序" class="headerlink" title="1 冒泡排序"></a>1 冒泡排序</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">function bubble(arr)&#123;</div><div class="line">	var length = arr.length;</div><div class="line">	var temp;</div><div class="line">	for(var i =0; i&lt;length;i++)&#123;</div><div class="line">		for(var j=length-1;j&gt;i;j--)&#123;</div><div class="line">			if(arr[i]&lt;=arr[j])&#123;</div><div class="line">				temp = arr[i];</div><div class="line">				arr[i] = arr[j];</div><div class="line">				arr[j] = temp;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	return arr;</div><div class="line">&#125;</div><div class="line">var a = [3,2,4,1];</div><div class="line">bubble(a);</div><div class="line">结果为:[4, 3, 2, 1]</div></pre></td></tr></table></figure>
+<h3 id="2-选择排序"><a href="#2-选择排序" class="headerlink" title="2 选择排序"></a>2 选择排序</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">function select(arr)&#123;</div><div class="line">	var length = arr.length;</div><div class="line">	var temp;</div><div class="line">	var min</div><div class="line">	for(var i =0; i&lt;length-2;++i)&#123;</div><div class="line">		min = i;</div><div class="line">		for(var j=i+1;j&lt;length-1;++j)&#123;</div><div class="line">			if(arr[j]&lt;=arr[min])&#123;</div><div class="line">				min = j;</div><div class="line">			&#125;</div><div class="line">			temp = arr[i];</div><div class="line">			arr[i] = arr[min];</div><div class="line">			arr[min] = temp;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	return arr;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="高级排序算法"><a href="#高级排序算法" class="headerlink" title="高级排序算法"></a>高级排序算法</h2><h3 id="1-希尔排序"><a href="#1-希尔排序" class="headerlink" title="1 希尔排序"></a>1 希尔排序</h3><p>希尔排序在插入排序的基础上做了一些改变，它会首先比较距离较远的元素而非距离较近的元素。然后不断缩小元素之间的比较距离直到处理到数据集末尾，这时候算法开始比较相邻元素。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">function shellSort(arr)&#123;</div><div class="line">var length = arr.length;</div><div class="line">var h=1;</div><div class="line">while(h&lt;length/3)&#123;</div><div class="line">	h = 3*h +1;</div><div class="line">&#125;</div><div class="line">while(h&gt;=1)&#123;</div><div class="line">	for(var i=h; i&lt;length;i++)&#123;</div><div class="line">		for(var j=i;j&gt;=h&amp;&amp;arr[j]&lt;arr[j-h];j=j-h)&#123;</div><div class="line">			if(arr[j]&lt;arr[j-h])&#123;</div><div class="line">				temp = arr[j];</div><div class="line">				arr[j] = arr[j-h];</div><div class="line">				arr[j-h] = temp;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	h=(h-1)/3;</div><div class="line">&#125;</div><div class="line">return arr;</div><div class="line">&#125;</div><div class="line">var a =[92,31,5,96,44,88,34,57,44,72,20,83,4,623,12,12,932,54];</div><div class="line">shellSort(a);</div><div class="line">结果为： [4, 5, 12, 12, 20, 31, 34, 44, 44, 54, 57, 72, 83, 88, 92, 96, 623, 932]</div></pre></td></tr></table></figure></p>
+<h3 id="2-快速排序"><a href="#2-快速排序" class="headerlink" title="2 快速排序"></a>2 快速排序</h3><p>首先在列表中选择一个基准值，数据围绕基准值进行分类，将小于基准值的放在基准值的左边，大于基准值的放在基准值的右边。快速排序对于大型数据集合非常实用，在处理小型数据集合时性能反而会下降<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">function fastSort(arr)&#123;</div><div class="line">if(arr.length==0)&#123;</div><div class="line">	return[];</div><div class="line">&#125;</div><div class="line">var lesser = [];</div><div class="line">var greater = [];</div><div class="line">var standard = arr[0];</div><div class="line">for(var i=1;i&lt;arr.length;i++)&#123;</div><div class="line">	if(arr[i]&lt;standard)&#123;</div><div class="line">		lesser.push(arr[i])</div><div class="line">	&#125;else&#123;</div><div class="line">		greater.push(arr[i]);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">return fastSort(lesser.concat(standard,fastSort(greater))</div><div class="line">&#125;</div><div class="line">var a =[68,80,12,95,70,97,27,88,93];</div><div class="line">fastSort(a);</div><div class="line">结果：[12, 27, 68, 70, 80, 88, 93, 95, 97]</div></pre></td></tr></table></figure></p>
 
           
         
@@ -1332,7 +1507,8 @@
 <h3 id="借用构造函数"><a href="#借用构造函数" class="headerlink" title="借用构造函数"></a>借用构造函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">function Super(val)&#123;</div><div class="line">    this.val = val;</div><div class="line">    this.arr = [1];</div><div class="line"></div><div class="line">    this.fun = function()&#123;</div><div class="line">        // ...</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">function Sub(val)&#123;</div><div class="line">    Super.call(this, val);   // 核心</div><div class="line">    // ...</div><div class="line">&#125;</div><div class="line"></div><div class="line">var sub1 = new Sub(1);</div><div class="line">var sub2 = new Sub(2);</div></pre></td></tr></table></figure>
 <p>核心：借父类的构造函数来增强子类实例，<strong>等于是把父类的实例属性复制了一份给子类实例装上了</strong>（完全没有用到原型）</p>
 <p>缺点：无法实现函数复用，每个子类实例都持有一个新的fun函数，太多了就会影响性能，内存爆炸</p>
-<h3 id="组合继承"><a href="#组合继承" class="headerlink" title="组合继承"></a>组合继承</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">function Super()&#123;</div><div class="line">    // 只在此处声明基本属性和引用属性</div><div class="line">    this.val = 1;</div><div class="line">    this.arr = [1];</div><div class="line">&#125;</div><div class="line">//  在此处声明函数</div><div class="line">Super.prototype.fun1 = function()&#123;&#125;;</div><div class="line">Super.prototype.fun2 = function()&#123;&#125;;</div><div class="line">//Super.prototype.fun3...</div><div class="line">function Sub()&#123;</div><div class="line">    Super.call(this);   // 核心</div><div class="line">    // ...</div><div class="line">&#125;</div><div class="line">Sub.prototype = new Super();    // 核心</div><div class="line"></div><div class="line">var sub1 = new Sub(1);</div><div class="line">var sub2 = new Sub(2);</div></pre></td></tr></table></figure>
+<h3 id="组合继承"><a href="#组合继承" class="headerlink" title="组合继承"></a>组合继承</h3><p>基本思想：<strong>使用原型链实现对原型属性和方法的继承，而通过借用构造函数实现对实例属性的继承</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">function Super()&#123;</div><div class="line">    // 只在此处声明基本属性和引用属性</div><div class="line">    this.val = 1;</div><div class="line">    this.arr = [1];</div><div class="line">&#125;</div><div class="line">//  在此处声明函数</div><div class="line">Super.prototype.fun1 = function()&#123;&#125;;</div><div class="line">Super.prototype.fun2 = function()&#123;&#125;;</div><div class="line">//Super.prototype.fun3...</div><div class="line">function Sub()&#123;</div><div class="line">    Super.call(this);   // 核心</div><div class="line">    // ...</div><div class="line">&#125;</div><div class="line">Sub.prototype = new Super();    // 核心</div><div class="line"></div><div class="line">var sub1 = new Sub(1);</div><div class="line">var sub2 = new Sub(2);</div></pre></td></tr></table></figure>
 <p><strong>把实例函数都放在原型对象上，以实现函数复用</strong>。同时还要保留借用构造函数方式的优点，<strong>通过Super.call(this);继承父类的基本属性和引用属性并保留能传参的优点</strong>；通过Sub.prototype = new Super();继承父类函数，实现函数复用</p>
 <p>优点：（1）不存在引用属性共享问题（2）可传参（3）函数可复用</p>
 <p>缺点：子类原型上<strong>有一份多余的父类实例属性</strong>，因为父类构造函数被调用了两次，生成了两份，而子类实例上的那一份屏蔽了子类原型上的。。。又是内存浪费</p>
@@ -1663,7 +1839,7 @@ div{maring:30px;margin:28px}
         
           
             <h2 id="含义："><a href="#含义：" class="headerlink" title="含义："></a>含义：</h2><p>Promise是一个对象，从它可以获取异步操作的消息。它有两个特点：</p>
-<p>1.对象的状态不受外界影响：Promise对象代表一个异步曹组，有三种状态：pending（进行中），Resolved（已完成），Rejected(已失败)。只有异步操作的结果才能决定当前是哪一种状态，其他操作都无法改变这个状态。</p>
+<p>1.对象的状态不受外界影响：Promise对象代表一个异步操作，有三种状态：pending（进行中），Resolved（已完成），Rejected(已失败)。只有异步操作的结果才能决定当前是哪一种状态，其他操作都无法改变这个状态。</p>
 <p>2.一旦状改变就不会再变。一旦状态幼pending转变为Resolved或者Rejected之后，就不会再变，会一直保持这个结果。</p>
 <p><strong>优点：有了Promise对象，就可以将异步操作以同步操作的流程表达出来，避免了层层嵌套的回调函数。此外，Promise对象提供统一的接口，使得控制异步操作更加容易</strong>。</p>
 <h2 id="Promise的基本实现"><a href="#Promise的基本实现" class="headerlink" title="Promise的基本实现:"></a>Promise的基本实现:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">var promise = new Promise(function(resolve,reject)&#123;</div><div class="line">	if(异步操作成功)&#123;|</div><div class="line">		resolve(value)</div><div class="line">	&#125;else</div><div class="line">	reject(error)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
@@ -1672,14 +1848,14 @@ div{maring:30px;margin:28px}
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">promise.then(function(value)&#123;&#125;,function(error)&#123;&#125;);</div></pre></td></tr></table></figure>
 <p><strong>then方法可以接受两个回调函数作为参数。第一个回调函数是Promise对象的状态变为Resolved时调用，第二个回调函数是Promise对象的状态变为Rejected时调用。其中，第二个函数是可选的，不一定要提供。</strong></p>
 <h3 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">function timeout(ms) &#123;</div><div class="line">  return new Promise((resolve, reject) =&gt; &#123;</div><div class="line">    setTimeout(resolve, ms);</div><div class="line">  &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">timeout(1000).then(() =&gt; &#123;</div><div class="line">  console.log(&quot;haha&quot;);</div><div class="line">&#125;);</div><div class="line">Promise &#123;[[PromiseStatus]]: &quot;pending&quot;, [[PromiseValue]]: undefined&#125;</div><div class="line"></div><div class="line">haha</div></pre></td></tr></table></figure>
-<h3 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var promise=new Promise((resolve,reject)=&gt;&#123;</div><div class="line">	console.log(1);</div><div class="line">	resolve();</div><div class="line">&#125;);</div><div class="line">promise.then(()=&gt;&#123;console.log(2)&#125;);</div><div class="line">console.log(3);</div><div class="line"></div><div class="line">VM505:2 1</div><div class="line">VM505:6 3</div><div class="line">VM505:5 2</div></pre></td></tr></table></figure>
 <p>上面代码中，timeout方法返回一个Promise实例，表示一段时间以后才会发生的结果。过了指定的时间（ms参数）以后，Promise实例的状态变为Resolved，就会触发then方法绑定的回调函数。</p>
+<h3 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var promise=new Promise((resolve,reject)=&gt;&#123;</div><div class="line">	console.log(1);</div><div class="line">	resolve();</div><div class="line">&#125;);</div><div class="line">promise.then(()=&gt;&#123;console.log(2)&#125;);</div><div class="line">console.log(3);</div><div class="line"></div><div class="line">VM505:2 1</div><div class="line">VM505:6 3</div><div class="line">VM505:5 2</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">new Promise((resolve, reject) =&gt; &#123;</div><div class="line">  resolve(1);</div><div class="line">  console.log(2);</div><div class="line">&#125;).then(r =&gt; &#123;</div><div class="line">  console.log(r);</div><div class="line">&#125;);</div><div class="line">结果：2</div><div class="line">     1</div></pre></td></tr></table></figure>
 <p><strong>如果调用resolve函数和reject函数时带有参数，那么它们的参数会被传递给then方法的回调函数。</strong></p>
 <h2 id="Promise-prototype-catch"><a href="#Promise-prototype-catch" class="headerlink" title="Promise.prototype.catch()"></a>Promise.prototype.catch()</h2><p>Promise.prototype.catch方法是.then(null, rejection)的别名，用于指定发生错误时的回调函数。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">var promise = new Promise(function(resolve, reject) &#123;</div><div class="line">//   console.log(&quot;haha&quot;);</div><div class="line">//   resolve(4);</div><div class="line">  throw new Error(&apos;test&apos;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">promise.then((value)=&gt;&#123;console.log(value)&#125;).catch(function(error) &#123;</div><div class="line">  console.log(error);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">结果：Error: test</div><div class="line">    at &lt;anonymous&gt;:4:9</div><div class="line">    at Promise (&lt;anonymous&gt;)</div><div class="line">    at &lt;anonymous&gt;:1:15</div></pre></td></tr></table></figure>
-<p>若在此之前调用resolv()方法，则不会catch到错误，因为得到Resolved状态后，状态不会再改变。</p>
-<h2 id="Promise-all"><a href="#Promise-all" class="headerlink" title="Promise.all()"></a>Promise.all()</h2><p>Promise.all方法接受一个数组作为参数Promise.all([p1,p2,p3])，p1、p2、p3<strong>都是 Promise 实例</strong>。</p>
+<p>若在此之前调用resolve()方法，则不会catch到错误，因为得到Resolved状态后，状态不会再改变。</p>
+<h2 id="Promise-all"><a href="#Promise-all" class="headerlink" title="Promise.all()"></a>Promise.all()</h2><p>Promise.all方法<strong>接受一个数组作为参数</strong>Promise.all([p1,p2,p3])，p1、p2、p3<strong>都是 Promise 实例</strong>。</p>
 <p>p的状态由p1、p2、p3决定，分成两种情况。</p>
 <p>（1）只有p1、p2、p3的状态都变成fulfilled，p的状态才会变成fulfilled，此时p1、p2、p3的返回值组成一个数组，传递给p的回调函数。</p>
 <p>（2）只要p1、p2、p3之中有一个被rejected，p的状态就变成rejected，此时第一个被reject的实例的返回值，会传递给p的回调函数。</p>
@@ -1906,191 +2082,6 @@ div{maring:30px;margin:28px}
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/12/common-knowledge/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="superDjy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://img.mp.itc.cn/upload/20170429/a2379efc26214d7fa790af6105312132">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="С�����ľ���">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/01/12/common-knowledge/" itemprop="url">常用Git命令</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-01-12T16:40:34+08:00">
-                2017-01-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/基本知识/" itemprop="url" rel="index">
-                    <span itemprop="name">基本知识</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/01/12/common-knowledge/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/01/12/common-knowledge/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/01/12/common-knowledge/" class="leancloud_visitors" data-flag-title="常用Git命令">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Git需要掌握的命令："><a href="#Git需要掌握的命令：" class="headerlink" title="Git需要掌握的命令："></a>Git需要掌握的命令：</h1><p><code>git branch</code>（列出所有本地分支）</p>
-<p><code>git init</code> （在当前目录新建一个git代码库）</p>
-<p><code>git add -a</code>   （添加指定文件到暂时存在的地方）</p>
-<p><code>git commit</code>   （可以将已经标识的内容提交到本地仓库）</p>
-<p><code>git commit -a</code> （提交工作区从上次commit之后的变化，直接到仓库内）</p>
-<p><code>git commit -m</code> （提交暂存区到仓库内）</p>
-<p><code>git checkout -b</code> 分支名称 （可以创建自己的分支，一般情况下分支名称用你的名字拼音）</p>
-<p><code>git remote add</code> 源名称 https网址 （在本地初始化的仓库中配置远程服务器地址和源名称）</p>
-<p><code>git checkout</code> 分支名称 （切换至本地已经存在的分支）</p>
-<p><code>git push 源名称（origin）</code> 分支名称 （将本地分支名称发送到远程服务器）</p>
-<p><code>git pull</code> 源名称 分支名称 （将远程服务器指定分支下载到本地，如果与当前分支有冲突需合并）</p>
-<p><code>git merge</code> 分支名称 （将指定的分支合并到当前分支）</p>
-<p><code>git clone [url]</code> （下载一个项目和他的整个历史代码）</p>
-<p><code>git status</code> （显示有变更的文件）</p>
-<p><code>git log</code> （查看当前分支的历史版本）</p>
-<p><code>*.gitignore</code>文件可以标记当前路径中哪些文件可以不进行git管理。为了避免将依赖代码和自己开发代码一起审核的混乱，我们一般会忽略<code>node_modules</code>和<code>bower_components</code>目录，同时也会忽略<code>.DS_STORE</code>这种操作系统缓存文件。</p>
-<h1 id="node-js含义："><a href="#node-js含义：" class="headerlink" title="node.js含义："></a>node.js含义：</h1><p><code>nodejs</code> 是一个将<code>Google V8 Javascript</code>引擎与封装给Javascript使用的系统API集合，<code>nodejs</code>还提供了<code>npm</code>包管理工具来管理依赖包关系，<code>cnpm</code>是<code>npm</code>工具的国内版本，下载速度更快。</p>
-<h1 id="Npm含义："><a href="#Npm含义：" class="headerlink" title="Npm含义："></a>Npm含义：</h1><p><code>npm（node package manager）</code>是<code>nodejs</code>的包管理器，用于<code>node</code>插件管理（包括安装、卸载、管理依赖等）。</p>
-<p><code>npm init</code>命令可以初始化当前路径，建立<code>package.json</code>，通过<code>npm install</code> 包名称可以将工具安装到当前目录的<code>node_modules</code>中，通过<code>sudo npm install -g</code> 包名称可以讲工具安装到全局（也就是任意目录下均可以使用）；通过<code>–save</code>,<code>–save-dev</code>参数分别可以将依赖包标记为运行时依赖和开发阶段依赖。</p>
-<h1 id="Cnmp的含义："><a href="#Cnmp的含义：" class="headerlink" title="Cnmp的含义："></a>Cnmp的含义：</h1><p><code>cnpm</code>跟<code>npm</code>用法完全一致，只是在执行命令时将<code>npm</code>改为<code>cnpm</code>。</p>
-<h1 id="Bower的含义："><a href="#Bower的含义：" class="headerlink" title="Bower的含义："></a>Bower的含义：</h1><p><code>bower init</code>命令可以初始化当前路径的前端包依赖，建立<code>bower.json</code>，通过<code>bower install</code>包名称可以安装前端包到<code>bower_components</code>目录中；</p>
-<p>通过<code>–save</code>,<code>–save-dev</code>参数分别可以将依赖包标记为运行时依赖和开发阶段依赖。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2141,7 +2132,7 @@ div{maring:30px;margin:28px}
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">51</span>
+                <span class="site-state-item-count">52</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

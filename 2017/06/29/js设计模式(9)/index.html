@@ -120,7 +120,7 @@
 <meta property="og:site_name" content="С�����ľ���">
 <meta property="og:description" content="装饰者模式装饰者模式能够在不改变对象自身的基础上，在程序运行期间为对象动态的增加新的职责。装饰者模式将一个对象嵌入另一个对象之中，实际上相当于这个对象被另一个对象包装起来，形成一条包装链。其作用实际就是为对象动态地加入新的职责和行为。 用AOP装饰函数1234567891011121314151617181920Function.prototype.before=function(beforefn">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-07-10T09:36:05.833Z">
+<meta property="og:updated_time" content="2017-09-18T02:44:19.568Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js设计模式(9)">
 <meta name="twitter:description" content="装饰者模式装饰者模式能够在不改变对象自身的基础上，在程序运行期间为对象动态的增加新的职责。装饰者模式将一个对象嵌入另一个对象之中，实际上相当于这个对象被另一个对象包装起来，形成一条包装链。其作用实际就是为对象动态地加入新的职责和行为。 用AOP装饰函数1234567891011121314151617181920Function.prototype.before=function(beforefn">
@@ -446,7 +446,7 @@
       
 
       
-        <h1 id="装饰者模式"><a href="#装饰者模式" class="headerlink" title="装饰者模式"></a>装饰者模式</h1><p>装饰者模式能够在不改变对象自身的基础上，在程序运行期间为对象动态的增加新的职责。装饰者模式将一个对象嵌入另一个对象之中，实际上相当于这个对象被另一个对象包装起来，形成一条包装链。其作用实际就是为对象动态地加入新的职责和行为。</p>
+        <h1 id="装饰者模式"><a href="#装饰者模式" class="headerlink" title="装饰者模式"></a>装饰者模式</h1><p>装饰者模式<strong>能够在不改变对象自身的基础上，在程序运行期间为对象动态的增加新的职责</strong>。装饰者模式将一个对象嵌入另一个对象之中，实际上相当于这个对象被另一个对象包装起来，形成一条包装链。其作用实际就是为<strong>对象动态地加入新的职责和行为</strong>。</p>
 <h2 id="用AOP装饰函数"><a href="#用AOP装饰函数" class="headerlink" title="用AOP装饰函数"></a><strong>用AOP装饰函数</strong></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">Function.prototype.before=function(beforefn)&#123;</div><div class="line">	var self=this;               //保存原函数的引用</div><div class="line">	return function()&#123;</div><div class="line">		beforefn.apply(this,arguments);</div><div class="line">		//执行新函数，且保证this不会被劫持，新的函数的参数也会被原封不动的传入原函数，新函数在原函数之前执行(共用一组参数列表)</div><div class="line">		</div><div class="line">		return self.apply(this,arguments);</div><div class="line">		//执行原函数，并且返回原函数执行结果，并且保证this不会被劫持</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Function.prototype.after=function(afterfn)&#123;</div><div class="line">	var self=this;</div><div class="line">	//返回一个代理函数，代理函数分别执行新函数与原函数</div><div class="line">	return function()&#123;</div><div class="line">		var ret=self.apply(this,arguments);</div><div class="line">		afterfn.apply(this,arguments);</div><div class="line">		return ret;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>也可以在不污染原型的情况下，做出一些变通，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">var before=function(fn,beforefn)&#123;</div><div class="line">	return function()&#123;</div><div class="line">		beforefn.apply(this,arguments);</div><div class="line">		return fn.apply(this,arguments);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">var a =before(function()&#123;console.log(1)&#125;,function()&#123;console.log(2)&#125;);</div><div class="line">a=before(a,function()&#123;console.log(5)&#125;);</div><div class="line">a();</div><div class="line">结果： 5</div><div class="line">	  2</div><div class="line">	  1</div></pre></td></tr></table></figure></p>
 <p>利用AOP装饰函数的技巧<strong>，可以把行为依照职责分成粒度更加细的函数</strong>，随后将它们装饰合并到一起，有利用一个松耦合高复用的系统。</p>
@@ -482,8 +482,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/06/29/js设计模式(10)/" rel="next" title="js设计模式(10)">
-                <i class="fa fa-chevron-left"></i> js设计模式(10)
+              <a href="/2017/06/29/Vue基础(1)/" rel="next" title="Vue.js基础">
+                <i class="fa fa-chevron-left"></i> Vue.js基础
               </a>
             
           </div>
@@ -492,8 +492,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/06/30/vue(3)/" rel="prev" title="Vue.js基础">
-                Vue.js基础 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/06/29/js设计模式(10)/" rel="prev" title="js设计模式(10)">
+                js设计模式(10) <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -601,7 +601,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">51</span>
+                <span class="site-state-item-count">52</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

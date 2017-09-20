@@ -335,6 +335,184 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/10/ReactJs(4)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="superDjy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://img.mp.itc.cn/upload/20170429/a2379efc26214d7fa790af6105312132">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="С�����ľ���">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/10/ReactJs(4)/" itemprop="url">React.js基础</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-10T00:00:00+08:00">
+                2017-08-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/React-js/" itemprop="url" rel="index">
+                    <span itemprop="name">React.js</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/08/10/ReactJs(4)/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/08/10/ReactJs(4)/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/08/10/ReactJs(4)/" class="leancloud_visitors" data-flag-title="React.js基础">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="表单（利用受控组件绑定value）"><a href="#表单（利用受控组件绑定value）" class="headerlink" title="表单（利用受控组件绑定value）"></a>表单（利用受控组件绑定value）</h2><p>值由React控制的输入表单元素称为“受控组件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">class NameForm extends React.Component&#123;</div><div class="line">  constructor(props)&#123;</div><div class="line">    super(props);</div><div class="line">    this.state=&#123;value: &apos;&apos;&#125;;</div><div class="line">    this.formSubmit = this.formSubmit.bind(this);</div><div class="line">    this.changeValue = this.changeValue.bind(this);</div><div class="line">  &#125;</div><div class="line">  formSubmit(event)&#123;</div><div class="line">    alert(&apos;this name is&apos; +this.state.value);</div><div class="line">    event.preventDefault();</div><div class="line">  &#125;</div><div class="line">  changeValue(event)&#123;</div><div class="line">    this.setState(&#123;value: event.target.value&#125;)</div><div class="line">  &#125;</div><div class="line">  render()&#123;</div><div class="line">    return(</div><div class="line">      &lt;form onSubmit=&#123;this.formSubmit&#125;&gt;</div><div class="line">      &lt;label&gt;</div><div class="line">        Name:&lt;input type=&quot;text&quot; value=&#123;this.state.value&#125; onChange=&#123;this.changeValue&#125; /&gt;</div><div class="line">      &lt;/label&gt;</div><div class="line">    &lt;/form&gt;</div><div class="line">    )</div><div class="line"></div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">ReactDOM.render(</div><div class="line">  &lt;NameForm /&gt;,</div><div class="line">  document.getElementById(&apos;root&apos;)</div><div class="line">);</div></pre></td></tr></table></figure></p>
+<p>使用”受控组件”,每个状态的改变都有一个与之相关的处理函数。这样就可以直接修改或验证用户输入。总之，<input type="text">，<textarea>,和</textarea><select>都十分类似，他们都通过传入一个value属性来实现对组件的控制。</select></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;form onSubmit=&#123;this.formSubmit&#125;&gt;</div><div class="line">		//在select根属性上设置value</div><div class="line">        &lt;select value=&#123;this.state.value&#125; onChange=&#123;this.changeValue&#125;&gt;</div><div class="line">        &lt;option value=&quot;haha&quot;&gt;Haha&lt;/option&gt;</div><div class="line">          &lt;option value=&quot;hehe&quot;&gt;Hehe&lt;/option&gt;</div><div class="line">          &lt;option  selected value=&quot;hihi&quot;&gt;Hihi&lt;/option&gt;</div><div class="line">          &lt;option value=&quot;lala&quot;&gt;Lala&lt;/option&gt;</div><div class="line">        &lt;/select&gt;</div><div class="line">       &lt;input type=&quot;submit&quot; value=&quot;Submit&quot; /&gt;</div><div class="line">    &lt;/form&gt;</div></pre></td></tr></table></figure>
+<p>当你有处理多个受控的input元素时，你可以通过给每个元素添加一个name属性，来让处理函数根据 event.target.name的值来选择做什么</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">  handleChange(event)&#123;</div><div class="line">    let target = event.target;</div><div class="line">    let name = target.name;</div><div class="line">    let value = name===&quot;checkbox&quot;?target.checked : target.value;</div><div class="line">    this.setState(&#123;</div><div class="line">      [name]: value</div><div class="line">    &#125;)</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  render()&#123;</div><div class="line">      return (</div><div class="line">        &lt;form &gt;</div><div class="line">          &lt;label&gt; </div><div class="line">            isGoing:&lt;input type=&quot;checkbox&quot; value=&#123;this.state.isGoing&#125; name=&quot;isGoing&quot; onChange=&#123;this.handleChange&#125; /&gt;</div><div class="line">          &lt;/label&gt;  </div><div class="line">          &lt;br /&gt;</div><div class="line">          &lt;label&gt;</div><div class="line">            输入框：&lt;input type=&quot;text&quot; value=&#123;this.state.nameValue&#125; name=&quot;nameValue&quot; onChange=&#123;this.handleChange&#125; /&gt;</div><div class="line">          &lt;/label&gt;</div><div class="line">        &lt;/form&gt;</div><div class="line">      )</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="状态提升"><a href="#状态提升" class="headerlink" title="状态提升"></a>状态提升</h2><p>使用 react 经常会遇到几个组件需要共用状态数据的情况。这种情况下，我们最好将这部分<strong>共享的状态提升至他们最近的父组件当中</strong>进行管理</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">function BoilingVerdict(props)&#123;</div><div class="line">  if(props.celcius&gt;=100)&#123;</div><div class="line">    return &lt;p&gt;The water is boiling &lt;/p&gt;</div><div class="line">  &#125;else&#123;</div><div class="line">    return &lt;p&gt; The water is not boiling&lt;/p&gt;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">handleChange(event)&#123;</div><div class="line">this.setState(&#123;temperature: event.target.value&#125;)</div><div class="line">&#125;</div><div class="line"></div><div class="line">render()&#123;</div><div class="line">const temperature = this.state.temperature;</div><div class="line">return(</div><div class="line">  &lt;fieldset&gt;</div><div class="line">    &lt;legend&gt;This a tap &lt;/legend&gt;</div><div class="line">    &lt;label&gt;</div><div class="line">      输入温度：&lt;input type=&quot;text&quot; value=&#123;temperature&#125;  onChange=&#123;this.handleChange&#125;/&gt;</div><div class="line">    &lt;/label&gt;</div><div class="line">    &lt;BoilingVerdict celcius=&#123;temperature&#125; /&gt;</div><div class="line">      </div><div class="line">  &lt;/fieldset&gt;</div><div class="line">)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>1.React在DOM原生组件<input>上调用指定的onChange函数。在本例中，指的是TemperatureInput组件上的handleChange函数。</p>
+<p>2.TemperatureInput组件的handleChange函数会在值发生变化时调用this.props.onTemperatureChange()函数。这些props属性，像onTemperatureChange都是由父组件Calculator提供的。</p>
+<p>3.当最开始渲染时，Calculator组件把内部的handleCelsiusChange方法指定给摄氏输入组件TemperatureInput的onTemperatureChange方法，并且把handleFahrenheitChange方法指定给华氏输入组件TemperatureInput的onTemperatureChange。两个Calculator内部的方法都会在相应输入框被编辑时被调用。</p>
+<p>4.在这些方法内部，Calculator组件会让React使用编辑输入的新值和当前输入框的温标来调用this.setState()方法来重渲染自身。</p>
+<p>5.React会调用Calculator组件的render方法来识别UI界面的样子。基于当前温度和温标，两个输入框的值会被重新计算。温度转换就是在这里被执行的。</p>
+<p>6.接着React会使用Calculator指定的新props来分别调用TemperatureInput组件。React也会识别出子组件的UI界面。React DOM 会更新DOM来匹配对应的值。我们编辑的输入框获取新值，而另一个输入框则更新经过转换的温度值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div></pre></td><td class="code"><pre><div class="line">const scaleNames = &#123;</div><div class="line">  c: &apos;Celsius&apos;,</div><div class="line">  f: &apos;Fahrenheit&apos;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">function toCelsius(fahrenheit) &#123;</div><div class="line">  return (fahrenheit - 32) * 5 / 9;</div><div class="line">&#125;</div><div class="line"></div><div class="line">function toFahrenheit(celsius) &#123;</div><div class="line">  return (celsius * 9 / 5) + 32;</div><div class="line">&#125;</div><div class="line"></div><div class="line">function tryConvert(temperature, convert) &#123;</div><div class="line">  const input = parseFloat(temperature);</div><div class="line">  if (Number.isNaN(input)) &#123;</div><div class="line">    return &apos;&apos;;</div><div class="line">  &#125;</div><div class="line">  const output = convert(input);</div><div class="line">  const rounded = Math.round(output * 1000) / 1000;</div><div class="line">  return rounded.toString();</div><div class="line">&#125;</div><div class="line"></div><div class="line">function BoilingVerdict(props) &#123;</div><div class="line">  if (props.celsius &gt;= 100) &#123;</div><div class="line">    return &lt;p&gt;The water would boil.&lt;/p&gt;;</div><div class="line">  &#125;</div><div class="line">  return &lt;p&gt;The water would not boil.&lt;/p&gt;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">class TemperatureInput extends React.Component&#123;</div><div class="line">  constructor(props)&#123;</div><div class="line">    super(props);</div><div class="line">    this.handleChange = this.handleChange.bind(this);</div><div class="line">    </div><div class="line">  &#125;</div><div class="line">  handleChange(e)&#123;</div><div class="line">    this.props.onTemperatureChange(e.target.value);</div><div class="line">  &#125;</div><div class="line">  render()&#123;</div><div class="line">    const temperature = this.props.temperature;</div><div class="line">    const scale = this.props.scale;</div><div class="line">    return(</div><div class="line">      &lt;fieldset&gt;</div><div class="line">        &lt;legend&gt;在&#123;scaleNames[scale]&#125;中输温度值 &lt;/legend&gt;</div><div class="line">        &lt;input type=&quot;text&quot; value=&#123;temperature&#125; onChange=&#123;this.handleChange&#125; /&gt;</div><div class="line">      &lt;/fieldset&gt;</div><div class="line">    )</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">class Calculator extends React.Component&#123;</div><div class="line">  constructor(props)&#123;</div><div class="line">    super(props);</div><div class="line">    this.state=&#123;temperature: &apos;&apos;,scale: &apos;c&apos;&#125;;</div><div class="line">    this.handleCelsiusChange = this.handleCelsiusChange.bind(this);</div><div class="line">    this.handleFahrenheitChange = this.handleFahrenheitChange.bind(this);</div><div class="line">  &#125;</div><div class="line">  handleCelsiusChange(value)&#123;</div><div class="line">    this.setState(&#123;</div><div class="line">      scale: &apos;c&apos;,temperature: value</div><div class="line">    &#125;)</div><div class="line">  &#125;</div><div class="line">  handleFahrenheitChange(value)&#123;</div><div class="line">    this.setState(&#123;</div><div class="line">      scale: &apos;f&apos;,temperature: value</div><div class="line">    &#125;)</div><div class="line">  &#125;</div><div class="line">  render()&#123;</div><div class="line">    const scale = this.state.scale;</div><div class="line">    const temperature = this.state.temperature;</div><div class="line">    const celsius = scale===&apos;f&apos;? tryConvert(temperature,toCelsius):temperature;</div><div class="line">    const fahrenheit = scale===&apos;c&apos;?tryConvert(temperature,toFahrenheit):temperature;</div><div class="line">    return(</div><div class="line">      &lt;div&gt;</div><div class="line">        &lt;TemperatureInput </div><div class="line">          scale=&apos;c&apos; </div><div class="line">          temperature=&#123;celsius&#125; </div><div class="line">          onTemperatureChange=&#123;this.handleCelsiusChange&#125; /&gt;</div><div class="line">        </div><div class="line">        &lt;TemperatureInput </div><div class="line">          scale=&apos;f&apos; </div><div class="line">          temperature=&#123;fahrenheit&#125; </div><div class="line">          onTemperatureChange=&#123;this.handleFahrenheitChange&#125; /&gt;</div><div class="line">        &lt; BoilingVerdict celsius=&#123;celsius&#125; /&gt;</div><div class="line">        </div><div class="line">      &lt;/div&gt;</div><div class="line">    )</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">ReactDOM.render(</div><div class="line">  &lt;Calculator /&gt;,</div><div class="line">  document.getElementById(&apos;root&apos;)</div><div class="line">);</div></pre></td></tr></table></figure>
+<h2 id="组合"><a href="#组合" class="headerlink" title="组合"></a>组合</h2><p>React 具有强大的组合模型，建议<strong>使用组合而不是继承来复用组件之间</strong>的代码</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/04/原生js基础(2)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1621,7 +1799,7 @@ addScriptTag(&quot;http://ajax.googleapis.com/ajax/services/search/web?v=1.0&amp
 <h2 id="DOM-api的API的扩展"><a href="#DOM-api的API的扩展" class="headerlink" title="DOM api的API的扩展"></a>DOM api的API的扩展</h2><p>querySelector方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var body = document.querySelector(&quot;body&quot;);</div><div class="line">//取得ID 为&quot;myDiv&quot;的元素</div><div class="line">var myDiv = document.querySelector(&quot;#myDiv&quot;);</div><div class="line">//取得类为&quot;selected&quot;的第一个元素</div><div class="line">var selected = document.querySelector(&quot;.selected&quot;);</div><div class="line">//取得类为&quot;button&quot;的第一个图像元素</div><div class="line">var img = document.body.querySelector(&quot;img.button&quot;)</div></pre></td></tr></table></figure></p>
 <p>querySelectorAll()方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">//取得某&lt;div&gt;中的所有&lt;em&gt;元素（类似于getElementsByTagName(&quot;em&quot;)）</div><div class="line">var ems = document.getElementById(&quot;myDiv&quot;).querySelectorAll(&quot;em&quot;);</div><div class="line">//取得类为&quot;selected&quot;的所有元素</div><div class="line">var selecteds = document.querySelectorAll(&quot;.selected&quot;);</div><div class="line">//取得所有&lt;p&gt;元素中的所有&lt;strong&gt;元素</div><div class="line">var strongs = document.querySelectorAll(&quot;p strong&quot;);</div></pre></td></tr></table></figure></p>
 <h2 id="事件委托"><a href="#事件委托" class="headerlink" title="事件委托"></a>事件委托</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">	&lt;title&gt;&lt;/title&gt;</div><div class="line">	&lt;style&gt;</div><div class="line">		ul&#123;</div><div class="line">			border:1px solid blue;</div><div class="line">		&#125;</div><div class="line">		li&#123;</div><div class="line">			border:1px solid red;</div><div class="line">		&#125;</div><div class="line">		#inner&#123;</div><div class="line">			border:1px solid black;</div><div class="line">			width:100px;</div><div class="line">		&#125;</div><div class="line">	&lt;/style&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">	&lt;ul id=&quot;list&quot;&gt;</div><div class="line">	    &lt;li id=&quot;l2&quot;&gt;&lt;div id=&quot;inner&quot;&gt;2&lt;/div&gt;&lt;/li&gt;</div><div class="line">        &lt;li id=&quot;l3&quot;&gt;3&lt;/li&gt;</div><div class="line">        &lt;li id=&quot;l4&quot;&gt;4&lt;/li&gt;</div><div class="line">    &lt;/ul&gt;</div><div class="line">    &lt;script&gt;</div><div class="line">    	var ul =document.getElementById(&quot;list&quot;);</div><div class="line">    	ul.addEventListener(&apos;click&apos;, function(e)&#123;    		</div><div class="line">    		var temp = e.target;</div><div class="line">    		while(temp.tagName!=&quot;LI&quot;)&#123;</div><div class="line">    			if(temp.tagName==&quot;UL&quot;)&#123;</div><div class="line">    				e.target=null;</div><div class="line">    				break;</div><div class="line">    			&#125;</div><div class="line">    			temp = temp.parentNode;</div><div class="line">    		&#125;</div><div class="line">    		console.log(e,e.target);</div><div class="line">    		alert(&apos;success&apos;);</div><div class="line"></div><div class="line">    	&#125;);</div><div class="line">    &lt;/script&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
-<p>利用事件流的捕获、冒泡特性，在父元素直接绑定事件。</p>
+<p>利用事件流的捕获、冒泡特性，在父元素直接绑定事件。事件委托的最大作用：最大的用处便是监听动态增加的元素</p>
 <p>注意：在<code>&lt;li&gt;</code>元素内部还存在子元素时，且事件触发在该子元素上，则委托无效。此时可以通过循环将父节点给到子节点完成事件委托绑定。</p>
 
           
@@ -2115,192 +2293,6 @@ addScriptTag(&quot;http://ajax.googleapis.com/ajax/services/search/web?v=1.0&amp
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/01/笔试面试题（2）/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="superDjy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://img.mp.itc.cn/upload/20170429/a2379efc26214d7fa790af6105312132">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="С�����ľ���">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/07/01/笔试面试题（2）/" itemprop="url">笔试面试（2）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-01T00:00:00+08:00">
-                2017-07-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/基本知识/" itemprop="url" rel="index">
-                    <span itemprop="name">基本知识</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/07/01/笔试面试题（2）/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/07/01/笔试面试题（2）/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/07/01/笔试面试题（2）/" class="leancloud_visitors" data-flag-title="笔试面试（2）">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="1、从输入网址到显示网页的过程分析"><a href="#1、从输入网址到显示网页的过程分析" class="headerlink" title="1、从输入网址到显示网页的过程分析"></a>1、从输入网址到显示网页的过程分析</h2><p>1、应用层DNS解析域名：客户端先检查本地是否有对应的IP地址，若找到则返回响应的IP地址。若没找到则请求上级DNS服务器，直至找到或到根节点。</p>
-<p>2、浏览器与服务器建立TCP连接（默认端口80）(详细点可以说下三次握手的过程)</p>
-<p>3、应用层客户端发送HTTP请求。</p>
-<p>4、服务器响应请求：查找客户端请求的资源，并返回响应报文，响应报文中包括一个重要的信息——状态码（200-300，成功；304使用缓存）。</p>
-<p>5、服务器返回相应文件给浏览器。</p>
-<p>6、Tcp连接释放(可以说下四次挥手的过程)。</p>
-<p>  7、浏览器对HTML文件进行解析构建DOM树 ，构建渲染树 ，js根据DomAPI操作执行绑定事件等，页面显示完成。</p>
-<h2 id="三次握手协议"><a href="#三次握手协议" class="headerlink" title="三次握手协议"></a>三次握手协议</h2><p>SYN：<strong>表示同步序号</strong>，用来建立连接；SYN标志位和ACK标志位搭配使用，当连接请求的时候，SYN=1，ACK=0；连接被响应的时候，SYN=1，ACK=1</p>
-<p>ACK：此标志<strong>表示应答域有效，</strong>就是说前面所说的TCP应答号将会包含在TCP数据包中；有两个取值：0和1，为1的时候表示应答域有效，反之为0</p>
-<p>第一次握手：建立连接。客户端发送连接请求报文段，将SYN位置为1，Sequence Number为x；然后，客户端进入SYN_SEND状态，等待服务器的确认；</p>
-<p>第二次握手：服务器收到SYN报文段。服务器收到客户端的SYN报文段，需要对这个SYN报文段进行确认，设置Acknowledgment Number为x+1(Sequence Number+1)；同时，自己自己还要发送SYN请求信息，将SYN位置为1，Sequence Number为y；服务器端将上述所有信息放到一个报文段（即SYN+ACK报文段）中，一并发送给客户端，此时服务器进入SYN_RECV状态；</p>
-<p>第三次握手：客户端收到服务器的SYN+ACK报文段。然后将Acknowledgment Number设置为y+1，向服务器发送ACK报文段，这个报文段发送完毕以后，客户端和服务器端都进入ESTABLISHED状态，完成TCP三次握手。</p>
-<h2 id="float"><a href="#float" class="headerlink" title="float"></a>float</h2><p>属性值为:left,right,none;元素会分别左移，右移，直到触碰到容器为止。<br>当块级元素没有设置宽度，但是却设置了float属性(right,left)时，元素的宽度随内容的变化而变化。</p>
-<p>清除浮动方法：clear:both;同时设置width:100%(或固定宽度)+overflow:hidden;</p>
-<h2 id="position"><a href="#position" class="headerlink" title="position"></a>position</h2><p>postion可拥有三种定位形式：静态定位，相对定位，绝对定位，对应的属性值有四个：分别为static(静态定位),relative(相对定位),absolute(绝对定位),fixed(固定定位)，其中最后两种属于绝对定位。</p>
-<p><strong>各类定位特点：</strong></p>
-<p>相对定位：相对于自身原有位置偏移，仍然处于标准文档流中。</p>
-<p>绝对定位：建立了以包含块为基准的的定位，脱离的标准文档流。当一个元素设置了绝对定位但是没有设置宽度，元素的宽度会随着内容而变化。</p>
-<p><strong>脱离文档流的操作有：</strong></p>
-<p><strong>绝对定位absolute,固定定位fixed，浮动float</strong>。</p>
-<h2 id="三栏式布局"><a href="#三栏式布局" class="headerlink" title="三栏式布局"></a>三栏式布局</h2><p><strong>container的宽度固定并垂直居中</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE  html&gt;</div><div class="line">&lt;html  lang=&quot;zh-cn&quot;&gt;</div><div class="line">&lt;head&gt;</div><div class="line">&lt;meta charset=&quot;utf-8&quot;&gt;</div><div class="line">&lt;title&gt;This is my title&lt;/title&gt;</div><div class="line">      &lt;style&gt;</div><div class="line">          #big-box&#123;</div><div class="line">             border:1px solid blue;</div><div class="line">             width:650px;</div><div class="line">             height:400px;/*块级元素定义宽度，高度*/</div><div class="line">             margin:0 auto;/*元素水平居中*/</div><div class="line">             /*margin用法可以有1,2,3,4个参数*/</div><div class="line">          &#125;</div><div class="line">          #header&#123;</div><div class="line">            /*块级元素不设置宽度时，宽度随着内容的变化而变化*/</div><div class="line">             padding:auto;</div><div class="line">             border:1px solid blue;</div><div class="line">             margin-top:10px;</div><div class="line">             margin-left:10px;</div><div class="line">             margin-right:10px;</div><div class="line">          &#125;</div><div class="line">          #left&#123;</div><div class="line">             border:1px solid blue;</div><div class="line">             margin-left:10px;</div><div class="line">             height:250px;</div><div class="line">             width:175px;</div><div class="line">             float:left;</div><div class="line">          &#125;</div><div class="line">          #main&#123;</div><div class="line">             border:1px solid blue;</div><div class="line">             height:250px;</div><div class="line">             width:250px;</div><div class="line">             margin:0 auto;</div><div class="line">			 /*margin-left:10px;margin-right:10px*/通过这种设置让左右两边距离相同</div><div class="line"></div><div class="line">          &#125;</div><div class="line">          #right&#123;</div><div class="line">             border:1px solid blue;</div><div class="line">             margin-right:10px;    </div><div class="line">             margin-top:-250px;</div><div class="line">             height:250px;</div><div class="line">             width:175px;</div><div class="line">             float:right;</div><div class="line">          &#125;</div><div class="line">          #footer&#123;</div><div class="line">             margin-top:10px;</div><div class="line">             border:1px solid blue;</div><div class="line">             clear:both;</div><div class="line">             margin-left:10px;</div><div class="line">             margin-right:10px;</div><div class="line">          &#125;</div><div class="line">      &lt;/style&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">  &lt;div id=&quot;big-box&quot;&gt;</div><div class="line">      &lt;p id = &quot;header&quot;&gt;header header header header header header header header header header&lt;/p&gt;</div><div class="line"></div><div class="line">      &lt;div id=&quot;left&quot;&gt;</div><div class="line">        &lt;p&gt;left left left&lt;/p&gt;</div><div class="line">        &lt;p&gt;left left left&lt;/p&gt;</div><div class="line">        &lt;p&gt;left left left&lt;/p&gt;</div><div class="line">        &lt;p&gt;left left left&lt;/p&gt;</div><div class="line">        &lt;p&gt;left left left&lt;/p&gt;</div><div class="line">        &lt;p&gt;left left left&lt;/p&gt;</div><div class="line">      &lt;/div&gt;</div><div class="line">      &lt;div id=&quot;main&quot;&gt;</div><div class="line">        &lt;p&gt;main main main&lt;/p&gt;</div><div class="line">        &lt;p&gt;main main main&lt;/p&gt;</div><div class="line">        &lt;p&gt;main main main&lt;/p&gt;</div><div class="line">        &lt;p&gt;main main main&lt;/p&gt;</div><div class="line">        &lt;p&gt;main main main&lt;/p&gt;</div><div class="line">        &lt;p&gt;main main main&lt;/p&gt;</div><div class="line">      &lt;/div&gt;</div><div class="line">      &lt;div id=&quot;right&quot;&gt;</div><div class="line">        &lt;p&gt;right right right&lt;/p&gt;</div><div class="line">        &lt;p&gt;right right right&lt;/p&gt;</div><div class="line">        &lt;p&gt;right right right&lt;/p&gt;</div><div class="line">        &lt;p&gt;right right right&lt;/p&gt;</div><div class="line">        &lt;p&gt;right right right&lt;/p&gt;</div><div class="line">        &lt;p&gt;right right right&lt;/p&gt;</div><div class="line">      &lt;/div&gt;</div><div class="line"></div><div class="line">        &lt;p id = &quot;footer&quot;&gt;footer footer footerfooter footer footerfooter footer footerfooter footer footerfooter footer&lt;/p&gt;</div><div class="line">  &lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
-<h2 id="两栏布局"><a href="#两栏布局" class="headerlink" title="两栏布局"></a>两栏布局</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE  html&gt;</div><div class="line">&lt;html  lang=&quot;zh-cn&quot;&gt;</div><div class="line">&lt;head&gt;</div><div class="line">&lt;meta charset=&quot;utf-8&quot;&gt;</div><div class="line">&lt;title&gt;This is my title&lt;/title&gt;</div><div class="line">      &lt;style&gt;</div><div class="line">          #big-box&#123;</div><div class="line">             display:block;</div><div class="line">             border:1px solid blue;</div><div class="line">             width:640px;</div><div class="line">             height:410px;</div><div class="line">             margin:auto;</div><div class="line">          &#125;</div><div class="line">          #header&#123;</div><div class="line">/*             padding:auto;*/</div><div class="line">             border:1px solid blue;</div><div class="line">             margin-top:10px;</div><div class="line">             margin-left:10px;</div><div class="line">             margin-right:10px;</div><div class="line">          &#125;</div><div class="line">          #left&#123;</div><div class="line">             border:1px solid blue;</div><div class="line">             margin-left:10px;</div><div class="line">             width:240px;</div><div class="line">             height:265px;</div><div class="line">             float:left;</div><div class="line">             text-align:center;</div><div class="line">          &#125;</div><div class="line">          #left12&#123;</div><div class="line">            height:125px;</div><div class="line">            border:1px solid blue;</div><div class="line">            margin:5px;</div><div class="line">          &#125;</div><div class="line">          #left1&#123;</div><div class="line">             border:1px solid blue;</div><div class="line">             margin:3px;</div><div class="line">             float:left;</div><div class="line">             height:110px;</div><div class="line">          &#125;</div><div class="line">          #left2&#123;</div><div class="line">             border:1px solid blue;</div><div class="line">             margin-left:auto;</div><div class="line">             margin-top:3px;</div><div class="line">             margin-right:3px;</div><div class="line">             height:110px;</div><div class="line">             width:100px;</div><div class="line">          &#125;</div><div class="line">          #left3&#123;</div><div class="line">             border:1px solid blue;</div><div class="line">             margin:5px;</div><div class="line">             height:125px;            </div><div class="line">          &#125;</div><div class="line"></div><div class="line">          #main&#123;</div><div class="line">             border:1px solid blue;</div><div class="line">             margin-left:auto;</div><div class="line">             margin-right:10px;</div><div class="line">             height:265px;</div><div class="line">             width:370px;</div><div class="line">          &#125;</div><div class="line">          #footer&#123;</div><div class="line"></div><div class="line">             border:1px solid blue;</div><div class="line">             margin-top:10px;</div><div class="line">             margin-left:10px;</div><div class="line">             margin-right:10px;</div><div class="line">          &#125;</div><div class="line">      &lt;/style&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">  &lt;div id=&quot;big-box&quot;&gt;</div><div class="line">      &lt;p id = &quot;header&quot;&gt;header header header header header header header header header header&lt;/p&gt;</div><div class="line">      &lt;div id=&quot;left&quot;&gt;</div><div class="line">        &lt;div id=&quot;left12&quot;&gt;</div><div class="line">          &lt;div id=&quot;left1&quot;&gt;</div><div class="line">             &lt;p&gt;left1 left1 left1&lt;/p&gt;</div><div class="line">             &lt;p&gt;left1 left1 left1&lt;/p&gt;</div><div class="line">             &lt;p&gt;left1 left1 left1&lt;/p&gt;</div><div class="line">          &lt;/div&gt;</div><div class="line">          &lt;div id=&quot;left2&quot;&gt;</div><div class="line">             &lt;p&gt;left2 left2 &lt;/p&gt;</div><div class="line">             &lt;p&gt;left2 left2 &lt;/p&gt;</div><div class="line">          &lt;/div&gt;</div><div class="line">        &lt;/div&gt;</div><div class="line">        &lt;div id=&quot;left3&quot;&gt;</div><div class="line">           &lt;p&gt;left3 left3 left3&lt;/p&gt;</div><div class="line">           &lt;p&gt;left3 left3 left3&lt;/p&gt;</div><div class="line">           &lt;p&gt;left3 left3 left3&lt;/p&gt;</div><div class="line">        &lt;/div&gt;</div><div class="line">      &lt;/div&gt;</div><div class="line">      &lt;div id=&quot;main&quot;&gt;</div><div class="line">        &lt;p&gt;main main main&lt;/p&gt;</div><div class="line">        &lt;p&gt;main main main&lt;/p&gt;</div><div class="line">        &lt;p&gt;main main main&lt;/p&gt;</div><div class="line">        &lt;p&gt;main main main&lt;/p&gt;</div><div class="line">        &lt;p&gt;main main main&lt;/p&gt;</div><div class="line">        &lt;p&gt;main main main&lt;/p&gt;</div><div class="line">      &lt;/div&gt;</div><div class="line"></div><div class="line">        &lt;p id=&quot;footer&quot;&gt;footer footer footerfooter footer footerfooter footer footerfooter footer footerfooter footer&lt;/p&gt;</div><div class="line">  &lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html</div></pre></td></tr></table></figure>
-<p>注意：页面布局从外往里，熟悉相关属性方法，层层思考。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2351,7 +2343,7 @@ addScriptTag(&quot;http://ajax.googleapis.com/ajax/services/search/web?v=1.0&amp
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">51</span>
+                <span class="site-state-item-count">52</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

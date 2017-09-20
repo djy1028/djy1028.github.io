@@ -112,18 +112,18 @@
 
 
 
-<meta name="description" content="#　模板方法模式 模板方法模式是一种只需要使用继承就可以实现的简单模式。 通常该方法由两个部分组成：第一部分是抽象父类，第二部分是具体的实现子类。通常在父类中封装了子类的算法框架，包括一些公共方法以及封装子类中所有方法的执行顺序。子类通过继承这个抽象类，也就继承了整个算法结构。 在模板方法中，子类实现中的相同部分被上移到父类中，而将不同的部分留待子类来实现。 示例：冲泡茶和冲泡咖啡的过程大致可以总">
+<meta name="description" content="#　模板方法模式 模板方法模式是一种只需要使用继承就可以实现的简单模式 通常该方法由两个部分组成：第一部分是抽象父类，第二部分是具体的实现子类。通常在父类中封装了子类的算法框架，包括一些公共方法以及封装子类中所有方法的执行顺序。子类通过继承这个抽象类，也就继承了整个算法结构。 在模板方法中，子类实现中的相同部分被上移到父类中，而将不同的部分留待子类来实现。 示例：冲泡茶和冲泡咖啡的过程大致可以总结">
 <meta name="keywords" content="设计模式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="js设计模式(6)">
 <meta property="og:url" content="http://yoursite.com/2017/06/27/js设计模式(6)/index.html">
 <meta property="og:site_name" content="С�����ľ���">
-<meta property="og:description" content="#　模板方法模式 模板方法模式是一种只需要使用继承就可以实现的简单模式。 通常该方法由两个部分组成：第一部分是抽象父类，第二部分是具体的实现子类。通常在父类中封装了子类的算法框架，包括一些公共方法以及封装子类中所有方法的执行顺序。子类通过继承这个抽象类，也就继承了整个算法结构。 在模板方法中，子类实现中的相同部分被上移到父类中，而将不同的部分留待子类来实现。 示例：冲泡茶和冲泡咖啡的过程大致可以总">
+<meta property="og:description" content="#　模板方法模式 模板方法模式是一种只需要使用继承就可以实现的简单模式 通常该方法由两个部分组成：第一部分是抽象父类，第二部分是具体的实现子类。通常在父类中封装了子类的算法框架，包括一些公共方法以及封装子类中所有方法的执行顺序。子类通过继承这个抽象类，也就继承了整个算法结构。 在模板方法中，子类实现中的相同部分被上移到父类中，而将不同的部分留待子类来实现。 示例：冲泡茶和冲泡咖啡的过程大致可以总结">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-07-10T09:39:01.057Z">
+<meta property="og:updated_time" content="2017-09-18T02:36:24.102Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js设计模式(6)">
-<meta name="twitter:description" content="#　模板方法模式 模板方法模式是一种只需要使用继承就可以实现的简单模式。 通常该方法由两个部分组成：第一部分是抽象父类，第二部分是具体的实现子类。通常在父类中封装了子类的算法框架，包括一些公共方法以及封装子类中所有方法的执行顺序。子类通过继承这个抽象类，也就继承了整个算法结构。 在模板方法中，子类实现中的相同部分被上移到父类中，而将不同的部分留待子类来实现。 示例：冲泡茶和冲泡咖啡的过程大致可以总">
+<meta name="twitter:description" content="#　模板方法模式 模板方法模式是一种只需要使用继承就可以实现的简单模式 通常该方法由两个部分组成：第一部分是抽象父类，第二部分是具体的实现子类。通常在父类中封装了子类的算法框架，包括一些公共方法以及封装子类中所有方法的执行顺序。子类通过继承这个抽象类，也就继承了整个算法结构。 在模板方法中，子类实现中的相同部分被上移到父类中，而将不同的部分留待子类来实现。 示例：冲泡茶和冲泡咖啡的过程大致可以总结">
 
 
 
@@ -447,7 +447,7 @@
 
       
         <p>#　模板方法模式</p>
-<p><strong>模板方法模式是一种只需要使用继承就可以实现的简单模式。</strong></p>
+<p><strong>模板方法模式是一种只需要使用继承就可以实现的简单模式</strong></p>
 <p>通常该方法由两个部分组成：第一部分是抽象父类，第二部分是具体的实现子类。通常在父类中封装了子类的算法框架，包括一些公共方法以及封装子类中所有方法的执行顺序。子类通过继承这个抽象类，也就继承了整个算法结构。</p>
 <p><em>在模板方法中，子类实现中的相同部分被上移到父类中，而将不同的部分留待子类来实现。</em></p>
 <h2 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h2><p>冲泡茶和冲泡咖啡的过程大致可以总结为以下几个步骤：</p>
@@ -466,7 +466,7 @@
 <p>3.把数据渲染到div容器里，完成组件的构造</p>
 <p>4.通知用户组件渲完毕</p>
 <h2 id="钩子方法"><a href="#钩子方法" class="headerlink" title="钩子方法"></a>钩子方法</h2><p>模板封装子类的算法框架适合用于大多数子类，但是如果有些特别‘个性’子类，就需要让子类可以跳出模板的约束。这时，可以用钩子方法来隔离变化，究竟需不需要钩子则由子类决定。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">Beverage.prototype.customWantCondiments=function()&#123;</div><div class="line">	return true;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Beverage.prototype.addCondiments=funciton()&#123;&#125;;</div><div class="line"></div><div class="line">Beverage.prototype.init=function()&#123;</div><div class="line">	this.boilWater();</div><div class="line">	this.brew();</div><div class="line">	this.pourInCup();</div><div class="line">	if(this.customWantCondiments())&#123;</div><div class="line">		this.addCondiments();</div><div class="line">	&#125;</div><div class="line">		</div><div class="line">&#125;</div><div class="line"></div><div class="line">var Coffee=funciton()&#123;&#125;;</div><div class="line"></div><div class="line">Coffee.prototype=new Beverage();</div><div class="line"></div><div class="line">Coffee.prototype.addCondiments=function()&#123;</div><div class="line">	console.log(&apos;加糖&apos;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">Coffee.prorotype.customWantConiments=function()&#123;</div><div class="line">	window.confirm(&apos;要加调料吗？&apos;)</div><div class="line">&#125;</div><div class="line"></div><div class="line">var coffee = new Coffee();</div><div class="line"></div><div class="line">coffee.init();</div></pre></td></tr></table></figure></p>
-<h2 id="‘好莱坞原则’"><a href="#‘好莱坞原则’" class="headerlink" title="‘好莱坞原则’"></a>‘好莱坞原则’</h2><p>允许低层组件将自己挂钩到高层组件中，而高层组件会决定在什么时候，以何种方式去使用这些低层组件。而模板方法模式就是该原则的一个重要体现，当我们用模板方法模式来进行编码时，就意味着我们放弃了对自己的控制权，而改为父类通知子类哪些方法应该在什么时候被调用。而作为子类，只是负责提供一些设计上的细节。</p>
+<h2 id="‘好莱坞原则’"><a href="#‘好莱坞原则’" class="headerlink" title="‘好莱坞原则’"></a>‘好莱坞原则’</h2><p><strong>允许低层组件将自己挂钩到高层组件中，而高层组件会决定在什么时候，以何种方式去使用这些低层组件</strong>。而模板方法模式就是该原则的一个重要体现，当我们用模板方法模式来进行编码时，就意味着我们放弃了对自己的控制权，而改为父类通知子类哪些方法应该在什么时候被调用。而作为子类，只是负责提供一些设计上的细节。</p>
 
       
     </div>
@@ -497,8 +497,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/06/27/js设计模式(5)/" rel="next" title="js设计模式(5)">
-                <i class="fa fa-chevron-left"></i> js设计模式(5)
+              <a href="/2017/06/26/http基础/" rel="next" title="Http基础知识">
+                <i class="fa fa-chevron-left"></i> Http基础知识
               </a>
             
           </div>
@@ -507,8 +507,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/06/28/ReactJs/" rel="prev" title="React.js基础">
-                React.js基础 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/06/27/js设计模式(4)/" rel="prev" title="js设计模式(4)">
+                js设计模式(4) <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -616,7 +616,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">51</span>
+                <span class="site-state-item-count">52</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
