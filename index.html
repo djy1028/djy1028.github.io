@@ -1251,6 +1251,198 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/16/webpack基础/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="superDjy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://img.mp.itc.cn/upload/20170429/a2379efc26214d7fa790af6105312132">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="С�����ľ���">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/16/webpack基础/" itemprop="url">webpack基础</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-16T00:00:00+08:00">
+                2017-08-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/webpack/" itemprop="url" rel="index">
+                    <span itemprop="name">webpack</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/08/16/webpack基础/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/08/16/webpack基础/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/08/16/webpack基础/" class="leancloud_visitors" data-flag-title="webpack基础">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>webpack（模块的打包器）有自己的特性（coding spliting）代码分割（切分加载）。<strong>webpack可以通过loader模块处理各种各样的文件</strong>，无论其模块化方式是AMD，Commonjs，ES6。模块热更新特性可以在开发中提高调试效率。</p>
+<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>WebPack可以看做是模块打包机：它做的事情是<strong>分析你的项目结构，找到JavaScript模块以及其它的一些浏览器不能直接运行的拓展语言（Scss，TypeScript等），并将其转换和打包为合适的格式供浏览器使用</strong></p>
+<h3 id="WebPack和Grunt以及Gulp相比有什么特性"><a href="#WebPack和Grunt以及Gulp相比有什么特性" class="headerlink" title="WebPack和Grunt以及Gulp相比有什么特性"></a>WebPack和Grunt以及Gulp相比有什么特性</h3><p>其实Webpack和另外两个并没有太多的可比性，Gulp/Grunt是一种能够<strong>优化前端的开发流程的工具</strong>，而<strong>WebPack是一种模块化的解决方案</strong>，不过Webpack的优点使得Webpack在很多场景下可以替代Gulp/Grunt类的工具。</p>
+<p>Grunt和Gulp的工作方式是：<strong>在一个配置文件中，指明对某些文件进行类似编译，组合，压缩等任务的具体步骤，工具之后可以自动替你完成这些任务</strong></p>
+<h4 id="Webpack的工作方式"><a href="#Webpack的工作方式" class="headerlink" title="Webpack的工作方式"></a>Webpack的工作方式</h4><p>把你的项目当做一个整体，<em>通过一个给定的主文件（如：index.js）</em>，Webpack将从这个文件开始找到你的<strong>项目的所有依赖文件</strong>，<strong>使用loaders处理它们，最后打包为一个（或多个）浏览器可识别的JavaScript文件</strong></p>
+<p>详情配置参考！[]<a href="http://www.jianshu.com/p/42e11515c10f" target="_blank" rel="external">http://www.jianshu.com/p/42e11515c10f</a></p>
+<h2 id="loaders"><a href="#loaders" class="headerlink" title="loaders"></a>loaders</h2><p>Loaders是webpack提供的最激动人心的功能之一了。<strong>通过使用不同的loader，webpack有能力调用外部的脚本或工具，实现对不同格式的文件的处理</strong>，比如说分析转换scss为css，或者把下一代的JS文件（ES6，ES7)转换为现代浏览器兼容的JS文件，对React的开发而言，合适的Loaders可以把React的中用到的JSX文件转换为JS文件</p>
+<p>Loaders需要单独安装并且需要在webpack.config.js中的modules关键字下进行配置，Loaders的配置包括以下几方面：</p>
+<p><code>test</code>：一个用以匹配loaders所处理文件的拓展名的正则表达式（必须）<br><code>loader</code>：loader的名称（必须）<br><code>include/exclude</code>:手动添加必须处理的文件（文件夹）或屏蔽不需要处理的文件（文件夹）（可选）；<br><code>query</code>：为loaders提供额外的设置选项（可选）</p>
+<h3 id="Babel"><a href="#Babel" class="headerlink" title="Babel"></a>Babel</h3><p>Babel其实是一个编译JavaScript的平台，它的强大之处表现在可以通过编译帮你达到以下目的：</p>
+<p>(1)使用下一代的JavaScript代码（ES6，ES7…），即使这些标准目前并未被当前的浏览器完全的支持；</p>
+<p>(2)使用基于JavaScript进行了拓展的语言，比如React的JSX；</p>
+<h4 id="Babel的安装和配置"><a href="#Babel的安装和配置" class="headerlink" title="Babel的安装和配置"></a>Babel的安装和配置</h4><p>Babel其实是几个模块化的包，<strong>其核心功能位于称为babel-core的npm包中</strong>，webpack可以把其不同的包整合在一起使用，<strong>对于每一个你需要的功能或拓展，你都需要安装单独的包（用得最多的是解析Es6的babel-preset-es2015包和解析JSX的babel-preset-react包</strong>）。</p>
+<p><strong>Babel的配置</strong></p>
+<p>Babel其实可以完全在<code>webpack.config.js</code>中进行配置，但是考虑到<code>babel</code>具有非常多的配置选项，在单一的<code>webpack.config.js</code>文件中进行配置往往使得这个文件显得太复杂，因此一些开发者支持把babel的配置选项放在一个单独的名为 <code>.babelrc</code> 的配置文件中。我们现在的babel的配置并不算复杂，不过之后我们会再加一些东西，因此现在我们就提取出相关部分，分两个配置文件进行配置（webpack会自动调用<code>.babelrc</code>里的babel配置选项）</p>
+<h3 id="一切皆模块"><a href="#一切皆模块" class="headerlink" title="一切皆模块"></a>一切皆模块</h3><p><strong>Webpack有一个不可不说的优点，它把所有的文件都都当做模块处理</strong>，JavaScript代码，CSS和fonts以及图片等等通过合适的loader都可以被处理。</p>
+<h4 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h4><p>webpack提供两个工具处理样式表，<code>css-loader</code>和<code>style-loader</code>，二者处理的任务不同，<code>css-loader</code>使你能够使用类似@import和url(…)的方法实现require()的功能,<code>style-loader</code>将所有的计算后的样式加入页面中，<strong>二者组合在一起使你能够把样式表嵌入webpack打包后的JS文件中</strong>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">import React from &apos;react&apos;;</div><div class="line">import &#123;render&#125; from &apos;react-dom&apos;</div><div class="line">import Greeter from &apos;./Greeter&apos;</div><div class="line">import &apos;./main.css&apos;</div><div class="line"></div><div class="line">render(&lt;Greeter /&gt;, document.getElementById(&apos;root&apos;))</div></pre></td></tr></table></figure>
+<h4 id="css-Module"><a href="#css-Module" class="headerlink" title="css Module"></a>css Module</h4><p>JavaScript通过一些新的语言特性，更好的工具以及更好的实践方法（比如说模块化）发展得非常迅速。模块使得开发者把复杂的代码转化为小的，干净的，依赖声明明确的单元，配合优化工具，依赖管理和加载管理可以自动完成。</p>
+<p>不过前端的另外一部分，CSS发展就相对慢一些，大多的样式表却依旧巨大且充满了全局类名，维护和修改都非常困难。</p>
+<p>最近有一个叫做 CSS modules 的技术就意在把JS的模块化思想带入CSS中来，通过CSS模块，所有的类名，动画名默认都只作用于当前模块。Webpack从一开始就对CSS模块化提供了支持，在CSS loader中进行配置后，你所需要做的一切就是把”modules“传递到所需要的地方，然后就可以直接把CSS的类名传递到组件的代码中，且这样做只对当前组件有效，不必担心在不同的模块中使用相同的类名造成冲突</p>
+<h4 id="css预处理器"><a href="#css预处理器" class="headerlink" title="css预处理器"></a>css预处理器</h4><p>Sass 和 Less 之类的预处理器是对原生CSS的拓展，它们允许你使用类似于variables, nesting, mixins, inheritance等不存在于CSS中的特性来写CSS，CSS预处理器可以将这些特殊类型的语句转化为浏览器可识别的CSS语句。</p>
+<p>常用的CSS处理loaders有:<code>Less Loader</code> <code>Sass Loader</code> <code>Stylus Loader</code></p>
+<p>其实也存在一个CSS的处理平台<code>PostCSS</code>，它可以帮助你的CSS实现更多的功能，在其官方文档可了解更多相关知识。</p>
+<p>举例来说如何使用<code>PostCSS</code>，我们使用<code>PostCSS</code>来为CSS代码自动添加适应不同浏览器的CSS前缀</p>
+<h2 id="插件-Plugins"><a href="#插件-Plugins" class="headerlink" title="插件(Plugins)"></a>插件(Plugins)</h2><p>插件（Plugins）<strong>是用来拓展Webpack功能的，它们会在整个构建过程中生效</strong>，执行相关的任务。<br>Loaders和Plugins常常被弄混，但是他们其实是完全不同的东西，可以这么来说，<strong>loaders是在打包构建过程中用来处理源文件的（JSX，Scss，Less..），一次处理一个</strong>，<em>插件并不直接操作单个文件，它直接对整个构建过程其作用。</em></p>
+<p>Webpack有很多内置插件，同时也有很多第三方插件，可以让我们完成更加丰富的功能。</p>
+<h3 id="使用插件的方法"><a href="#使用插件的方法" class="headerlink" title="使用插件的方法"></a>使用插件的方法</h3><p>要使用某个插件，我们需要<strong>通过npm安装它，然后要做的就是在webpack配置中的plugins关键字部分添加该插件的一个实例（plugins是一个数组）继续上面的例子</strong>，我们添加了一个给打包后代码添加版权声明的插件。</p>
+<h4 id="HtmlWebpackPlugin"><a href="#HtmlWebpackPlugin" class="headerlink" title="HtmlWebpackPlugin"></a>HtmlWebpackPlugin</h4><p>这个插件的作用是依据一个简单的index.html模板，生成一个自动引用你打包后的JS文件的新index.html。这在每次生成的js文件名称不同时非常有用</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/16/ReactJs(7)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1432,198 +1624,6 @@
 <p>mapDispatchToProps:接受Redux的dispatch方法作为参数，返回当前组件相关部分的<code>action creator</code>,将<code>action creator</code>和dispatch绑定</p>
 <h3 id="高阶reducer"><a href="#高阶reducer" class="headerlink" title="高阶reducer"></a>高阶reducer</h3><p>将reducer作为参数或者返回值的函数称为<strong>高阶reducer</strong></p>
 <p>高阶reducer可以解决reducer的复用问题，也可以对原始的reducer进行增强（使任意reducer变成可以执行撤销和重做的全新reducer）</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/16/webpack基础/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="superDjy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://img.mp.itc.cn/upload/20170429/a2379efc26214d7fa790af6105312132">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="С�����ľ���">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/08/16/webpack基础/" itemprop="url">webpack基础</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-16T00:00:00+08:00">
-                2017-08-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/webpack/" itemprop="url" rel="index">
-                    <span itemprop="name">webpack</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/08/16/webpack基础/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/08/16/webpack基础/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/08/16/webpack基础/" class="leancloud_visitors" data-flag-title="webpack基础">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>webpack（模块的打包器）有自己的特性（coding spliting）代码分割（切分加载）。<strong>webpack可以通过loader模块处理各种各样的文件</strong>，无论其模块化方式是AMD，Commonjs，ES6。模块热更新特性可以在开发中提高调试效率。</p>
-<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>WebPack可以看做是模块打包机：它做的事情是<strong>分析你的项目结构，找到JavaScript模块以及其它的一些浏览器不能直接运行的拓展语言（Scss，TypeScript等），并将其转换和打包为合适的格式供浏览器使用</strong></p>
-<h3 id="WebPack和Grunt以及Gulp相比有什么特性"><a href="#WebPack和Grunt以及Gulp相比有什么特性" class="headerlink" title="WebPack和Grunt以及Gulp相比有什么特性"></a>WebPack和Grunt以及Gulp相比有什么特性</h3><p>其实Webpack和另外两个并没有太多的可比性，Gulp/Grunt是一种能够<strong>优化前端的开发流程的工具</strong>，而<strong>WebPack是一种模块化的解决方案</strong>，不过Webpack的优点使得Webpack在很多场景下可以替代Gulp/Grunt类的工具。</p>
-<p>Grunt和Gulp的工作方式是：<strong>在一个配置文件中，指明对某些文件进行类似编译，组合，压缩等任务的具体步骤，工具之后可以自动替你完成这些任务</strong></p>
-<h4 id="Webpack的工作方式"><a href="#Webpack的工作方式" class="headerlink" title="Webpack的工作方式"></a>Webpack的工作方式</h4><p>把你的项目当做一个整体，<em>通过一个给定的主文件（如：index.js）</em>，Webpack将从这个文件开始找到你的<strong>项目的所有依赖文件</strong>，<strong>使用loaders处理它们，最后打包为一个（或多个）浏览器可识别的JavaScript文件</strong></p>
-<p>详情配置参考！[]<a href="http://www.jianshu.com/p/42e11515c10f" target="_blank" rel="external">http://www.jianshu.com/p/42e11515c10f</a></p>
-<h2 id="loaders"><a href="#loaders" class="headerlink" title="loaders"></a>loaders</h2><p>Loaders是webpack提供的最激动人心的功能之一了。<strong>通过使用不同的loader，webpack有能力调用外部的脚本或工具，实现对不同格式的文件的处理</strong>，比如说分析转换scss为css，或者把下一代的JS文件（ES6，ES7)转换为现代浏览器兼容的JS文件，对React的开发而言，合适的Loaders可以把React的中用到的JSX文件转换为JS文件</p>
-<p>Loaders需要单独安装并且需要在webpack.config.js中的modules关键字下进行配置，Loaders的配置包括以下几方面：</p>
-<p><code>test</code>：一个用以匹配loaders所处理文件的拓展名的正则表达式（必须）<br><code>loader</code>：loader的名称（必须）<br><code>include/exclude</code>:手动添加必须处理的文件（文件夹）或屏蔽不需要处理的文件（文件夹）（可选）；<br><code>query</code>：为loaders提供额外的设置选项（可选）</p>
-<h3 id="Babel"><a href="#Babel" class="headerlink" title="Babel"></a>Babel</h3><p>Babel其实是一个编译JavaScript的平台，它的强大之处表现在可以通过编译帮你达到以下目的：</p>
-<p>(1)使用下一代的JavaScript代码（ES6，ES7…），即使这些标准目前并未被当前的浏览器完全的支持；</p>
-<p>(2)使用基于JavaScript进行了拓展的语言，比如React的JSX；</p>
-<h4 id="Babel的安装和配置"><a href="#Babel的安装和配置" class="headerlink" title="Babel的安装和配置"></a>Babel的安装和配置</h4><p>Babel其实是几个模块化的包，<strong>其核心功能位于称为babel-core的npm包中</strong>，webpack可以把其不同的包整合在一起使用，<strong>对于每一个你需要的功能或拓展，你都需要安装单独的包（用得最多的是解析Es6的babel-preset-es2015包和解析JSX的babel-preset-react包</strong>）。</p>
-<p><strong>Babel的配置</strong></p>
-<p>Babel其实可以完全在<code>webpack.config.js</code>中进行配置，但是考虑到<code>babel</code>具有非常多的配置选项，在单一的<code>webpack.config.js</code>文件中进行配置往往使得这个文件显得太复杂，因此一些开发者支持把babel的配置选项放在一个单独的名为 <code>.babelrc</code> 的配置文件中。我们现在的babel的配置并不算复杂，不过之后我们会再加一些东西，因此现在我们就提取出相关部分，分两个配置文件进行配置（webpack会自动调用<code>.babelrc</code>里的babel配置选项）</p>
-<h3 id="一切皆模块"><a href="#一切皆模块" class="headerlink" title="一切皆模块"></a>一切皆模块</h3><p><strong>Webpack有一个不可不说的优点，它把所有的文件都都当做模块处理</strong>，JavaScript代码，CSS和fonts以及图片等等通过合适的loader都可以被处理。</p>
-<h4 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h4><p>webpack提供两个工具处理样式表，<code>css-loader</code>和<code>style-loader</code>，二者处理的任务不同，<code>css-loader</code>使你能够使用类似@import和url(…)的方法实现require()的功能,<code>style-loader</code>将所有的计算后的样式加入页面中，<strong>二者组合在一起使你能够把样式表嵌入webpack打包后的JS文件中</strong>。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">import React from &apos;react&apos;;</div><div class="line">import &#123;render&#125; from &apos;react-dom&apos;</div><div class="line">import Greeter from &apos;./Greeter&apos;</div><div class="line">import &apos;./main.css&apos;</div><div class="line"></div><div class="line">render(&lt;Greeter /&gt;, document.getElementById(&apos;root&apos;))</div></pre></td></tr></table></figure>
-<h4 id="css-Module"><a href="#css-Module" class="headerlink" title="css Module"></a>css Module</h4><p>JavaScript通过一些新的语言特性，更好的工具以及更好的实践方法（比如说模块化）发展得非常迅速。模块使得开发者把复杂的代码转化为小的，干净的，依赖声明明确的单元，配合优化工具，依赖管理和加载管理可以自动完成。</p>
-<p>不过前端的另外一部分，CSS发展就相对慢一些，大多的样式表却依旧巨大且充满了全局类名，维护和修改都非常困难。</p>
-<p>最近有一个叫做 CSS modules 的技术就意在把JS的模块化思想带入CSS中来，通过CSS模块，所有的类名，动画名默认都只作用于当前模块。Webpack从一开始就对CSS模块化提供了支持，在CSS loader中进行配置后，你所需要做的一切就是把”modules“传递到所需要的地方，然后就可以直接把CSS的类名传递到组件的代码中，且这样做只对当前组件有效，不必担心在不同的模块中使用相同的类名造成冲突</p>
-<h4 id="css预处理器"><a href="#css预处理器" class="headerlink" title="css预处理器"></a>css预处理器</h4><p>Sass 和 Less 之类的预处理器是对原生CSS的拓展，它们允许你使用类似于variables, nesting, mixins, inheritance等不存在于CSS中的特性来写CSS，CSS预处理器可以将这些特殊类型的语句转化为浏览器可识别的CSS语句。</p>
-<p>常用的CSS处理loaders有:<code>Less Loader</code> <code>Sass Loader</code> <code>Stylus Loader</code></p>
-<p>其实也存在一个CSS的处理平台<code>PostCSS</code>，它可以帮助你的CSS实现更多的功能，在其官方文档可了解更多相关知识。</p>
-<p>举例来说如何使用<code>PostCSS</code>，我们使用<code>PostCSS</code>来为CSS代码自动添加适应不同浏览器的CSS前缀</p>
-<h2 id="插件-Plugins"><a href="#插件-Plugins" class="headerlink" title="插件(Plugins)"></a>插件(Plugins)</h2><p>插件（Plugins）<strong>是用来拓展Webpack功能的，它们会在整个构建过程中生效</strong>，执行相关的任务。<br>Loaders和Plugins常常被弄混，但是他们其实是完全不同的东西，可以这么来说，<strong>loaders是在打包构建过程中用来处理源文件的（JSX，Scss，Less..），一次处理一个</strong>，<em>插件并不直接操作单个文件，它直接对整个构建过程其作用。</em></p>
-<p>Webpack有很多内置插件，同时也有很多第三方插件，可以让我们完成更加丰富的功能。</p>
-<h3 id="使用插件的方法"><a href="#使用插件的方法" class="headerlink" title="使用插件的方法"></a>使用插件的方法</h3><p>要使用某个插件，我们需要<strong>通过npm安装它，然后要做的就是在webpack配置中的plugins关键字部分添加该插件的一个实例（plugins是一个数组）继续上面的例子</strong>，我们添加了一个给打包后代码添加版权声明的插件。</p>
-<h4 id="HtmlWebpackPlugin"><a href="#HtmlWebpackPlugin" class="headerlink" title="HtmlWebpackPlugin"></a>HtmlWebpackPlugin</h4><p>这个插件的作用是依据一个简单的index.html模板，生成一个自动引用你打包后的JS文件的新index.html。这在每次生成的js文件名称不同时非常有用</p>
 
           
         
@@ -2284,7 +2284,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/10/ReactJs(3)/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/10/ReactJs(4)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="superDjy">
@@ -2303,7 +2303,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/08/10/ReactJs(3)/" itemprop="url">React.js基础</a></h1>
+                <a class="post-title-link" href="/2017/08/10/ReactJs(4)/" itemprop="url">React.js基础</a></h1>
         
 
         <div class="post-meta">
@@ -2356,9 +2356,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/08/10/ReactJs(3)/#comments" itemprop="discussionUrl">
+                <a href="/2017/08/10/ReactJs(4)/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/08/10/ReactJs(3)/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/08/10/ReactJs(4)/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -2366,7 +2366,7 @@
 
           
           
-             <span id="/2017/08/10/ReactJs(3)/" class="leancloud_visitors" data-flag-title="React.js基础">
+             <span id="/2017/08/10/ReactJs(4)/" class="leancloud_visitors" data-flag-title="React.js基础">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -2399,40 +2399,21 @@
       
         
           
-            <h2 id="state-amp-amp-生命周期"><a href="#state-amp-amp-生命周期" class="headerlink" title="state&amp;&amp;生命周期"></a>state&amp;&amp;生命周期</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">class Clock extends React.Component&#123;</div><div class="line">  constructor(props)&#123;</div><div class="line">    super(props);</div><div class="line">    this.state=&#123;date: new Date()&#125;</div><div class="line">  &#125;</div><div class="line">   render()&#123;</div><div class="line">      return(</div><div class="line">        &lt;div&gt;</div><div class="line">          &lt;h1&gt; this is a test&lt;/h1&gt;</div><div class="line">          &lt;h2&gt;&#123;this.state.date.toLocaleTimeString()&#125;&lt;/h2&gt;</div><div class="line">        &lt;/div&gt;</div><div class="line">      )</div><div class="line">    &#125;</div><div class="line">  componentDidMount()&#123;</div><div class="line">    this.timer=setInterval(()=&gt;&#123;this.tick()&#125;,1000) </div><div class="line">  &#125;</div><div class="line">  componentWillUnmount()&#123;</div><div class="line">    clearInterval(this.timer)</div><div class="line">  &#125;</div><div class="line">  tick()&#123;</div><div class="line">    this.setState(&#123;date: new Date()&#125;)</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">ReactDOM.render(&lt;Clock /&gt;, document.getElementById(&apos;root&apos;))</div></pre></td></tr></table></figure>
-<p>上述代码实际作用：</p>
-<p>1) 当 <clock> 被传递给 ReactDOM.render()时，React调用Clock组件的构造函数。由于 Clock 需要显示当前时间，所以使用<strong>包含当前时间的对象</strong>来初始化this.state。我们稍后会更新此状态。</clock></p>
-<p>2) React然后调用Clock组件的render()方法。这是React了解屏幕上应该显示什么内容，然后 React更新DOM以匹配Clock的渲染输出。</p>
-<p>3) 当Clock的输出插入到DOM中时，React调用componentDidMount()生命周期钩子。在其中，Clock组件要求浏览器设置一个定时器，每秒钟调用一次 tick()。</p>
-<p>4) 浏览器每秒钟调用tick()方法。 在其中，Clock 组件通过使用包含当前时间的对象调用 setState()来调度UI更新。 通过调用setState()，React 知道状态已经改变，并再次调用 render()方法来确定屏幕上应当显示什么。这一次，render()方法中的this.state.date 将不同，所以渲染输出将包含更新的时间，并相应地更新DOM。</p>
-<p>5) 一旦Clock组件被从DOM中移除，React会调用componentWillUnmount()这个钩子函数，定时器也就会被清除</p>
-<p><em>注意：构造函数是唯一能够初始化 this.state 的地方。</em></p>
-<p>组件可以选择将其状态作为属性传递给其子组件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function FormattedDate(props) &#123;</div><div class="line">  return &lt;h2&gt;It is &#123;props.date.toLocaleTimeString()&#125;.&lt;/h2&gt;;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">·····</div><div class="line"></div><div class="line"> &lt;FormattedDate date=&#123;this.state.date&#125; /&gt;</div></pre></td></tr></table></figure></p>
-<h2 id="事件处理"><a href="#事件处理" class="headerlink" title="事件处理"></a>事件处理</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">class Toggle extends React.Component &#123;</div><div class="line">  constructor(props) &#123;</div><div class="line">    super(props);</div><div class="line">    this.state = &#123;isToggleOn: true&#125;;</div><div class="line"></div><div class="line">    // This binding is necessary to make `this` work in the callback</div><div class="line">    this.handleClick = this.handleClick.bind(this)</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  handleClick() &#123;</div><div class="line">    this.setState(prevState =&gt; (&#123;</div><div class="line">      isToggleOn: !prevState.isToggleOn</div><div class="line">    &#125;));</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  render() &#123;</div><div class="line">    return (</div><div class="line">      &lt;button onClick=&#123;this.handleClick&#125;&gt;</div><div class="line">        &#123;this.state.isToggleOn ? &apos;ON&apos; : &apos;OFF&apos;&#125;</div><div class="line">      &lt;/button&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">ReactDOM.render(</div><div class="line">  &lt;Toggle /&gt;,</div><div class="line">  document.getElementById(&apos;root&apos;)</div><div class="line">);</div></pre></td></tr></table></figure>
-<p><code>this.handleClick = this.handleClick.bind(this)</code><br>必须谨慎对待JSX回调函数中的this，<strong>类的方法默认是不会绑定this的</strong>。如果你忘记绑定 this.handleClick并把它传入onClick, 当你调用这个函数的时候this的值会是undefined</p>
-<p>也可以在回调函数中使用箭头函数：<code>&lt;button onClick={(e)=&gt;this.handleClick(e)}&gt;</code></p>
-<p><strong>通常建议在构造函数中绑定或使用属性初始化器语法来避免这类性能问题</strong></p>
-<h2 id="条件渲染"><a href="#条件渲染" class="headerlink" title="条件渲染"></a>条件渲染</h2><p>可以通过用花括号包裹代码在JSX中嵌入任何表达式 ，也包括JavaScript的逻辑与&amp;&amp;，它可以方便地条件渲染一个元素。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">function Mailbox(props)&#123;</div><div class="line">  const mes = props.unreadMessages;</div><div class="line">  return (</div><div class="line">    &lt;div&gt;</div><div class="line">      &#123;mes.length&gt;0&amp;&amp;&lt;h2&gt;haha&lt;/h2&gt;&#125;</div><div class="line">    &lt;/div&gt;</div><div class="line">  )</div><div class="line">&#125;</div><div class="line"></div><div class="line">const messages = [&apos;React&apos;, &apos;Re: React&apos;, &apos;Re:Re: React&apos;];</div><div class="line">ReactDOM.render(</div><div class="line">  &lt;Mailbox unreadMessages=&#123;messages&#125; /&gt;,</div><div class="line">  document.getElementById(&apos;root&apos;)</div><div class="line">);</div></pre></td></tr></table></figure>
-<p>之所以能这样做，是因为在JavaScript中，<code>true&amp;&amp;expression</code>总是返回 expression，而<code>false&amp;&amp;expression</code>总是返回false</p>
-<h3 id="元素变量"><a href="#元素变量" class="headerlink" title="元素变量"></a>元素变量</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div></pre></td><td class="code"><pre><div class="line">class LoginControl extends React.Component&#123;</div><div class="line">  constructor(props)&#123;</div><div class="line">    super(props);</div><div class="line">    this.state = &#123;isLoginIn: false&#125;;</div><div class="line">    this.handleLoginClick = this.handleLoginClick.bind(this);</div><div class="line">    this.handleLogoutClick = this.handleLogoutClick.bind(this);</div><div class="line">  &#125;</div><div class="line">  handleLogoutClick()&#123;</div><div class="line">    this.setState(&#123;isLoginIn: true&#125;)</div><div class="line">  &#125;</div><div class="line">  handleLoginClick()&#123;</div><div class="line">    this.setState(&#123;isLoginIn: false&#125;)</div><div class="line">  &#125;</div><div class="line">  render()&#123;</div><div class="line">    const isLoginIn = this.state.isLoginIn;</div><div class="line">    let button = null;</div><div class="line">    if(isLoginIn)&#123;</div><div class="line">      button = &lt;LoginOutButton onClick=&#123;this.handleLogoutClick&#125; /&gt;;</div><div class="line">    &#125;else&#123;</div><div class="line">      button = &lt;LoginInButton onClick=&#123;this.handleLoginClick&#125; /&gt;;</div><div class="line">    &#125;</div><div class="line">   return( &lt;div&gt;</div><div class="line">            &lt;Greeting isLoginIn=&#123;isLoginIn&#125; /&gt;</div><div class="line">             &#123;button&#125;//通过元素变量来渲染</div><div class="line">          &lt;/div&gt;</div><div class="line">          )</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">function LoginInButton(props)&#123;</div><div class="line">  return(</div><div class="line">  &lt;button onClick=&#123;props.onClick&#125;&gt;LoginIn&lt;/button&gt;</div><div class="line">  );</div><div class="line">&#125;</div><div class="line">function LoginOutButton(props)&#123;</div><div class="line">  return(</div><div class="line">    &lt;button onClick=&#123;props.onClick&#125;&gt;</div><div class="line">      LoginOut</div><div class="line">    &lt;/button&gt;</div><div class="line">  );</div><div class="line">&#125;</div><div class="line">function UserGreeting(props)&#123;</div><div class="line">  return(</div><div class="line">    &lt;h1&gt;welcome back&lt;/h1&gt;</div><div class="line">  );</div><div class="line">&#125;</div><div class="line">function GuestGreeting(props)&#123;</div><div class="line">  return(</div><div class="line">  &lt;h1&gt;please sign up&lt;/h1&gt;</div><div class="line">  );</div><div class="line">&#125;</div><div class="line">function Greeting(props)&#123;</div><div class="line">  const isLoginIn = props.isLoginIn;</div><div class="line">  if(isLoginIn)&#123;</div><div class="line">    return &lt;UserGreetin /&gt;</div><div class="line">  &#125;else&#123;</div><div class="line">    return &lt;GuestGreeting /&gt;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">ReactDOM.render(</div><div class="line">  &lt;LoginControl /&gt;,</div><div class="line">  document.getElementById(&apos;root&apos;)</div><div class="line">);</div></pre></td></tr></table></figure>
-<h2 id="列表-amp-amp-keys"><a href="#列表-amp-amp-keys" class="headerlink" title="列表&amp;&amp;keys"></a>列表&amp;&amp;keys</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">function NumberList(props) &#123;</div><div class="line">  const numbers = props.numbers;</div><div class="line">  const listItems = numbers.map((number) =&gt;</div><div class="line">    &lt;li key=&#123;number.toString()&#125;&gt;</div><div class="line">      &#123;number&#125;</div><div class="line">    &lt;/li&gt;</div><div class="line">  );</div><div class="line">  return (</div><div class="line">    &lt;ul&gt;&#123;listItems&#125;&lt;/ul&gt;</div><div class="line">  );</div><div class="line">&#125;</div><div class="line"></div><div class="line">const numbers = [1, 2, 3, 4, 5];</div><div class="line">ReactDOM.render(</div><div class="line">  &lt;NumberList numbers=&#123;numbers&#125; /&gt;,</div><div class="line">  document.getElementById(&apos;root&apos;)</div><div class="line">);</div></pre></td></tr></table></figure>
-<p><strong>Keys</strong>可以在DOM中的某些元素被增加或删除的时候帮助React识别哪些元素发生了变化。因此你应当给数组中的每一个元素赋予一个确定的标识。一个元素的key最好是这个元素在列表中拥有的一个独一无二的字符串。通常，我们使用来自数据的id作为元素的key</p>
-<p><strong>用key提取组件</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">function ListItem(props)&#123;</div><div class="line">  return &lt;li&gt;&#123;props.value&#125;&lt;/li&gt;</div><div class="line">&#125;</div><div class="line"></div><div class="line">function NumberList(props) &#123;</div><div class="line">  const numbers = props.numbers;</div><div class="line">  const listItems = numbers.map((number) =&gt;</div><div class="line">    &lt;ListItem value=&#123;number&#125; key=&#123;number.toString()&#125; /&gt;</div><div class="line">  );</div><div class="line">  return (</div><div class="line">    &lt;ul&gt;&#123;listItems&#125;&lt;/ul&gt;</div><div class="line">  );</div><div class="line">&#125;</div><div class="line"></div><div class="line">const numbers = [1, 2, 4, 5];</div><div class="line">ReactDOM.render(</div><div class="line">  &lt;NumberList numbers=&#123;numbers&#125; /&gt;,</div><div class="line">  document.getElementById(&apos;root&apos;)</div><div class="line">);</div></pre></td></tr></table></figure>
-<p>提取出一个ListItem组件，<strong>应该把key保存在数组中的这个<listitem>元素上</listitem></strong>，而不是放在ListItem组件中的<li>元素上。</li></p>
-<p><strong>元素的key在他的兄弟元素之间应该唯一</strong><br>数组元素中使用的key在其兄弟之间应该是独一无二的。然而，它们不需要是全局唯一的。当我们生成两个不同的数组时，我们可以使用相同的键。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">function Blog(props)&#123;</div><div class="line">  const list=(</div><div class="line">    &lt;ul&gt;</div><div class="line">      &#123;props.posts.map(post=&gt;&lt;li key=&#123;post.id&#125;&gt;&#123;post.title&#125;&lt;/li&gt;)&#125;</div><div class="line">    &lt;/ul&gt;</div><div class="line">  );</div><div class="line">  const content=props.posts.map(post=&gt;</div><div class="line">	                           &lt;div key=&#123;post.id&#125;&gt;</div><div class="line">	                                  &lt;h3&gt;&#123;post.title&#125;&lt;/h3&gt;</div><div class="line">	                                  &lt;h4&gt;&#123;post.content&#125;&lt;/h4&gt;</div><div class="line">	                           &lt;/div&gt; </div><div class="line">                               )</div><div class="line">  return(</div><div class="line">	  &lt;div&gt;</div><div class="line">	    &#123;list&#125;</div><div class="line">	    &lt;hr /&gt;</div><div class="line">	    &#123;content&#125;                       </div><div class="line">	   &lt;/div&gt;</div><div class="line">  )</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="使用PropTypes"><a href="#使用PropTypes" class="headerlink" title="使用PropTypes"></a>使用PropTypes</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">import PropTypes from &apos;prop-types&apos;;</div><div class="line"></div><div class="line">class Greeting extends React.Component &#123;</div><div class="line">  render() &#123;</div><div class="line">    return (</div><div class="line">      &lt;h1&gt;Hello, &#123;this.props.name&#125;&lt;/h1&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Greeting.propTypes = &#123;</div><div class="line">  name: PropTypes.string</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<p><code>PropTypes</code>包含一整套验证器，可用于确保你接收的数据是有效的。在这个示例中，我们使用了PropTypes.string。当你给属性传递了无效值时，JavsScript 控制台将会打印警告</p>
-<h3 id="限制单个子代"><a href="#限制单个子代" class="headerlink" title="限制单个子代"></a>限制单个子代</h3><p>使用<code>PropTypes.element</code>你可以指定只传递一个子代</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">import PropTypes from &apos;prop-types&apos;;</div><div class="line"></div><div class="line">class MyComponent extends React.Component &#123;</div><div class="line">  render() &#123;</div><div class="line">    const children = this.props.children;</div><div class="line">    return (</div><div class="line">      &lt;div&gt;</div><div class="line">        &#123;children&#125;</div><div class="line">      &lt;/div&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">MyComponent.propTypes = &#123;</div><div class="line">  children: PropTypes.element.isRequired</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<h3 id="属性默认值"><a href="#属性默认值" class="headerlink" title="属性默认值"></a>属性默认值</h3><p>通过配置<code>defaultProps</code>为props定义默认值：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">class Greeting extends React.Component &#123;</div><div class="line">  render() &#123;</div><div class="line">    return (</div><div class="line">      &lt;h1&gt;Hello, &#123;this.props.name&#125;&lt;/h1&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 为属性指定默认值:</div><div class="line">Greeting.defaultProps = &#123;</div><div class="line">  name: &apos;Stranger&apos;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<p><code>defaultProps</code>用来确保<code>this.props.name</code>在父组件没有特别指定的情况下，有一个初始值</p>
-<h2 id="父子组件数据通信"><a href="#父子组件数据通信" class="headerlink" title="父子组件数据通信"></a>父子组件数据通信</h2><p>父子组件之间的数据通信细分其实还有两种：父与子之间和子与父之间。</p>
-<p>在React中，<strong>父与子之间的数据通信是通过props属性就行传递的</strong>；</p>
-<p>而子与父之间的数据通信<strong>可以通过父组件定义事件，子组件触发父组件中的事件时，通过实参的形式来改变父组件中的数据来通信</strong>;</p>
+            <h2 id="表单（利用受控组件绑定value）"><a href="#表单（利用受控组件绑定value）" class="headerlink" title="表单（利用受控组件绑定value）"></a>表单（利用受控组件绑定value）</h2><p>值由React控制的输入表单元素称为“受控组件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">class NameForm extends React.Component&#123;</div><div class="line">  constructor(props)&#123;</div><div class="line">    super(props);</div><div class="line">    this.state=&#123;value: &apos;&apos;&#125;;</div><div class="line">    this.formSubmit = this.formSubmit.bind(this);</div><div class="line">    this.changeValue = this.changeValue.bind(this);</div><div class="line">  &#125;</div><div class="line">  formSubmit(event)&#123;</div><div class="line">    alert(&apos;this name is&apos; +this.state.value);</div><div class="line">    event.preventDefault();</div><div class="line">  &#125;</div><div class="line">  changeValue(event)&#123;</div><div class="line">    this.setState(&#123;value: event.target.value&#125;)</div><div class="line">  &#125;</div><div class="line">  render()&#123;</div><div class="line">    return(</div><div class="line">      &lt;form onSubmit=&#123;this.formSubmit&#125;&gt;</div><div class="line">      &lt;label&gt;</div><div class="line">        Name:&lt;input type=&quot;text&quot; value=&#123;this.state.value&#125; onChange=&#123;this.changeValue&#125; /&gt;</div><div class="line">      &lt;/label&gt;</div><div class="line">    &lt;/form&gt;</div><div class="line">    )</div><div class="line"></div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">ReactDOM.render(</div><div class="line">  &lt;NameForm /&gt;,</div><div class="line">  document.getElementById(&apos;root&apos;)</div><div class="line">);</div></pre></td></tr></table></figure></p>
+<p>使用”受控组件”,每个状态的改变都有一个与之相关的处理函数。这样就可以直接修改或验证用户输入。总之，<input type="text">，<textarea>,和</textarea><select>都十分类似，他们都通过传入一个value属性来实现对组件的控制。</select></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;form onSubmit=&#123;this.formSubmit&#125;&gt;</div><div class="line">		//在select根属性上设置value</div><div class="line">        &lt;select value=&#123;this.state.value&#125; onChange=&#123;this.changeValue&#125;&gt;</div><div class="line">        &lt;option value=&quot;haha&quot;&gt;Haha&lt;/option&gt;</div><div class="line">          &lt;option value=&quot;hehe&quot;&gt;Hehe&lt;/option&gt;</div><div class="line">          &lt;option  selected value=&quot;hihi&quot;&gt;Hihi&lt;/option&gt;</div><div class="line">          &lt;option value=&quot;lala&quot;&gt;Lala&lt;/option&gt;</div><div class="line">        &lt;/select&gt;</div><div class="line">       &lt;input type=&quot;submit&quot; value=&quot;Submit&quot; /&gt;</div><div class="line">    &lt;/form&gt;</div></pre></td></tr></table></figure>
+<p>当你有处理多个受控的input元素时，你可以通过给每个元素添加一个name属性，来让处理函数根据 event.target.name的值来选择做什么</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">  handleChange(event)&#123;</div><div class="line">    let target = event.target;</div><div class="line">    let name = target.name;</div><div class="line">    let value = name===&quot;checkbox&quot;?target.checked : target.value;</div><div class="line">    this.setState(&#123;</div><div class="line">      [name]: value</div><div class="line">    &#125;)</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  render()&#123;</div><div class="line">      return (</div><div class="line">        &lt;form &gt;</div><div class="line">          &lt;label&gt; </div><div class="line">            isGoing:&lt;input type=&quot;checkbox&quot; value=&#123;this.state.isGoing&#125; name=&quot;isGoing&quot; onChange=&#123;this.handleChange&#125; /&gt;</div><div class="line">          &lt;/label&gt;  </div><div class="line">          &lt;br /&gt;</div><div class="line">          &lt;label&gt;</div><div class="line">            输入框：&lt;input type=&quot;text&quot; value=&#123;this.state.nameValue&#125; name=&quot;nameValue&quot; onChange=&#123;this.handleChange&#125; /&gt;</div><div class="line">          &lt;/label&gt;</div><div class="line">        &lt;/form&gt;</div><div class="line">      )</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="状态提升"><a href="#状态提升" class="headerlink" title="状态提升"></a>状态提升</h2><p>使用 react 经常会遇到几个组件需要共用状态数据的情况。这种情况下，我们最好将这部分<strong>共享的状态提升至他们最近的父组件当中</strong>进行管理</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">function BoilingVerdict(props)&#123;</div><div class="line">  if(props.celcius&gt;=100)&#123;</div><div class="line">    return &lt;p&gt;The water is boiling &lt;/p&gt;</div><div class="line">  &#125;else&#123;</div><div class="line">    return &lt;p&gt; The water is not boiling&lt;/p&gt;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">handleChange(event)&#123;</div><div class="line">this.setState(&#123;temperature: event.target.value&#125;)</div><div class="line">&#125;</div><div class="line"></div><div class="line">render()&#123;</div><div class="line">const temperature = this.state.temperature;</div><div class="line">return(</div><div class="line">  &lt;fieldset&gt;</div><div class="line">    &lt;legend&gt;This a tap &lt;/legend&gt;</div><div class="line">    &lt;label&gt;</div><div class="line">      输入温度：&lt;input type=&quot;text&quot; value=&#123;temperature&#125;  onChange=&#123;this.handleChange&#125;/&gt;</div><div class="line">    &lt;/label&gt;</div><div class="line">    &lt;BoilingVerdict celcius=&#123;temperature&#125; /&gt;</div><div class="line">      </div><div class="line">  &lt;/fieldset&gt;</div><div class="line">)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>1.React在DOM原生组件<input>上调用指定的onChange函数。在本例中，指的是TemperatureInput组件上的handleChange函数。</p>
+<p>2.TemperatureInput组件的handleChange函数会在值发生变化时调用this.props.onTemperatureChange()函数。这些props属性，像onTemperatureChange都是由父组件Calculator提供的。</p>
+<p>3.当最开始渲染时，Calculator组件把内部的handleCelsiusChange方法指定给摄氏输入组件TemperatureInput的onTemperatureChange方法，并且把handleFahrenheitChange方法指定给华氏输入组件TemperatureInput的onTemperatureChange。两个Calculator内部的方法都会在相应输入框被编辑时被调用。</p>
+<p>4.在这些方法内部，Calculator组件会让React使用编辑输入的新值和当前输入框的温标来调用this.setState()方法来重渲染自身。</p>
+<p>5.React会调用Calculator组件的render方法来识别UI界面的样子。基于当前温度和温标，两个输入框的值会被重新计算。温度转换就是在这里被执行的。</p>
+<p>6.接着React会使用Calculator指定的新props来分别调用TemperatureInput组件。React也会识别出子组件的UI界面。React DOM 会更新DOM来匹配对应的值。我们编辑的输入框获取新值，而另一个输入框则更新经过转换的温度值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div></pre></td><td class="code"><pre><div class="line">const scaleNames = &#123;</div><div class="line">  c: &apos;Celsius&apos;,</div><div class="line">  f: &apos;Fahrenheit&apos;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">function toCelsius(fahrenheit) &#123;</div><div class="line">  return (fahrenheit - 32) * 5 / 9;</div><div class="line">&#125;</div><div class="line"></div><div class="line">function toFahrenheit(celsius) &#123;</div><div class="line">  return (celsius * 9 / 5) + 32;</div><div class="line">&#125;</div><div class="line"></div><div class="line">function tryConvert(temperature, convert) &#123;</div><div class="line">  const input = parseFloat(temperature);</div><div class="line">  if (Number.isNaN(input)) &#123;</div><div class="line">    return &apos;&apos;;</div><div class="line">  &#125;</div><div class="line">  const output = convert(input);</div><div class="line">  const rounded = Math.round(output * 1000) / 1000;</div><div class="line">  return rounded.toString();</div><div class="line">&#125;</div><div class="line"></div><div class="line">function BoilingVerdict(props) &#123;</div><div class="line">  if (props.celsius &gt;= 100) &#123;</div><div class="line">    return &lt;p&gt;The water would boil.&lt;/p&gt;;</div><div class="line">  &#125;</div><div class="line">  return &lt;p&gt;The water would not boil.&lt;/p&gt;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">class TemperatureInput extends React.Component&#123;</div><div class="line">  constructor(props)&#123;</div><div class="line">    super(props);</div><div class="line">    this.handleChange = this.handleChange.bind(this);</div><div class="line">    </div><div class="line">  &#125;</div><div class="line">  handleChange(e)&#123;</div><div class="line">    this.props.onTemperatureChange(e.target.value);</div><div class="line">  &#125;</div><div class="line">  render()&#123;</div><div class="line">    const temperature = this.props.temperature;</div><div class="line">    const scale = this.props.scale;</div><div class="line">    return(</div><div class="line">      &lt;fieldset&gt;</div><div class="line">        &lt;legend&gt;在&#123;scaleNames[scale]&#125;中输温度值 &lt;/legend&gt;</div><div class="line">        &lt;input type=&quot;text&quot; value=&#123;temperature&#125; onChange=&#123;this.handleChange&#125; /&gt;</div><div class="line">      &lt;/fieldset&gt;</div><div class="line">    )</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">class Calculator extends React.Component&#123;</div><div class="line">  constructor(props)&#123;</div><div class="line">    super(props);</div><div class="line">    this.state=&#123;temperature: &apos;&apos;,scale: &apos;c&apos;&#125;;</div><div class="line">    this.handleCelsiusChange = this.handleCelsiusChange.bind(this);</div><div class="line">    this.handleFahrenheitChange = this.handleFahrenheitChange.bind(this);</div><div class="line">  &#125;</div><div class="line">  handleCelsiusChange(value)&#123;</div><div class="line">    this.setState(&#123;</div><div class="line">      scale: &apos;c&apos;,temperature: value</div><div class="line">    &#125;)</div><div class="line">  &#125;</div><div class="line">  handleFahrenheitChange(value)&#123;</div><div class="line">    this.setState(&#123;</div><div class="line">      scale: &apos;f&apos;,temperature: value</div><div class="line">    &#125;)</div><div class="line">  &#125;</div><div class="line">  render()&#123;</div><div class="line">    const scale = this.state.scale;</div><div class="line">    const temperature = this.state.temperature;</div><div class="line">    const celsius = scale===&apos;f&apos;? tryConvert(temperature,toCelsius):temperature;</div><div class="line">    const fahrenheit = scale===&apos;c&apos;?tryConvert(temperature,toFahrenheit):temperature;</div><div class="line">    return(</div><div class="line">      &lt;div&gt;</div><div class="line">        &lt;TemperatureInput </div><div class="line">          scale=&apos;c&apos; </div><div class="line">          temperature=&#123;celsius&#125; </div><div class="line">          onTemperatureChange=&#123;this.handleCelsiusChange&#125; /&gt;</div><div class="line">        </div><div class="line">        &lt;TemperatureInput </div><div class="line">          scale=&apos;f&apos; </div><div class="line">          temperature=&#123;fahrenheit&#125; </div><div class="line">          onTemperatureChange=&#123;this.handleFahrenheitChange&#125; /&gt;</div><div class="line">        &lt; BoilingVerdict celsius=&#123;celsius&#125; /&gt;</div><div class="line">        </div><div class="line">      &lt;/div&gt;</div><div class="line">    )</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">ReactDOM.render(</div><div class="line">  &lt;Calculator /&gt;,</div><div class="line">  document.getElementById(&apos;root&apos;)</div><div class="line">);</div></pre></td></tr></table></figure>
+<h2 id="组合"><a href="#组合" class="headerlink" title="组合"></a>组合</h2><p>React 具有强大的组合模型，建议<strong>使用组合而不是继承来复用组件之间</strong>的代码</p>
 
           
         
@@ -2518,7 +2499,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">52</span>
+                <span class="site-state-item-count">53</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
