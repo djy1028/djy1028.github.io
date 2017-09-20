@@ -486,7 +486,7 @@
 <p><strong>3、data中的数据变化时，文本节点的内容同步变化。即model =&gt; view的变化。</strong></p>
 <p>要实现任务一，需要对DOM进行编译，这里有一个知识点：DocumentFragment。</p>
 <p>（1）DocumentFragment（文档片段）可以看作节点容器，它可以包含多个子节点，当我们将它插入到DOM中时，只有它的子节点会插入目标节点，所以把它看作一组节点的容器。使用DocumentFragment处理节点，速度和性能远远优于直接操作DOM。Vue进行编译时，就是将挂载目标的所有子节点劫持（真的是劫持）到DocumentFragment中，经过一番处理后，再将DocumentFragment整体返回插入挂载目标。</p>
-<p>（2）再来看任务二的实现思路：当我们在输入框输入数据的时候，首先触发input事件（或者keyup、change事件），在相应的事件处理程序中，我们获取输入框的value并赋值给vm实例的text属性。我们会利用defineProperty将data中的text劫持为vm的访问器属性，因此给vm.text赋值，就会触发set方法。在set方法中主要做两件事，第一是更新属性的值</p>
+<p>（2）再来看任务二的实现思路：当我们在输入框输入数据的时候，首先触发input事件（或者keyup、change事件），在相应的事件处理程序中，我们获取输入框的value并赋值给vm实例的text属性。我们会利用defineProperty将data中的text劫持为vm的访问器属性，因此给vm.text赋值，就会触发set方法。</p>
 
           
         

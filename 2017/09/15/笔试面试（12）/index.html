@@ -120,7 +120,7 @@
 <meta property="og:site_name" content="С�����ľ���">
 <meta property="og:description" content="prototype和proto的区别是什么是什么proto（隐式原型）与prototype（显式原型）：每一个函数在创建之后都会拥有一个名为prototype的属性，这个属性指向函数的原型对象。JavaScript中任意对象都有一个内置属性[[prototype]]，在ES5之前没有标准的方法访问这个内置属性，但是大多数浏览器都支持通过proto来访问。 对象有属性proto,指向该对象的构造函数">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-17T14:25:38.753Z">
+<meta property="og:updated_time" content="2017-09-20T12:09:39.392Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="笔试面试题（12）">
 <meta name="twitter:description" content="prototype和proto的区别是什么是什么proto（隐式原型）与prototype（显式原型）：每一个函数在创建之后都会拥有一个名为prototype的属性，这个属性指向函数的原型对象。JavaScript中任意对象都有一个内置属性[[prototype]]，在ES5之前没有标准的方法访问这个内置属性，但是大多数浏览器都支持通过proto来访问。 对象有属性proto,指向该对象的构造函数">
@@ -486,6 +486,15 @@
 <p><div class="test3"></div></p>
 <h2 id=""><a href="#" class="headerlink" title=""></a><div class="test4"></div></h2><p>CSS代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">向上的等腰三角形</div><div class="line">.test1&#123;</div><div class="line">    width: 0;</div><div class="line">    height: 0;</div><div class="line">    border-right: 50px solid transparent;</div><div class="line">    border-bottom: 50px solid blue;</div><div class="line">    border-left: 50px solid transparent;</div><div class="line">&#125;</div><div class="line"></div><div class="line">向右的等腰三角形</div><div class="line">.test2&#123;</div><div class="line">    width: 0;</div><div class="line">    height: 0;</div><div class="line">    border-top: 50px solid transparent;</div><div class="line">    border-bottom: 50px solid transparent;</div><div class="line">    border-left: 50px solid orange;</div><div class="line">&#125;</div><div class="line">向下的等腰三角形</div><div class="line">.test3&#123;</div><div class="line">    width: 0;</div><div class="line">    height: 0;</div><div class="line">    border-top: 50px solid black;</div><div class="line">    border-right: 50px solid transparent;</div><div class="line">    border-left: 50px solid transparent;</div><div class="line">&#125;</div><div class="line">.test4&#123;</div><div class="line">    width: 0;</div><div class="line">    height: 0;</div><div class="line">    border-top: 50px solid transparent;</div><div class="line">    border-right: 50px solid red;</div><div class="line">    border-bottom: 50px solid transparent;</div></pre></td></tr></table></figure></p>
 <p>doctype作用：目的是要告诉标准通用标记语言解析器，它应该使用什么样<strong>的文档类型定义（DTD）来解析文档</strong>。</p>
+<h2 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h2><h3 id="Javscript-动画（setTimeout、setInterval）"><a href="#Javscript-动画（setTimeout、setInterval）" class="headerlink" title="Javscript 动画（setTimeout、setInterval）"></a>Javscript 动画（setTimeout、setInterval）</h3><p>1.性能不佳，因为需要不断获取和修改Dom的布局，所以导致了大量页面重排（repaint）</p>
+<p>2.缺乏标准，不同的库使用了不同的API，导致即使是简单的动画也有各不相同的实现方式，调整起来比较耗时</p>
+<p>3.带宽消耗，相对丰富的动画库代码量都很大，结果就是增加了http请求的大小，降低了页面的载入时间</p>
+<h3 id="CSS3动画（transition、animation）"><a href="#CSS3动画（transition、animation）" class="headerlink" title="CSS3动画（transition、animation）"></a>CSS3动画（transition、animation）</h3><p>1.通过优化DOM操作，避免内存消耗来减少卡顿</p>
+<p>2.使用与 RAF（requestAnimationFrame） 类似的机制</p>
+<h3 id="html5-动画（canvas、svg、webgl）"><a href="#html5-动画（canvas、svg、webgl）" class="headerlink" title="html5 动画（canvas、svg、webgl）"></a>html5 动画（canvas、svg、webgl）</h3><p>其中<strong>svg做为一种可缩放矢量图形的实现是基于xml标签定义的，它有专门的animate标签来定义动画</strong>。而<strong>为canvas或者webgl实现动画则需要通过 requestAnimationFrame (简称 raf) 来定期刷新画布</strong>。</p>
+<h3 id="RAF-相比setTimeout、setInterval的优势："><a href="#RAF-相比setTimeout、setInterval的优势：" class="headerlink" title="RAF 相比setTimeout、setInterval的优势："></a>RAF 相比setTimeout、setInterval的优势：</h3><p>1、requestAnimationFrame 会把每一帧中的所有DOM操作集中起来，<strong>在一次重绘或回流中就完成，并且重绘或回流的时间间隔紧紧跟随浏览器的刷新频率</strong>，一般来说，这个频率为每秒60帧。</p>
+<p>2、在隐藏或不可见的元素中，requestAnimationFrame将不会进行重绘或回流，这当然就意味着更少的的cpu，gpu和内存使用量。</p>
+<p><strong>总的来说，requestAnimationFrame 是专门为实现高性能的帧动画而设计的一个API</strong></p>
 </script></p>
       
     </div>
