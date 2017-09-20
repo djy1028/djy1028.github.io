@@ -120,7 +120,7 @@
 <meta property="og:site_name" content="С�����ľ���">
 <meta property="og:description" content="prototype和proto的区别是什么是什么proto（隐式原型）与prototype（显式原型）：每一个函数在创建之后都会拥有一个名为prototype的属性，这个属性指向函数的原型对象。JavaScript中任意对象都有一个内置属性[[prototype]]，在ES5之前没有标准的方法访问这个内置属性，但是大多数浏览器都支持通过proto来访问。 对象有属性proto,指向该对象的构造函数">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-20T12:09:39.392Z">
+<meta property="og:updated_time" content="2017-09-20T13:17:31.221Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="笔试面试题（12）">
 <meta name="twitter:description" content="prototype和proto的区别是什么是什么proto（隐式原型）与prototype（显式原型）：每一个函数在创建之后都会拥有一个名为prototype的属性，这个属性指向函数的原型对象。JavaScript中任意对象都有一个内置属性[[prototype]]，在ES5之前没有标准的方法访问这个内置属性，但是大多数浏览器都支持通过proto来访问。 对象有属性proto,指向该对象的构造函数">
@@ -450,8 +450,8 @@
 <p><strong>对象有属性<strong>proto</strong>,指向该对象的构造函数的原型对象</strong>；方法除了有属性<strong>proto</strong>,还有属性prototype，<strong>prototype指向该方法的原型对象</strong></p>
 <h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><p>显式原型的作用：用来实现基于<strong>原型的继承与属性的共享</strong>； 隐式原型的作用：<strong>构成原型链，同样用于实现基于原型的继承</strong><br><code>Array.prototype.__proto__ === Object.prototype //true</code>以及<code>function Foo(){} Foo.prototype.__proto__ === Object.prototype //true</code></p>
 <h3 id="js压缩工具"><a href="#js压缩工具" class="headerlink" title="js压缩工具"></a>js压缩工具</h3><p>YUI compressor</p>
-<h3 id="前端模块化"><a href="#前端模块化" class="headerlink" title="前端模块化"></a>前端模块化</h3><p>模块化的好处：模块化可以让每个文件的职责单一，非常有利于代码的维护（避免命名冲突）。前端模块化：<script>标签风格(ps：不使用模块系统)、CommonJs、AMD和它的一些衍生物、ES6模块</p>
-<p>1.<script>:<br>全局对象中的变量冲突。</p>
+<h3 id="前端模块化"><a href="#前端模块化" class="headerlink" title="前端模块化"></a>前端模块化</h3><p>模块化的好处：模块化可以让每个文件的职责单一，非常有利于代码的维护（避免命名冲突）。前端模块化：<code>&lt;script&gt;</code>标签风格(ps：不使用模块系统)、CommonJs、AMD和它的一些衍生物、ES6模块</p>
+<p>1.<code>&lt;script&gt;</code>:<br>全局对象中的变量冲突。</p>
 <p>按需加载的问题。</p>
 <p>开发者需要手动解析模块或者库的依赖项。</p>
 <p>在特别大的项目中，这个现象会变得越来越严重，越来越难以管理。</p>
@@ -495,7 +495,7 @@
 <h3 id="RAF-相比setTimeout、setInterval的优势："><a href="#RAF-相比setTimeout、setInterval的优势：" class="headerlink" title="RAF 相比setTimeout、setInterval的优势："></a>RAF 相比setTimeout、setInterval的优势：</h3><p>1、requestAnimationFrame 会把每一帧中的所有DOM操作集中起来，<strong>在一次重绘或回流中就完成，并且重绘或回流的时间间隔紧紧跟随浏览器的刷新频率</strong>，一般来说，这个频率为每秒60帧。</p>
 <p>2、在隐藏或不可见的元素中，requestAnimationFrame将不会进行重绘或回流，这当然就意味着更少的的cpu，gpu和内存使用量。</p>
 <p><strong>总的来说，requestAnimationFrame 是专门为实现高性能的帧动画而设计的一个API</strong></p>
-</script></p>
+
       
     </div>
     
@@ -721,7 +721,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#prototype和proto的区别是什么"><span class="nav-number">1.</span> <span class="nav-text">prototype和proto的区别是什么</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#是什么"><span class="nav-number">1.1.</span> <span class="nav-text">是什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作用"><span class="nav-number">1.2.</span> <span class="nav-text">作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#js压缩工具"><span class="nav-number">1.3.</span> <span class="nav-text">js压缩工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#前端模块化"><span class="nav-number">1.4.</span> <span class="nav-text">前端模块化</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#prototype和proto的区别是什么"><span class="nav-number">1.</span> <span class="nav-text">prototype和proto的区别是什么</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#是什么"><span class="nav-number">1.1.</span> <span class="nav-text">是什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作用"><span class="nav-number">1.2.</span> <span class="nav-text">作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#js压缩工具"><span class="nav-number">1.3.</span> <span class="nav-text">js压缩工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#前端模块化"><span class="nav-number">1.4.</span> <span class="nav-text">前端模块化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#css预处理器"><span class="nav-number">1.5.</span> <span class="nav-text">css预处理器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#前后端分离"><span class="nav-number">1.6.</span> <span class="nav-text">前后端分离</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#overflow的几种取值方式"><span class="nav-number">1.7.</span> <span class="nav-text">overflow的几种取值方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#渐进增强和优雅降级"><span class="nav-number">1.8.</span> <span class="nav-text">渐进增强和优雅降级</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#css的content属性"><span class="nav-number">1.9.</span> <span class="nav-text">css的content属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#清除浮动"><span class="nav-number">1.10.</span> <span class="nav-text">清除浮动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bootstrap响应式布局原理"><span class="nav-number">1.11.</span> <span class="nav-text">bootstrap响应式布局原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#css画三角"><span class="nav-number">1.12.</span> <span class="nav-text">css画三角</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">2.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动画"><span class="nav-number">3.</span> <span class="nav-text">动画</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Javscript-动画（setTimeout、setInterval）"><span class="nav-number">3.1.</span> <span class="nav-text">Javscript 动画（setTimeout、setInterval）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS3动画（transition、animation）"><span class="nav-number">3.2.</span> <span class="nav-text">CSS3动画（transition、animation）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#html5-动画（canvas、svg、webgl）"><span class="nav-number">3.3.</span> <span class="nav-text">html5 动画（canvas、svg、webgl）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RAF-相比setTimeout、setInterval的优势："><span class="nav-number">3.4.</span> <span class="nav-text">RAF 相比setTimeout、setInterval的优势：</span></a></li></ol></li></ol></div>
             
 
           </div>
