@@ -120,7 +120,7 @@
 <meta property="og:site_name" content="С�����ľ���">
 <meta property="og:description" content="深拷贝最简单的方法： 1var cloneObj = JSON.parse(JSON.stringify(obj)); 正常方法：![]http://blog.csdn.net/flyingpig2016/article/details/52895620 1234567891011121314151617181920212223242526272829function deepCopy(obj)&amp;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-17T01:13:22.345Z">
+<meta property="og:updated_time" content="2017-09-22T13:32:13.691Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="笔试面试题（9）">
 <meta name="twitter:description" content="深拷贝最简单的方法： 1var cloneObj = JSON.parse(JSON.stringify(obj)); 正常方法：![]http://blog.csdn.net/flyingpig2016/article/details/52895620 1234567891011121314151617181920212223242526272829function deepCopy(obj)&amp;">
@@ -521,7 +521,7 @@
 <p>5.标明高度和宽度（如果浏览器没有找到这两个参数，它需要一边下载图片一边计算大小，如果图片很多，浏览器需要不断地调整页面。这不但影响速度，也影响浏览体验。<br>当浏览器知道了高度和宽度参数后，即使图片暂时无法显示，页面上也会腾出图片的空位，然后继续加载后面的内容。从而加载时间快了，浏览体验也更好了。） </p>
 <p>6.减少http请求（合并文件，合并图片）。</p>
 <p><strong>性能优化方法</strong></p>
-<p>  （1） 减少http请求次数：CSS Sprites, JS、CSS源码压缩、图片大小控制合适；网页Gzip，CDN托管，data缓存 ，图片服务器。</p>
+<p>  （1） 减少http请求次数：CSS Sprites，(去除注释，空格，tab)JS，CSS源码压缩(YUI compressor;js closure compiler)、图片大小控制合适；网页Gzip，CDN托管，data缓存 ，图片服务器。</p>
 <p>  （2） 前端模板 JS+数据，减少由于HTML标签导致的带宽浪费，前端用变量保存AJAX请求结果，每次操作本地变量，不用请求，减少请求次数</p>
 <p>  （3） 用innerHTML代替DOM操作，减少DOM操作次数，优化javascript性能。</p>
 <p>  （4） 当需要设置的样式很多时设置className而不是直接操作style。</p>

@@ -120,7 +120,7 @@
 <meta property="og:site_name" content="С�����ľ���">
 <meta property="og:description" content="过滤器(filter)的介绍Vue中过滤器是对于接口返回的字段进行业务(形式)上的转换。 vue实例在一些多页应用中，可以直接建立vue实例，然后通过&amp;lt;script&amp;gt;标签引入。 下面举一个过滤器在中使用的小例子：1234&amp;lt;p&amp;gt;&amp;#123;&amp;#123;data | formateMoney&amp;#125;&amp;#125;&amp;lt;/p&amp;gt;&amp;lt;div v-for=&amp;quot;(i">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-20T12:23:40.634Z">
+<meta property="og:updated_time" content="2017-09-21T01:47:58.047Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue.js基础">
 <meta name="twitter:description" content="过滤器(filter)的介绍Vue中过滤器是对于接口返回的字段进行业务(形式)上的转换。 vue实例在一些多页应用中，可以直接建立vue实例，然后通过&amp;lt;script&amp;gt;标签引入。 下面举一个过滤器在中使用的小例子：1234&amp;lt;p&amp;gt;&amp;#123;&amp;#123;data | formateMoney&amp;#125;&amp;#125;&amp;lt;/p&amp;gt;&amp;lt;div v-for=&amp;quot;(i">
@@ -456,7 +456,7 @@
 <p>这样是可以实现的，但是这样性能就无从提起了，因为每次oUl都重新绘制了一次，因为每次oUl都调用了appendChild方法，所以，就要借助一个叫文档碎片frag的东西，创建一个文档碎片：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var frag = document.createDocumentFragment(),</div><div class="line">            oLi = null,</div><div class="line">            t = &apos;&apos;,</div><div class="line">            oUl = document.querySelectorAll(&apos;#box&apos;)[0];</div><div class="line">        for(var i = 0;i &lt; 10;i++)&#123;</div><div class="line">            oLi = document.createElement(&apos;li&apos;);</div><div class="line">            t = document.createTextNode(i + &apos;&apos;);</div><div class="line">            oLi.appendChild(t);</div><div class="line">            frag.appendChild(oLi);</div><div class="line">        &#125;</div><div class="line">        console.log(frag);</div></pre></td></tr></table></figure>
 <p>这样也就触发了一次oUl的重新绘制,性能上会大大提高。<strong>在为DOM树添加新节点时文档碎片是非常有用的</strong></p>
-<h2 id="vue的mvvm源码实现"><a href="#vue的mvvm源码实现" class="headerlink" title="vue的mvvm源码实现"></a>vue的mvvm源码实现</h2><p>双向数据绑定无非就是在单向绑定的基础上给可输入元素（input、textare等）添加了change(input)事件，来动态修改model和 view</p>
+<h2 id="vue的mvvm源码实现"><a href="#vue的mvvm源码实现" class="headerlink" title="vue的mvvm源码实现"></a>vue的mvvm源码实现</h2><p>双向数据绑定无非就是<strong>在单向绑定的基础上给可输入元素（input、textare等）添加了change(input)事件</strong>，来动态修改model和view</p>
 <h3 id="双向数据绑定原理"><a href="#双向数据绑定原理" class="headerlink" title="双向数据绑定原理"></a>双向数据绑定原理</h3><p><strong>从m到v:</strong></p>
 <p>数据劫持:vue.js是采用数据劫持结合发布者-订阅者模式的方式，通过Object.defineProperty()来劫持各个属性的setter，getter，在数据变动时发布消息给订阅者，触发相应的监听回调。</p>
 <p><strong>从v到m</strong>(数据绑定关系的识别过程)</p>
@@ -469,7 +469,7 @@
 <p>（2）link：link过程中，建立这些<strong>指令与对应数据（通过 data 属性传入初始值）的绑定关系</strong>，<strong>并以数据的初始值进行渲染。绑定关系建立后，就可以双向同步数据了</strong></p>
 <p>MVVM作为数据绑定的入口，整合Observer、Compile和Watcher三者，通过Observer来监听自己的model数据变化，通过Compile来解析编译模板指令，最终利用Watcher搭起Observer和Compile之间的通信桥梁，达到数据变化 -&gt; 视图更新；视图交互变化(input) -&gt; 数据model变更的双向绑定效果。</p>
 <p>实现思路：</p>
-<p>1.实现数据监听器observer,重新定义data，为data上每个属性增加setter,getter以监听数据的变化</p>
+<p>1.实现数据监听器observer,重新定义data，<strong>为data上每个属性增加setter,getter以监听数据的变化</strong></p>
 <p>2.实现指令解析器compile,扫描模版template，提取每个dom节点中的指令信息，对每个元素节点的指令进行扫描和解析，根据指令模板替换数据，以及绑定相应的节点更新函数。因为遍历解析的过程有多次操作dom节点，为提高性能和效率，会先将跟节点el转换成文档碎片fragment进行解析编译操作，解析完成，再将fragment添加回原来的真实dom节点中</p>
 <p>3.实现directive,通过指令信息实例化对应的directive实例,不同类型的directive拥有不同的刷新函数update</p>
 <p>4.实现watcher,作为连接Observer和Compile的桥梁，能够订阅并收到每个属性变动的通知，执行指令绑定的相应回调函数，让observer的属性监听函数与directive的update函数做一一对应,以实现数据变化后更新视图。</p>

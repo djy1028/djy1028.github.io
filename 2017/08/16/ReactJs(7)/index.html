@@ -120,7 +120,7 @@
 <meta property="og:site_name" content="С�����ľ���">
 <meta property="og:description" content="React 高阶APIComponentsReact组件可以通过继承 React.Component 或 React.PureComponent 来定义。React.PureComponent 与 React.Component 几乎完全相同，但 React.PureComponent 通过prop和state的浅对比来实现 shouldComponentUpate()。 如果React组件的 r">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-18T13:34:47.652Z">
+<meta property="og:updated_time" content="2017-09-21T01:27:13.480Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="React.js基础">
 <meta name="twitter:description" content="React 高阶APIComponentsReact组件可以通过继承 React.Component 或 React.PureComponent 来定义。React.PureComponent 与 React.Component 几乎完全相同，但 React.PureComponent 通过prop和state的浅对比来实现 shouldComponentUpate()。 如果React组件的 r">
@@ -471,7 +471,7 @@
 <p>PureRender本质上对object只做了引用比较，并没有值的比较。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">function shallowEqual(obj,newObj)&#123;</div><div class="line">	if（obj==newObj）&#123;</div><div class="line">		return true</div><div class="line">	&#125;</div><div class="line">	const objKeys = Object.keys(obj);</div><div class="line">	const newObjKeys = Object.keys(newObj);</div><div class="line">	if(objKeys.length!==newObjKeys.length)&#123;</div><div class="line">		return false</div><div class="line">	&#125;</div><div class="line">	return objKeys.every(key=&gt;&#123;</div><div class="line">		return newObj[key]==obj[key];</div><div class="line">	&#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h4 id="优化PureRender"><a href="#优化PureRender" class="headerlink" title="优化PureRender"></a>优化PureRender</h4><p>但是在事实上，浅比较覆盖的场景并不是很多。如果在props或state为以下几种情况时，它都会触发PureRender为true。（1）直接为props或state设置对象或数组。（2）设置props方法并将其通过事件绑定在元素上 </p>
-<h3 id="Immutable"><a href="#Immutable" class="headerlink" title="Immutable"></a>Immutable</h3><p>在传递数据时可以使用Immutable Data来进一步提高组件的渲染性能。Immutable Data就是一旦创建就不能够更改的数据。immutable实现原理是<strong>持久化的数据结构</strong>，即使用旧数据创建新数据时，要保证旧数据同时可用且不变。同时，为了避免深拷贝带来的性能损耗，Immutable使用了共享结构，即如果对象树中的一个节点发生变化，只需要修改这个节点和受它影响的父节点，其他节点可以共享。</p>
+<h3 id="Immutable"><a href="#Immutable" class="headerlink" title="Immutable"></a>Immutable</h3><p>在传递数据时可以使用<strong>Immutable Data来进一步提高组件的渲染性能</strong>。Immutable Data就是一旦创建就不能够更改的数据。immutable实现原理是<strong>持久化的数据结构</strong>，即使用旧数据创建新数据时，要保证旧数据同时可用且不变。同时，为了避免深拷贝带来的性能损耗，<strong>Immutable使用了共享结构</strong>，即如果对象树中的一个节点发生变化，只需要修改这个节点和受它影响的父节点，其他节点可以共享。</p>
 <p>Immutable.js库中的几种重要的数据结构：Map:键值对集合，对应于Object。List:有序可重复的列表，对应于Array。ArraySet:无序可重复的列表。</p>
 <p>Immutable的优点：（1）降低了可变带来的复杂度 （2）节省内存（3）并发安全（4）拥抱函数式编程（输入一致，输出肯定一致）</p>
 <p>语法难点：Map和List取值时语法和Js有一定的变化。例如：map.get(‘key’)而不是map.key；用array.get(0)而不是array[0]</p>
@@ -486,7 +486,7 @@
 <h4 id="setState机制-1"><a href="#setState机制-1" class="headerlink" title="setState机制"></a>setState机制</h4><p>setState<strong>通过一个队列机制</strong>实现state的更新。当执行setState时，<strong>会将需要更新的state合并后放入状态队列</strong>，而不会立刻更新this.state，队列机制高效的批量更新state。（异步更新）</p>
 <p>流程示意：this.setState(newState) –&gt; newState存入pending队列 –&gt; 调用enqueueUpdate –&gt; 判断是否属于批量更新模式 –&gt; 如果是，将组建保存到dirtyComponents || 如果不是，遍历dirtyComponents，调用updateComponent，更新pending state props。</p>
 <p>判断是否属于批量更新是利用batchingStrategy的标志位isBatchingUpdates，为true时属于批量更新模式，存入dirtyComponents，否则，进入更新。</p>
-<h4 id="diff算法中的react-patch方法"><a href="#diff算法中的react-patch方法" class="headerlink" title="diff算法中的react patch方法"></a>diff算法中的react patch方法</h4><p>所谓的Patch，就是将tree diff计算出来的DOM差异队列更新到真实的DOM节点上，最终让浏览器渲染出数据。<strong>Patch主要是通过遍历差异队列，通过更新类型进行相应的操作</strong>，包括：新节点的插入，已有节点的移动和删除。</p>
+<h4 id="diff算法中的react-patch方法"><a href="#diff算法中的react-patch方法" class="headerlink" title="diff算法中的react patch方法"></a>diff算法中的react patch方法</h4><p>所谓的Patch，就是将tree diff计算出来的<strong>DOM差异队列更新</strong>到真实的DOM节点上，最终让浏览器渲染出数据。<strong>Patch主要是通过遍历差异队列，通过更新类型进行相应的操作</strong>，包括：新节点的插入，已有节点的移动和删除。</p>
 <h3 id="redux三大原则"><a href="#redux三大原则" class="headerlink" title="redux三大原则"></a>redux三大原则</h3><p>单一数据源</p>
 <p>状态是只读的</p>
 <p>状态的修改均由纯函数来完成：在Redux中，通过定义reducer来确定状态的修改，而每一个reducer都是纯函数，这意味着它没有副作用，即接受一定的输入，必定会得到一定的输出。</p>

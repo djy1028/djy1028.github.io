@@ -120,7 +120,7 @@
 <meta property="og:site_name" content="С�����ľ���">
 <meta property="og:description" content="行内元素有哪些？块级元素有哪些？CSS的盒模型？行内元素有：a b span I b em img input select strong;块级元素有：div ul ol li dl dt dd h1 h2 h3 h4…p;盒模型：由内到外：margin  border  padding  width;2.CSS引入的方式有哪些? link和@import的区别是?（1） i. 使用 LINK标">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-23T01:16:54.188Z">
+<meta property="og:updated_time" content="2017-09-23T01:48:30.456Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="笔试面试题（1）">
 <meta name="twitter:description" content="行内元素有哪些？块级元素有哪些？CSS的盒模型？行内元素有：a b span I b em img input select strong;块级元素有：div ul ol li dl dt dd h1 h2 h3 h4…p;盒模型：由内到外：margin  border  padding  width;2.CSS引入的方式有哪些? link和@import的区别是?（1） i. 使用 LINK标">
@@ -459,15 +459,15 @@
 所以在IE下其实解释成这样： 
 div{maring:30px;margin:28px} 
 重复定义的话按照最后一个来执行，所以不可以只写margin:XXpx!important;
-</code></pre>浏览器差异<br>i.ul和ol列表缩进问题<br>  &nbsp;&nbsp;消除ul、ol等列表的缩进时，样式应写成：list-style:none;margin:0px;padding:0px;<br>  其中margin属性对IE有效，padding属性对FireFox有效。<br>  [注] 经验证，在IE中，设置margin:0px可以去除列表的上下左右缩进、空白以及列表编号或圆点，设置padding对样式没有影响；在 Firefox 中，设置margin:0px仅仅可以去除上下的空白，设置padding:0px后仅仅可以去掉左右缩进，还必须设置list- style:none才能去除列表编号或圆点。也就是说，在IE中仅仅设置margin:0px即可达到最终效果，而在Firefox中必须同时设置margin:0px、 padding:0px以及list-style:none三项才能达到最终效果。<br>ii.CSS透明问题<br>  &nbsp;&nbsp;IE：filter:progid:DXImageTransform.Microsoft.Alpha(style=0,opacity=60)。<br>  &nbsp;&nbsp;FF：opacity:0.6。<br>  [注] 最好两个都写，并将opacity属性放在下面。<br>iii.CSS圆角问题 <pre><code>IE：ie7以下版本不支持圆角。 
-</code></pre>iv.cursor:hand VS cursor:pointer<br>   问题说明：firefox不支持hand，但ie支持pointer ，两者都是手形指示。<br>   解决方法：统一使用pointer<br>v.字体大小定义不同<br>   对字体大小small的定义不同，Firefox中为13px，而IE中为16px，差别挺大。<br>   解决方法：使用指定的字体大小如14px。<br>   并列排列的多个元素（图片或者链接）的div和div之间，代码中的空格和回车在firefox中都会被忽略，而IE中却默认显示为空格（约3px）</p></li>
-<li>ajax是什么？ajax的交互模型？同步和异步的区别？如何解决跨域问题？<br><p>ajax(动态网站静态化)伴随的goole 的推动，越来越多的站点开始使用了，在开大ajax(动态网站静态化)程序的时候会遇到很多的问题，主要有以下几个方面：<br> i. 跨浏览器问题<br>ii. 历史后退状态问题<br>iii. 跨域问题<br>跨浏览器的问题因为现在有很多的开元的框架已经解决了，我们无需为此而烦恼。历史后退状态问题我们可以使用一个数组来保存历史纪录，然后把这些数据村到历史对象中去，中的也可以解决，并且还有很多的开元框架给与支持，这样问题就不是很大</p></li>
+</code></pre>浏览器差异<br>i.ul和ol列表缩进问题<br>  消除ul、ol等列表的缩进时，样式应写成：list-style:none;margin:0px;padding:0px;<br>  其中margin属性对IE有效，padding属性对FireFox有效。<br>  [注] 经验证，在IE中，设置margin:0px可以去除列表的上下左右缩进、空白以及列表编号或圆点，设置padding对样式没有影响；在 Firefox 中，设置margin:0px仅仅可以去除上下的空白，设置padding:0px后仅仅可以去掉左右缩进，还必须设置list- style:none才能去除列表编号或圆点。<strong>也就是说，在IE中仅仅设置margin:0px即可达到最终效果，而在Firefox中必须同时设置margin:0px、 padding:0px以及list-style:none三项才能达到最终效果。</strong><br>ii.CSS透明问题<br>  &nbsp;&nbsp;IE：filter:progid:DXImageTransform.Microsoft.Alpha(style=0,opacity=60)。<br>  &nbsp;&nbsp;FF：opacity:0.6。<br>  [注] 最好两个都写，并将opacity属性放在下面。<br>iii.CSS圆角问题 <pre><code>IE：ie7以下版本不支持圆角。 
+</code></pre>iv.cursor:hand VS cursor:pointer<br>   问题说明：firefox不支持hand，但ie支持pointer ，两者都是手形指示。<br>   解决方法：统一使用pointer<br>v.字体大小定义不同<br>   对字体大小small的定义不同，Firefox中为13px，而IE中为16px，差别挺大。<br>   解决方法：使用指定的字体大小如14px。<br>   并列排列的多个元素（图片或者链接）的div和div之间，<strong>代码中的空格和回车在firefox中都会被忽略，而IE中却默认显示为空格（约3px）</strong></p></li>
+<li>ajax是什么？ajax的交互模型？同步和异步的区别？如何解决跨域问题？<br><p>ajax(动态网站静态化)伴随的goole 的推动，越来越多的站点开始使用了，在开大ajax(动态网站静态化)程序的时候会遇到很多的问题，主要有以下几个方面：<br> i. 跨浏览器问题<br>ii. 历史后退状态问题<br>iii. 跨域问题<br>跨浏览器的问题因为现在有很多的开元的框架已经解决了，我们无需为此而烦恼。历史后退状态问题我们可以使用<strong>一个数组来保存历史纪录</strong>，然后把这些数据村到历史对象中去也可以解决，并且还有很多的开源框架给与支持，这样问题就不是很大</p></li>
 </ol>
 <p>跨域的问题就不是很好的解决，但是还是有办法的，一下给出一些基本的解决方案供大家选择： </p>
 <p>i.使用代理，你可以使用web端的程序编写代理程序，把所有的ajax(动态网站静态化)请求的数据进行转发，web程序可以使php(做为现在的主流 开发语言)，jsp(SUN企业级应用的首选)，asp等所有的编程语言。相信大家对这种方式一定很熟悉，这里就不详细的介绍了</p>
 <p>ii.使用iframe的方式来定时的刷新页面，这种方式只是取得数据来显示，并不能真正的和求得的数据进行交互，转化成本页面的动态数据，不是很可取，应用也不是很多。 </p>
 <p>iii.使用apache(Unix平台最流行的WEB服务器平台)的代理功能，主要就是apache(Unix平台最流行的WEB服务器平台)的方向代理，或者是url从定向，你也可以把其他的站点直接的挂在自己的网站上，这样的方式可能会友邦权的问题，多的九部介绍了，有兴趣的本有可以自己实践以下</p>
-<p>iv.使用<script>标签的方式，这样的话就可以保正使用真正的ajax(动态网站静态化)来跨域，并且可以使用返回来的数据，在我们的后台程序处理后的到的结果都直接的用javascript 的方式返回，在我们的html中直接的使用返回数据的变量就可以了</p></p>
+<p>iv.使用<script>标签的方式，这样的话就可以保证使用真正的ajax(动态网站静态化)来跨域，并且可以使用返回来的数据，在我们的后台程序处理后的到的结果都直接的用javascript 的方式返回，在我们的html中直接的使用返回数据的变量就可以了</p></p>
 </script></p>
       
     </div>

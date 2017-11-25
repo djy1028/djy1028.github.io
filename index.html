@@ -483,7 +483,7 @@
 <h3 id="清除浮动"><a href="#清除浮动" class="headerlink" title="清除浮动"></a>清除浮动</h3><p>1.在浮动元素后面增加空元素，用空标签清除浮动 clear:both(理论上能清楚任何标签，增加无意义的标签)</p>
 <p>2.在浮动元素的父级元素中使用overflow:auto/hidden(空标签元素清除浮动而不得不增加无意代码的弊端，使用zoom:1用于兼容IE)</p>
 <p>3.对于浮动元素的父元素使用afert伪元素清除浮动(用于非IE浏览器)<code>.outer:after{content:&#39;.&#39;;visibility:hidden;width:0;height:0;dispaly:block}</code></p>
-<h3 id="bootstrap响应式布局原理"><a href="#bootstrap响应式布局原理" class="headerlink" title="bootstrap响应式布局原理"></a>bootstrap响应式布局原理</h3><p>首先通过媒体查询确认container的宽度，每个col-xx-xx都是通过百分比定义的，屏幕尺寸变化了，container就变化了，col自然就变了啊</p>
+<h3 id="bootstrap响应式布局原理"><a href="#bootstrap响应式布局原理" class="headerlink" title="bootstrap响应式布局原理"></a>bootstrap响应式布局原理</h3><p>首先通过<strong>媒体查询确认container的宽度</strong>，每个col-xx-xx都是通过百分比定义的，屏幕尺寸变化了，container就变化了，col自然就变了啊</p>
 <h3 id="css画三角"><a href="#css画三角" class="headerlink" title="css画三角"></a>css画三角</h3><p>HTML代码：</p>
 <p><div class="test1"></div></p>
 <p><div class="test2"></div></p>
@@ -495,10 +495,12 @@
 <p>3.带宽消耗，相对丰富的动画库代码量都很大，结果就是增加了http请求的大小，降低了页面的载入时间</p>
 <h3 id="CSS3动画（transition、animation）"><a href="#CSS3动画（transition、animation）" class="headerlink" title="CSS3动画（transition、animation）"></a>CSS3动画（transition、animation）</h3><p>1.通过优化DOM操作，避免内存消耗来减少卡顿</p>
 <p>2.使用与 RAF（requestAnimationFrame） 类似的机制</p>
-<h3 id="html5-动画（canvas、svg、webgl）"><a href="#html5-动画（canvas、svg、webgl）" class="headerlink" title="html5 动画（canvas、svg、webgl）"></a>html5 动画（canvas、svg、webgl）</h3><p>其中<strong>svg做为一种可缩放矢量图形的实现是基于xml标签定义的，它有专门的animate标签来定义动画</strong>。而<strong>为canvas或者webgl实现动画则需要通过 requestAnimationFrame (简称 raf) 来定期刷新画布</strong>。</p>
-<h3 id="RAF-相比setTimeout、setInterval的优势："><a href="#RAF-相比setTimeout、setInterval的优势：" class="headerlink" title="RAF 相比setTimeout、setInterval的优势："></a>RAF 相比setTimeout、setInterval的优势：</h3><p>1、requestAnimationFrame 会把每一帧中的所有DOM操作集中起来，<strong>在一次重绘或回流中就完成，并且重绘或回流的时间间隔紧紧跟随浏览器的刷新频率</strong>，一般来说，这个频率为每秒60帧。</p>
-<p>2、在隐藏或不可见的元素中，requestAnimationFrame将不会进行重绘或回流，这当然就意味着更少的的cpu，gpu和内存使用量。</p>
+<h3 id="html5-动画（canvas、svg、webgl）"><a href="#html5-动画（canvas、svg、webgl）" class="headerlink" title="html5 动画（canvas、svg、webgl）"></a>html5 动画（canvas、svg、webgl）</h3><p>其中<strong>svg做为一种可缩放矢量图形的实现是基于xml标签定义的，它有专门的animate标签来定义动画</strong>。而<strong>为canvas或者webgl实现动画则需要通过 requestAnimationFrame (简称 raf) 来定期刷新画布</strong></p>
+<h3 id="RAF相比setTimeout、setInterval的优势："><a href="#RAF相比setTimeout、setInterval的优势：" class="headerlink" title="RAF相比setTimeout、setInterval的优势："></a>RAF相比setTimeout、setInterval的优势：</h3><p>1、requestAnimationFrame 会把每一帧中的所有DOM操作集中起来，<strong>在一次重绘或回流中就完成，并且重绘或回流的时间间隔紧紧跟随浏览器的刷新频率</strong>，一般来说，这个频率为每秒60帧。</p>
+<p>2、<strong>在隐藏或不可见的元素中</strong>，requestAnimationFrame将不会进行重绘或回流，这当然就意味着更少的的cpu，gpu和内存使用量。</p>
 <p><strong>总的来说，requestAnimationFrame 是专门为实现高性能的帧动画而设计的一个API</strong></p>
+<h3 id="页面白屏"><a href="#页面白屏" class="headerlink" title="页面白屏"></a>页面白屏</h3><p>1.如果把样式放在底部，对于IE浏览器，chrome等（css全部加载后再呈现,有可能等待长），在某些场景下(新窗口打开，刷新等)页面会出现白屏，而不是内容逐步展现</p>
+<p>2.对于图片和CSS, <strong>在加载时会并发加载(如一个域名下同时加载两个文件)</strong>。但在加载 JavaScript 时，会禁用并发，并且阻止其他内容的下载。所以把JavaScript放入页面顶部也会导致<strong>白屏</strong>现象</p>
 
           
         
@@ -664,19 +666,19 @@
           
             <h2 id="浏览器安全问题"><a href="#浏览器安全问题" class="headerlink" title="浏览器安全问题"></a>浏览器安全问题</h2><h3 id="同源策略"><a href="#同源策略" class="headerlink" title="同源策略"></a>同源策略</h3><p>同源策略限制了一个源（origin）中加载文本或脚本与来自其它源（origin）中资源的交互方式。简单的说就是<strong>一个源的页面上的js只能访问当前源的资源，不能访问其他源的资源</strong>。</p>
 <p>那么资源是什么呢？<strong>DOM，通过AJAX请求的网络资源，Cookie，WebStorage，webSql</strong>。</p>
-<h3 id="XSS-Cross-Site-Script"><a href="#XSS-Cross-Site-Script" class="headerlink" title="XSS(Cross-Site Script)"></a>XSS(Cross-Site Script)</h3><p>跨站脚本攻击本质上是一种注入攻击（有兴趣了解更多注入攻击可以看这里）。其原理，简单的说就是利用各种手段把恶意代码添加到网页中，并让受害者执行这段脚本，可对用户盗取cookie信息，会话劫持等各种攻击。主要包括client(客户端型)，server(服务端型)两大类型错误。</p>
+<h3 id="XSS-Cross-Site-Script"><a href="#XSS-Cross-Site-Script" class="headerlink" title="XSS(Cross-Site Script)"></a>XSS(Cross-Site Script)</h3><p>跨站脚本攻击本质上是一种注入攻击（有兴趣了解更多注入攻击可以看这里）。其原理，<strong>简单的说就是利用各种手段把恶意代码添加到网页中，并让受害者执行这段脚本</strong>可对用户盗取cookie信息，会话劫持等各种攻击。主要包括client(客户端型)，server(服务端型)两大类型错误。</p>
 <p>无论是服务端型还是客户端型xss，攻击达成需要两个条件</p>
 <p>（1）代码被注入</p>
 <p>（2）代码被执行</p>
 <p>其实只要做好无论任何情况下<strong>保证代码不被执行就能完全杜绝xss攻击</strong>。常见做法就是将不受信任的代码进行转义</p>
 <h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><p>(1) 输入过滤。永远不要相信用户的输入，对用户输入的数据做一定的过滤。如输入的数据是否符合预期的格式，比如日期格式，Email格式，电话号码格式等等。这样可以初步对XSS漏洞进行防御。后台服务器需要在接收到用户输入的数据后，对特殊危险字符进行过滤或者转义处理，然后再存储到数据库中</p>
-<p>(2) 输出编码。服务器端输出到浏览器的数据，可以使用系统的安全函数来进行编码或转义来防范XSS攻击</p>
-<p>(3)(4) HttpOnly Cookie。预防XSS攻击窃取用户cookie最有效的防御手段。<strong>Web应用程序在设置cookie时</strong>，将其属性设为HttpOnly</p>
+<p>(2) 输出编码。服务器端输出到浏览器的数据，可以<strong>使用系统的安全函数来进行编码或转义</strong>来防范XSS攻击</p>
+<p>(3) <strong>HttpOnly Cookie</strong>。预防XSS攻击窃取用户cookie最有效的防御手段。<strong>Web应用程序在设置cookie时</strong>，将其属性设为HttpOnly</p>
 <h3 id="sql注入"><a href="#sql注入" class="headerlink" title="sql注入"></a>sql注入</h3><p>将SQL命令插入到<strong>Web表单提交</strong>或<strong>输入域名</strong>或<strong>页面请求的查询字符串</strong>，最终达到欺骗服务器执行恶意的SQL命令。</p>
 <p>常用防范方法：</p>
 <p>（1）数据转义。设置php.ini选项magic_quotes_gpc=on，它会将提交的变量中所有的’(单引号)，”(双引号)，(反斜杠)，空白字符等都在前面自动加上\。或者采用mysql_real_escape()函数或addslashes()函数进行输入参数的转义。</p>
 <p>（2）增加黑名单或者白名单验证。白名单验证一般指，检查用户输入是否是符合预期的类型、长度、数值范围或者其他格式标准。黑名单验证是指，若在用户输入中，包含明显的恶意内容则拒绝该条用户请求。</p>
-<h3 id="开发中遇到的问题"><a href="#开发中遇到的问题" class="headerlink" title="开发中遇到的问题"></a>开发中遇到的问题</h3><p>Webpack + react 文件打包出来过大，动则几百k上兆（bundle.js : 852kb.）。</p>
+<h3 id="开发中遇到的问题"><a href="#开发中遇到的问题" class="headerlink" title="开发中遇到的问题"></a>开发中遇到的问题</h3><p>Webpack + react文件打包出来过大，动则几百k上兆（bundle.js : 852kb.）。</p>
 <p>问题分析：</p>
 <p>（1）在使用 import css 的时候，Webpack Css 直接作为模块打包到js中。</p>
 <p>（2）所有Js 模块 + 依赖都会打包到一个文件，导致文件很大。</p>
@@ -684,9 +686,9 @@
 <p>解决方案：</p>
 <p>（1）分离 css 文件,将css 单独打包（bundle.css – 56kb bundle.js -796kb）</p>
 <p>（2）那么就从 react 上入手，发现react 里面存在很多注释，警告等，是一个开发版本。那么如何切换成生产版本呢？通过 webpack.DefinePlugin 的process.env 来切换成生产版本</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">new webpack.DefinePlugin(&#123;</div><div class="line">    &apos;process.env&apos;: &#123;</div><div class="line">        NODE_ENV: JSON.stringify(process.env.NODE_ENV),</div><div class="line">    &#125;,</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">new webpack.DefinePlugin(&#123;</div><div class="line">    &apos;process.env&apos;: &#123;</div><div class="line">        NODE_ENV: JSON.stringify(process.env.NODE_ENV),</div><div class="line">    &#125;,</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
 <h3 id="解决加载过慢的问题"><a href="#解决加载过慢的问题" class="headerlink" title="解决加载过慢的问题"></a>解决加载过慢的问题</h3><h4 id="从webpack入手，webpack本身会有一些插件的优化方法"><a href="#从webpack入手，webpack本身会有一些插件的优化方法" class="headerlink" title="从webpack入手，webpack本身会有一些插件的优化方法"></a>从webpack入手，webpack本身会有一些插件的优化方法</h4><p>1.UglifyJsPlugin 压缩代码的插件(这个可以很显著的缩小包的体积）。<code>new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } })</code></p>
-<p>2.CommonsChunkPlugin (合并代码)：两个用法，一个是抽取公共的包，另一个则是把多个保重的公共依赖抽取出来</p>
+<p>2.CommonsChunkPlugin (合并代码)：两个用法，<strong>一个是抽取公共的包</strong>，<strong>另一个则是把多个保重的公共依赖抽取出来</strong></p>
 <h4 id="从代码层面入手"><a href="#从代码层面入手" class="headerlink" title="从代码层面入手"></a>从代码层面入手</h4><p>首先你应该要知道code splitting这个东西，这个是代码层面优化的根基。code splitting，就是代码分割，就是代码分割成一个个小块，每次页面加载时，我只需要加载那些我需要的部分(加载包的体积变小了)，这样可以让页面加载的更快。通过webpack简而言之实现按需加载。</p>
 <p>从实际代码入手如何实现呢？</p>
 <p>借助工具：<code>npm install webpack-visualizer-plugin webpack-stats-plugin --save-dev</code></p>
@@ -696,22 +698,25 @@
 <p>通过服务器对代码进行gzip压缩</p>
 <p>服务器端渲染</p>
 <h2 id="跨域的实现方式"><a href="#跨域的实现方式" class="headerlink" title="跨域的实现方式"></a>跨域的实现方式</h2><p><em>由于浏览器同源策略，凡是发送请求url的协议、域名、端口三者之间任意一与当前页面地址不同即为跨域。</em></p>
-<p>（1）JSONP<br>这种方式主要是通过动态插入一个script标签。浏览器对script的资源引用没有同源限制（所谓同源是指所请求的主机，域名，协议，端口与当前相同），同时资源加载到页面后会立即执行。具体来说就是本站脚本创建一个<code>&lt;script&gt;</code>元素，地址指向第三方的API网址，形如：<code>&lt;script src=&quot;http://www.example.net/api?param1=1&amp;param2=2&quot;&gt;&lt;/script&gt;</code>并提供一个回调函数来接收数据（函数名可约定，或通过地址参数传递）。   </p>
+<p>（1）JSONP<br>这种方式主要是通过动态插入一个script标签。浏览器对script的资源引用没有同源限制（所谓同源是指所请求的主机，域名，协议，端口与当前相同），<strong>同时资源加载到页面后会立即执行</strong>。具体来说就是本站脚本创建一个<code>&lt;script&gt;</code>元素，地址指向第三方的API网址，形如：<code>&lt;script src=&quot;http://www.example.net/api?param1=1&amp;param2=2&quot;&gt;&lt;/script&gt;</code>并提供一个回调函数来接收数据（函数名可约定，或通过地址参数传递）。   </p>
 <p>第三方产生的响应为json数据的包装（故称之为jsonp，即json padding），形如：<code>callback({&quot;name&quot;:&quot;hax&quot;,&quot;gender&quot;:&quot;Male&quot;})</code>这样浏览器会调用callback函数，并传递解析后json对象作为参数，，客户端即可拿到数据。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">function json(jsonObj) &#123;</div><div class="line">   //dosomthing</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 调用jsonHandle，传入地址、追加参数，服务器端返回js代码，</div><div class="line">// 并调用客户端写好的json方法并把json数据传入进来。</div><div class="line">function jsonHandle(url) &#123;</div><div class="line">    var script = document.createElement(&quot;script&quot;);</div><div class="line">    script.setAttribute(&quot;src&quot;,url);</div><div class="line">    document.body.appendChild(script);</div><div class="line"></div><div class="line">    // 防止 script 标签冗余</div><div class="line">    if(oScript) &#123;</div><div class="line">      document.body.removeChild(oScript);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>(2)通过修改document.domain来跨<strong>子域</strong></p>
 <p>在页面<a href="http://www.example.com/a.html" target="_blank" rel="external">http://www.example.com/a.html</a> 上设置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">document.domain = &apos;example.com&apos;;</div><div class="line">var ifr = document.createElement(&apos;iframe&apos;);</div><div class="line">ifr.src = &apos;http://example.com/b.html&apos;;</div><div class="line">ifr.style.display = &apos;none&apos;;</div><div class="line">document.body.appendChild(ifr);</div><div class="line">ifr.onload = function()&#123;</div><div class="line">    var doc = ifr.contentDocument || ifr.contentWindow.document;</div><div class="line">    // 在这里操纵b.html</div><div class="line">    alert(doc.getElementsByTagName(&quot;h1&quot;)[0].childNodes[0].nodeValue);</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
 <p>同时，在页面<a href="http://example.com/b.html上设置`document.domain" target="_blank" rel="external">http://example.com/b.html上设置`document.domain</a> = ‘a.com’`</p>
 <p>##　安全性问题</p>
-<h3 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h3><p>所谓SQL注入，就是<strong>通过把SQL命令插入到Web表单提交或输入域名或页面请求的查询字符串</strong>，最终达到欺骗服务器执行恶意的SQL命令。<br>具体来说，它是利用现有应用程序，将(恶意)的SQL命令注入到后台数据库引擎执行的能力，它可以通过在Web表单中输入(恶意)SQL语句得到一个存在安全漏洞的网站上的数据库，而不是按照设计者意图去执行SQL语句。</p>
+<h3 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h3><p>所谓SQL注入，就是<strong>通过把SQL命令插入到Web表单提交或输入域名或页面请求的查询字符串</strong>，最终达到欺骗服务器执行恶意的SQL命令。</p>
+<p>具体来说，它是利用现有应用程序，将(恶意)的SQL命令注入到后台数据库引擎执行的能力，它可以通过在Web表单中输入(恶意)SQL语句得到一个存在安全漏洞的网站上的数据库，而不是按照设计者意图去执行SQL语句。</p>
 <h3 id="Xss"><a href="#Xss" class="headerlink" title="Xss"></a>Xss</h3><p><strong>Xss表示Cross Site Scripting(跨站脚本攻击)</strong>。它与SQL注入攻击类似，SQL注入攻击中以SQL语句作为用户输入，从而达到查询/修改/删除数据的目的，而在Xss攻击中，通过插入恶意脚本，实现对用户浏览器的控制。它是不会对服务器端造成任何伤害，而是通过一些正常的站内交互途径，例如发布评论，提交含有 JavaScript 的内容文本。这时服务器端如果没有过滤或转义掉这些脚本，作为内容发布到了页面上，其他用户访问这个页面的时候就会运行这些脚本</p>
 <p>现代web开发框架如vue.js、react.js等，在设计的时候就考虑了Xss攻击<strong>对html插值进行了更进一步的抽象、过滤和转义（转义安全字符）</strong>，我们只要熟练正确地使用他们，就可以在大部分情况下避免XSS攻击。</p>
 <p>同时，<strong>许多基于MVVM框架的SPA（单页应用）不需要刷新URL来控制view，这样大大防止了XSS隐患</strong>。</p>
 <h3 id="Csrf"><a href="#Csrf" class="headerlink" title="Csrf"></a>Csrf</h3><p>跨站点请求伪造：对于未被授权系统有权访问的某个资源的情况。</p>
 <p>解决方法：</p>
+<p><strong>在业界目前防御 CSRF 攻击主要有三种策略</strong>：<strong>1.验证 HTTP Referer 字段；2.在请求地址中添加 token 并验证；3.在 HTTP 头中自定义属性并验证</strong></p>
+<p>其中方法3也是添加token方法：通过 XMLHttpRequest 这个类，可以一次性<strong>给所有该类请求加上 csrftoken 这个 HTTP 头属性</strong>，并把 token 值放入其中。这样解决了上种方法在请求中加入 token 的不便，同时，通过 XMLHttpRequest 请求的地址不会被记录到浏览器的地址栏，也不用担心token会透过Referer泄露到其他网站中去</p>
 <p><strong>1.验证发送的请求者是否有权限访问相应的资源，往往是在用户不知情的情况下构造网络请求。所以如果使用验证码，那么每次操作都需要用户进行互动，从而简单有效的防御了CSRF攻击</strong>。</p>
-<p><strong>2.关键操作只接受POST请求</strong></p>
-<p><strong>3.Token：目前主流的做法是使用<code>Token</code>抵御 CSRF 攻击。下面通过分析<code>CSRF</code>攻击来理解为什么 Token 能够有效CSRF攻击要成功的条件在于攻击者能够预测所有的参数从而构造出合法的请求。所以根据不可预测性原则，我们可以对参数进行加密从而防止CSRF攻击。</strong></p>
+<p><strong>2.Token：目前主流的做法是使用<code>Token</code>抵御 CSRF 攻击。下面通过分析<code>CSRF</code>攻击来理解为什么 Token 能够有效CSRF攻击要成功的条件在于攻击者能够预测所有的参数从而构造出合法的请求。所以根据不可预测性原则，我们可以对参数进行加密从而防止CSRF攻击。</strong></p>
+<p><strong>3.要求以SSL连接来进行资源的请求</strong></p>
 <p>另一个更通用的做法是保持原有参数不变，另外添加一个参数Token，其值是随机的。这样攻击者因为不知道Token而无法构造出合法的请求进行攻击。</p>
 <p>Token 使用原则:</p>
 <p>Token 要足够随机————只有这样才算不可预测</p>
@@ -726,8 +731,8 @@
 <p>Last-Modified：文档的最后改动时间。客户可以通过If-Modified-Since请求头提供一个日期，该请求将被视为一个条件GET，只有改动时间迟于指定时间的文档才会返回，否则返回一个304（Not Modified）状态。Last-Modified也可用setDateHeader方法来设置；</p>
 <p>Location：表示客户应当到哪里去提取文档。Location通常不是直接设置的，而是通过HttpServletResponse的sendRedirect方法，该方法同时设置状态代码为302；</p>
 <p>Refresh：表示浏览器应该在多少时间之后刷新文档，以秒计。除了刷新当前文档之外，你还可以通过setHeader(“Refresh”, “5; URL=<a href="http://host/path&quot;)让浏览器读取指定的页面。注意这种功能通常是通过设置HTML页面HEAD区的`" target="_blank" rel="external">http://host/path&quot;)让浏览器读取指定的页面。注意这种功能通常是通过设置HTML页面HEAD区的`</a><meta http-equiv="Refresh" content="5;URL=http://host/path"><code>实现，这是因为，自动刷新或重定向对于那些不能使用CGI或Servlet的HTML编写者十分重要。但是，对于Servlet来说，直接设置 Refresh头更加方便。注意Refresh的意义是“N秒之后刷新本页面或访问指定页面”，而不是“每隔N秒刷新本页面或访问指定页面”。因此，连续 刷新要求每次都发送一个Refresh头，而发送204状态代码则可以阻止浏览器继续刷新，不管是使用Refresh头还是</code><meta http-equiv="Refresh" ...="">`。注意Refresh头不属于HTTP 1.1正式规范的一部分，而是一个扩展，但Netscape和IE都支持它。</p>
-<h3 id="定时器"><a href="#定时器" class="headerlink" title="定时器"></a>定时器</h3><p>关于定时器要记住的最重要的一点是：指定的时间间隔表示何时将定时器的代码添加到队列，而不是何时执行代码。</p>
-<h3 id="函数节流"><a href="#函数节流" class="headerlink" title="函数节流"></a>函数节流</h3><p>DOM操作比起非DOM交互需要更多的内存和CPU时间，其高频率的更改有可能使得浏览器崩溃。可以使用定时器对该函数进行<strong>节流</strong></p>
+<h3 id="定时器"><a href="#定时器" class="headerlink" title="定时器"></a>定时器</h3><p><strong>关于定时器要记住的最重要的一点是：指定的时间间隔表示何时将定时器的代码添加到队列，而不是何时执行代码</strong></p>
+<h3 id="函数节流"><a href="#函数节流" class="headerlink" title="函数节流"></a>函数节流</h3><p><strong>DOM操作比起非DOM交互需要更多的内存和CPU时间，其高频率的更改有可能使得浏览器崩溃</strong>。可以使用定时器对该函数进行<strong>节流</strong></p>
 <p>函数节流背后的基本思想指的是：<strong>某些代码不可以在没有间断的情况下连续重复执行</strong>。节流函数形式：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">function throttle(method,context)&#123;</div><div class="line">	clearTimeout(method.tId);</div><div class="line">	method.tId=setTimeout(function()&#123;</div><div class="line">		method.call(context)</div><div class="line">	&#125;,100)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>函数的两个参数为：1.要执行的函数 2.在那个作用域中执行。节流在resize函数中使用的最为频繁。当代码时周期性执行的时候，都应该使用节流。</p>
@@ -939,8 +944,7 @@
 <p>例如：想象每天上班大厦底下的电梯。把电梯完成一次运送，类比为一次函数的执行和响应。假设电梯有两种运行策略 throttle 和 debounce ，超时设定为15秒，不考虑容量限制。</p>
 <p>throttle 策略的电梯。保证如果电梯第一个人进来后，15秒后准时运送一次，不等待。如果没有人，则待机。</p>
 <p>debounce 策略的电梯。如果电梯里有人进来，等待15秒。如果又人进来，15秒等待重新计时，直到15秒超时，开始运送。</p>
-<h2 id="浅谈vue和react的区别"><a href="#浅谈vue和react的区别" class="headerlink" title="浅谈vue和react的区别"></a>浅谈vue和react的区别</h2><p>###相同处：</p>
-<p>React与Vue存在很多相似之处，例如他们都是JavaScript的UI框架，专注于创造前端的富应用。React与Vue只有框架的骨架，其他的功能如路由、状态管理等是框架分离的组件。Virtual DOM是一个映射真实DOM的JavaScript对象，如果需要改变任何元素的状态，那么是先在Virtual DOM上进行改变，而不是直接改变真实的DOM</p>
+<h2 id="浅谈vue和react的区别"><a href="#浅谈vue和react的区别" class="headerlink" title="浅谈vue和react的区别"></a>浅谈vue和react的区别</h2><h3 id="相同处："><a href="#相同处：" class="headerlink" title="相同处："></a>相同处：</h3><p>React与Vue存在很多相似之处，例如他们都是JavaScript的UI框架，专注于创造前端的富应用。React与Vue只有框架的骨架，其他的功能如路由、状态管理等是框架分离的组件。Virtual DOM是一个映射真实DOM的JavaScript对象，如果需要改变任何元素的状态，那么是先在Virtual DOM上进行改变，而不是直接改变真实的DOM</p>
 <p>组件化:<strong>将应用分拆成一个个功能明确的模块，每个模块之间可以通过合适的方式互相联系</strong></p>
 <p><strong>React和Vue都有自己的构建工具，配套框架</strong>，你可以使用它快速搭建开发环境。React可以使用Create React App (CRA)，而Vue对应的则是vue-cli。两个工具都能让你得到一个根据最佳实践设置的项目模板。Vue的核心团队维护着vue-router和vuex，它们都是作为官方推荐的存在。而React的react-router和react-redux则是由社区成员维护</p>
 <h3 id="主要区别"><a href="#主要区别" class="headerlink" title="主要区别"></a>主要区别</h3><p>模板 vs JSX：React与Vue最大的不同是<strong>模板的编写</strong>。Vue鼓励你去写近似常规HTML的模板。写起来很接近标准HTML元素，只是多了一些属性。React应用不使用模板，它要求开发者借助JSX在JavaScript中创建DOM。</p>
@@ -1204,7 +1208,7 @@
 <p>5.标明高度和宽度（如果浏览器没有找到这两个参数，它需要一边下载图片一边计算大小，如果图片很多，浏览器需要不断地调整页面。这不但影响速度，也影响浏览体验。<br>当浏览器知道了高度和宽度参数后，即使图片暂时无法显示，页面上也会腾出图片的空位，然后继续加载后面的内容。从而加载时间快了，浏览体验也更好了。） </p>
 <p>6.减少http请求（合并文件，合并图片）。</p>
 <p><strong>性能优化方法</strong></p>
-<p>  （1） 减少http请求次数：CSS Sprites, JS、CSS源码压缩、图片大小控制合适；网页Gzip，CDN托管，data缓存 ，图片服务器。</p>
+<p>  （1） 减少http请求次数：CSS Sprites，(去除注释，空格，tab)JS，CSS源码压缩(YUI compressor;js closure compiler)、图片大小控制合适；网页Gzip，CDN托管，data缓存 ，图片服务器。</p>
 <p>  （2） 前端模板 JS+数据，减少由于HTML标签导致的带宽浪费，前端用变量保存AJAX请求结果，每次操作本地变量，不用请求，减少请求次数</p>
 <p>  （3） 用innerHTML代替DOM操作，减少DOM操作次数，优化javascript性能。</p>
 <p>  （4） 当需要设置的样式很多时设置className而不是直接操作style。</p>
@@ -1592,7 +1596,7 @@
 <p>PureRender本质上对object只做了引用比较，并没有值的比较。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">function shallowEqual(obj,newObj)&#123;</div><div class="line">	if（obj==newObj）&#123;</div><div class="line">		return true</div><div class="line">	&#125;</div><div class="line">	const objKeys = Object.keys(obj);</div><div class="line">	const newObjKeys = Object.keys(newObj);</div><div class="line">	if(objKeys.length!==newObjKeys.length)&#123;</div><div class="line">		return false</div><div class="line">	&#125;</div><div class="line">	return objKeys.every(key=&gt;&#123;</div><div class="line">		return newObj[key]==obj[key];</div><div class="line">	&#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h4 id="优化PureRender"><a href="#优化PureRender" class="headerlink" title="优化PureRender"></a>优化PureRender</h4><p>但是在事实上，浅比较覆盖的场景并不是很多。如果在props或state为以下几种情况时，它都会触发PureRender为true。（1）直接为props或state设置对象或数组。（2）设置props方法并将其通过事件绑定在元素上 </p>
-<h3 id="Immutable"><a href="#Immutable" class="headerlink" title="Immutable"></a>Immutable</h3><p>在传递数据时可以使用Immutable Data来进一步提高组件的渲染性能。Immutable Data就是一旦创建就不能够更改的数据。immutable实现原理是<strong>持久化的数据结构</strong>，即使用旧数据创建新数据时，要保证旧数据同时可用且不变。同时，为了避免深拷贝带来的性能损耗，Immutable使用了共享结构，即如果对象树中的一个节点发生变化，只需要修改这个节点和受它影响的父节点，其他节点可以共享。</p>
+<h3 id="Immutable"><a href="#Immutable" class="headerlink" title="Immutable"></a>Immutable</h3><p>在传递数据时可以使用<strong>Immutable Data来进一步提高组件的渲染性能</strong>。Immutable Data就是一旦创建就不能够更改的数据。immutable实现原理是<strong>持久化的数据结构</strong>，即使用旧数据创建新数据时，要保证旧数据同时可用且不变。同时，为了避免深拷贝带来的性能损耗，<strong>Immutable使用了共享结构</strong>，即如果对象树中的一个节点发生变化，只需要修改这个节点和受它影响的父节点，其他节点可以共享。</p>
 <p>Immutable.js库中的几种重要的数据结构：Map:键值对集合，对应于Object。List:有序可重复的列表，对应于Array。ArraySet:无序可重复的列表。</p>
 <p>Immutable的优点：（1）降低了可变带来的复杂度 （2）节省内存（3）并发安全（4）拥抱函数式编程（输入一致，输出肯定一致）</p>
 <p>语法难点：Map和List取值时语法和Js有一定的变化。例如：map.get(‘key’)而不是map.key；用array.get(0)而不是array[0]</p>
@@ -1607,7 +1611,7 @@
 <h4 id="setState机制-1"><a href="#setState机制-1" class="headerlink" title="setState机制"></a>setState机制</h4><p>setState<strong>通过一个队列机制</strong>实现state的更新。当执行setState时，<strong>会将需要更新的state合并后放入状态队列</strong>，而不会立刻更新this.state，队列机制高效的批量更新state。（异步更新）</p>
 <p>流程示意：this.setState(newState) –&gt; newState存入pending队列 –&gt; 调用enqueueUpdate –&gt; 判断是否属于批量更新模式 –&gt; 如果是，将组建保存到dirtyComponents || 如果不是，遍历dirtyComponents，调用updateComponent，更新pending state props。</p>
 <p>判断是否属于批量更新是利用batchingStrategy的标志位isBatchingUpdates，为true时属于批量更新模式，存入dirtyComponents，否则，进入更新。</p>
-<h4 id="diff算法中的react-patch方法"><a href="#diff算法中的react-patch方法" class="headerlink" title="diff算法中的react patch方法"></a>diff算法中的react patch方法</h4><p>所谓的Patch，就是将tree diff计算出来的DOM差异队列更新到真实的DOM节点上，最终让浏览器渲染出数据。<strong>Patch主要是通过遍历差异队列，通过更新类型进行相应的操作</strong>，包括：新节点的插入，已有节点的移动和删除。</p>
+<h4 id="diff算法中的react-patch方法"><a href="#diff算法中的react-patch方法" class="headerlink" title="diff算法中的react patch方法"></a>diff算法中的react patch方法</h4><p>所谓的Patch，就是将tree diff计算出来的<strong>DOM差异队列更新</strong>到真实的DOM节点上，最终让浏览器渲染出数据。<strong>Patch主要是通过遍历差异队列，通过更新类型进行相应的操作</strong>，包括：新节点的插入，已有节点的移动和删除。</p>
 <h3 id="redux三大原则"><a href="#redux三大原则" class="headerlink" title="redux三大原则"></a>redux三大原则</h3><p>单一数据源</p>
 <p>状态是只读的</p>
 <p>状态的修改均由纯函数来完成：在Redux中，通过定义reducer来确定状态的修改，而每一个reducer都是纯函数，这意味着它没有副作用，即接受一定的输入，必定会得到一定的输出。</p>
